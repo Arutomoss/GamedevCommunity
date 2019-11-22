@@ -1,0 +1,126 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+body{
+    background-color: #333333; /* rgb(50, 54, 57) */
+    display: grid;
+    justify-items: center;
+    align-items: center;
+}
+
+.container{
+    background-color: #292929;
+    border-radius: 25px;
+    height: 440px;
+    width: 450px;
+    margin: 75px auto;
+}
+
+.bg-circles{
+    height: 100vh;
+    width: 100vw;
+    background: no-repeat;
+    background-image: url(../img/circles-reg.svg);
+}
+
+.logo{
+    height: 50px;
+    background: no-repeat;
+    margin: 85px auto;
+    display: grid;
+    justify-items: center;
+}
+
+.registration-form p{
+    color: #f9f9f9;
+    font-family: "Century Gothic";
+    font-size: 38px;
+    text-align: center;
+    padding-top: 55px;
+    margin-bottom: 55px;
+}
+
+.registration-form input{
+    height: 34px;
+    width: 304px;
+    border: none;
+    border-radius: 20px;
+    color: #949494;
+    background-color: #353535;
+    font-family: "Century Gothic";
+    font-size: 15px;
+    display: block;
+    padding-left: 18px;
+    margin: 14px auto;
+}
+
+.registration-form{
+    text-align: center;
+}
+
+/* form button{
+    background-color: #292929;
+    border: none;
+    display: block;
+    margin: 0 auto;
+    margin-top: 60px;
+    height: 38px;
+}
+
+button img{
+    background-color: #292929;
+} */
+
+.sign-in{
+    font-family: "Century Gothic";
+    font-size: 14px;
+    color: #bdbdbd;
+    margin-top: 5px;
+    text-align: center;
+}
+
+.sign-in a{
+    color: #bdbdbd;
+}
+
+/* button {
+    padding: 0;
+    border: none;
+    font: inherit;
+    color: inherit;
+    background-color: transparent;
+    cursor: pointer;
+} */
+
+.btn {
+    width: 181px;
+    height: 29px;
+    padding-top: 7px;
+    margin-top: 55px;
+    margin-bottom: 15px;
+    display: inline-block;    
+
+    color: white;
+    background: #F0052F;
+    
+    border-radius: 20px;
+    font-family: roboto;
+    font-size: 18px;
+    text-align: center;
+    text-decoration: none;
+    border: 2px solid #F0052F;
+}
+
+.btn:active {
+    transform: translateY(1px);
+    filter: saturate(150%);
+}
+
+input:focus{
+    color: #d6d6d6;
+    text-decoration: none;
+    border: none;
+    outline:none;
+}
