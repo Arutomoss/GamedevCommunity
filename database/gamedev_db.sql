@@ -1,4 +1,4 @@
-drop database gamedc;
+#drop database gamedc;
 create database gamedc;
 use gamedc;
 

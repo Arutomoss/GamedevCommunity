@@ -56,6 +56,15 @@ body{
     margin: 14px auto;
 }
 
+.registration-form button{
+    background-color: #292929;
+    border: none;
+    display: block;
+    margin: 0 auto;
+    margin-top: 60px;
+    height: 38px;
+}
+
 .registration-form{
     text-align: center;
 }

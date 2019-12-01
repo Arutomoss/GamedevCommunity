@@ -147,16 +147,32 @@ justify - горизонтальное выравнивание
     margin-top: 10px;
     letter-spacing: 0.05px;
     margin-bottom: 17px;
+    width: 610px;
 }
 
 .content-headder {
     padding-left: 13px;
 }
 
-.content-source img {
+.content-source {
     width: 630px;
-    height: 300px;
+    height: 340px;
+    overflow: hidden;
     border-radius: 15px;
+    border: 1px solid rgb(61, 61, 61);
+
+    background-image: url("../img/post_image_1.jpg");
+   
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;  
+}
+
+.content-source img {
+    /* width: 630px; */
+    /* height: 350px; */
+    /* border-radius: 15px; */
+    /* border: 1px solid rgb(61, 61, 61); */
 }
 
 .content-bottom-panel {

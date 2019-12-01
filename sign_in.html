@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<!-- <?php
+    require "db.php";
+?> -->
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,20 +21,22 @@
 
         <div class="container">
             <div class="registration-form">
-                <p>Авторизация</p>
-                <input type="text" placeholder="Введите логин или почту">
-                <input type="password" placeholder="Введите пароль">
-
-                <a href="main.html" class="btn">Войти</a>
-
-                <div class="sign-in">Забыли пароль?
-                    <a href="sign_in.html">Восстановить пароль</a>
-                </div>
+                <form action="php/authorization.php" method="POST">
+                    <p>Авторизация</p>
+                    <input type="text" placeholder="Введите логин или почту" name="login">
+                    <input type="password" placeholder="Введите пароль" name="pass">
+        
+                    <button type="submit" name="do_signup"><img src="img/btn_signin.svg" alt=""></button>
+        
+                    <div class="sign-in">Забыли пароль?
+                        <a href="sign_in.php">Восстановить пароль</a>
+                    </div>
+                </form>                
             </div>
         </div>
     </div>
 
-    <script src="js/main.js"></script>
+    <!-- <script src="js/main.js"></script> -->
 </body>
 
 </html>
