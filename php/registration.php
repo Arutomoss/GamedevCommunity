@@ -17,16 +17,32 @@
         echo $errors;
         exit();
     }
+    if (preg_match("#^[aA-zZ0-9\-_]+$#",$login) && (preg_match("/^(?:[a-z0-9]+(?:[-_.]?[a-z0-9]+)?@[a-z0-9_.-]+(?:\.?[a-z0-9]+)?\.[a-z]{2,5})$/i", $mail))){
+        $pass = md5($pass."3jk4n23fJ");
 
-    $pass = md5($pass."3jk4n23fJ");
+        $mysql = new mysqli("localhost", "root", "", "gamedc");
+        $mysql->query("INSERT INTO `users` (`user_login`, `user_pass`, `user_mail`) 
+            VALUES ('$login', '$pass', '$mail')");
+    
+        $mysql->close();
+    
+        header('Location: ../sign_in.html');
+    }
+    else{
+        $errors = 'Неверно заполнены поля!';
+        echo $errors;
+        exit(); 
+    }
+    
 
-    $mysql = new mysqli("localhost", "root", "", "gamedc");
-    $mysql->query("INSERT INTO `users` (`user_login`, `user_pass`, `user_mail`) 
-        VALUES ('$login', '$pass', '$mail')");
 
-    $mysql->close();
 
-    header('Location: ../authorization.html');
+
+
+
+
+
+
 
 // if($_SERVER("REQUEST_METHOD") == 'POST'){
 //     $login = filter_var(trim($_POST['login']),FILTER_SANITIZE_STRING);
