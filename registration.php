@@ -70,19 +70,19 @@
                     <input type="password" placeholder="Введите пароль" name="pass">
                     <input type="password" placeholder="Подтвердите пароль" name="pass_accept">
 
-                    <button type="submit" name="do_signup"><img src="img/btn_reg.svg" alt=""></button>
+                    <button type="submit" name="do_signup"><img src="img/btn_regR.svg" alt=""></button>
 
-                    <div class="sign-in">Уже есть аккаунт? <a href="sign_in.html">Войти</a></div>
+                    <div class="sign-in">Уже есть аккаунт? <a href="sign_in.php">Войти</a></div>
                 </form>
-
+<?php //require 'php/registration.php'; ?>
             </div>
         </div>
     </div>
 </body>
 
-  <!-- value="<?php echo @$data['login']; ?>" -->
-  <!-- value="<?php echo @$data['mail']; ?>" -->
-  <!-- value="<?php echo @$data['pass']; ?>" -->
-  <!-- value="<?php echo @$data['pass_accept']; ?>" -->
+  <!-- value="<?php //echo @$data['login']; ?>" -->
+  <!-- value="<?php //echo @$data['mail']; ?>" -->
+  <!-- value="<?php //echo @$data['pass']; ?>" -->
+  <!-- value="<?php //echo @$data['pass_accept']; ?>" -->
 
 </html>

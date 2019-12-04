@@ -20,5 +20,5 @@ if ($login == '' || $pass == '') {
 
     setcookie('user', $user['name'], time() + 3600, "/");
     $mysql->close();
-    header('Location: ../news.html');
+    header('Location: ../news.php');
 }

@@ -26,7 +26,7 @@
     
         $mysql->close();
     
-        header('Location: ../sign_in.html');
+        header('Location: ../sign_in.php');
     }
     else{
         $errors = 'Неверно заполнены поля!';

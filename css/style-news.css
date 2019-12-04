@@ -5,7 +5,7 @@
 
 header {
     background-color: #333333;
-    height: 60px;
+    height: 50px;
     width: 100%;
     align-items: center;
     position: fixed;
@@ -37,12 +37,12 @@ nav a {
     color: #ffffff;
     font-size: 14pt;
     font-family: "Century Gothic";
-    padding-bottom: 14px;
+    padding-bottom: 11px;
     margin: 0px 25px;
 }
 
 nav a:hover {
-    border-bottom: 4px solid #ffffff;
+    border-bottom: 3px solid #ffffff;
 }
 
 .m_container {
@@ -56,11 +56,11 @@ nav a:hover {
 
 .main {
     grid-area: main;
-    padding-top: 78px;
+    padding-top: 65px;
 }
 
 .whats_new {
-    height: 60px;
+    height: 50px;
     width: 100%;
     background-color: #333333;
     border-radius: 15px;
@@ -85,9 +85,9 @@ nav a:hover {
 }
 
 .mini-icon {
-    height: 40px;
-    width: 40px;
-    margin-left: 10px;
+    height: 35px;
+    width: 35px;
+    margin-left: 15px;
     margin-right: 20px;
     border-radius: 35px;
     overflow: hidden;
@@ -168,12 +168,12 @@ justify - горизонтальное выравнивание
     background-size: cover;  
 }
 
-.content-source img {
+/* .content-source img { */
     /* width: 630px; */
     /* height: 350px; */
     /* border-radius: 15px; */
     /* border: 1px solid rgb(61, 61, 61); */
-}
+/* } */
 
 .content-bottom-panel {
     padding-top: 16px;
@@ -225,7 +225,7 @@ justify - горизонтальное выравнивание
     width: 315px;
     background-color: #333333;
     border-radius: 15px;
-    margin-top: 154px;
+    margin-top: 130px;
     margin-left: 22px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
 }

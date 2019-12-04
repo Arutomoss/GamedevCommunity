@@ -35,8 +35,8 @@
                 <img src="img/border-main-reg.svg" alt="">                
             </div>
 
-            <a href="registration.html">
-                <img src="img/btn_reg.svg" alt="">
+            <a href="registration.php">
+                <img src="img/btn_regR.svg" alt="">
             </a>
 
             <img src="img/circles.svg" alt="" class="circles">
