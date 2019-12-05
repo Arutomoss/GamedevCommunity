@@ -4,9 +4,8 @@
 }
 
 .m_container {
-    background-color: #2C2C2C;
+    background-color: #252525;
     height: 100vh;
-    /* */
     display: grid;
     grid-template-columns: 1fr 740px 1fr;
     grid-template-areas: ". main actual";
@@ -118,19 +117,22 @@ justify - горизонтальное выравнивание
     overflow: hidden;
     border-radius: 15px;
     border: 1px solid rgb(61, 61, 61);
-
     background-image: url("../img/post_image_1.jpg");
-   
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;  
+    background-size: cover;
 }
 
 /* .content-source img { */
-    /* width: 630px; */
-    /* height: 350px; */
-    /* border-radius: 15px; */
-    /* border: 1px solid rgb(61, 61, 61); */
+
+/* width: 630px; */
+
+/* height: 350px; */
+
+/* border-radius: 15px; */
+
+/* border: 1px solid rgb(61, 61, 61); */
+
 /* } */
 
 .content-bottom-panel {

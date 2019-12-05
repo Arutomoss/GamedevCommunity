@@ -26,11 +26,11 @@
                     </div>
                 </div>
             </div>
-            <div class="messages row col-7 ml-1">
+            <div class="messages row col-7 ml-1" style="padding: 0px;">
                 <div class="col-12" style="height: 50px;">
 
                 </div>
-                <div class="col-12 stretch" style="background-color: #252525; margin:0px;">
+                <div class="col-12 stretch" style="background-color: #252525; margin:0px; height: 85%;">
                 
                 </div>
                 <div class="col" style="height: 50px; padding-top: 18px;">
