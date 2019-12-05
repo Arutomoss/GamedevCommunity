@@ -18,22 +18,23 @@
 
     <div class="container">
         <div class="row justify-content-md-center">
-            <div class="chats col-3 mr-3">
+            <div class="chats col-3 mr-4">
                 <div class="row">
-                    <div class="col d-flex align-items-center">
-                        <img src="img/search.svg" alt="" style="margin-top: 19px; margin-left: 5px;">
-                        <input type="text" style="border-radius: 25px; border: none; background-color: #303030; color: #7B7B7B; margin-top:18px; font-size: 17px;" placeholder="Поиск" class="col-10">
+                    <div class="col d-flex align-items-center" style=" border-bottom: solid 1px #3D3D3D; height: 50px;">
+                        <img src="img/search.svg" alt="" style=" margin-left: 5px;">
+                        <input type="text" style="border-radius: 25px; border: none; background-color: #303030; color: #7B7B7B;  font-size: 17px;" placeholder="Поиск" class="col-10">
                     </div>
                 </div>
             </div>
-            <div class="messages row col-7 ml-1" style="padding: 0px;">
-                <div class="col-12" style="height: 50px;">
-
+            <div class="messages row col-7" style="padding: 0px;">
+                <div class="col-12-fluid d-flex" style="height: 50px; padding-left: 17px;">
+                    <img src="img/logo_light.svg" alt="" class="align-self-center" height="35px">
+                    <p style="font-weight: 700; color: white; font-size: 17px; padding-left: 15px;" class="align-items-end">Wendy Watson</p>
                 </div>
-                <div class="col-12 stretch" style="background-color: #252525; margin:0px; height: 85%;">
+                <div class="col-12 stretch" style="background-color: #252525; margin:0px; height: 88.2%;">
                 
                 </div>
-                <div class="col" style="height: 50px; padding-top: 18px;">
+                <div class="col" style="height: 50px; padding-top: 11px;">
                     <input type="text" style="border-radius: 25px; border: none; background-color: #303030; color: #7B7B7B; font-size: 17px; margin-right: 15px;" placeholder="Напишите сообщение" class="col-11">
                     <img src="img/send.svg" alt="">
                 </div>
