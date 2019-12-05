@@ -1,5 +1,5 @@
 <?php
 
-$conn = mysqli_connect("localhost", "root", "qwertyui", "gamedc");
+$conn = mysqli_connect("localhost", "root", "12345678", "gamedc");
 
 ?>
