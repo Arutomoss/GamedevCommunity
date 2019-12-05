@@ -20,16 +20,22 @@
         <div class="row justify-content-md-center">
             <div class="chats col-3 mr-3">
                 <div class="row">
-                    <img src="img/search.svg" alt="">
-                    <input type="text" style="border-radius: 25px; border: none; background-color: #303030; color: #7B7B7B;" placeholder="Поиск" >
+                    <div class="col d-flex align-items-center">
+                        <img src="img/search.svg" alt="" style="margin-top: 19px; margin-left: 5px;">
+                        <input type="text" style="border-radius: 25px; border: none; background-color: #303030; color: #7B7B7B; margin-top:18px; font-size: 17px;" placeholder="Поиск" class="col-10">
+                    </div>
                 </div>
             </div>
             <div class="messages row col-7 ml-1">
-                <div class="row">
+                <div class="col-12" style="height: 50px;">
 
                 </div>
-                <div class="row stretch" style="height: 500px; background-color: #252525">
-
+                <div class="col-12 stretch no-margin" style="background-color: #252525; margin:0px;">
+                
+                </div>
+                <div class="col" style="height: 50px; padding-top: 18px;">
+                    <input type="text" style="border-radius: 25px; border: none; background-color: #303030; color: #7B7B7B; font-size: 17px; margin-right: 15px;" placeholder="Напишите сообщение" class="col-11">
+                    <img src="img/send.svg" alt="">
                 </div>
             </div>
         </div>
