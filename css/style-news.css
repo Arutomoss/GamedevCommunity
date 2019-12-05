@@ -3,48 +3,6 @@
     padding: 0;
 }
 
-header {
-    background-color: #333333;
-    height: 50px;
-    width: 100%;
-    align-items: center;
-    position: fixed;
-}
-
-.h_container {
-    display: grid;
-    height: 100%;
-    grid-template-columns: 323px 40px 1fr 363px;
-    grid-template-areas: ". logo nav .";
-    align-items: center;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
-}
-
-.logo {
-    grid-area: logo;
-    background: no-repeat;
-    height: 40px;
-    background-image: url(../img/logo_light.svg);
-}
-
-nav {
-    grid-area: nav;
-    justify-self: center;
-}
-
-nav a {
-    text-decoration: none;
-    color: #ffffff;
-    font-size: 14pt;
-    font-family: "Century Gothic";
-    padding-bottom: 11px;
-    margin: 0px 25px;
-}
-
-nav a:hover {
-    border-bottom: 3px solid #ffffff;
-}
-
 .m_container {
     background-color: #2C2C2C;
     height: 100vh;
