@@ -23,7 +23,7 @@
                 <div class="row">
                     <div class="col d-flex align-items-center" style=" border-bottom: solid 1px #3D3D3D; height: 50px;">
                         <img src="img/search.svg" alt="" style=" margin-left: 5px;">
-                        <input type="text" style="border-radius: 25px; border: none; background-color: #303030; color: #7B7B7B;  font-size: 17px; font-family: Montserrat; padding-top:2px;" placeholder="Поиск" class="col-10">
+                        <input type="text" style="border-radius: 25px; border: none; background-color: #303030; color: #E2E2E2;  font-size: 17px; font-family: Montserrat; padding-top:2px;" placeholder="Поиск" class="col-10">
                     </div>
                     <div class="col-12 stretch" style="background-color: #303030; margin:0px; height: 79.5vh;">
                 
@@ -42,7 +42,7 @@
                 
                 </div>
                 <div class="col" style="height: 50px; padding-top: 12px; padding-left: 25px;">
-                    <input type="text" style="border-radius: 25px; border: none; background-color: #303030; color: #7B7B7B; font-size: 16px; margin-right: 15px; font-family: Montserrat;" placeholder="Напишите сообщение" class="col-11">
+                    <input type="text" style="border-radius: 25px; border: none; background-color: #303030; color: #E2E2E2; font-size: 16px; margin-right: 15px; font-family: Montserrat;" placeholder="Напишите сообщение" class="col-11">
                     <img src="img/send.svg" alt="" height="23px">
                 </div>
             </div>
