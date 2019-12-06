@@ -10,7 +10,7 @@
         <nav>
             <a href="../news.php">Новости</a>
             <a href="../messages.php">Сообщения</a>
-            <a href="#">Jams</a>
+            <a href="../jams.php">Jams</a>
         </nav>
     </div>
 </header>
