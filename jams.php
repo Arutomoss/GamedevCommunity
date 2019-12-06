@@ -12,7 +12,9 @@
 <body>
     <?php require 'blocks/headder.php'; ?>
 
-    
+    <div class="container">
+        
+    </div>
 </body>
 
 </html>

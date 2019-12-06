@@ -25,6 +25,12 @@
                         <img src="img/search.svg" alt="" style=" margin-left: 5px;">
                         <input type="text" style="border-radius: 25px; border: none; background-color: #303030; color: #7B7B7B;  font-size: 17px; font-family: Montserrat; padding-top:2px;" placeholder="Поиск" class="col-10">
                     </div>
+                    <div class="col-12 stretch" style="background-color: #303030; margin:0px; height: 79.5vh;">
+                
+                    </div>
+                    <div class="col d-flex justify-content-end" style="height: 50px;">
+                        <img src="img/settings.svg" alt="" class="">
+                    </div>
                 </div>
             </div>
             <div class="messages row col-7" style="padding: 0px;">
