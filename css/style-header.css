@@ -26,8 +26,9 @@ body {
 nav a {
     text-decoration: none;
     color: #ffffff;
-    font-size: 14pt;
+    font-size: 13pt;
     font-family: "Montserrat";
+    font-weight: 400;
     padding-bottom: 11px;
     margin: 0px 25px;
 }
