@@ -5,54 +5,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap&subset=cyrillic,cyrillic-ext,latin-ext,vietnamese" rel="stylesheet">
     <link rel="stylesheet" href="css/style-registration.css">
     <title>Registration</title>
 </head>
 
 <!-- <?php
-    // require "db.php";
+        // require "db.php";
 
-    // $data = $_POST;
+        // $data = $_POST;
 
-    // if ( isset($data['do_signup']) ){
-    //     // REGISTRATION
+        // if ( isset($data['do_signup']) ){
+        //     // REGISTRATION
 
-    //     $errors = array();
-    //     if ( trim($data['login']) == '' ){
-    //         $errors[] = 'Введите логин!';
-    //     }
+        //     $errors = array();
+        //     if ( trim($data['login']) == '' ){
+        //         $errors[] = 'Введите логин!';
+        //     }
 
-    //     if ( trim($data['mail']) == '' ){
-    //         $errors[] = 'Введите почту!';
-    //     }
+        //     if ( trim($data['mail']) == '' ){
+        //         $errors[] = 'Введите почту!';
+        //     }
 
-    //     if ( trim($data['pass']) == '' ){
-    //         $errors[] = 'Введите пароль!';
-    //     }
+        //     if ( trim($data['pass']) == '' ){
+        //         $errors[] = 'Введите пароль!';
+        //     }
 
-    //     if ( trim($data['pass_accept']) == '' ){
-    //         $errors[] = 'Введите подтверждение пароля!';
-    //     }
+        //     if ( trim($data['pass_accept']) == '' ){
+        //         $errors[] = 'Введите подтверждение пароля!';
+        //     }
 
-    //     if ( $data['pass_accept'] != $data['pass'] ){
-    //         $errors[] = 'Пароли не совпадают!';
-    //     }
+        //     if ( $data['pass_accept'] != $data['pass'] ){
+        //         $errors[] = 'Пароли не совпадают!';
+        //     }
 
-    //     if ( empty($errors) ){
-    //         // OK
-    //         $user = R::dispense('users');
-    //         $user->login = $data['login'];
-    //         $user->pass = $data['pass'];
-    //         $user->mail = $data['mail'];
-    //         R::store($user);
-    //         echo '<div style="color: yellowgreen;">Вы успешно зарегистрировались</div><hr>';
-    //     }
-    //     else{
-    //         // ERROR
-    //         echo '<div style="color: red;">'.array_shift($errors).'</div><hr>';
-    //     }
-    // }
-?> -->
+        //     if ( empty($errors) ){
+        //         // OK
+        //         $user = R::dispense('users');
+        //         $user->login = $data['login'];
+        //         $user->pass = $data['pass'];
+        //         $user->mail = $data['mail'];
+        //         R::store($user);
+        //         echo '<div style="color: yellowgreen;">Вы успешно зарегистрировались</div><hr>';
+        //     }
+        //     else{
+        //         // ERROR
+        //         echo '<div style="color: red;">'.array_shift($errors).'</div><hr>';
+        //     }
+        // }
+        ?> -->
 
 <body>
     <div class="bg-circles">
@@ -62,7 +63,7 @@
 
         <div class="container">
             <div class="registration-form">
-                
+
                 <form action="php/registration.php" method="POST">
                     <p>Регистрация</p>
                     <input type="text" placeholder="Придумайте логин" name="login">
@@ -74,15 +75,20 @@
 
                     <div class="sign-in">Уже есть аккаунт? <a href="sign_in.php">Войти</a></div>
                 </form>
-<?php //require 'php/registration.php'; ?>
+                <?php //require 'php/registration.php'; 
+                ?>
             </div>
         </div>
     </div>
 </body>
 
-  <!-- value="<?php //echo @$data['login']; ?>" -->
-  <!-- value="<?php //echo @$data['mail']; ?>" -->
-  <!-- value="<?php //echo @$data['pass']; ?>" -->
-  <!-- value="<?php //echo @$data['pass_accept']; ?>" -->
+<!-- value="<?php //echo @$data['login']; 
+            ?>" -->
+<!-- value="<?php //echo @$data['mail']; 
+            ?>" -->
+<!-- value="<?php //echo @$data['pass']; 
+            ?>" -->
+<!-- value="<?php //echo @$data['pass_accept']; 
+            ?>" -->
 
 </html>

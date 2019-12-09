@@ -42,7 +42,7 @@
 .header-icons p{
     color: #F8F8F8;
     font-size: 18px;
-    font-family: "Century Gothic";
+    font-family: "Montserrat";
 }
 
 .header-icons p a{
@@ -62,9 +62,9 @@
 }
 
 .main p{
-    font-family: "Century Gothic";
+    font-family: "Montserrat";
     font-weight: bold;
-    font-size: 48px;
+    font-size: 46px;
     color: #F8F8F8;
     text-align: center;
     margin-top: 110px;
@@ -72,7 +72,7 @@
 }
 
 .main pre{
-    font-family: "Century Gothic";
+    font-family: "Montserrat";
     font-size: 18px;
     color: #F8F8F8;
     text-align: center;
