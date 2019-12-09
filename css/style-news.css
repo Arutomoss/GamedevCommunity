@@ -3,52 +3,9 @@
     padding: 0;
 }
 
-header {
-    background-color: #333333;
-    height: 60px;
-    width: 100%;
-    align-items: center;
-    position: fixed;
-}
-
-.h_container {
-    display: grid;
-    height: 100%;
-    grid-template-columns: 323px 40px 1fr 363px;
-    grid-template-areas: ". logo nav .";
-    align-items: center;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
-}
-
-.logo {
-    grid-area: logo;
-    background: no-repeat;
-    height: 40px;
-    background-image: url(../img/logo_light.svg);
-}
-
-nav {
-    grid-area: nav;
-    justify-self: center;
-}
-
-nav a {
-    text-decoration: none;
-    color: #ffffff;
-    font-size: 14pt;
-    font-family: "Century Gothic";
-    padding-bottom: 14px;
-    margin: 0px 25px;
-}
-
-nav a:hover {
-    border-bottom: 4px solid #ffffff;
-}
-
 .m_container {
-    background-color: #2C2C2C;
+    background-color: #252525;
     height: 100vh;
-    /* */
     display: grid;
     grid-template-columns: 1fr 740px 1fr;
     grid-template-areas: ". main actual";
@@ -56,11 +13,11 @@ nav a:hover {
 
 .main {
     grid-area: main;
-    padding-top: 78px;
+    padding-top: 65px;
 }
 
 .whats_new {
-    height: 60px;
+    height: 53px;
     width: 100%;
     background-color: #333333;
     border-radius: 15px;
@@ -85,9 +42,9 @@ nav a:hover {
 }
 
 .mini-icon {
-    height: 40px;
-    width: 40px;
-    margin-left: 10px;
+    height: 35px;
+    width: 35px;
+    margin-left: 15px;
     margin-right: 20px;
     border-radius: 35px;
     overflow: hidden;
@@ -147,17 +104,36 @@ justify - горизонтальное выравнивание
     margin-top: 10px;
     letter-spacing: 0.05px;
     margin-bottom: 17px;
+    width: 610px;
 }
 
 .content-headder {
     padding-left: 13px;
 }
 
-.content-source img {
+.content-source {
     width: 630px;
-    height: 300px;
+    height: 340px;
+    overflow: hidden;
     border-radius: 15px;
+    border: 1px solid rgb(61, 61, 61);
+    background-image: url("../img/post_image_1.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
+
+/* .content-source img { */
+
+/* width: 630px; */
+
+/* height: 350px; */
+
+/* border-radius: 15px; */
+
+/* border: 1px solid rgb(61, 61, 61); */
+
+/* } */
 
 .content-bottom-panel {
     padding-top: 16px;
@@ -202,6 +178,7 @@ justify - горизонтальное выравнивание
 
 .actual {
     grid-area: actual;
+    display: none;
 }
 
 .actual-panel {
@@ -209,7 +186,7 @@ justify - горизонтальное выравнивание
     width: 315px;
     background-color: #333333;
     border-radius: 15px;
-    margin-top: 154px;
+    margin-top: 130px;
     margin-left: 22px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
 }

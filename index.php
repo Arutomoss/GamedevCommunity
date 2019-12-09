@@ -24,7 +24,7 @@
                 <a href="https://www.instagram.com/artemkosharnov">
                     <img src="img/inst_icon.svg" alt="" class="icons">
                 </a>
-                <p><u>Войти</u></p>
+                <p><a href="sign_in.php">Войти</a></p>
             </div>
         </div>
         <div class="main">
@@ -35,8 +35,8 @@
                 <img src="img/border-main-reg.svg" alt="">                
             </div>
 
-            <a href="registration.html">
-                <img src="img/btn_reg.svg" alt="">
+            <a href="registration.php">
+                <img src="img/btn_regR.svg" alt="">
             </a>
 
             <img src="img/circles.svg" alt="" class="circles">

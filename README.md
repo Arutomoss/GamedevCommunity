@@ -1,2 +1,0 @@
-# GamedevCommunity
-Game development site
