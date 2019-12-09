@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,400i,500,500i,700,900&display=swap&subset=cyrillic,cyrillic-ext" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap&subset=cyrillic,cyrillic-ext,latin-ext,vietnamese" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i&display=swap&subset=latin-ext" rel="stylesheet">
     <link rel="stylesheet" href="css/style-news.css">
@@ -36,12 +37,16 @@
 
             <div class="content">
                 <div class="content-icon">
-                    <img src="img/logo_light.svg" alt="">
+                    <img src="img/logo_light.svg" alt="" height="45px">
                 </div>
                 <div class="wrap">
                     <div class="content-headder">
                         <div class="content-headder-title">
-                            <p>IGN</p>
+                            <p>Insomnia Game News</p>
+                            <!-- <div class="title-info">
+                                <p>@IGN </p>
+                                <p>• 20 мин</p>
+                            </div> -->
                         </div>
                         <div class="content-discription">
                             <p>Sony говорит, что PS5 сможет использовать 8K графику ... но мы не ожидаем, что она сможет

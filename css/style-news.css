@@ -72,43 +72,57 @@ justify - горизонтальное выравнивание
 */
 
 .content-icon {
-    height: 100%;
-    width: 78px;
+    width: 73px;
     display: flex;
     justify-content: center;
     align-items: flex-start;
 }
 
 .content-icon img {
-    margin-top: 15px;
+    margin-top: 12px;
+    margin-left: 5px;
 }
 
-.content-headder-title p {
+.content-headder-title p{    
+    display: inline;
     font-family: "Montserrat";
-    font-size: 20px;
-    font-weight: bold;
+    font-size: 19px;
+    font-weight: 600;
     color: #ffffff;
     display: inline;
 }
 
+/* .title-info {
+    display: flex;
+    font-family: "montserrat";
+    font-weight: normal;
+    font-size: 12px;
+    color: rgb(128, 128, 128);
+} */
+
+.content-discription p {
+    margin-bottom: 15px;
+}
+
+.content-headder {
+    padding-left: 5px;
+}
+
 .wrap {
-    padding-top: 17px;
-    padding-right: 20px;
+    padding-top: 13px;
+    padding-right: 42px;
     width: 100%;
 }
 
 .content-discription {
-    font-family: "Montserrat";
-    font-size: 14px;
-    color: #E2E2E2;
-    margin-top: 10px;
-    letter-spacing: 0.05px;
-    margin-bottom: 17px;
-    width: 610px;
-}
-
-.content-headder {
-    padding-left: 13px;
+    font-family: "Roboto";
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 20px;
+    color: rgb(218, 218, 218);
+    letter-spacing: 0.1px;
+    width: 100%;
+    margin-top: 5px;
 }
 
 .content-source {
@@ -136,8 +150,8 @@ justify - горизонтальное выравнивание
 /* } */
 
 .content-bottom-panel {
-    padding-top: 16px;
-    margin-bottom: 18px;
+    padding-top: 10px;
+    margin-bottom: 12px;
     font-family: "Lato";
     color: #C1C1C1;
     font-weight: 300;
@@ -145,14 +159,18 @@ justify - горизонтальное выравнивание
     align-items: center;
 }
 
+.content-bottom-panel p {
+    margin: 0px;
+}
+
 .content-bottom-panel-comments {
     display: flex;
     margin-left: 20px;
+    align-items: center;
 }
 
 .content-bottom-panel-comments img {
     margin-right: 6px;
-    margin-top: -2px;
 }
 
 .content-bottom-panel-reposts {
@@ -163,6 +181,7 @@ justify - горизонтальное выравнивание
 
 .content-bottom-panel-reposts img {
     margin-right: 6px;
+    margin-top: 2px;
 }
 
 .content-bottom-panel-likes {
@@ -174,6 +193,7 @@ justify - горизонтальное выравнивание
 
 .content-bottom-panel-likes img {
     margin-right: 6px;
+    margin-top: 2px;
 }
 
 .actual {
