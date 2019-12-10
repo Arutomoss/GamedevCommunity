@@ -91,7 +91,7 @@ button img{
 }
 
 .sign-in a{
-    color: #bdbdbd;
+    color: #f9f9f9;
 }
 
 /* button {
@@ -132,4 +132,13 @@ input:focus{
     text-decoration: none;
     border: none;
     outline:none;
+}
+
+.registration {
+    display: block;
+    color: #f9f9f9;
+    font-size: 14px;
+    text-decoration: underline;
+    font-family: "montserrat";
+    margin-top: 15px;
 }

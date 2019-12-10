@@ -32,6 +32,9 @@
                     <div class="sign-in">Забыли пароль?
                         <a href="sign_in.php">Восстановить пароль</a>
                     </div>
+
+                    <a href="registration.php" class="registration">Зарегистрироваться</a>
+
                 </form>
             </div>
         </div>

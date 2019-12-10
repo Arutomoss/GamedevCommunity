@@ -44,7 +44,7 @@
                     <div class="content-headder">
                         <div class="content-headder-title">
                             <p>Insomnia Game News</p>
-                            <p class="title-info">@IGN • 20 мин</p>
+                            <p class="title-info">@ign • 20 мин</p>
                         </div>
                         <div class="content-discription">
                             <p>Sony говорит, что PS5 сможет использовать 8K графику ... но мы не ожидаем, что она сможет
@@ -81,7 +81,7 @@
                     <div class="content-headder">
                         <div class="content-headder-title">
                             <p>Igromania</p>
-                            <p class="title-info">@IGM • 20 мин</p>
+                            <p class="title-info">@igm • 20 мин</p>
                         </div>
                         <div class="content-discription">
                             <p>Вот как их консоль следующего поколения
@@ -95,15 +95,49 @@
                     <div class="content-bottom-panel">
                         <div class="content-bottom-panel-comments">
                             <img src="img/comments.svg" alt="">
-                            <p>34</p>
+                            <p>164</p>
                         </div>
                         <div class="content-bottom-panel-reposts">
                             <img src="img/reposts.svg" alt="">
-                            <p>9</p>
+                            <p>36</p>
                         </div>
                         <div class="content-bottom-panel-likes">
                             <img src="img/likes.svg" alt="">
-                            <p>734</p>
+                            <p>556</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content">
+                <div class="content-icon">
+                    <img src="img/logo_light.svg" alt="" height="50px">
+                </div>
+                <div class="wrap">
+                    <div class="content-headder">
+                        <div class="content-headder-title">
+                            <p>Brakeys</p>
+                            <p class="title-info">@brakeys • 20 мин</p>
+                        </div>
+                        <div class="content-discription">
+                            <p>Today we gonna learn to "HOW WRITE A GAME WITHOUT CODE".</p>
+                        </div>
+                    </div>
+                    <div class="content-source">
+                        <img src="img/post_image_1.jpg" alt="">
+                    </div>
+                    <div class="content-bottom-panel">
+                        <div class="content-bottom-panel-comments">
+                            <img src="img/comments.svg" alt="">
+                            <p>2k</p>
+                        </div>
+                        <div class="content-bottom-panel-reposts">
+                            <img src="img/reposts.svg" alt="">
+                            <p>523</p>
+                        </div>
+                        <div class="content-bottom-panel-likes">
+                            <img src="img/likes.svg" alt="">
+                            <p>5k</p>
                         </div>
                     </div>
                 </div>
@@ -117,7 +151,7 @@
                     <div class="content-headder">
                         <div class="content-headder-title">
                             <p>Insomnia Game News</p>
-                            <p class="title-info">@IGN • 20 мин</p>
+                            <p class="title-info">@ign • 20 мин</p>
                         </div>
                         <div class="content-discription">
                             <p>Sony говорит, что PS5 сможет использовать 8K графику ... но мы не ожидаем, что она сможет
@@ -154,44 +188,7 @@
                     <div class="content-headder">
                         <div class="content-headder-title">
                             <p>Insomnia Game News</p>
-                            <p class="title-info">@IGN • 20 мин</p>
-                        </div>
-                        <div class="content-discription">
-                            <p>Sony говорит, что PS5 сможет использовать 8K графику ... но мы не ожидаем, что она сможет
-                                достичь всего этого разрешения изначально. Вот как их консоль следующего поколения
-                                сможет
-                                реализовать все эти пиксели в 2020 году.</p>
-                        </div>
-                    </div>
-                    <div class="content-source">
-                        <img src="img/post_image_1.jpg" alt="">
-                    </div>
-                    <div class="content-bottom-panel">
-                        <div class="content-bottom-panel-comments">
-                            <img src="img/comments.svg" alt="">
-                            <p>34</p>
-                        </div>
-                        <div class="content-bottom-panel-reposts">
-                            <img src="img/reposts.svg" alt="">
-                            <p>9</p>
-                        </div>
-                        <div class="content-bottom-panel-likes">
-                            <img src="img/likes.svg" alt="">
-                            <p>734</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="content">
-                <div class="content-icon">
-                    <img src="img/logo_light.svg" alt="" height="50px">
-                </div>
-                <div class="wrap">
-                    <div class="content-headder">
-                        <div class="content-headder-title">
-                            <p>Insomnia Game News</p>
-                            <p class="title-info">@IGN • 20 мин</p>
+                            <p class="title-info">@ign • 20 мин</p>
                         </div>
                         <div class="content-discription">
                             <p>Sony говорит, что PS5 сможет использовать 8K графику ... но мы не ожидаем, что она сможет
