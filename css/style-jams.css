@@ -9,7 +9,7 @@ body {
 
 .jams-panel{
     background-color: #303030;
-    height: 150px;
+    height: 250px;
     border-radius: 15px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
     top: 65px;
@@ -17,13 +17,17 @@ body {
     padding-left: 35px; 
 }
 
-.jams-panel a {
+.jams-panel-links a{
     display: block;
     text-decoration: none;
     color: #EFEFEF;
     font-family: "montserrat";
     width: 100%;
     padding-bottom: 13px;
+}
+
+.jams-panel-links {
+    margin-bottom: 50px;
 }
 
 .jam {

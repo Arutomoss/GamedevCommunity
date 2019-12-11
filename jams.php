@@ -17,9 +17,12 @@
     <div class="container col-12">
         <div class="wrap row justify-content-md-center">
             <div class="jams-panel col-2 mr-3">
-                <a href="#">Все мероприятия</a>
-                <a href="#">Мои мероприятия</a>
-                <a href="#">Активные мероприятия</a>
+                <div class="jams-panel-links">
+                    <a href="#">Все мероприятия</a>
+                    <a href="#">Мои мероприятия</a>
+                    <a href="#">Активные мероприятия</a>
+                </div>
+                <a class="btn btn-light rounded-25 pd-w-35" role="button" href="jam_creation.php">Создать мероприятие</a>
             </div>
             <div class="jam col-5">
                 <div class="jam-title">
