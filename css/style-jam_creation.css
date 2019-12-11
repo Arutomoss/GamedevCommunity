@@ -2,3 +2,16 @@
     margin: 0;
     padding: 0;
 }
+
+.settings-panel {
+    height: 200px;
+    background-color: #303030;
+    border-radius: 15px;
+    top: 65px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+}
+
+.jam {
+    background-color: #303030;
+    height: 100vh;
+}

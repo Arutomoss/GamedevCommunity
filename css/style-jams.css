@@ -9,7 +9,7 @@ body {
 
 .jams-panel{
     background-color: #303030;
-    height: 250px;
+    height: 220px;
     border-radius: 15px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
     top: 65px;
@@ -27,7 +27,7 @@ body {
 }
 
 .jams-panel-links {
-    margin-bottom: 50px;
+    margin-bottom: 25px;
 }
 
 .jam {
