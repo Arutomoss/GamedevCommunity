@@ -14,7 +14,7 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
     top: 65px;
     padding-top: 23px;
-    padding-left: 35px;
+    padding-left: 35px; 
 }
 
 .jams-panel a {
@@ -23,12 +23,8 @@ body {
     color: #EFEFEF;
     font-family: "montserrat";
     width: 100%;
-    padding-bottom: 15px;
+    padding-bottom: 13px;
 }
-/* 
-.jams-panel a:hover {
-    border-bottom: 1px solid #EFEFEF;
-} */
 
 .jam {
     height: 400px;
