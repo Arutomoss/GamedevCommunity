@@ -18,15 +18,21 @@
         <div class="row">
             <div class="col-3 mr-3 settings-panel">
                 <div class="row">
-                    <div style="color: #fff; font-family: montserrat; margin-left: 30px; margin-top: 20px; margin-bottom: 7px;">Название</div>
+                    <div style="color: #F1F1F1; font-family: montserrat; margin-left: 30px; margin-top: 20px; margin-bottom: 7px;">Название</div>
                     <div class="col">
                         <input type="text" placeholder="Введите название" class="rounded-25 border-0 ml-2" style="height: 25px; width: 235px;">
                     </div>
                 </div>
             </div>
             <div class="col-8 jam-place">
-                <div class="row jam">
-
+                <div class="col jam">
+                    <div class="row jam-header justify-content-between">
+                        <div class="">December JAM</div>
+                        <div class="name">
+                            Julie Richards
+                            <img src="img/logo_light.svg" alt="">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

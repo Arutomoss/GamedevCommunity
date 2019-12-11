@@ -19,6 +19,7 @@ body {
     top: 65px;
     background-color: #222222;
     height: 100vh;
+    padding: 0px;
 }
 
 .jam {
@@ -26,10 +27,28 @@ body {
     height: 550px;
     border-radius: 15px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    padding: 35px 55px;
 }
 
 input {
     background-color: #3D3D3D;
     padding-left: 15px;
     color: #C8C8C8;
+}
+
+.jam-header {
+    color: #EEEEEE;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0px;
+}
+
+.name {
+    font-size: 18px;
+    font-weight: normal;
+    font-family: montserrat;
+}
+
+.name img {
+    padding-left: 10px;
 }
