@@ -14,12 +14,25 @@
 <body>
     <?php require 'blocks/headder.php'; ?>
 
-    <div class="mx-auto col-3 settings-panel">
+    <div class="container ">
+        <div class="row">
+            <div class="col-3 mr-3 settings-panel">
+                <div class="row">
+                    <div style="color: #fff; font-family: montserrat; margin-left: 30px; margin-top: 20px; margin-bottom: 7px;">Название</div>
+                    <div class="col">
+                        <input type="text" placeholder="Введите название" class="rounded-25 border-0 ml-2" style="height: 25px; width: 235px;">
+                    </div>
+                </div>
+            </div>
+            <div class="col-8 jam-place">
+                <div class="row jam">
+
+                </div>
+            </div>
+        </div>
 
     </div>
-    <div class="col-5 jam">
-    
-    </div>
+
 
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="js/popper.min.js"></script>

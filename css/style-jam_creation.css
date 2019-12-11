@@ -3,15 +3,33 @@
     padding: 0;
 }
 
+body {
+    overflow-x: hidden;
+}
+
 .settings-panel {
-    height: 200px;
+    height: 400px;
     background-color: #303030;
     border-radius: 15px;
     top: 65px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
 }
 
+.jam-place {
+    top: 65px;
+    background-color: #222222;
+    height: 100vh;
+}
+
 .jam {
     background-color: #303030;
-    height: 100vh;
+    height: 550px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+}
+
+input {
+    background-color: #3D3D3D;
+    padding-left: 15px;
+    color: #C8C8C8;
 }
