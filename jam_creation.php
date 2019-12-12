@@ -18,24 +18,37 @@
         <div class="row">
             <div class="col-3 mr-3 settings-panel">
                 <div class="row">
-                    <div style="color: #F1F1F1; font-family: montserrat; margin-left: 30px; margin-top: 20px; margin-bottom: 7px;">Название</div>
-                    <div class="col">
-                        <input type="text" placeholder="Введите название" class="rounded-25 border-0 ml-2" style="height: 25px; width: 235px;">
-                    </div>
+                    
                 </div>
             </div>
             <div class="col-8 jam-place">
-                <div class="col jam">
-                    <div class="row jam-header justify-content-between">
-                        <div class="">December JAM</div>
-                        <div class="name">
-                            Julie Richards
-                            <img src="img/logo_light.svg" alt="">
+                <form action="">
+                    <div class="col jam">
+                        <div class="row jam-header justify-content-between">
+                            <div class="form-group">
+                                <input type="text" class="form-control border-0" id="exampleInputPassword1" placeholder="Введите название" style="background-color: #303030; padding-left: 0px; padding-right: 0px; color: #F1F1F1; font-size: 22px; font-weight: bold; font-family: montserrat;">
+                            </div>
+                            <div class="name">
+                                Julie Richards
+                                <img src="img/logo_light.svg" alt="">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-12 jam-description">
+                                <textarea class="form-control border-0" id="exampleFormControlTextarea1" rows="5" style="background-color: #303030; color: #F1F1F1; font-family: montserrat; font-size: 14px; padding-left: 0px; padding-right: 0px;" placeholder="Введите описание..."></textarea>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-12">
+                                <textarea class="form-control border-0" id="exampleFormControlTextarea1" rows="1" style="background-color: #303030; color: #F1F1F1; font-family: montserrat; font-size: 14px; padding-left: 0px; padding-right: 0px;" placeholder="Введите краткое описание..."></textarea>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </form>
+
             </div>
         </div>
+    </div>
 
     </div>
 

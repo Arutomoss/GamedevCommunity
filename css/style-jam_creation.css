@@ -17,14 +17,14 @@ body {
 
 .jam-place {
     top: 65px;
-    background-color: #222222;
+    /* background-color: #222222; */
     height: 100vh;
     padding: 0px;
 }
 
 .jam {
     background-color: #303030;
-    height: 550px;
+    /* height: 550px; */
     border-radius: 15px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
     padding: 35px 55px;
@@ -44,11 +44,15 @@ input {
 }
 
 .name {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: normal;
     font-family: montserrat;
 }
 
 .name img {
     padding-left: 10px;
+}
+
+.jam-description {
+    margin-top: 40px;
 }

@@ -108,7 +108,7 @@ justify - горизонтальное выравнивание
 }
 
 .content-discription p {
-    margin-bottom: 15px;
+    margin-bottom: 0px;
 }
 
 .content-headder {
@@ -139,10 +139,11 @@ justify - горизонтальное выравнивание
     overflow: hidden;
     border-radius: 15px;
     border: 1px solid rgb(61, 61, 61);
-    background-image: url("../img/post_image_1.jpg");
+    margin-top: 13px;
+    /* background-image: url("../img/post_image_1.jpg");
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: cover; */
 }
 
 /* .content-source img { */

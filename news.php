@@ -54,7 +54,7 @@
                         </div>
                     </div>
                     <div class="content-source">
-                        <img src="img/post_image_1.jpg" alt="">
+                        <img src="img/post_image_1.jpg" class="img-fluid" alt="">
                     </div>
                     <div class="content-bottom-panel">
                         <div class="content-bottom-panel-comments">
@@ -90,7 +90,7 @@
                         </div>
                     </div>
                     <div class="content-source">
-                        <img src="img/post_image_1.jpg" alt="">
+                        <img src="img/post_image_1.jpg" class="img-fluid" alt="">
                     </div>
                     <div class="content-bottom-panel">
                         <div class="content-bottom-panel-comments">
@@ -124,7 +124,7 @@
                         </div>
                     </div>
                     <div class="content-source">
-                        <img src="img/post_image_1.jpg" alt="">
+                        <img src="img/post_image_1.jpg" class="img-fluid" alt="">
                     </div>
                     <div class="content-bottom-panel">
                         <div class="content-bottom-panel-comments">
@@ -160,9 +160,9 @@
                                 реализовать все эти пиксели в 2020 году.</p>
                         </div>
                     </div>
-                    <div class="content-source">
-                        <img src="img/post_image_1.jpg" alt="">
-                    </div>
+                    <!-- <div class="content-source">
+                        <img src="img/post_image_1.jpg" class="img-fluid" alt="">
+                    </div> -->
                     <div class="content-bottom-panel">
                         <div class="content-bottom-panel-comments">
                             <img src="img/comments.svg" alt="">
@@ -198,7 +198,7 @@
                         </div>
                     </div>
                     <div class="content-source">
-                        <img src="img/post_image_1.jpg" alt="">
+                        <img src="img/post_image_1.jpg" class="img-fluid" alt="">
                     </div>
                     <div class="content-bottom-panel">
                         <div class="content-bottom-panel-comments">
