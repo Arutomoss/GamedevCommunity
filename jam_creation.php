@@ -65,15 +65,14 @@
                             <label class="custom-file-label rounded-25 border-0 chs-file" for="inputGroupFile01">Выберите файл</label>
                         </div>
                     </div> -->
-                    <form>
+                    <form action="jam_creation.php" method="POST">
                         <div class="form-group">
-                            <!-- <label for="exampleFormControlFile1">Example file input</label> -->
-                            <input type="file" class="form-control-file border-0" id="exampleFormControlFile1" style="padding-left: 0px; background-color: #303030;">
+                            <input type="file" class="form-control-file border-0" id="exampleFormControlFile1" style="padding-left: 0px; background-color: #303030;" name="f_name">
                         </div>
                     </form>
                 </div>
                 <div class="row" style="padding-left: 30px; padding-right: 30px; margin-top: 10px;">
-                    <button type="button" class="btn btn-danger col rounded-25 btn-save">Сохранить</button>
+                    <button type="button" class="btn btn-danger col rounded-25 btn-save" onclick="addImage()">Сохранить</button>
                 </div>
             </div>
             <div class="col-8 jam-place">
@@ -87,11 +86,16 @@
                                 Julie Richards
                                 <img src="img/logo_light.svg" alt="">
                             </div>
-                        </div>
+                        </div>                        
                         <div class="row">
                             <div class="form-group col-12">
                                 <textarea class="form-control border-0" id="short-description" rows="1" style="background-color: #303030; color: #F1F1F1; font-family: montserrat; font-size: 16px; padding-left: 0px; padding-right: 0px; margin-top: -18px;" placeholder="Введите краткое описание..."></textarea>
                             </div>
+                        </div>
+                        <div id="img-source">
+                            <?php
+                                // echo var_dump($_POST['f_name']);
+                            ?>
                         </div>
                         <div class="row">
                             <div class="form-group col-12 jam-description">
@@ -107,7 +111,7 @@
 
     </div>
 
-
+    <script src="js/main.js"></script>
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
