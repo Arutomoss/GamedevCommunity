@@ -8,26 +8,29 @@ body {
 }
 
 .settings-panel {
-    height: 400px;
+    height: 100%;
     background-color: #303030;
     border-radius: 15px;
-    top: 65px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    width: 320px;
+    padding-left: 15px;
+    padding-right: 15px;
+    top: 65px;
+    position: relative;
 }
 
 .jam-place {
     top: 65px;
-    /* background-color: #222222; */
-    height: 100vh;
     padding: 0px;
+    position: relative;
 }
 
 .jam {
     background-color: #303030;
-    /* height: 550px; */
     border-radius: 15px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
-    padding: 35px 55px;
+    padding: 35px 55px 30px 55px;
+    margin-bottom: 30px;
 }
 
 input {
@@ -54,9 +57,35 @@ input {
 }
 
 .jam-description {
-    margin-top: 50px;
+    margin-top: 20px;
 }
 
 .circle:hover {
     cursor: pointer;
+}
+
+.font-dropdown {
+    height: 25px;
+    padding-top: 0px;
+    padding-left: 16px;
+    padding-bottom: 2px;
+    font-size: 14px;
+    background-color: #3D3D3D;
+    color: #E8E8E8;
+    margin-bottom: 12px;
+}
+
+.chs-file {
+    background-color: #3D3D3D;
+    color: rgb(148, 148, 148);
+    padding-left: 20px;
+}
+
+.btn-save {
+    margin-bottom: 25px;
+}
+
+.wrap {
+    top: 65px;
+    position: relative;
 }
