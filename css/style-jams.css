@@ -8,13 +8,15 @@ body {
 }
 
 .jams-panel{
+    height: 100%;
     background-color: #303030;
-    height: 150px;
     border-radius: 15px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    width: 320px;
+    padding-left: 15px;
+    padding-right: 15px;
     top: 65px;
-    padding-top: 23px;
-    padding-left: 35px; 
+    position: relative; 
 }
 
 .jams-panel-links a{
@@ -27,16 +29,18 @@ body {
 }
 
 .jams-panel-links {
-    margin-bottom: 55px;
+    margin-bottom: 20px;
 }
 
 .jam {
     height: 400px;
+    width: 800px;
     background-image: url(../img/post_image_1.jpg);
     border-radius: 15px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
     top: 65px;
     padding: 0px;
+    position: relative;
 }
 
 .jam-title {

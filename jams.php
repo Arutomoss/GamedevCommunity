@@ -16,15 +16,20 @@
 
     <div class="container col-12">
         <div class="wrap row justify-content-md-center">
-            <div class="jams-panel col-2 mr-3">
-                <div class="jams-panel-links">
+            <div class="jams-panel mr-3">
+                <div class="row" style="padding-left: 35px; padding-right: 35px;">
+                    <p style=" margin-top: 35px; color: #E8E8E8; font-size: 16px; font-family: montserrat; border-bottom: 2px solid #404040; width: 100%; padding-bottom: 5px;">Мероприятия</p>
+                </div>
+                <div class="jams-panel-links row" style="padding-left: 35px; padding-right: 35px;">
                     <a href="#">Все мероприятия</a>
                     <a href="#">Мои мероприятия</a>
                     <a href="#">Активные мероприятия</a>
                 </div>
-                <a class="btn btn-light rounded-25 pd-w-35" role="button" href="jam_creation.php">Создать мероприятие</a>
+                <div class="row" style="padding-left: 35px; padding-right: 35px; margin-bottom: 25px;">
+                    <a class="btn btn-outline-danger rounded-25 pd-w-35" role="button" href="jam_creation.php">Создать мероприятие</a>
+                </div>
             </div>
-            <div class="jam col-5">
+            <div class="jam">
                 <div class="jam-title">
                     August JAM
                 </div>
