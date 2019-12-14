@@ -79,7 +79,7 @@
                         </div>
                         <div class="row">
                             <div class="form-group col-12">
-                                <textarea class="form-control border-0" id="short-description" rows="1" style="background-color: #303030; color: #F1F1F1; font-family: montserrat; font-size: 16px; padding-left: 0px; padding-right: 0px; margin-top: -18px;" placeholder="Введите краткое описание..."></textarea>
+                                <textarea class="form-control border-0" id="short-description" rows="1" style="background-color: #303030; color: #F1F1F1; font-family: montserrat; font-size: 16px; padding-left: 0px; padding-right: 0px; margin-top: -13px;" placeholder="Введите краткое описание..."></textarea>
                             </div>
                         </div>
                         <div class='preview-img'>
@@ -113,6 +113,12 @@
                 img.className = 'img-fluid';
             }
 
+        }, false);
+
+        var inp = document.getElementById("inputGroupSelect01");
+        control.addEventListener("click", function(event) {
+            var jam_name = document.getElementById('jam-name');
+            jam_name.style.font = 'Arial';
         }, false);
     </script>
 

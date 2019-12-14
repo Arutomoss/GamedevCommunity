@@ -26,7 +26,7 @@
                     <a href="#">Активные мероприятия</a>
                 </div>
                 <div class="row" style="padding-left: 35px; padding-right: 35px; margin-bottom: 25px;">
-                    <a class="btn btn-outline-danger rounded-25 pd-w-35" role="button" href="jam_creation.php">Создать мероприятие</a>
+                    <a class="btn btn-danger rounded-25 pd-w-35" role="button" href="jam_creation.php">Создать мероприятие</a>
                 </div>
             </div>
             <div class="jam">
