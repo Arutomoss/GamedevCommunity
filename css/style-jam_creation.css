@@ -39,6 +39,12 @@ input {
     color: #C8C8C8;
 }
 
+.date-input {
+    background-color: #3D3D3D;
+    color: #C8C8C8;
+    padding-left: 13px;
+}
+
 .jam-header {
     color: #EEEEEE;
     font-size: 24px;
@@ -52,12 +58,12 @@ input {
     font-family: montserrat;
 }
 
-.name img {
-    /* padding-left: 10px; */
-}
+/* .name img {
+    padding-left: 10px;
+} */
 
 .jam-description {
-    margin-top: 20px;
+    margin-top: 15px;
 }
 
 .circle:hover {
