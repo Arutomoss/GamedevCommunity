@@ -1,3 +1,9 @@
+<?php
+if ($_COOKIE['user'] == '') {
+    header('Location: http://gamedevcommunity/ ');
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -73,8 +79,11 @@
                                 <input type="text" class="form-control border-0" id="jam-name" placeholder="Введите название" style="background-color: #303030; padding-left: 0px; padding-right: 0px; color: #F1F1F1; font-size: 22px; font-weight: bold; font-family: montserrat;" maxlength="30">
                             </div>
                             <div class="name">
-                                Julie Richards
-                                <img src="img/logo_light.svg" alt="">
+                                <!-- Julie Richards -->
+                                <?php
+                                echo $_COOKIE['user_login'] . ' ';
+                                echo '<img src="img/default-profile.jpg" alt="" height="40px" class="rounded-circle">'
+                                ?>
                             </div>
                         </div>
                         <div class="row">

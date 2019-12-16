@@ -1,3 +1,9 @@
+<?php
+if ($_COOKIE['user'] == '') {
+    header('Location: http://gamedevcommunity/ ');
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 

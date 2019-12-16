@@ -1,3 +1,9 @@
+<?php
+if ($_COOKIE['user'] == '') {
+    header('Location: http://gamedevcommunity/ ');
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,9 +21,6 @@
 
 <body>
     <?php
-    // if ($_COOKIE['user'] == ''){
-    //     // header('Location: sign_in.php');
-    // }
     require 'blocks/headder.php';
     ?>
 
