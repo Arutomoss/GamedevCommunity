@@ -24,7 +24,7 @@ if ($_COOKIE['user'] == '') {
         <div class="wrap row justify-content-md-center">
             <div class="jams-panel mr-3">
                 <div class="row" style="padding-left: 35px; padding-right: 35px;">
-                    <p style=" margin-top: 35px; color: #E8E8E8; font-size: 16px; font-family: montserrat; border-bottom: 2px solid #404040; width: 100%; padding-bottom: 5px;">Мероприятия</p>
+                    <p class="panel-header">Мероприятия</p>
                 </div>
                 <div class="jams-panel-links row" style="padding-left: 35px; padding-right: 35px;">
                     <a href="#">Все мероприятия</a>
@@ -35,21 +35,35 @@ if ($_COOKIE['user'] == '') {
                     <a class="btn btn-danger rounded-25 pd-w-35" role="button" href="jam_creation.php">Создать мероприятие</a>
                 </div>
             </div>
-            <div class="jam">
-                <div class="jam-title">
-                    August JAM
-                </div>
-                <div class="jam-description align-self-center">
-                    <div class="jam-date-start">
+            <div class="jam-place">
+                <?php
+                require 'php/events.php';
+                $jams = getJams(10);
+                $photos = getPhotos(10);
 
-                    </div>
-                    <div class="jam-date-end">
-
-                    </div>
-                </div>
+                for ($i = 0; $i < count($jams); $i++) {
+                    echo '<div class="jam row ml-1" style="background-image: url(' . $photos[$i]['link_photo'] . ');">
+                            <div class="jam-title row">
+                                <p>' . $jams[$i]['event_name'] . '</p>
+                            </div>
+                            <div class="jam-description row align-self-end justify-content-between">
+                                <div class="short-description align-self-center">
+                                    <p>' . $jams[$i]['event_short_description'] . '</p>
+                                </div>
+                                <div class="row" style="margin-right: 30px;">
+                                    <div class="jam-date-start date-style align-self-center">
+                                        <p>' . $jams[$i]['event_date_start'] . '</p>
+                                    </div>
+                                    <div class="jam-date-end date-style align-self-center">
+                                        <p>' . $jams[$i]['event_date_end'] . '</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>';
+                }
+                ?>
             </div>
         </div>
-
     </div>
 
     <script src="js/jquery-3.4.1.min.js"></script>

@@ -25,21 +25,21 @@ if ($_COOKIE['user'] == '') {
         <div class="container">
             <div class="row">
                 <div class="mr-3 settings-panel">
-                    <div class="row" style="padding-left: 30px; padding-right: 30px;">
-                        <p style=" margin-top: 30px; color: #E8E8E8; font-size: 16px; font-family: montserrat; border-bottom: 2px solid #404040; width: 100%; padding-bottom: 5px;">Цвета</p>
+                    <div class="row padding-lr-30">
+                        <p class="settings-header">Цвета</p>
                     </div>
-                    <div class="row justify-content-between" style="padding-left: 30px; padding-right: 30px; color: #E8E8E8">
+                    <div class="row justify-content-between padding-lr-30">
                         Цвет текста
-                        <input type="text" class="rounded-25 border-0" placeholder="#FFFFFF" style="margin-bottom: 12px; width: 100px;" maxlength="7" id="color-picker">
+                        <input type="text" class="rounded-25 border-0 input-color" placeholder="#FFFFFF" maxlength="7" id="color-picker">
                         Цвет фона
-                        <input type="text" class="rounded-25 border-0" placeholder="#303030" style="margin-bottom: 12px; width: 100px;" maxlength="7">
+                        <input type="text" class="rounded-25 border-0 input-color" placeholder="#303030" maxlength="7">
                         Цвет ссылок
-                        <input type="text" class="rounded-25 border-0" placeholder="#F0052F" style="margin-bottom: 12px; width: 100px;" maxlength="7">
+                        <input type="text" class="rounded-25 border-0 input-color" placeholder="#F0052F" maxlength="7">
                     </div>
-                    <div class="row" style="padding-left: 30px; padding-right: 30px;">
-                        <p style=" margin-top: 35px; color: #E8E8E8; font-size: 16px; font-family: montserrat; border-bottom: 2px solid #404040; width: 100%; padding-bottom: 5px;">Дополнительно</p>
+                    <div class="row padding-lr-30">
+                        <p class="settings-header">Дополнительно</p>
                     </div>
-                    <div class="row justify-content-between" style="padding-left: 30px; padding-right: 30px; color: #E8E8E8">
+                    <div class="row justify-content-between padding-lr-30">
                         Шрифт названия
                         <select class="custom-select rounded-15 border-0 font-dropdown" id="inputGroupSelect01" style="width: 120px;">
                             <option selected>Montserrat</option>
@@ -62,10 +62,10 @@ if ($_COOKIE['user'] == '') {
                             <option value="3">Очень большой</option>
                         </select>
                     </div>
-                    <div class="row" style="padding-left: 30px; padding-right: 30px;">
-                        <p style=" margin-top: 35px; color: #E8E8E8; font-size: 16px; font-family: montserrat; border-bottom: 2px solid #404040; width: 100%; padding-bottom: 5px;">Добавить изображение</p>
+                    <div class="row padding-lr-30" ">
+                        <p class="settings-header">Добавить изображение</p>
                     </div>
-                    <div class="row" style="padding-left: 30px; padding-right: 30px;">
+                    <div class="row padding-lr-30" ">
                         <div class="form-group">
                             <input type="file" class="form-control-file border-0" id="exampleFormControlFile1" style="padding-left: 0px; background-color: #303030;" name="photo" accept="image/*,image/jpeg">
                         </div>
@@ -76,7 +76,7 @@ if ($_COOKIE['user'] == '') {
                     <div class="col jam">
                         <div class="row jam-header justify-content-between">
                             <div class="form-group col" style="padding-left: 0px;">
-                                <input type="text" class="form-control border-0" id="jam-name" name="jam-name" placeholder="Введите название" style="background-color: #303030; padding-left: 0px; padding-right: 0px; color: #F1F1F1; font-size: 22px; font-weight: bold; font-family: montserrat;" maxlength="30">
+                                <input type="text" class="form-control border-0 pd-lr-0 jam-name" id="jam-name" name="jam-name" placeholder="Введите название" maxlength="30">
                             </div>
                             <div class="name">
                                 <!-- Julie Richards -->
@@ -88,7 +88,7 @@ if ($_COOKIE['user'] == '') {
                         </div>
                         <div class="row">
                             <div class="form-group col-12">
-                                <textarea class="form-control border-0" id="short-description" name="short-description" rows="1" style="background-color: #303030; color: #F1F1F1; font-family: montserrat; font-size: 16px; padding-left: 0px; padding-right: 0px; margin-top: -13px;" placeholder="Введите краткое описание..."></textarea>
+                                <textarea class="form-control border-0 pd-lr-0 short-description" id="short-description" name="short-description" rows="1" placeholder="Введите краткое описание..."></textarea>
                             </div>
                         </div>
                         <div class="form-group row" >
@@ -97,7 +97,7 @@ if ($_COOKIE['user'] == '') {
                                 <input type="date" class="form-control border-0 date-input" name="date_start">
                             </div>
                             <div class="col-4">
-                                <label for="inputDate" style="color: #E8E8E8;">Введите дату начала:</label>
+                                <label for="inputDate" style="color: #E8E8E8;">Введите дату окончания:</label>
                                 <input type="date" class="form-control border-0 date-input" name="date_end">
                             </div>
                         </div>
@@ -106,7 +106,7 @@ if ($_COOKIE['user'] == '') {
                         </div>
                         <div class="row">
                             <div class="form-group col-12 jam-description">
-                                <textarea class="form-control border-0" id="description" name="description" rows="5" style="background-color: #303030; color: #F1F1F1; font-family: montserrat; font-size: 14px; padding-left: 0px; padding-right: 0px;" placeholder="Введите описание..."></textarea>
+                                <textarea class="form-control border-0 pd-lr-0 description" id="description" name="description" rows="5" placeholder="Введите описание..."></textarea>
                             </div>
                         </div>
                     </div>

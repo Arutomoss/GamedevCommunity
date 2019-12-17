@@ -19,6 +19,12 @@ body {
     position: relative; 
 }
 
+.jam-place {
+    top: 65px;
+    padding: 0px;
+    position: relative;
+}
+
 .jams-panel-links a{
     display: block;
     text-decoration: none;
@@ -34,26 +40,67 @@ body {
 
 .jam {
     height: 400px;
-    width: 800px;
-    background-image: url(../img/post_image_1.jpg);
+    width: 750px;
     border-radius: 15px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
-    top: 65px;
     padding: 0px;
-    position: relative;
+    margin-bottom: 15px;
 }
 
 .jam-title {
     color: #F4F4F4;
     font-family: "montserrat";
     font-weight: bold;
-    font-size: 20px;
-    margin-left: 25px;
-    margin-top: 15px;
+    font-size: 24px;
+    padding-left: 30px;
+    padding-top: 20px;
+    margin: 0px;
 }
 
 .jam-description {
-    background-color: rgba(0, 0, 0, 0.20);
+    background-color: rgba(0, 0, 0, 0.3);
     height: 75px;
+    width: 750px;
     border-radius: 15px;
+    margin: 0px;
+}
+
+.panel-header {
+    margin-top: 35px;
+    color: #E8E8E8;
+    font-size: 16px;
+    font-family: montserrat;
+    border-bottom: 1px solid #404040;
+    width: 100%;
+    padding-bottom: 5px;
+}
+
+.short-description p {
+    color: #E8E8E8;
+    font-size: 20px;
+    font-weight: 300;
+    padding-left: 30px;
+    margin-bottom: 0px;
+    width: 500px;
+}
+
+.date-style {
+    background-color: rgb(245, 10, 53);
+    height: 31px;
+    width: 60px;
+    border-radius: 8px;
+    color: #E8E8E8;
+    margin-left: 10px;
+}
+
+.date-style p {
+    font-size: 18px;
+    padding-left: 9px;
+    padding-top: 2px;
+}
+
+.padding-lr-30 {
+    padding-left: 30px;
+    padding-right: 30px;  
+    color: #E8E8E8;
 }

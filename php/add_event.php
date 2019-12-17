@@ -1,5 +1,5 @@
 <?php
-
+header('Location: http://gamedevcommunity/jams.php');
 // Перезапишем переменные для удобства
 $filePath  = $_FILES['photo']['tmp_name'];
 $errorCode = $_FILES['photo']['error'];
@@ -67,29 +67,25 @@ echo 'event_date_end = ' . $event_date_end . '<br>';
 echo 'filePath = ' . $filePath . '<br>';
 
 
-$mysql = new mysqli("localhost", "root", "", "gamedc");
+$mysql = mysqli_connect("localhost", "root", "", "gamedc");
 
-if ($mysql)
-    echo 'Соединение установлено.';
-else
+if ($mysql) {
+    mysqli_query($mysql, "INSERT INTO photo(link_photo) VALUE ('$link_photo')");
+
+    $photo_id = mysqli_query($mysql, "SELECT photo_id FROM `photo` WHERE link_photo = '$link_photo'");
+
+    if ($photo_id) {
+        $row = mysqli_fetch_assoc($photo_id);
+    }
+
+    $ph_id = $row['photo_id'];
+
+    mysqli_query($mysql, "INSERT INTO `events`(user_id, event_name, event_short_description, event_description, 
+            photo_id, event_date_start, event_date_end) VALUE 
+            ('$user_id', '$event_name', '$event_s_description', '$event_description', '$ph_id', '$event_date_start', '$event_date_end')");
+
+    mysqli_query($mysql, "UPDATE `photo` SET event_id = $event_id WHERE photo_id = '$ph_id'");
+} else
     die('Ошибка подключения к серверу баз данных.');
 
-$mysql->query("INSERT INTO `photo`(link_photo) VALUE ($link_photo)");
-
-$photo_id = $mysql->query("SELECT photo_id FROM `photo` WHERE link_photo = $link_photo");
-
-$mysql->query("INSERT INTO `events`(user_id, event_name, event_short_description, event_description, 
-                photo_id, event_date_start, event_date_end) VALUE 
-                ($user_id, $event_name, $event_s_description, $event_description, $photo_id, $event_date_start, $event_date_end)");
-
-$mysql->query("UPDATE `photo` SET event_id = $event_id");
-
-// $add_photo = 
-// $add_event = 
-// $update_photo = 
-
-print_r('photo id = ' . $photo_id);
-// print_r('Photo = ' . $update_photo);
-
 $mysql->close();
-// header('Location: http://gamedevcommunity/jams.php');
