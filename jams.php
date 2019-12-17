@@ -42,7 +42,7 @@ if ($_COOKIE['user'] == '') {
                 $photos = getPhotos(30);
 
                 for ($i = 0; $i < count($jams); $i++) {
-                    echo '<div class="jam row ml-1">
+                    echo '<a href="#" class="jam row ml-1">
                     <div class="content-source">
                         <img src="' . $photos[$i]['link_photo'] . '" class="img-fluid" alt="">
                     </div>
@@ -62,7 +62,7 @@ if ($_COOKIE['user'] == '') {
                             </div>
                         </div>
                     </div>
-                </div>';
+                </a>';
                 }
                 ?>
                 
