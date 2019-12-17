@@ -1,6 +1,6 @@
 <?php
 if ($_COOKIE['user'] == '') {
-    header('Location: http://gamedevcommunity/ ');
+    header('Location: http://gamedevcommunity/sign_in.php ');
 }
 ?>
 
@@ -31,15 +31,15 @@ if ($_COOKIE['user'] == '') {
                     <a href="#">Мои мероприятия</a>
                     <a href="#">Активные мероприятия</a>
                 </div>
-                <div class="row" style="padding-left: 35px; padding-right: 35px; margin-bottom: 25px;">
+                <div class="row btn-create justify-content-center">
                     <a class="btn btn-danger rounded-25 pd-w-35" role="button" href="jam_creation.php">Создать мероприятие</a>
                 </div>
             </div>
             <div class="jam-place">
                 <?php
                 require 'php/events.php';
-                $jams = getJams(10);
-                $photos = getPhotos(10);
+                $jams = getJams(30);
+                $photos = getPhotos(30);
 
                 for ($i = 0; $i < count($jams); $i++) {
                     echo '<div class="jam row ml-1">
@@ -55,10 +55,10 @@ if ($_COOKIE['user'] == '') {
                         </div>
                         <div class="row" style="margin-right: 30px;">
                             <div class="jam-date-start date-style align-self-center">
-                                <p>' . substr($jams[$i]['event_date_start'], 5, 2) . ':' . substr($jams[$i]['event_date_start'], 8, 2) . '</p>
+                                <p>' . substr($jams[$i]['event_date_start'], 5, 2) . '.' . substr($jams[$i]['event_date_start'], 8, 2) . '</p>
                             </div>
                             <div class="jam-date-end date-style align-self-center">
-                                <p>' . substr($jams[$i]['event_date_end'], 5, 2) . ':' . substr($jams[$i]['event_date_end'], 8, 2) . '</p>
+                                <p>' . substr($jams[$i]['event_date_end'], 5, 2) . '.' . substr($jams[$i]['event_date_end'], 8, 2) . '</p>
                             </div>
                         </div>
                     </div>

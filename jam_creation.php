@@ -1,6 +1,6 @@
 <?php
 if ($_COOKIE['user'] == '') {
-    header('Location: http://gamedevcommunity/ ');
+    header('Location: http://gamedevcommunity/sign_in.php ');
 }
 ?>
 
@@ -63,84 +63,80 @@ if ($_COOKIE['user'] == '') {
                         </select>
                     </div>
                     <div class="row padding-lr-30" ">
-                        <p class="settings-header">Добавить изображение</p>
+                        <p class=" settings-header">Добавить изображение</p>
                     </div>
                     <div class="row padding-lr-30" ">
-                        <div class="form-group">
-                            <input type="file" class="form-control-file border-0" id="exampleFormControlFile1" style="padding-left: 0px; background-color: #303030;" name="photo" accept="image/*,image/jpeg">
-                        </div>
-                        <button type="submit" class="btn btn-danger col rounded-25 btn-save">Сохранить</button>
+                        <div class=" form-group">
+                        <input type="file" class="form-control-file border-0" id="choose-photo" style="padding-left: 0px; background-color: #303030;" name="photo" accept="image/*,image/jpeg">
                     </div>
+                    <button type="submit" class="btn btn-danger col rounded-25 btn-save">Сохранить</button>
                 </div>
-                <div class="col-8 jam-place">
-                    <div class="col jam">
-                        <div class="row jam-header justify-content-between">
-                            <div class="form-group col" style="padding-left: 0px;">
-                                <input type="text" class="form-control border-0 pd-lr-0 jam-name" id="jam-name" name="jam-name" placeholder="Введите название" maxlength="30">
-                            </div>
-                            <div class="name">
-                                <!-- Julie Richards -->
-                                <?php
-                                echo $_COOKIE['user_login'] . ' ';
-                                echo '<img src="img/default-profile.jpg" alt="" height="40px" class="rounded-circle">'
-                                ?>
-                            </div>
+            </div>
+            <div class="col-8 jam-place">
+                <div class="col jam">
+                    <div class="row jam-header justify-content-between">
+                        <div class="form-group col" style="padding-left: 0px;">
+                            <input type="text" class="form-control border-0 pd-lr-0 jam-name" id="jam-name" name="jam-name" placeholder="Введите название" maxlength="30">
                         </div>
-                        <div class="row">
-                            <div class="form-group col-12">
-                                <textarea class="form-control border-0 pd-lr-0 short-description" id="short-description" name="short-description" rows="1" placeholder="Введите краткое описание..."></textarea>
-                            </div>
+                        <div class="name">
+                            <!-- Julie Richards -->
+                            <?php
+                            echo $_COOKIE['user_login'] . ' ';
+                            echo '<img src="img/default-profile.jpg" alt="" height="40px" class="rounded-circle">'
+                            ?>
                         </div>
-                        <div class="form-group row" >
-                            <div class="col-4">
-                                <label for="inputDate" style="color: #E8E8E8;">Введите дату начала:</label>
-                                <input type="date" class="form-control border-0 date-input" name="date_start">
-                            </div>
-                            <div class="col-4">
-                                <label for="inputDate" style="color: #E8E8E8;">Введите дату окончания:</label>
-                                <input type="date" class="form-control border-0 date-input" name="date_end">
-                            </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-12">
+                            <textarea class="form-control border-0 pd-lr-0 short-description" id="short-description" name="short-description" rows="1" placeholder="Введите краткое описание..."></textarea>
                         </div>
-                        <div class='preview-img'>
-                            <img src="" alt="" id="img-source">
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-4">
+                            <label for="inputDate" style="color: #E8E8E8;">Введите дату начала:</label>
+                            <input type="date" class="form-control border-0 date-input" name="date_start">
                         </div>
-                        <div class="row">
-                            <div class="form-group col-12 jam-description">
-                                <textarea class="form-control border-0 pd-lr-0 description" id="description" name="description" rows="5" placeholder="Введите описание..."></textarea>
-                            </div>
+                        <div class="col-4">
+                            <label for="inputDate" style="color: #E8E8E8;">Введите дату окончания:</label>
+                            <input type="date" class="form-control border-0 date-input" name="date_end">
+                        </div>
+                    </div>
+                    <div class='preview-img'>
+                        <img src="" alt="" id="img-source" style="width: 100%;">
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-12 jam-description">
+                            <textarea class="form-control border-0 pd-lr-0 description" id="description" name="description" rows="5" placeholder="Введите описание..."></textarea>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        </div>
     </form>
 
 
     </div>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script>
-        var control = document.getElementById("exampleFormControlFile1");
-        control.addEventListener("change", function(event) {
-            // Когда происходит изменение элементов управления, значит появились новые файлы
-            var i = 0,
-                files = control.files,
-                len = files.length;
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
 
-            for (; i < len; i++) {
-                var img = document.getElementById('img-source');
-                img.src = '../img/' + files[i].name;
-                img.className = 'img-fluid';
+                reader.onload = function(e) {
+                    $('#img-source').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
             }
+        }
 
-        }, false);
-
-        var inp = document.getElementById("inputGroupSelect01");
-        control.addEventListener("click", function(event) {
-            var jam_name = document.getElementById('jam-name');
-            jam_name.style.font = 'Arial';
-        }, false);
+        $("#choose-photo").change(function() {
+            readURL(this);
+        });
     </script>
 
+    
     <script src="js/main.js"></script>
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="js/popper.min.js"></script>
@@ -165,3 +161,26 @@ if ($_COOKIE['user'] == '') {
 <!-- onclick="addImage($_FILES['f_name']['name']);" -->
 
 <!-- <div class="circle" style="height: 18px; width: 18px; margin-top: 3px; margin-left: 218px; border-radius: 50%; background-color: #E8E8E8; position: fixed;"></div> -->
+
+
+<!-- 
+// var control = document.getElementById("choose-photo");
+        // control.addEventListener("change", function(event) {
+        //     // Когда происходит изменение элементов управления, значит появились новые файлы
+        //     var i = 0,
+        //         files = control.files,
+        //         len = files.length;
+
+        //     for (; i < len; i++) {
+        //         var img = document.getElementById('img-source');
+        //         img.src = files[i].name;
+        //         img.className = 'img-fluid';
+        //     }
+
+        // }, false);
+
+        // var inp = document.getElementById("inputGroupSelect01");
+        // control.addEventListener("click", function(event) {
+        //     var jam_name = document.getElementById('jam-name');
+        //     jam_name.style.font = 'Arial';
+        // }, false); -->
