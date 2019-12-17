@@ -39,3 +39,22 @@ nav a:hover {
     color: #ffffff;
     border-bottom: 1px solid #ffffff;
 }
+
+.h_container {
+    display: flex;
+}
+
+.user {
+    position: fixed;
+    display: flex;
+    margin-left: 600px;
+    color: #ffffff;
+    font-family: Montserrat;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.user-photo {
+    margin-top: -6px;
+    margin-left: 8px;
+}

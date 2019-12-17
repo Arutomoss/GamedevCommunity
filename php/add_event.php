@@ -58,13 +58,13 @@ $event_description   = filter_var(trim($_POST['description']), FILTER_SANITIZE_S
 $event_date_start    = filter_var(trim($_POST['date_start']), FILTER_SANITIZE_STRING);
 $event_date_end      = filter_var(trim($_POST['date_end']), FILTER_SANITIZE_STRING);
 
-echo 'user_id = ' . $user_id . '<br>';
-echo 'event_name = ' . $event_name . '<br>';
-echo 'event_s_description = ' . $event_s_description . '<br>';
-echo 'event_description = ' . $event_description . '<br>';
-echo 'event_date_start = ' . $event_date_start . '<br>';
-echo 'event_date_end = ' . $event_date_end . '<br>';
-echo 'filePath = ' . $filePath . '<br>';
+// echo 'user_id = ' . $user_id . '<br>';
+// echo 'event_name = ' . $event_name . '<br>';
+// echo 'event_s_description = ' . $event_s_description . '<br>';
+// echo 'event_description = ' . $event_description . '<br>';
+// echo 'event_date_start = ' . $event_date_start . '<br>';
+// echo 'event_date_end = ' . $event_date_end . '<br>';
+// echo 'filePath = ' . $filePath . '<br>';
 
 
 $mysql = mysqli_connect("localhost", "root", "", "gamedc");
@@ -84,7 +84,7 @@ if ($mysql) {
             photo_id, event_date_start, event_date_end) VALUE 
             ('$user_id', '$event_name', '$event_s_description', '$event_description', '$ph_id', '$event_date_start', '$event_date_end')");
 
-    mysqli_query($mysql, "UPDATE `photo` SET event_id = $event_id WHERE photo_id = '$ph_id'");
+    mysqli_query($mysql, "UPDATE `photo` SET event_id = '$event_id' WHERE photo_id = '$ph_id'");
 } else
     die('Ошибка подключения к серверу баз данных.');
 

@@ -20,6 +20,8 @@ if ($login == '' || $pass == '') {
 
     setcookie('user', $user['user_id'], time() + 3600 * 30, "/");
     setcookie('user_login', $user['user_login'], time() + 3600 * 30, "/");
+    setcookie('first_name', $user['first_name'], time() + 3600 * 30, "/");
+    setcookie('last_name', $user['last_name'], time() + 3600 * 30, "/");
     $mysql->close();
     header('Location: ../news.php');
 }
