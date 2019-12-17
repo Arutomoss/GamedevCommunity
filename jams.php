@@ -42,26 +42,31 @@ if ($_COOKIE['user'] == '') {
                 $photos = getPhotos(10);
 
                 for ($i = 0; $i < count($jams); $i++) {
-                    echo '<div class="jam row ml-1" style="background-image: url(' . $photos[$i]['link_photo'] . ');">
-                            <div class="jam-title row">
-                                <p>' . $jams[$i]['event_name'] . '</p>
+                    echo '<div class="jam row ml-1">
+                    <div class="content-source">
+                        <img src="' . $photos[$i]['link_photo'] . '" class="img-fluid" alt="">
+                    </div>
+                    <div class="jam-title row">
+                        <p>' . $jams[$i]['event_name'] . '</p>
+                    </div>
+                    <div class="jam-description row align-self-end justify-content-between">
+                        <div class="short-description align-self-center">
+                            <p>' . $jams[$i]['event_short_description'] . '</p>
+                        </div>
+                        <div class="row" style="margin-right: 30px;">
+                            <div class="jam-date-start date-style align-self-center">
+                                <p>' . substr($jams[$i]['event_date_start'], 5, 2) . ':' . substr($jams[$i]['event_date_start'], 8, 2) . '</p>
                             </div>
-                            <div class="jam-description row align-self-end justify-content-between">
-                                <div class="short-description align-self-center">
-                                    <p>' . $jams[$i]['event_short_description'] . '</p>
-                                </div>
-                                <div class="row" style="margin-right: 30px;">
-                                    <div class="jam-date-start date-style align-self-center">
-                                        <p>' . $jams[$i]['event_date_start'] . '</p>
-                                    </div>
-                                    <div class="jam-date-end date-style align-self-center">
-                                        <p>' . $jams[$i]['event_date_end'] . '</p>
-                                    </div>
-                                </div>
+                            <div class="jam-date-end date-style align-self-center">
+                                <p>' . substr($jams[$i]['event_date_end'], 5, 2) . ':' . substr($jams[$i]['event_date_end'], 8, 2) . '</p>
                             </div>
-                        </div>';
+                        </div>
+                    </div>
+                </div>';
                 }
                 ?>
+                
+
             </div>
         </div>
     </div>

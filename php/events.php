@@ -13,6 +13,7 @@ function resultToArray($result)
 {
     $array = array();
     while (($row = $result->fetch_assoc()) != false){
+        // $date = $row['date start'];
         $array[] = $row;
     }
 
