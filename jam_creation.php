@@ -79,11 +79,15 @@ if ($_COOKIE['user'] == '') {
                             <input type="text" class="form-control border-0 pd-lr-0 jam-name" id="jam-name" name="jam-name" placeholder="Введите название" maxlength="30">
                         </div>
                         <div class="name">
-                            <!-- Julie Richards -->
-                            <?php
-                            echo $_COOKIE['user_login'] . ' ';
-                            echo '<img src="img/default-profile.jpg" alt="" height="40px" class="rounded-circle">'
-                            ?>
+                        <?php 
+                        require 'php/connect.php';
+                        $result = mysqli_query($conn, "SELECT photo.link_photo FROM photo INNER JOIN users on photo.photo_id = users.photo_id WHERE photo.photo_id = users.photo_id");
+                        $row = mysqli_fetch_assoc($result);
+
+                        echo $_COOKIE['first_name'] . ' ' . $_COOKIE['last_name'];
+                        echo '<img src="'.$row['link_photo'].'" alt="" height="40px" class="rounded-circle" style="margin-left: 10px;">';
+                        $conn->close();
+                        ?>
                         </div>
                     </div>
                     <div class="row">
