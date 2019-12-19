@@ -46,7 +46,7 @@ if ($_COOKIE['user'] == '') {
                 </div>
                 <div class="info row pd-lr-35">
                     <p>Подписчики: </p>
-                    <p>Друзья: </p>
+                    <!-- <p>Друзья: </p> -->
                     <p>Активные мероприятия: </p>
                     <p>Мои мероприятия: </p>
                 </div>
@@ -57,10 +57,10 @@ if ($_COOKIE['user'] == '') {
                     </a>
                 </div>
                 <div class="row buttons pd-lr-30">
-                    <a class="btn rounded-25 pd-lr-60 follow" role="button" href="#">Следить</a>
+                    <!-- <a class="btn rounded-25 pd-lr-60 follow" role="button" href="#">Следить</a>
                     <a class="rounded-circle send_message" role="button" href="#">
                         <img src="img/send_message.svg" alt="">
-                    </a>
+                    </a> -->
                 </div>
             </div>
 
