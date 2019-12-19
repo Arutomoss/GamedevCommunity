@@ -48,10 +48,16 @@ nav a:hover {
     position: fixed;
     display: flex;
     margin-left: 600px;
-    color: #ffffff;
+    text-decoration: none;
+    color: #EEEEEE;
     font-family: Montserrat;
-    font-weight: 500;
+    font-weight: 400;
     font-size: 16px;
+}
+
+.user:hover {
+    cursor: pointer;
+    text-decoration: none;
 }
 
 .user-photo {

@@ -9288,5 +9288,23 @@ a.text-dark:hover {
     }
 }
 
+.pd-lr-30 {
+    padding-left: 30px;
+    padding-right: 30px;  
+    color: #E8E8E8;
+}
+
+.pd-lr-35 {
+    padding-left: 35px;
+    padding-right: 35px;  
+    color: #E8E8E8;
+}
+
+.pd-lr-60 {
+    padding-left: 60px;
+    padding-right: 60px;  
+    color: #E8E8E8;
+}
+
 
 /*# sourceMappingURL=bootstrap.min.css.map */

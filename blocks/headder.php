@@ -13,14 +13,14 @@
             <a href="../messages.php">Сообщения</a>
             <a href="../jams.php">Мероприятия</a>
         </nav>
-        <div class="user">
-            <div class="user-name">
-                <?php 
-                echo $_COOKIE['first_name'] . ' ' . $_COOKIE['last_name'];
+        <a href="mypage.php" class="user">
+            <div class="user-name" style="color: #EEEEEE;">
+                <?php
+                echo '<img src="img/down_arrow.svg" alt="" style="padding-right: 6px;">' . $_COOKIE['first_name'] . ' ' . $_COOKIE['last_name'];
                 ?>
             </div>
             <div class="user-photo">
-                <?php 
+                <?php
                 require 'php/connect.php';
                 $result = mysqli_query($conn, "SELECT photo.link_photo FROM photo INNER JOIN users on photo.photo_id = users.photo_id WHERE photo.photo_id = users.photo_id");
                 $row = mysqli_fetch_assoc($result);
@@ -28,6 +28,6 @@
                 ?>
                 <img src="<?php echo $row['link_photo']; ?>" alt="" height="35px" class="rounded-circle">
             </div>
-        </div>
+        </a>
     </div>
 </header>
