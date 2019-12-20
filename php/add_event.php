@@ -84,7 +84,16 @@ if ($mysql) {
             photo_id, event_date_start, event_date_end) VALUE 
             ('$user_id', '$event_name', '$event_s_description', '$event_description', '$ph_id', '$event_date_start', '$event_date_end')");
 
-    mysqli_query($mysql, "UPDATE `photo` SET event_id = '$event_id' WHERE photo_id = '$ph_id'");
+    $event_id = mysqli_query($mysql, "SELECT event_id FROM `events` WHERE event_name = '$event_name'");
+
+    if ($event_id) {
+        $row = mysqli_fetch_assoc($event_id);
+    }
+
+    $event = $row['event_id'];
+
+    mysqli_query($mysql, "UPDATE `photo` SET event_id = '$event' WHERE photo_id = '$ph_id'");
+
 } else
     die('Ошибка подключения к серверу баз данных.');
 

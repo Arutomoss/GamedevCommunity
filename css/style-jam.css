@@ -1,0 +1,83 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+h2 {
+    font-family: Montserrat;
+    font-weight: 700;
+    font-size: 32px;
+}
+
+.jam-place {
+    top: 65px;
+    padding: 0px;
+    position: relative;
+}
+
+.jam {
+    background-color: #303030;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    padding: 35px 55px 30px 55px;
+    margin-bottom: 30px;
+}
+
+.jam-name {
+    background-color: #303030;
+    color: #F1F1F1;
+    font-size: 22px;
+    font-weight: bold;
+    font-family: montserrat;
+}
+
+.short-description {
+    background-color: #303030;
+    color: #EEEEEE;
+    font-family: montserrat;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.date {
+    /* background-color: rgb(160, 15, 15); */
+    border-radius: 15px;
+    width: auto;
+}
+
+.dates {
+    font-family: Montserrat;
+    color: #EEEEEE;
+    background-color: rgb(66, 66, 66);
+    margin: 0;
+    margin-bottom: 25px;
+    padding-top: 5px;
+}
+
+.jam-header {
+    color: #EEEEEE;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0px;
+}
+
+.name {
+    font-size: 16px;
+    font-weight: normal;
+    font-family: montserrat;
+}
+
+.jam-description {
+    margin-top: 30px;
+    color: #EEEEEE;
+}
+
+.preview-img {
+    overflow: hidden;
+    border-radius: 15px;
+    margin-top: 13px;
+}
