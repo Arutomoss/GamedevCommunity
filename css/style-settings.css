@@ -38,3 +38,10 @@ h4 {
 .perscab-photoedit-body p a{
     color: #EEEEEE;
 }
+
+.modal-footer button {
+    color: #EEEEEE;
+    background-color: rgb(39, 39, 39);
+    height: 38px;
+    border-radius: 5px;
+}

@@ -73,8 +73,8 @@ if ($_COOKIE['user'] == '') {
                         <div>
                             <img class="profile_photo_i" src="">
                         </div>
-                        <div class="modal-footer center-wrap">
-                            <button class="reg-btn reg-btn_empty reg-btn_empty-wht reg-btn_blk-hover js-main-image">Submit</button>
+                        <div class="modal-footer center-wrap border-0">
+                            <button class="reg-btn reg-btn_empty reg-btn_empty-wht reg-btn_blk-hover js-main-image pd-lr-30 border-0">Обрезать</button>
                         </div>
                     </div>
                 </div>
