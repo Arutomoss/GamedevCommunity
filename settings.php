@@ -16,6 +16,9 @@ if ($_COOKIE['user'] == '') {
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style-jam.css">
     <link rel="stylesheet" href="css/style-settings.css">
+    <link rel="stylesheet" href="css/croppie.css">
+    <link rel="stylesheet" href="css/jquery.arcticmodal.css">
+    <link rel="stylesheet" href="css/themes/simple.css">
     <title>Jams</title>
 </head>
 
@@ -33,36 +36,48 @@ if ($_COOKIE['user'] == '') {
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-6 jam">
-                <div class="row jam-header">
-                    <div class="name">
-                        <h4>Настройки</h4>
-                        <p>Пользователь:
-                            <?php
-                            echo $_COOKIE['first_name'] . ' ' . $_COOKIE['last_name'];
-                            ?></p>
+                <form action="">
+                    <div class="row jam-header">
+                        <div class="name">
+                            <h4>Настройки</h4>
+                            <p>Пользователь:
+                                <?php
+                                echo $_COOKIE['first_name'] . ' ' . $_COOKIE['last_name'];
+                                ?></p>
+                        </div>
+                    </div>
+                    <div class="change-image">
+                        <h4>Изображение профиля</h4>
+                        <div class="content-source">
+                            <img src="<?php echo $user_photo['link_photo']; ?>" alt="" id="img-source">
+                        </div>
+                    </div>
+
+                    <div class="perscab-photoedit-body">
+                        <p><a href="#" class="add-photo">Change photo</a></p>
+                        <input style="display:none;" id="c_input24" name="file" multiple="false" type="file">
+                        <input style="display:none;" name="photo_c" multiple="false" type="hidden" value="">
+                        <input style="display:none;" name="photo_i" value="" multiple="false" type="hidden">
+                    </div>
+
+                    <input type="submit" class="btn btn-success pd-lr-30" value="Сохранить">
+                </form>
+
+                <!-- <div class="perscab-photoedit-img">
+                    <img src="#" alt="">
+                </div> -->
+
+                <div style="display:none">
+                    <div class="profile-modal-photo box-modal">
+                        <div class="box-modal_close arcticmodal-close"></div>
+                        <div>
+                            <img class="profile_photo_i" src="">
+                        </div>
+                        <div class="modal-footer center-wrap">
+                            <button class="reg-btn reg-btn_empty reg-btn_empty-wht reg-btn_blk-hover js-main-image">Submit</button>
+                        </div>
                     </div>
                 </div>
-                <?php
-                // $target_dir = '../img/';
-                // $hash = md5($_COOKIE['user'] + rand());
-                // $name = $_FILES['photo']['name'];
-                // $name_photo = "{$_COOKIE['user_login']}_{$hash}.jpeg";
-
-                // $link_photo = $target_dir . $name_photo;
-
-                // if (!@copy($_FILES['photo']['tmp_name'], $link_photo))
-                //     echo 'Что-то пошло не так';
-                // else
-                //     echo 'Загрузка удачна';
-                ?>
-                <div class="change-image">
-                    <h4>Изображение профиля</h4>
-                    <div class="content-source">
-                        <img src="<?php echo $user_photo['link_photo']; ?>" alt="" id="img-source">
-                    </div>
-                    <input type="file" class="form-control-file border-0" id="choose-photo" name="photo" accept="image/*,image/jpeg">
-                </div>
-                <input type="submit" class="btn btn-success pd-lr-30" value="Сохранить">
             </div>
         </div>
 
@@ -91,6 +106,9 @@ if ($_COOKIE['user'] == '') {
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/croppie.min.js"></script>
+    <script src="js/jquery.arcticmodal.js"></script>
+    <script src="js/script.js"></script>
 </body>
 
 </html>

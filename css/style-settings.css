@@ -17,13 +17,13 @@ h4 {
 
 .content-source {
     padding: 0;
-    width: 100px;
-    height: 100px;
+    width: 200px;
+    height: 200px;
     overflow: hidden;
     border-radius: 50%;
     margin: 0;
     margin-bottom: 20px;
-    margin-top: 15px;
+    margin-top: 20px;
 }
 
 .content-source img {
@@ -32,11 +32,9 @@ h4 {
 }
 
 .change-image {
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
-/* .circle .image-wrap {
-	-webkit-border-radius: 50em;
-	-moz-border-radius: 50em;
-	border-radius: 50em;
-} */
+.perscab-photoedit-body p a{
+    color: #EEEEEE;
+}
