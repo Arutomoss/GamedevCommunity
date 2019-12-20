@@ -18,7 +18,7 @@ if ($_COOKIE['user'] == '') {
     <link rel="stylesheet" href="css/style-settings.css">
     <link rel="stylesheet" href="css/croppie.css">
     <link rel="stylesheet" href="css/jquery.arcticmodal.css">
-    <link rel="stylesheet" href="css/themes/simple.css">
+    <link rel="stylesheet" href="css/themes/dark.css">
     <title>Jams</title>
 </head>
 
