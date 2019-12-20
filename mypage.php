@@ -32,11 +32,14 @@ if ($_COOKIE['user'] == '') {
                         <?php
                         require 'php/connect.php';
                         $result = mysqli_query($conn, "SELECT photo.link_photo FROM photo INNER JOIN users on photo.photo_id = users.photo_id WHERE photo.photo_id = users.photo_id");
+                        
                         $user_id = $_GET['user_id'];
                         $user = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM users WHERE user_id = '$user_id'"));
                         $row = mysqli_fetch_assoc($result);
 
                         $isFollow = mysqli_fetch_assoc(mysqli_query($conn, "SELECT follower_id FROM subscriptions WHERE (user_id = '$user_id')"));
+
+                        $my_events = mysqli_fetch_assoc(mysqli_query($conn, "SELECT count(event_id) as amount FROM events WHERE user_id = '$user_id'"));
 
                         $conn->close();
                         ?>
@@ -50,9 +53,9 @@ if ($_COOKIE['user'] == '') {
                     </div>
                 </div>
                 <div class="info row pd-lr-35">
-                    <p>Подписчики: </p>
+                    <p>Подписчики: <?php echo count($isFollow); ?></p>
                     <p>Активные мероприятия: </p>
-                    <p>Мои мероприятия: </p>
+                    <p>Мои мероприятия: <?php echo $my_events['amount']; ?></p>
                 </div>
                 <div class="settings row pd-lr-35">
                     <a href="settings.php">
@@ -73,9 +76,9 @@ if ($_COOKIE['user'] == '') {
                     <?php
                     if ($_COOKIE['user'] != $user['user_id']) {
                         if (count($isFollow) == 0) {
-                            echo '<input type="submit" name="follow" class="btn btn-success pd-lr-30" value="follow" style="margin-left: 20px;">';
+                            echo '<input type="submit" name="follow" class="btn btn-success pd-lr-30" value="Follow" style="margin-left: 20px;">';
                         } else {
-                            echo '<input type="submit" name="unfollow" class="btn btn-danger pd-lr-30" value="unfollow" style="margin-left: 20px;">';
+                            echo '<input type="submit" name="unfollow" class="btn btn-danger pd-lr-30" value="Unfollow" style="margin-left: 20px;">';
                         }
                     }
                     ?>

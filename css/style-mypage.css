@@ -8,9 +8,9 @@ body {
     overflow-x: hidden;
 }
 
-.user {
-    /* visibility: hidden; */
-}
+/* .user {
+    visibility: hidden;
+} */
 
 .user-panel {
     height: 350px;
@@ -26,7 +26,7 @@ body {
 }
 
 .user-header {
-    margin-top: 15px;
+    margin-top: 10px;
 }
 
 .user-photo-panel {

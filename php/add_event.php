@@ -37,7 +37,6 @@ $mime = (string) finfo_file($fi, $filePath);
 // Проверим ключевое слово image (image/jpeg, image/png и т. д.)
 if (strpos($mime, 'image') === false) die('Можно загружать только изображения.');
 
-
 $target_dir = '../img/';
 $hash = md5($_COOKIE['user'] + rand());
 $name = $_FILES['photo']['name'];

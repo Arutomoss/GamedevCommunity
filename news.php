@@ -225,7 +225,7 @@ if ($_COOKIE['user'] == '') {
         <div class="actual">
             <div class="actual-panel">
                 <div class="actual-panel-title">
-                    <p>Актуальное для вас</p>
+                    <p>Рекомендации</p>
                 </div>
                 <div class="actual-panel-content">
                     <div class="actual-panel-item">

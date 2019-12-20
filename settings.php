@@ -42,6 +42,19 @@ if ($_COOKIE['user'] == '') {
                             ?></p>
                     </div>
                 </div>
+                <?php
+                // $target_dir = '../img/';
+                // $hash = md5($_COOKIE['user'] + rand());
+                // $name = $_FILES['photo']['name'];
+                // $name_photo = "{$_COOKIE['user_login']}_{$hash}.jpeg";
+
+                // $link_photo = $target_dir . $name_photo;
+
+                // if (!@copy($_FILES['photo']['tmp_name'], $link_photo))
+                //     echo 'Что-то пошло не так';
+                // else
+                //     echo 'Загрузка удачна';
+                ?>
                 <div class="change-image">
                     <h4>Изображение профиля</h4>
                     <div class="content-source">
@@ -49,6 +62,7 @@ if ($_COOKIE['user'] == '') {
                     </div>
                     <input type="file" class="form-control-file border-0" id="choose-photo" name="photo" accept="image/*,image/jpeg">
                 </div>
+                <input type="submit" class="btn btn-success pd-lr-30" value="Сохранить">
             </div>
         </div>
 

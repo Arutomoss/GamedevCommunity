@@ -215,16 +215,16 @@ justify - горизонтальное выравнивание
     width: 315px;
     background-color: #333333;
     border-radius: 15px;
-    margin-top: 130px;
+    top: 133px;
+    position: relative;
     margin-left: 22px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
 }
 
 .actual-panel-title {
-    height: 44px;
+    height: 45px;
     display: flex;
-    border-bottom: 0.8px solid #3D3D3D;
-    padding-top: 15px;
+    border-bottom: 0.8px solid #3D3D3D;    
 }
 
 .actual-panel-title p {
@@ -232,7 +232,8 @@ justify - горизонтальное выравнивание
     font-size: 18px;
     font-weight: bold;
     color: #eeeeee;
-    padding-left: 17px;
+    padding-left: 20px;
+    padding-top: 17px;
     align-self: center;
 }
 
