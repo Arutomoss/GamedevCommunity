@@ -5,10 +5,11 @@
 
 body {
     font-family: Montserrat;
+    overflow-x: hidden;
 }
 
 .user {
-    visibility: hidden;
+    /* visibility: hidden; */
 }
 
 .user-panel {
@@ -28,24 +29,24 @@ body {
     margin-top: 15px;
 }
 
-.user-photo {
-    padding-top: 20px;
+.user-photo-panel {
+    padding-top: 15px;
 }
 
-.user-photo img {
+.user-photo-panel img {
     margin-left: -7px;
 }
 
-.user-name {
+.user-name-panel {
     padding-top: 18px;
-    padding-left: 10px;
+    padding-left: 15px;
     color: #ffffff;
     font-family: Montserrat;
     font-weight: 700;
     font-size: 18px;
 }
 
-.user-name p {
+.user-name-panel p {
     font-size: 15px;
     font-weight: normal;
     color: #777777;
@@ -59,7 +60,7 @@ body {
     font-weight: 500;
     font-family: Montserrat;
     margin-top: 35px;
-    margin-bottom: 95px;
+    margin-bottom: 30px;
 }
 
 .info p {
@@ -69,7 +70,7 @@ body {
 }
 
 .settings {
-    margin-bottom: 35px;
+    margin-bottom: 20px;
 }
 
 .settings a {

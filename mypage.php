@@ -28,34 +28,58 @@ if ($_COOKIE['user'] == '') {
         <div class="wrap row justify-content-center">
             <div class="user-panel">
                 <div class="row pd-lr-30 user-header">
-                    <div class="user-photo">
+                    <div class="user-photo-panel">
                         <?php
                         require 'php/connect.php';
                         $result = mysqli_query($conn, "SELECT photo.link_photo FROM photo INNER JOIN users on photo.photo_id = users.photo_id WHERE photo.photo_id = users.photo_id");
+                        $user_id = $_GET['user_id'];
+                        $user = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM users WHERE user_id = '$user_id'"));
                         $row = mysqli_fetch_assoc($result);
+
+                        $isFollow = mysqli_fetch_assoc(mysqli_query($conn, "SELECT follower_id FROM subscriptions WHERE (user_id = '$user_id')"));
+
                         $conn->close();
                         ?>
                         <img src="<?php echo $row['link_photo']; ?>" alt="" height="60px" class="rounded-circle">
                     </div>
-                    <div class="user-name">
+                    <div class="user-name-panel">
                         <?php
-                        echo $_COOKIE['first_name'] . ' ' . $_COOKIE['last_name'];
+                        echo $user['first_name'] . ' ' . $user['last_name'];
                         ?>
                         <p>Indie Game Developer</p>
                     </div>
                 </div>
                 <div class="info row pd-lr-35">
                     <p>Подписчики: </p>
-                    <!-- <p>Друзья: </p> -->
                     <p>Активные мероприятия: </p>
                     <p>Мои мероприятия: </p>
                 </div>
                 <div class="settings row pd-lr-35">
-                    <a href="#">
+                    <a href="settings.php">
                         Настройки
                         <img src="img/settings.svg" alt="">
                     </a>
                 </div>
+                <?php
+                if (isset($_POST['follow']) && (count($isFollow) == 0)) {
+                    $follower = $_COOKIE['user'];
+
+                    require 'php/connect.php';
+                    mysqli_query($conn, "INSERT INTO `subscriptions`(user_id, follower_id) VALUE ('$user_id', '$follower')");
+                    $conn->close();
+                }
+                ?>
+                <form method="POST">
+                    <?php
+                    if ($_COOKIE['user'] != $user['user_id']) {
+                        if (count($isFollow) == 0) {
+                            echo '<input type="submit" name="follow" class="btn btn-success pd-lr-30" value="follow" style="margin-left: 20px;">';
+                        } else {
+                            echo '<input type="submit" name="unfollow" class="btn btn-danger pd-lr-30" value="unfollow" style="margin-left: 20px;">';
+                        }
+                    }
+                    ?>
+                </form>
                 <div class="row buttons pd-lr-30">
                     <!-- <a class="btn rounded-25 pd-lr-60 follow" role="button" href="#">Следить</a>
                     <a class="rounded-circle send_message" role="button" href="#">
@@ -64,17 +88,18 @@ if ($_COOKIE['user'] == '') {
                 </div>
             </div>
 
-
             <div class="jams">
                 <?php
                 require 'php/events.php';
+                require 'php/connect.php';
                 $jams = getJams(1);
-                $photos = getPhotos(1);
 
                 for ($i = 0; $i < count($jams); $i++) {
-                    echo '<a href="#" class="jam row">
+                    $event_id = $jams[$i]['event_id'];
+                    $photo = mysqli_fetch_assoc(mysqli_query($conn, "SELECT `link_photo` FROM `photo` WHERE event_id = '$event_id'"));
+                    echo '<a href="jam.php?event_id=' . $jams[$i]['event_id'] . '" class="jam row">
                     <div class="content-source">
-                        <img src="' . $photos[$i]['link_photo'] . '" class="img-fluid" alt="">
+                        <img src="' . $photo['link_photo'] . '" class="img-fluid" alt="">
                     </div>
                     <div class="jam-title row">
                         <p>' . $jams[$i]['event_name'] . '</p>
@@ -166,14 +191,10 @@ if ($_COOKIE['user'] == '') {
                         </div>
                     </div>
                 </div>
-
             </div>
-
         </div>
 
     </div>
-
-
 
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="js/popper.min.js"></script>

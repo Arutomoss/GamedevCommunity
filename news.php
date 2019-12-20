@@ -36,7 +36,7 @@ if ($_COOKIE['user'] == '') {
                     <path d="M1 1L1 27" stroke="#4A4A4A" stroke-linecap="round" />
                 </svg>
 
-                <input type="text" placeholder="Что нового?">
+                <input type="text" placeholder="Что нового?" style="color: #eeeeee;">
             </div>
 
             <div class="content">

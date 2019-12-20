@@ -50,7 +50,7 @@ if ($_COOKIE['user'] == '') {
                         </div>
                         <div class="name">
                             <?php
-                            echo $user['first_name'] . ' ' . $user['last_name'];
+                            echo '<a href="mypage.php?user_id='.$user['user_id'].'">'.$user['first_name'] . ' ' . $user['last_name'].'</a>';
                             echo '<img src="' . $user_photo['link_photo'] . '" alt="" height="40px" class="rounded-circle" style="margin-left: 10px;">';
                             ?>
                         </div>
@@ -82,7 +82,6 @@ if ($_COOKIE['user'] == '') {
 
     </div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script>
         function readURL(input) {
             if (input.files && input.files[0]) {

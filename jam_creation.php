@@ -28,13 +28,20 @@ if ($_COOKIE['user'] == '') {
                     <div class="row padding-lr-30">
                         <p class="settings-header">Цвета</p>
                     </div>
-                    <div class="row justify-content-between padding-lr-30">
-                        Цвет текста
-                        <input type="text" class="rounded-25 border-0 input-color" placeholder="#FFFFFF" maxlength="7" id="color-picker">
-                        Цвет фона
-                        <input type="text" class="rounded-25 border-0 input-color" placeholder="#303030" maxlength="7">
-                        Цвет ссылок
-                        <input type="text" class="rounded-25 border-0 input-color" placeholder="#F0052F" maxlength="7">
+                    <div class="col padding-lr-30" >
+                        <div class="row justify-content-between" style="width: 290px;">
+                            Цвет текста
+                            <input type="text" class="rounded-25 border-0 input-color" placeholder="#FFFFFF" maxlength="7" id="color-picker">
+                        </div>
+                        <div class="row justify-content-between" style="width: 290px;">
+                            Цвет фона
+                            <input type="text" class="rounded-25 border-0 input-color" placeholder="#303030" maxlength="7">
+                        </div>
+                        <div class="row justify-content-between" style="width: 290px;">
+                            Цвет ссылок
+                            <input type="text" class="rounded-25 border-0 input-color" placeholder="#F0052F" maxlength="7">
+                        </div>
+
                     </div>
                     <div class="row padding-lr-30">
                         <p class="settings-header">Дополнительно</p>
@@ -79,15 +86,15 @@ if ($_COOKIE['user'] == '') {
                             <input type="text" class="form-control border-0 pd-lr-0 jam-name" id="jam-name" name="jam-name" placeholder="Введите название" maxlength="30">
                         </div>
                         <div class="name">
-                        <?php 
-                        require 'php/connect.php';
-                        $result = mysqli_query($conn, "SELECT photo.link_photo FROM photo INNER JOIN users on photo.photo_id = users.photo_id WHERE photo.photo_id = users.photo_id");
-                        $row = mysqli_fetch_assoc($result);
+                            <?php
+                            require 'php/connect.php';
+                            $result = mysqli_query($conn, "SELECT photo.link_photo FROM photo INNER JOIN users on photo.photo_id = users.photo_id WHERE photo.photo_id = users.photo_id");
+                            $row = mysqli_fetch_assoc($result);
 
-                        echo $_COOKIE['first_name'] . ' ' . $_COOKIE['last_name'];
-                        echo '<img src="'.$row['link_photo'].'" alt="" height="40px" class="rounded-circle" style="margin-left: 10px;">';
-                        $conn->close();
-                        ?>
+                            echo $_COOKIE['first_name'] . ' ' . $_COOKIE['last_name'];
+                            echo '<img src="' . $row['link_photo'] . '" alt="" height="40px" class="rounded-circle" style="margin-left: 10px;">';
+                            $conn->close();
+                            ?>
                         </div>
                     </div>
                     <div class="row">
@@ -140,7 +147,7 @@ if ($_COOKIE['user'] == '') {
         });
     </script>
 
-    
+
     <script src="js/main.js"></script>
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="js/popper.min.js"></script>
@@ -148,43 +155,3 @@ if ($_COOKIE['user'] == '') {
 </body>
 
 </html>
-
-
-
-
-
-<!-- <input type="hidden" name="MAX_FILE_SIZE" value="30000" /> -->
-
-<!-- <div class="input-group mb-3">
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="photo">
-                            <label class="custom-file-label rounded-25 border-0 chs-file" for="inputGroupFile01">Выберите файл</label>
-                        </div>
-                    </div> -->
-
-<!-- onclick="addImage($_FILES['f_name']['name']);" -->
-
-<!-- <div class="circle" style="height: 18px; width: 18px; margin-top: 3px; margin-left: 218px; border-radius: 50%; background-color: #E8E8E8; position: fixed;"></div> -->
-
-
-<!-- 
-// var control = document.getElementById("choose-photo");
-        // control.addEventListener("change", function(event) {
-        //     // Когда происходит изменение элементов управления, значит появились новые файлы
-        //     var i = 0,
-        //         files = control.files,
-        //         len = files.length;
-
-        //     for (; i < len; i++) {
-        //         var img = document.getElementById('img-source');
-        //         img.src = files[i].name;
-        //         img.className = 'img-fluid';
-        //     }
-
-        // }, false);
-
-        // var inp = document.getElementById("inputGroupSelect01");
-        // control.addEventListener("click", function(event) {
-        //     var jam_name = document.getElementById('jam-name');
-        //     jam_name.style.font = 'Arial';
-        // }, false); -->

@@ -24,7 +24,6 @@ h2 {
     border-radius: 15px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
     padding: 35px 55px 30px 55px;
-    margin-bottom: 30px;
 }
 
 .jam-name {
@@ -53,6 +52,7 @@ h2 {
     font-family: Montserrat;
     color: #EEEEEE;
     background-color: rgb(66, 66, 66);
+    /* border-radius: 25px; */
     margin: 0;
     margin-bottom: 25px;
     padding-top: 5px;
@@ -69,6 +69,11 @@ h2 {
     font-size: 16px;
     font-weight: normal;
     font-family: montserrat;
+}
+
+.name a {
+    text-decoration: none;
+    color: #EEEEEE;
 }
 
 .jam-description {

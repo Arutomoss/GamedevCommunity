@@ -207,7 +207,7 @@ justify - горизонтальное выравнивание
 
 .actual {
     grid-area: actual;
-    display: none;
+    /* display: none; */
 }
 
 .actual-panel {
@@ -224,6 +224,7 @@ justify - горизонтальное выравнивание
     height: 44px;
     display: flex;
     border-bottom: 0.8px solid #3D3D3D;
+    padding-top: 15px;
 }
 
 .actual-panel-title p {
