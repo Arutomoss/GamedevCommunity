@@ -30,6 +30,10 @@ if ($_COOKIE['user'] == '') {
 
     $user_photo_id = $_COOKIE['user'];
     $user_photo = mysqli_fetch_assoc(mysqli_query($conn, "SELECT photo.`link_photo` FROM `photo` INNER JOIN `users` on photo.photo_id = users.photo_id WHERE users.`user_id` = '$user_photo_id'"));
+
+    $user_id = $_COOKIE['user'];
+    $user = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM `users` WHERE `user_id` = '$user_id'"));
+
     $conn->close();
     ?>
 
@@ -39,15 +43,22 @@ if ($_COOKIE['user'] == '') {
                 <form action="">
                     <div class="row jam-header">
                         <div class="name">
-                            <h4>Настройки</h4>
+                            <h5>Настройки</h5>
                             <p>Пользователь:
                                 <?php
                                 echo $_COOKIE['first_name'] . ' ' . $_COOKIE['last_name'];
                                 ?></p>
                         </div>
                     </div>
+                    <div class="col user-short-description">
+                        <h5>Краткое описание</h5>
+                        <div class="row">
+                            <input type="text" class="rounded-5 border-0" placeholder="<?php echo $user['short_description']; ?>" maxlength="20" name="short_description" autocomplete="off">
+                            <p>Максимум 20 символов</p>
+                        </div>
+                    </div>
                     <div class="change-image">
-                        <h4>Изображение профиля</h4>
+                        <h5>Изображение профиля</h5>
                         <div class="content-source">
                             <img src="<?php echo $user_photo['link_photo']; ?>" alt="" id="img-source">
                         </div>

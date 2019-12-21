@@ -32,6 +32,9 @@ if (isset($_POST['photo'])) {
         $user_id = $_COOKIE['user'];
         mysqli_query($conn, "UPDATE `users` SET `photo_id` = '$ph_id' WHERE `user_id` = '$user_id'");
 
+        $short_description = $_POST['short_description'];
+        mysqli_query($conn, "UPDATE `users` SET `short_description` = '$short_description' WHERE `user_id` = '$user_id'");
+        
         $conn->close();
     }
 } else {

@@ -36,8 +36,6 @@
     --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace
 }
 
-.img-fluid
-
 *,
  ::after,
  ::before {
@@ -9302,10 +9300,24 @@ a.text-dark:hover {
     color: #E8E8E8;
 }
 
+.pd-lr-40 {
+    padding-left: 40px;
+    padding-right: 40px;  
+    color: #E8E8E8;
+}
+
 .pd-lr-60 {
     padding-left: 60px;
     padding-right: 60px;  
     color: #E8E8E8;
+}
+
+.rounded-5 {
+    border-radius: 5px;
+}
+
+.rounded-10 {
+    border-radius: 10px;
 }
 
 

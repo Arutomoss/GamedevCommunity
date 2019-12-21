@@ -23,16 +23,27 @@ if ($_COOKIE['user'] == '') {
     <div class="container col-12">
         <div class="wrap row justify-content-md-center">
             <div class="jams-panel mr-3">
-                <div class="row" style="padding-left: 35px; padding-right: 35px;">
+                <div class="row pd-lr-35">
                     <p class="panel-header">Мероприятия</p>
                 </div>
-                <div class="jams-panel-links row" style="padding-left: 35px; padding-right: 35px;">
-                    <a href="#">Все мероприятия</a>
-                    <a href="#">Мои мероприятия</a>
-                    <a href="#">Активные мероприятия</a>
+                <div class="jams-panel-links row pd-lr-35">
+                    <a href="#">Все мероприятия
+                        <svg width="4" height="4" viewBox="0 0 4 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="2" cy="2" r="2" fill="white" />
+                        </svg></a>
+                    <a href="#">Мои мероприятия
+                        <svg width="4" height="4" viewBox="0 0 4 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="2" cy="2" r="2" fill="white" />
+                        </svg>
+                    </a>
+                    <a href="#">Активные мероприятия
+                        <svg width="4" height="4" viewBox="0 0 4 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="2" cy="2" r="2" fill="white" />
+                        </svg>
+                    </a>
                 </div>
-                <div class="row btn-create justify-content-center">
-                    <a class="btn btn-danger rounded-25 pd-w-35" role="button" href="jam_creation.php">Создать мероприятие</a>
+                <div class="row btn-create">
+                    <a class="btn btn-danger rounded-10 pd-lr-30" role="button" href="jam_creation.php">Создать мероприятие</a>
                 </div>
             </div>
             <div class="jam-place">
@@ -44,9 +55,9 @@ if ($_COOKIE['user'] == '') {
                 for ($i = 0; $i < count($jams); $i++) {
                     $event_id = $jams[$i]['event_id'];
                     $photo = mysqli_fetch_assoc(mysqli_query($conn, "SELECT `link_photo` FROM `photo` WHERE event_id = '$event_id'"));
-                    echo '<a href="jam.php?event_id='.$jams[$i]['event_id'].'" class="jam row ml-1">
+                    echo '<a href="jam.php?event_id=' . $jams[$i]['event_id'] . '" class="jam row ml-1">
                     <div class="content-source">
-                      <!--  <p style="visibility: hidden;" id="event_id">'.$jams[$i]['event_id'].'</p> -->
+                      <!--  <p style="visibility: hidden;" id="event_id">' . $jams[$i]['event_id'] . '</p> -->
                         <img src="' . $photo['link_photo'] . '" class="img-fluid" alt="">
                     </div>
                     <div class="jam-title row">
@@ -68,7 +79,7 @@ if ($_COOKIE['user'] == '') {
                 </a>';
                 }
                 ?>
-                
+
 
             </div>
         </div>

@@ -3,7 +3,7 @@ body {
     font-family: Montserrat;
 }
 
-h4 {
+h5 {
     margin-bottom: 10px;
 }
 
@@ -24,6 +24,34 @@ h4 {
     margin: 0;
     margin-bottom: 20px;
     margin-top: 20px;
+}
+
+.user-short-description {
+    padding: 0;
+    margin: 0;
+    margin-bottom: 45px;
+}
+
+input::-webkit-input-placeholder { color: #a7a7a7; }
+
+.user-short-description .row {
+    margin: 0;
+    padding: 0;
+}
+
+.user-short-description input {
+    padding-left: 15px;
+    height: 38px;
+    background-color: #383838;
+    color: #EEEEEE;
+    font-size: 15px;
+}
+
+.user-short-description .row p {
+    font-size: 14px;
+    color: #bbbbbb;
+    margin-top: 10px;
+    margin-left: 20px;
 }
 
 .content-source img {

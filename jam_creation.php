@@ -76,14 +76,14 @@ if ($_COOKIE['user'] == '') {
                         <div class=" form-group">
                         <input type="file" class="form-control-file border-0" id="choose-photo" style="padding-left: 0px; background-color: #303030;" name="photo" accept="image/*,image/jpeg">
                     </div>
-                    <button type="submit" class="btn btn-danger col rounded-25 btn-save">Сохранить</button>
+                    <button type="submit" class="btn btn-danger col rounded-10 btn-save">Сохранить</button>
                 </div>
             </div>
             <div class="col-8 jam-place">
                 <div class="col jam">
                     <div class="row jam-header justify-content-between">
                         <div class="form-group col" style="padding-left: 0px;">
-                            <input type="text" class="form-control border-0 pd-lr-0 jam-name" id="jam-name" name="jam-name" placeholder="Введите название" maxlength="30">
+                            <input type="text" class="form-control border-0 pd-lr-0 jam-name" id="jam-name" name="jam-name" placeholder="Введите название" maxlength="30" autocomplete="off">
                         </div>
                         <div class="name">
                             <?php
@@ -99,7 +99,7 @@ if ($_COOKIE['user'] == '') {
                     </div>
                     <div class="row">
                         <div class="form-group col-12">
-                            <textarea class="form-control border-0 pd-lr-0 short-description" id="short-description" name="short-description" rows="1" placeholder="Введите краткое описание..."></textarea>
+                            <textarea class="form-control border-0 pd-lr-0 short-description" id="short-description" name="short-description" rows="1" placeholder="Введите краткое описание..." autocomplete="off"></textarea>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -117,7 +117,7 @@ if ($_COOKIE['user'] == '') {
                     </div>
                     <div class="row">
                         <div class="form-group col-12 jam-description">
-                            <textarea class="form-control border-0 pd-lr-0 description" id="description" name="description" rows="5" placeholder="Введите описание..."></textarea>
+                            <textarea class="form-control border-0 pd-lr-0 description" id="description" name="description" rows="5" placeholder="Введите описание..." autocomplete="off"></textarea>
                         </div>
                     </div>
                 </div>

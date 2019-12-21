@@ -8,7 +8,7 @@ body {
     overflow-x: hidden;
 }
 
-.jams-panel{
+.jams-panel {
     height: 100%;
     background-color: #303030;
     border-radius: 15px;
@@ -17,7 +17,7 @@ body {
     padding-left: 15px;
     padding-right: 15px;
     top: 65px;
-    position: relative; 
+    position: relative;
 }
 
 .jam-place {
@@ -26,13 +26,27 @@ body {
     position: relative;
 }
 
-.jams-panel-links a{
+.jams-panel-links a {
     display: block;
     text-decoration: none;
     color: #EFEFEF;
     font-family: "montserrat";
     width: 100%;
     padding-bottom: 13px;
+}
+
+.jams-panel-links a svg {
+    display: none;
+    margin-bottom: 3px;
+    margin-left: 5px;
+}
+
+/* .jams-panel-links a:hover {
+    font-weight: 500;
+} */
+
+.jams-panel-links a:hover svg {
+    display: inline;
 }
 
 .jams-panel-links {
@@ -72,7 +86,7 @@ body {
 .panel-header {
     margin-top: 35px;
     color: #E8E8E8;
-    font-size: 16px;
+    font-size: 18px;
     font-family: montserrat;
     border-bottom: 1px solid #404040;
     width: 100%;
@@ -83,6 +97,11 @@ body {
     padding-left: 35px;
     padding-right: 35px;
     margin-bottom: 30px;
+}
+
+.btn-create a {
+    font-family: Montserrat;
+    font-size: 16px;
 }
 
 .short-description p {
@@ -105,14 +124,16 @@ body {
 }
 
 .date-style p {
+    font-family: Montserrat;
+    font-weight: 500;
     font-size: 18px;
-    padding-left: 9px;
-    padding-top: 2px;
+    padding-left: 10px;
+    padding-top: 3px;
 }
 
 .padding-lr-30 {
     padding-left: 30px;
-    padding-right: 30px;  
+    padding-right: 30px;
     color: #E8E8E8;
 }
 
@@ -123,6 +144,6 @@ body {
     border-radius: 15px;
 }
 
-.content-source img{
+.content-source img {
     width: 100%;
 }

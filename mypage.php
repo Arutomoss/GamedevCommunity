@@ -46,13 +46,13 @@ if ($_COOKIE['user'] == '') {
 
                         $conn->close();
                         ?>
-                        <img src="<?php echo $photo['link_photo']; ?>" alt="" height="60px" class="rounded-circle">
+                        <img src="<?php echo $photo['link_photo']; ?>" alt="" height="65px" class="rounded-circle">
                     </div>
                     <div class="user-name-panel">
                         <?php
                         echo $user['first_name'] . ' ' . $user['last_name'];
                         ?>
-                        <p>Indie Game Developer</p>
+                        <p><?php echo $user['short_description']; ?></p>
                     </div>
                 </div>
                 <div class="info row pd-lr-35">

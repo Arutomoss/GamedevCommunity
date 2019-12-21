@@ -37,7 +37,18 @@ nav a {
 nav a:hover {
     text-decoration: none;
     color: #ffffff;
-    border-bottom: 1px solid #ffffff;
+}
+
+nav a:hover svg {
+    position: fixed;
+    margin-top: 12px;
+    display: inherit;
+}
+
+nav a svg {
+    display: none;
+    margin-bottom: 3px;
+    margin-left: 3px;
 }
 
 .h_container {
