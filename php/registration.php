@@ -20,9 +20,10 @@ if (preg_match("#^[aA-zZ0-9\-_]+$#", $login) && (preg_match("/^(?:[a-z0-9]+(?:[-
     $pass = md5($pass . "3jk4n23fJ");
 
     $mysql = new mysqli("localhost", "root", "", "gamedc");
-    $mysql->query("INSERT INTO `users` (`user_login`, `user_pass`, `user_mail`) 
+    $result = $mysql->query("INSERT INTO `users` (`user_login`, `user_pass`, `user_mail`) 
             VALUES ('$login', '$pass', '$mail')");
 
+    $user = $result->fetch_assoc();
     $mysql->close();
 
     setcookie('user', $user['user_id'], time() + 3600 * 30, "/");

@@ -1,25 +1,19 @@
 <?php
-
 $uploaddir = 'img/';
-
 if (isset($_POST['photo'])) {
     $arr = [];
     $str  = str_random(8);
     if ($_POST['photo']) {
         $file = 'uploaded_photo_' . $str . '_min.png';
         $uploadfile = $uploaddir . $file;
-
         $img = str_replace('data:image/png;base64,', '', $_POST['photo']);
         $img = str_replace(' ', '+', $img);
         $fileData = base64_decode($img);
-
         $url = $uploadfile;
         file_put_contents($url, $fileData);
-
         $arr['status'] = 'success';
         $arr['path_mini'] = "http://gamedevcommunity/" . $uploadfile;
         $arr['file_mini'] = $file;
-
         //  Save in DB
         $conn = mysqli_connect("localhost", "root", "", "gamedc");
 
@@ -31,10 +25,10 @@ if (isset($_POST['photo'])) {
 
         $user_id = $_COOKIE['user'];
         mysqli_query($conn, "UPDATE `users` SET `photo_id` = '$ph_id' WHERE `user_id` = '$user_id'");
-        
+
         $short_description = $_POST['short_description'];
         mysqli_query($conn, "UPDATE `users` SET `short_description` = '$short_description' WHERE `user_id` = '$user_id'");
-        
+
         $conn->close();
     }
 } else {
@@ -49,7 +43,6 @@ if (isset($_POST['photo'])) {
         $arr['status'] = 'fail';
     }
 }
-
 function str_random($length)
 {
     return substr(md5(microtime()), 0, $length);
