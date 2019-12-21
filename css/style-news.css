@@ -41,11 +41,16 @@
     align-self: center;
 }
 
+.img-icon {
+    margin-right: 13px;
+    padding-top: 16px;
+}
+
 .mini-icon {
     height: 35px;
     width: 35px;
     margin-left: 15px;
-    margin-right: 20px;
+    margin-right: 13px;
     border-radius: 35px;
     overflow: hidden;
     align-self: center;

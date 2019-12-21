@@ -9,6 +9,15 @@ function getJams($limit)
     return resultToArray($result);
 }
 
+function getUserJams($limit, $user_id)
+{
+    $mysql = mysqli_connect("localhost", "root", "", "gamedc");
+
+    $result = mysqli_query($mysql, "SELECT * FROM `events` WHERE `user_id` = '$user_id' ORDER BY `event_id` DESC LIMIT $limit");
+    $mysql->close();
+    return resultToArray($result);
+}
+
 function resultToArray($result)
 {
     $array = array();

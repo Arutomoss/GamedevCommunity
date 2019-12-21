@@ -29,15 +29,15 @@ if ($_COOKIE['user'] == '') {
                         <p class="settings-header">Цвета</p>
                     </div>
                     <div class="col padding-lr-30" >
-                        <div class="row justify-content-between" style="width: 290px;">
+                        <div class="row justify-content-between" style="width: 260px;">
                             Цвет текста
                             <input type="text" class="rounded-25 border-0 input-color" placeholder="#FFFFFF" maxlength="7" id="color-picker">
                         </div>
-                        <div class="row justify-content-between" style="width: 290px;">
+                        <div class="row justify-content-between" style="width: 260px;">
                             Цвет фона
                             <input type="text" class="rounded-25 border-0 input-color" placeholder="#303030" maxlength="7">
                         </div>
-                        <div class="row justify-content-between" style="width: 290px;">
+                        <div class="row justify-content-between" style="width: 260px;">
                             Цвет ссылок
                             <input type="text" class="rounded-25 border-0 input-color" placeholder="#F0052F" maxlength="7">
                         </div>

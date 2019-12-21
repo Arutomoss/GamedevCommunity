@@ -16,7 +16,7 @@ if ($_COOKIE['user'] == '') {
     <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i&display=swap&subset=latin-ext" rel="stylesheet">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style-mypage.css">
-    <title>Новости</title>
+    <title>Моя страница</title>
 </head>
 
 <body>
@@ -77,6 +77,16 @@ if ($_COOKIE['user'] == '') {
                     require 'php/connect.php';
                     mysqli_query($conn, "INSERT INTO `subscriptions`(user_id, follower_id) VALUE ('$user_id', '$follower')");
                     $conn->close();
+
+                    echo "<script>(window.location.href='mypage.php?user_id=$user_id')()</script>";
+                } else if (isset($_POST['unfollow']) && (count($isFollow) != 0)) {
+                    $follower = $_COOKIE['user'];
+
+                    require 'php/connect.php';
+                    mysqli_query($conn, "DELETE FROM `subscriptions` WHERE (`user_id` = '$user_id') AND (`follower_id` = '$follower')");
+                    $conn->close();
+
+                    echo "<script>(window.location.href='mypage.php?user_id=$user_id')()</script>";
                 }
                 ?>
                 <form method="POST">
@@ -102,33 +112,46 @@ if ($_COOKIE['user'] == '') {
                 <?php
                 require 'php/events.php';
                 require 'php/connect.php';
-                $jams = getJams(1);
+                $jams = getUserJams(1, $user_id);
 
-                for ($i = 0; $i < count($jams); $i++) {
-                    $event_id = $jams[$i]['event_id'];
-                    $photo = mysqli_fetch_assoc(mysqli_query($conn, "SELECT `link_photo` FROM `photo` WHERE event_id = '$event_id'"));
-                    echo '<a href="jam.php?event_id=' . $jams[$i]['event_id'] . '" class="jam row">
-                    <div class="content-source">
-                        <img src="' . $photo['link_photo'] . '" class="img-fluid" alt="">
-                    </div>
-                    <div class="jam-title row">
-                        <p>' . $jams[$i]['event_name'] . '</p>
-                    </div>
-                    <div class="jam-description row align-self-end justify-content-between">
-                        <div class="short-description align-self-center">
-                            <p>' . $jams[$i]['event_short_description'] . '</p>
+                if (count($jams) > 0) {
+                    for ($i = 0; $i < count($jams); $i++) {
+                        $event_id = $jams[$i]['event_id'];
+                        $photo = mysqli_fetch_assoc(mysqli_query($conn, "SELECT `link_photo` FROM `photo` WHERE event_id = '$event_id'"));
+                        echo '<a href="jam.php?event_id=' . $jams[$i]['event_id'] . '" class="jam row">
+                        <div class="content-source">
+                            <img src="' . $photo['link_photo'] . '" class="img-fluid" alt="">
                         </div>
-                        <div class="row" style="margin-right: 30px;">
-                            <div class="jam-date-start date-style align-self-center">
-                                <p>' . substr($jams[$i]['event_date_start'], 5, 2) . '.' . substr($jams[$i]['event_date_start'], 8, 2) . '</p>
+                        <div class="jam-title row">
+                            <p>' . $jams[$i]['event_name'] . '</p>
+                        </div>
+                        <div class="jam-description row align-self-end justify-content-between">
+                            <div class="short-description align-self-center">
+                                <p>' . $jams[$i]['event_short_description'] . '</p>
                             </div>
-                            <div class="jam-date-end date-style align-self-center">
-                                <p>' . substr($jams[$i]['event_date_end'], 5, 2) . '.' . substr($jams[$i]['event_date_end'], 8, 2) . '</p>
+                            <div class="row" style="margin-right: 30px;">
+                                <div class="jam-date-start date-style align-self-center">
+                                    <p>' . substr($jams[$i]['event_date_start'], 5, 2) . '.' . substr($jams[$i]['event_date_start'], 8, 2) . '</p>
+                                </div>
+                                <div class="jam-date-end date-style align-self-center">
+                                    <p>' . substr($jams[$i]['event_date_end'], 5, 2) . '.' . substr($jams[$i]['event_date_end'], 8, 2) . '</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </a>';
+                    </a>';
+                    }
+                } else {
+                    echo '<a href="#" class="jam row" style="cursor: default;">
+                        <div class="content-source">
+                            <img src="" class="img-fluid" alt="">
+                        </div>
+                        <div class="jam-title row">
+                            <p style="margin-left: 225px; margin-top: 130px">Нет мероприятий</p>
+                        </div>
+                        
+                    </a>';
                 }
+
                 ?>
 
                 <div class="content">

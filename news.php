@@ -24,14 +24,28 @@ if ($_COOKIE['user'] == '') {
     require 'blocks/headder.php';
     ?>
 
+    <?php
+    require 'php/connect.php';
+
+    $user_id = $_COOKIE['user'];
+    $user = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM `users` WHERE `user_id` = '$user_id'"));
+
+    $photo_id = $user['photo_id'];
+    $photo = mysqli_fetch_assoc(mysqli_query($conn, "SELECT `link_photo` FROM `photo` WHERE `photo_id` = '$photo_id'"));
+
+    $conn->close();
+    ?>
 
     <div class="m_container">
         <div class="main">
             <div class="whats_new">
                 <div class="mini-icon">
-                    <img src="img/test.jpg" alt="">
+                    <img src="<?php echo $photo['link_photo']; ?>" alt="">
                 </div>
-
+                <a href="">
+                    <input type="file" class="border-0" id="choose-photo" style="display: none;" name="photo" accept="image/*,image/jpeg">
+                    <img src="img/img_icon.svg" class="img-icon" alt="">
+                </a>
                 <svg width="2" height="28" viewBox="0 0 2 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M1 1L1 27" stroke="#4A4A4A" stroke-linecap="round" />
                 </svg>
