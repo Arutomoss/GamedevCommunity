@@ -6,7 +6,7 @@
             <input type="search" name="search" class="srch rounded-25 border-0 align-self-end" autocomplete="off" placeholder="Поиск">
         </div> -->
         <!-- <div class="logo"></div> -->
-        <nav>
+        <nav class="nav">
             <a href="../news.php">
                 Новости
                 <svg width="4" height="4" viewBox="0 0 4 4" fill="none" xmlns="http://www.w3.org/2000/svg">

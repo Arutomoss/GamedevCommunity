@@ -37,6 +37,11 @@ if ($_COOKIE['user'] == '') {
     $user_photo_id = $user['photo_id'];
     $user_photo = mysqli_fetch_assoc(mysqli_query($conn, "SELECT `link_photo` FROM `photo` WHERE `photo_id` = '$user_photo_id'"));
 
+    $joined_user_id = $_COOKIE['user'];
+    $isJoin = mysqli_fetch_assoc(mysqli_query($conn, "SELECT `user_id` FROM `event_members` WHERE (`user_id` = '$joined_user_id') AND (`event_id` = '$event_id')"));
+
+    $follower = $_COOKIE['user'];
+
     $conn->close();
     ?>
 
@@ -50,7 +55,7 @@ if ($_COOKIE['user'] == '') {
                         </div>
                         <div class="name">
                             <?php
-                            echo '<a href="mypage.php?user_id='.$user['user_id'].'">'.$user['first_name'] . ' ' . $user['last_name'].'</a>';
+                            echo '<a href="mypage.php?user_id=' . $user['user_id'] . '">' . $user['first_name'] . ' ' . $user['last_name'] . '</a>';
                             echo '<img src="' . $user_photo['link_photo'] . '" alt="" height="40px" class="rounded-circle" style="margin-left: 10px;">';
                             ?>
                         </div>
@@ -71,6 +76,36 @@ if ($_COOKIE['user'] == '') {
                     <div class='preview-img'>
                         <img src="<?php echo $photo['link_photo'] ?>" alt="" id="img-source" style="width: 100%;">
                     </div>
+                    <?php
+                    if (isset($_POST['join'])) {
+                        require 'php/connect.php';
+                        mysqli_query($conn, "INSERT INTO `event_members`(`event_id`, `user_id`) VALUE ('$event_id', '$follower')");
+                        $conn->close();
+
+                        echo "<script>(window.location.href='jam.php?event_id=$event_id')()</script>";
+                    } else if (isset($_POST['disconnect'])) {
+                        require 'php/connect.php';
+                        mysqli_query($conn, "DELETE FROM `event_members` WHERE (`event_id` = '$event_id') AND (`user_id` = '$follower')");
+                        $conn->close();
+
+                        echo "<script>(window.location.href='jam.php?event_id=$event_id')()</script>";
+                    }
+                    ?>
+                    <form method="POST">
+                        <?php
+                        if (count($isJoin) == 0) {
+                            echo '
+                                <div class="row justify-content-center btn-submit">
+                                    <input type="submit" name="join" class="btn btn-success pd-lr-30" value="Присоединиться">
+                                </div>';
+                        } else {
+                            echo '
+                                <div class="row justify-content-center btn-submit">
+                                    <input type="submit" name="disconnect" class="btn btn-danger pd-lr-30" value="Отменить участие">
+                                </div>';
+                        }
+                        ?>
+                    </form>
                     <div class="row">
                         <div class="col-12 jam-description">
                             <p><?php echo $event['event_description']; ?></p>
@@ -79,9 +114,10 @@ if ($_COOKIE['user'] == '') {
                 </div>
             </div>
         </div>
-
     </div>
 
+
+    <!-- 
     <script>
         function readURL(input) {
             if (input.files && input.files[0]) {
@@ -98,7 +134,7 @@ if ($_COOKIE['user'] == '') {
         $("#choose-photo").change(function() {
             readURL(this);
         });
-    </script>
+    </script> -->
 
 
     <script src="js/main.js"></script>

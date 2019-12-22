@@ -52,10 +52,11 @@ h2 {
     font-family: Montserrat;
     color: #EEEEEE;
     background-color: rgb(66, 66, 66);
-    /* border-radius: 25px; */
+    border-radius: 5px;
     margin: 0;
     margin-bottom: 25px;
-    padding-top: 5px;
+    padding-top: 10px;
+    padding-bottom: 3px;
 }
 
 .jam-header {
@@ -85,4 +86,9 @@ h2 {
     overflow: hidden;
     border-radius: 15px;
     margin-top: 13px;
+}
+
+.btn-submit {
+    margin-top: 35px;
+    font-family: Montserrat;
 }

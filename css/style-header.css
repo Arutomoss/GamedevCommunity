@@ -41,7 +41,7 @@ nav a:hover {
 
 nav a:hover svg {
     position: fixed;
-    margin-top: 12px;
+    margin-top: 2px;
     display: inherit;
 }
 

@@ -69,10 +69,10 @@ if ($_COOKIE['user'] == '') {
                             <option value="3">Очень большой</option>
                         </select>
                     </div>
-                    <div class="row padding-lr-30" ">
+                    <div class="row padding-lr-30">
                         <p class=" settings-header">Добавить изображение</p>
                     </div>
-                    <div class="row padding-lr-30" ">
+                    <div class="row padding-lr-30">
                         <div class=" form-group">
                         <input type="file" class="form-control-file border-0" id="choose-photo" style="padding-left: 0px; background-color: #303030;" name="photo" accept="image/*,image/jpeg">
                     </div>

@@ -18,10 +18,19 @@ function getUserJams($limit, $user_id)
     return resultToArray($result);
 }
 
+function getPosts($limit)
+{
+    $mysql = mysqli_connect("localhost", "root", "", "gamedc");
+
+    $result = mysqli_query($mysql, "SELECT * FROM `posts` ORDER BY `post_id` DESC LIMIT $limit");
+    $mysql->close();
+    return resultToArray($result);
+}
+
 function resultToArray($result)
 {
     $array = array();
-    while (($row = $result->fetch_assoc()) != false){
+    while (($row = $result->fetch_assoc()) != false) {
         $array[] = $row;
     }
 
@@ -33,6 +42,15 @@ function getPhotos($limit)
     $mysql = mysqli_connect("localhost", "root", "", "gamedc");
 
     $result = mysqli_query($mysql, "SELECT * FROM `photo` ORDER BY `photo_id` DESC LIMIT $limit");
+    $mysql->close();
+    return resultToArray($result);
+}
+
+function getUsers($limit)
+{
+    $mysql = mysqli_connect("localhost", "root", "", "gamedc");
+
+    $result = mysqli_query($mysql, "SELECT * FROM `users` ORDER BY `user_id` DESC LIMIT $limit");
     $mysql->close();
     return resultToArray($result);
 }

@@ -78,6 +78,8 @@ if ($_COOKIE['user'] == '') {
                     </div>
                 </a>';
                 }
+
+                $conn->close();
                 ?>
 
 

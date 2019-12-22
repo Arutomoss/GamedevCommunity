@@ -44,6 +44,8 @@ if ($_COOKIE['user'] == '') {
                         $photo_id = $user['photo_id'];
                         $photo = mysqli_fetch_assoc(mysqli_query($conn, "SELECT `link_photo` FROM `photo` WHERE `photo_id` = '$photo_id'"));
 
+                        $amount_active_jams = mysqli_fetch_assoc(mysqli_query($conn, "SELECT count(`event_id`) as amount FROM `event_members` WHERE `user_id` = '$user_id'"));
+
                         $conn->close();
                         ?>
                         <img src="<?php echo $photo['link_photo']; ?>" alt="" height="65px" class="rounded-circle">
@@ -57,7 +59,7 @@ if ($_COOKIE['user'] == '') {
                 </div>
                 <div class="info row pd-lr-35">
                     <p>Подписчики: <?php echo count($isFollow); ?></p>
-                    <p>Активные мероприятия: </p>
+                    <p>Активные мероприятия: <?php echo $amount_active_jams['amount']; ?></p>
                     <p>Мои мероприятия: <?php echo $my_events['amount']; ?></p>
                 </div>
                 <?php
@@ -154,7 +156,7 @@ if ($_COOKIE['user'] == '') {
 
                 ?>
 
-                <div class="content">
+                <!-- <div class="content">
                     <div class="content-icon">
                         <img src="img/logo_light.svg" alt="" height="50px">
                     </div>
@@ -223,7 +225,60 @@ if ($_COOKIE['user'] == '') {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
+                <?php
+                require 'php/connect.php';
+                $posts = getPosts(30);
+
+                for ($i = 0; $i < count($posts); $i++) {
+                    $user_id = $posts[$i]['user_id'];
+                    if ($user_id == $_COOKIE['user']) {
+                        $user = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM `users` WHERE `user_id` = '$user_id'"));
+                        $user_photo_id = $user['photo_id'];
+                        $user_photo = mysqli_fetch_assoc(mysqli_query($conn, "SELECT `link_photo` FROM `photo` WHERE `photo_id` = '$user_photo_id'"));
+
+                        $photo_id = $posts[$i]['photo_id'];
+                        $photo = mysqli_fetch_assoc(mysqli_query($conn, "SELECT `link_photo` FROM `photo` WHERE `photo_id` = '$photo_id'"));
+                        echo '<div class="content">
+                    <div class="content-icon">
+                        <img src="' . $user_photo['link_photo'] . '" alt="" height="50px">
+                    </div>
+                    <div class="wrap_jam">
+                        <div class="content-headder">
+                            <div class="content-headder-title">
+                                <p>' . $user['first_name'] . ' ' . $user['last_name'] . '</p>
+                                <p class="title-info">@' . $user['user_login'] . ' • ' . $posts[$i]['date_create'] . ' мин</p>
+                            </div>
+                            <div class="content-discription">
+                                <p>' . $posts[$i]['post_text'] . '</p>
+                            </div>
+                        </div>';
+                        if ($photo_id) {
+                            echo '<div class="content-source_n">
+                                    <img src="' . $photo['link_photo'] . '" class="img-fluid" alt="">
+                                </div>';
+                        }
+                        echo '<div class="content-bottom-panel">
+                            <div class="content-bottom-panel-comments">
+                                <img src="img/comments.svg" alt="">
+                                <p>0</p>
+                            </div>
+                            <div class="content-bottom-panel-reposts">
+                                <img src="img/reposts.svg" alt="">
+                                <p>' . $posts[$i]['amount_reposts'] . '</p>
+                            </div>
+                            <div class="content-bottom-panel-likes">
+                                <img src="img/likes.svg" alt="">
+                                <p>' . $posts[$i]['amount_likes'] . '</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>';
+                    }
+                }
+
+                $conn->close();
+                ?>
             </div>
         </div>
 
