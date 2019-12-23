@@ -36,19 +36,23 @@ if ($errorMessages != 'Файл не был загружен.') {
     $mime = (string) finfo_file($fi, $filePath);
 
     // Проверим ключевое слово image (image/jpeg, image/png и т. д.)
-    if (strpos($mime, 'image') === false) die('Можно загружать только изображения.');
+    if (strpos($mime, 'image') === false){
+        
+    } else {
+        $target_dir = '../img/';
+        $hash = md5($_COOKIE['user'] + rand());
+        $name = $_FILES['photo']['name'];
+        $name_photo = "{$_COOKIE['user_login']}_{$hash}.jpeg";
 
-    $target_dir = '../img/';
-    $hash = md5($_COOKIE['user'] + rand());
-    $name = $_FILES['photo']['name'];
-    $name_photo = "{$_COOKIE['user_login']}_{$hash}.jpeg";
+        $link_photo = $target_dir . $name_photo;
 
-    $link_photo = $target_dir . $name_photo;
+        if (!@copy($_FILES['photo']['tmp_name'], $link_photo))
+            echo 'Что-то пошло не так';
+        else
+            echo 'Загрузка удачна';
+    }
 
-    if (!@copy($_FILES['photo']['tmp_name'], $link_photo))
-        echo 'Что-то пошло не так';
-    else
-        echo 'Загрузка удачна';
+    
 }
 
 $user_id   = $_COOKIE['user'];
@@ -71,11 +75,11 @@ if ($mysql) {
 
         mysqli_query($mysql, "INSERT INTO `posts`(user_id, post_text, photo_id, date_create, amount_likes, amount_reposts) 
             VALUE ('$user_id', '$post_text', '$ph_id', NOW(), 0, 0)");
-        echo '1';
+        // echo '1';
     } else {
         mysqli_query($mysql, "INSERT INTO `posts`(user_id, post_text, date_create, amount_likes, amount_reposts) 
         VALUE ('$user_id', '$post_text', NOW(), 0, 0)");
-        echo '2';
+        // echo '2';
     }
 } else
     die('Ошибка подключения к серверу баз данных.');
