@@ -277,6 +277,12 @@ body {
     margin: 0px;
 }
 
+.content-bottom-panel a{
+    height: 17px;
+    margin-top: 2px;
+    margin-right: 6px;
+}
+
 .content-bottom-panel-comments {
     display: flex;    
     align-items: center;

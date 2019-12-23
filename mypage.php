@@ -37,7 +37,8 @@ if ($_COOKIE['user'] == '') {
                         $user_id = $_GET['user_id'];
                         $user = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM `users` WHERE `user_id` = '$user_id'"));
 
-                        $isFollow = mysqli_fetch_assoc(mysqli_query($conn, "SELECT follower_id FROM subscriptions WHERE (user_id = '$user_id')"));
+                        $follower = $_COOKIE['user'];
+                        $isFollow = mysqli_fetch_assoc(mysqli_query($conn, "SELECT `follower_id` FROM `subscriptions` WHERE (user_id = '$user_id') AND (`follower_id` = '$follower')"));
 
                         $my_events = mysqli_fetch_assoc(mysqli_query($conn, "SELECT count(event_id) as amount FROM events WHERE user_id = '$user_id'"));
 
@@ -93,7 +94,9 @@ if ($_COOKIE['user'] == '') {
                 ?>
                 <form method="POST">
                     <?php
-                    if ($_COOKIE['user'] != $user['user_id']) {
+                    // $isFollow = mysqli_fetch_assoc(mysqli_query($conn, "SELECT `follower_id` FROM `subscriptions` WHERE (user_id = '$user_id') AND (`follower_id` = '$follower')"));
+
+                    if ($_COOKIE['user'] != $user_id) {
                         if (count($isFollow) == 0) {
                             echo '<input type="submit" name="follow" class="btn btn-success pd-lr-30" value="Follow" style="margin-left: 20px;">';
                         } else {
@@ -268,7 +271,11 @@ if ($_COOKIE['user'] == '') {
                                 <p>' . $posts[$i]['amount_reposts'] . '</p>
                             </div>
                             <div class="content-bottom-panel-likes">
-                                <img src="img/likes.svg" alt="">
+                                <a href="">
+                                    <svg width="17" height="15" viewBox="0 0 17 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M8.5 15L8.2 14.7475C1.75 9.44444 0 7.57576 0 4.54545C0 2.0202 2 0 4.5 0C6.55 0 7.7 1.16162 8.5 2.07071C9.3 1.16162 10.45 0 12.5 0C15 0 17 2.0202 17 4.54545C17 7.57576 15.25 9.44444 8.8 14.7475L8.5 15ZM4.5 1.0101C2.55 1.0101 1 2.57576 1 4.54545C1 7.12121 2.6 8.83838 8.5 13.6869C14.4 8.83838 16 7.12121 16 4.54545C16 2.57576 14.45 1.0101 12.5 1.0101C10.75 1.0101 9.8 2.07071 9.05 2.92929L8.5 3.58586L7.95 2.92929C7.2 2.07071 6.25 1.0101 4.5 1.0101Z" fill="#C1C1C1"/>
+                                    </svg>
+                                </a>
                                 <p>' . $posts[$i]['amount_likes'] . '</p>
                             </div>
                         </div>

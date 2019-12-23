@@ -213,6 +213,12 @@ justify - горизонтальное выравнивание
     margin-left: 15px;
 }
 
+.content-bottom-panel a{
+    height: 17px;
+    margin-top: 2px;
+    margin-right: 6px;
+}
+
 .content-bottom-panel p {
     margin: 0px;
 }
