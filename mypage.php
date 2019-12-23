@@ -153,7 +153,6 @@ if ($_COOKIE['user'] == '') {
                         <div class="jam-title row">
                             <p style="margin-left: 225px; margin-top: 130px">Нет мероприятий</p>
                         </div>
-                        
                     </a>';
                 }
 

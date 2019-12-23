@@ -40,7 +40,7 @@ if ($_COOKIE['user'] == '') {
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-6 jam">
-                <form action="">
+                <form action="server.php" method="POST">
                     <div class="row jam-header">
                         <div class="name">
                             <h5>Настройки</h5>

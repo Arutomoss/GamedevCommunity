@@ -27,16 +27,16 @@ if ($_COOKIE['user'] == '') {
                     <p class="panel-header">Мероприятия</p>
                 </div>
                 <div class="jams-panel-links row pd-lr-35">
-                    <a href="#">Все мероприятия
+                    <a href="jams.php?select=all" class="all">Все мероприятия
                         <svg width="4" height="4" viewBox="0 0 4 4" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <circle cx="2" cy="2" r="2" fill="white" />
                         </svg></a>
-                    <a href="#">Мои мероприятия
+                    <a href="jams.php?select=my" class="my">Мои мероприятия
                         <svg width="4" height="4" viewBox="0 0 4 4" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <circle cx="2" cy="2" r="2" fill="white" />
                         </svg>
                     </a>
-                    <a href="#">Активные мероприятия
+                    <a href="jams.php?select=active" class="active">Активные мероприятия
                         <svg width="4" height="4" viewBox="0 0 4 4" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <circle cx="2" cy="2" r="2" fill="white" />
                         </svg>
@@ -50,12 +50,29 @@ if ($_COOKIE['user'] == '') {
                 <?php
                 require 'php/events.php';
                 require 'php/connect.php';
-                $jams = getJams(30);
 
-                for ($i = 0; $i < count($jams); $i++) {
-                    $event_id = $jams[$i]['event_id'];
-                    $photo = mysqli_fetch_assoc(mysqli_query($conn, "SELECT `link_photo` FROM `photo` WHERE event_id = '$event_id'"));
-                    echo '<a href="jam.php?event_id=' . $jams[$i]['event_id'] . '" class="jam row ml-1">
+                if ($_GET['select'] == 'all') {
+                }
+
+                switch ($_GET['select']) {
+                    case 'all':
+                        $jams = getJams(50);
+                        break;
+                    case 'my':
+                        $jams = getUserJams(50, $_COOKIE['user']);
+                        break;
+                    case 'active':
+                        $jams = getActiveJams(50);
+                        break;
+                    default:
+                        $jams = getJams(50);
+                }
+
+                if (count($jams) > 0) {
+                    for ($i = 0; $i < count($jams); $i++) {
+                        $event_id = $jams[$i]['event_id'];
+                        $photo = mysqli_fetch_assoc(mysqli_query($conn, "SELECT `link_photo` FROM `photo` WHERE event_id = '$event_id'"));
+                        echo '<a href="jam.php?event_id=' . $jams[$i]['event_id'] . '" class="jam row ml-1">
                     <div class="content-source">
                       <!--  <p style="visibility: hidden;" id="event_id">' . $jams[$i]['event_id'] . '</p> -->
                         <img src="' . $photo['link_photo'] . '" class="img-fluid" alt="">
@@ -77,7 +94,16 @@ if ($_COOKIE['user'] == '') {
                         </div>
                     </div>
                 </a>';
+                    }
+                } else {
+                    echo '<div class="jam_select row">
+                        <div class="jam-title_select row">
+                            <p>У вас нет мероприятий</p>
+                        </div>
+                    </div>';
                 }
+
+
 
                 $conn->close();
                 ?>

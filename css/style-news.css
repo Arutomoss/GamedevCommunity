@@ -194,8 +194,8 @@ justify - горизонтальное выравнивание
 }
 
 .content-source {
-    width: 630px;
-    height: 340px;
+    min-width: 630px;
+    max-height: 340px;
     overflow: hidden;
     border-radius: 15px;
     border: 1px solid rgb(61, 61, 61);
@@ -261,7 +261,7 @@ justify - горизонтальное выравнивание
 }
 
 .actual-panel {
-    height: 315px;
+    max-height: 315px;
     width: 315px;
     background-color: #333333;
     border-radius: 15px;
@@ -272,7 +272,7 @@ justify - горизонтальное выравнивание
 }
 
 .actual-panel-title {
-    height: 45px;
+    height: 50px;
     display: flex;
     border-bottom: 0.8px solid #3D3D3D;    
 }
@@ -280,15 +280,35 @@ justify - горизонтальное выравнивание
 .actual-panel-title p {
     font-family: "Montserrat";
     font-size: 18px;
-    font-weight: bold;
+    font-weight: 800;
+    letter-spacing: 0.5px;
     color: #eeeeee;
     padding-left: 20px;
-    padding-top: 18px;
+    padding-top: 16px;
     align-self: center;
 }
 
+.actual-panel-bottom {
+    text-decoration: none;
+    display: block;
+    height: 50px;
+    padding-top: 13px;
+    padding-left: 20px;
+    color: #EEEEEE;
+    font-family: Montserrat;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.actual-panel-bottom:hover {
+    text-decoration: none;
+    cursor: pointer;
+    border-bottom: none;
+    color: #EEEEEE;
+}
+
 .actual-panel-content {
-    height: 226px;
+    /* height: 226px; */
     border-bottom: 0.8px solid #3D3D3D;
 }
 

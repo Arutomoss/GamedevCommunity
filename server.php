@@ -15,7 +15,7 @@ if (isset($_POST['photo'])) {
         $arr['path_mini'] = "http://gamedevcommunity/" . $uploadfile;
         $arr['file_mini'] = $file;
         //  Save in DB
-        $conn = mysqli_connect("localhost", "root", "", "gamedc");
+
 
         $link_photo = $arr['path_mini'];
         mysqli_query($conn, "INSERT INTO `photo`(link_photo) VALUE ('$link_photo')");
@@ -26,14 +26,15 @@ if (isset($_POST['photo'])) {
         $user_id = $_COOKIE['user'];
         mysqli_query($conn, "UPDATE `users` SET `photo_id` = '$ph_id' WHERE `user_id` = '$user_id'");
 
-        $short_description = $_POST['short_description'];
-        mysqli_query($conn, "UPDATE `users` SET `short_description` = '$short_description' WHERE `user_id` = '$user_id'");
+        // $short_description = $_POST['short_description'];
+        // mysqli_query($conn, "UPDATE `users` SET `short_description` = '$short_description' WHERE `user_id` = '$user_id'");
 
         $conn->close();
     }
 } else {
     $uploadfile = $uploaddir . basename($_FILES['file']['name']);
     $arr = array();
+
     //crop
     if (move_uploaded_file($_FILES['file']['tmp_name'], $uploadfile)) {
         $arr['status'] = 'success';
@@ -43,10 +44,21 @@ if (isset($_POST['photo'])) {
         $arr['status'] = 'fail';
     }
 }
+
+if (isset($_POST['short_description'])) {
+    $conn = mysqli_connect("localhost", "root", "", "gamedc");
+    $user_id = $_COOKIE['user'];
+    $short_description = $_POST['short_description'];
+    mysqli_query($conn, "UPDATE `users` SET `short_description` = '$short_description' WHERE `user_id` = '$user_id'");
+    $conn->close();
+    header('Location: http://gamedevcommunity/settings.php');
+}
+
 function str_random($length)
 {
     return substr(md5(microtime()), 0, $length);
 }
+
 header('Content-type: application/json');
 echo json_encode($arr);
 exit();

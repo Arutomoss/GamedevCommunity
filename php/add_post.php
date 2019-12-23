@@ -69,12 +69,12 @@ if ($mysql) {
 
         $ph_id = $row['photo_id'];
 
-        mysqli_query($mysql, "INSERT INTO `posts`(user_id, post_text, photo_id, amount_likes, amount_reposts) 
-            VALUE ('$user_id', '$post_text', '$ph_id', 0, 0)");
+        mysqli_query($mysql, "INSERT INTO `posts`(user_id, post_text, photo_id, date_create, amount_likes, amount_reposts) 
+            VALUE ('$user_id', '$post_text', '$ph_id', NOW(), 0, 0)");
         echo '1';
     } else {
-        mysqli_query($mysql, "INSERT INTO `posts`(user_id, post_text, amount_likes, amount_reposts) 
-        VALUE ('$user_id', '$post_text', 0, 0)");
+        mysqli_query($mysql, "INSERT INTO `posts`(user_id, post_text, date_create, amount_likes, amount_reposts) 
+        VALUE ('$user_id', '$post_text', NOW(), 0, 0)");
         echo '2';
     }
 } else

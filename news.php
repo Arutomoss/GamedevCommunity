@@ -110,6 +110,7 @@ if ($_COOKIE['user'] == '') {
                 $user_photo_id = $user['photo_id'];
                 $user_photo = mysqli_fetch_assoc(mysqli_query($conn, "SELECT `link_photo` FROM `photo` WHERE `photo_id` = '$user_photo_id'"));
 
+                $month = substr($posts[$i]['date_create'], 5, 2);
                 $photo_id = $posts[$i]['photo_id'];
                 $photo = mysqli_fetch_assoc(mysqli_query($conn, "SELECT `link_photo` FROM `photo` WHERE `photo_id` = '$photo_id'"));
                 echo '<div class="content">
@@ -120,7 +121,7 @@ if ($_COOKIE['user'] == '') {
                         <div class="content-headder">
                             <div class="content-headder-title">
                                 <p>' . $user['first_name'] . ' ' . $user['last_name'] . '</p>
-                                <p class="title-info">@' . $user['user_login'] . ' • ' . $posts[$i]['date_create'] . ' мин</p>
+                                <p class="title-info">@' . $user['user_login'] . ' • ' . substr($posts[$i]['date_create'], 8, 2) . ' ' . getMonth($month).'</p>
                             </div>
                             <div class="content-discription">
                                 <p>' . $posts[$i]['post_text'] . '</p>
@@ -141,7 +142,7 @@ if ($_COOKIE['user'] == '') {
                                 <p>' . $posts[$i]['amount_reposts'] . '</p>
                             </div>
                             <div class="content-bottom-panel-likes">
-                            <a href="">
+                            <a href="#">
                                 <svg width="17" height="15" viewBox="0 0 17 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M8.5 15L8.2 14.7475C1.75 9.44444 0 7.57576 0 4.54545C0 2.0202 2 0 4.5 0C6.55 0 7.7 1.16162 8.5 2.07071C9.3 1.16162 10.45 0 12.5 0C15 0 17 2.0202 17 4.54545C17 7.57576 15.25 9.44444 8.8 14.7475L8.5 15ZM4.5 1.0101C2.55 1.0101 1 2.57576 1 4.54545C1 7.12121 2.6 8.83838 8.5 13.6869C14.4 8.83838 16 7.12121 16 4.54545C16 2.57576 14.45 1.0101 12.5 1.0101C10.75 1.0101 9.8 2.07071 9.05 2.92929L8.5 3.58586L7.95 2.92929C7.2 2.07071 6.25 1.0101 4.5 1.0101Z" fill="#C1C1C1"/>
                                 </svg>
@@ -177,18 +178,18 @@ if ($_COOKIE['user'] == '') {
                             $cur_photo_id = $users[$i]['photo_id'];
                             $cur_photo = mysqli_fetch_assoc(mysqli_query($conn, "SELECT `link_photo` FROM `photo` WHERE `photo_id` = '$cur_photo_id'")) or die("ERROR: " . mysqli_error($conn));
                             echo '<div class="actual-panel-item">
-                                    <a href="mypage.php?user_id=' . $cur_user_id . '">
-                                        <img src="' . $cur_photo['link_photo'] . '" alt="">
-                                    </a>
-                                        <div>
-                                            <div class="actual-panel-item-jam">
-                                                <p><a href="mypage.php?user_id=' . $cur_user_id . '">' . $users[$i]['first_name'] . ' ' . $users[$i]['last_name'] . '</a></p>
-                                            </div>
-                                            <div class="actual-panel-item-discription">
-                                                <p>' . $users[$i]['short_description'] . '</p>
-                                            </div>
+                                        <a href="mypage.php?user_id=' . $cur_user_id . '">
+                                            <img src="' . $cur_photo['link_photo'] . '" alt="">
+                                        </a>
+                                    <div>
+                                        <div class="actual-panel-item-jam">
+                                            <p><a href="mypage.php?user_id=' . $cur_user_id . '">' . $users[$i]['first_name'] . ' ' . $users[$i]['last_name'] . '</a></p>
                                         </div>
-                                    </div>';
+                                        <div class="actual-panel-item-discription">
+                                            <p>' . $users[$i]['short_description'] . '</p>
+                                        </div>
+                                    </div>
+                                </div>';
                         }
                     }
 
@@ -206,6 +207,7 @@ if ($_COOKIE['user'] == '') {
                         </div>
                     </div> -->
                 </div>
+                <a href="#" class="actual-panel-bottom">Показать еще</a>
             </div>
         </div>
     </div>
