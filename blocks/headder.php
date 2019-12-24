@@ -9,20 +9,27 @@
         <nav class="nav">
             <a href="../news.php">
                 Новости
-                <svg width="4" height="4" viewBox="0 0 4 4" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="2" cy="2" r="2" fill="white" />
-                </svg>
+                <div style="width: 100%; text-align: center; display: flex; justify-content: center">
+                    <svg width="4" height="4" viewBox="0 0 4 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="2" cy="2" r="2" fill="white" />
+                    </svg>
+                </div>
             </a>
             <a href="../messages.php">
                 Сообщения
-                <svg width="4" height="4" viewBox="0 0 4 4" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="2" cy="2" r="2" fill="white" />
-                </svg></a>
+                <div style="width: 100%; text-align: center; display: flex; justify-content: center">
+                    <svg width="4" height="4" viewBox="0 0 4 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="2" cy="2" r="2" fill="white" />
+                    </svg>
+                </div>
+            </a>
             <a href="../jams.php">
                 Мероприятия
-                <svg width="4" height="4" viewBox="0 0 4 4" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="2" cy="2" r="2" fill="white" />
-                </svg>
+                <div style="width: 100%; text-align: center; display: flex; justify-content: center">
+                    <svg width="4" height="4" viewBox="0 0 4 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="2" cy="2" r="2" fill="white" />
+                    </svg>
+                </div>
             </a>
         </nav>
         <div class="user-h">

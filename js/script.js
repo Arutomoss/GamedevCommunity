@@ -18,7 +18,7 @@ jQuery(document).ready(function ($) {
             $.ajax({
                 url: 'server.php',
                 type: "POST",
-                data: 'photo=' + html + "&photo_c=" + $('input[name="photo_c"]').val() + '&short_description=' + $('input[name="short_description"]').val(),
+                data: 'photo=' + html + "&photo_c=" + $('input[name="photo_c"]').val(),
                 dataType: "json"
             })
             .done(function(html) {
@@ -72,4 +72,4 @@ jQuery(document).ready(function ($) {
             })
 
     });
-});
+}); 
