@@ -88,7 +88,11 @@ if ($_COOKIE['user'] == '') {
                         <div class="name">
                             <?php
                             require 'php/connect.php';
-                            $result = mysqli_query($conn, "SELECT photo.link_photo FROM photo INNER JOIN users on photo.photo_id = users.photo_id WHERE photo.photo_id = users.photo_id");
+                            $user_id = $_COOKIE['user'];
+                            $user = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM users WHERE user_id = '$user_id'"));
+
+                            $photo_id = $user['photo_id'];
+                            $result = mysqli_query($conn, "SELECT photo.link_photo FROM photo INNER JOIN users on photo.photo_id = users.photo_id WHERE photo.photo_id = '$photo_id'");
                             $row = mysqli_fetch_assoc($result);
 
                             echo $_COOKIE['first_name'] . ' ' . $_COOKIE['last_name'];

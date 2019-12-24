@@ -106,12 +106,7 @@ if ($_COOKIE['user'] == '') {
                     }
                     ?>
                 </form>
-                <div class="row buttons pd-lr-30">
-                    <!-- <a class="btn rounded-25 pd-lr-60 follow" role="button" href="#">Следить</a>
-                    <a class="rounded-circle send_message" role="button" href="#">
-                        <img src="img/send_message.svg" alt="">
-                    </a> -->
-                </div>
+             
             </div>
 
             <div class="jams">

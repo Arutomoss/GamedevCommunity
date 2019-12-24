@@ -92,43 +92,55 @@ function getUsers($limit)
     return resultToArray($result);
 }
 
-function getMonth($month){
-    switch($month){
+function searchUsers($user_text)
+{
+    $mysql = mysqli_connect("localhost", "root", "", "gamedc");
+
+    $result = mysqli_query($mysql, "SELECT * FROM `users` WHERE (`first_name` LIKE '%$user_text%') 
+        OR (`last_name` LIKE '%$user_text%') 
+        OR (`user_login` LIKE '%$user_text%')");
+    $mysql->close();
+    return resultToArray($result);
+}
+
+function getMonth($month)
+{
+    switch ($month) {
         case '01':
             return 'янв.';
-        break;
+            break;
         case '02':
             return 'фев.';
-        break;
+            break;
         case '03':
             return 'марта';
-        break;
+            break;
         case '04':
             return 'апр.';
-        break;
+            break;
         case '05':
             return 'мая';
-        break;
+            break;
         case '06':
             return 'июн.';
-        break;
+            break;
         case '07':
             return 'июл.';
-        break;
+            break;
         case '08':
             return 'авг.';
-        break;
+            break;
         case '09':
             return 'сен.';
-        break;
+            break;
         case '10':
             return 'окт.';
-        break;
+            break;
         case '11':
             return 'ноя.';
-        break;
+            break;
         case '12':
             return 'дек.';
-        break;
+            break;
     }
 }
