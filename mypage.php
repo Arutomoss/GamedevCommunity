@@ -73,6 +73,7 @@ if ($_COOKIE['user'] == '') {
                 </div>';
                 }
                 ?>
+
                 <?php
                 if (isset($_POST['follow']) && (count($isFollow) == 0)) {
                     $follower = $_COOKIE['user'];
@@ -114,16 +115,25 @@ if ($_COOKIE['user'] == '') {
             </div>
 
             <div class="jams">
-                <?php
-                require 'php/events.php';
-                require 'php/connect.php';
-                $jams = getUserJams(1, $user_id);
+                <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <?php
+                        require 'php/events.php';
+                        require 'php/connect.php';
+                        $jams = getActiveUserJams(4, $user_id);
 
-                if (count($jams) > 0) {
-                    for ($i = 0; $i < count($jams); $i++) {
-                        $event_id = $jams[$i]['event_id'];
-                        $photo = mysqli_fetch_assoc(mysqli_query($conn, "SELECT `link_photo` FROM `photo` WHERE event_id = '$event_id'"));
-                        echo '<a href="jam.php?event_id=' . $jams[$i]['event_id'] . '" class="jam row">
+                        if (count($jams) > 0) {
+                            for ($i = 0; $i < count($jams); $i++) {
+                                $event_id = $jams[$i]['event_id'];
+                                $photo = mysqli_fetch_assoc(mysqli_query($conn, "SELECT `link_photo` FROM `photo` WHERE event_id = '$event_id'"));
+                                if ($i == 0) {
+                                    echo '<div class="carousel-item active">';
+                                } else {
+                                    echo '
+                                    <div class="carousel-item ">';
+                                }
+                                echo '
+                        <a href="jam.php?event_id=' . $jams[$i]['event_id'] . '" class="jam row">
                         <div class="content-source">
                             <img src="' . $photo['link_photo'] . '" class="img-fluid" alt="">
                         </div>
@@ -143,10 +153,11 @@ if ($_COOKIE['user'] == '') {
                                 </div>
                             </div>
                         </div>
-                    </a>';
-                    }
-                } else {
-                    echo '<a href="#" class="jam row" style="cursor: default;">
+                    </a>
+                    </div>';
+                            }
+                        } else {
+                            echo '<a href="#" class="jam row" style="cursor: default;">
                         <div class="content-source">
                             <img src="" class="img-fluid" alt="">
                         </div>
@@ -154,113 +165,56 @@ if ($_COOKIE['user'] == '') {
                             <p style="margin-left: 225px; margin-top: 130px">Нет мероприятий</p>
                         </div>
                     </a>';
-                }
+                        }
 
-                ?>
+                        ?>
+                    </div>
 
-                <!-- <div class="content">
-                    <div class="content-icon">
-                        <img src="img/logo_light.svg" alt="" height="50px">
-                    </div>
-                    <div class="wrapp">
-                        <div class="content-headder">
-                            <div class="content-headder-title">
-                                <p>Insomnia Game News</p>
-                                <p class="title-info">@ign • 20 мин</p>
-                            </div>
-                            <div class="content-discription">
-                                <p>Sony говорит, что PS5 сможет использовать 8K графику ... но мы не ожидаем, что она сможет
-                                    достичь всего этого разрешения изначально. Вот как их консоль следующего поколения
-                                    сможет
-                                    реализовать все эти пиксели в 2020 году.</p>
-                            </div>
-                        </div>
-                        <div class="content-source_n">
-                            <img src="img/post_image_1.jpg" class="img-fluid" alt="">
-                        </div>
-                        <div class="content-bottom-panel">
-                            <div class="content-bottom-panel-comments">
-                                <img src="img/comments.svg" alt="">
-                                <p>34</p>
-                            </div>
-                            <div class="content-bottom-panel-reposts">
-                                <img src="img/reposts.svg" alt="">
-                                <p>9</p>
-                            </div>
-                            <div class="content-bottom-panel-likes">
-                                <img src="img/likes.svg" alt="">
-                                <p>734</p>
-                            </div>
-                        </div>
-                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
                 </div>
-
-                <div class="content">
-                    <div class="content-icon">
-                        <img src="img/logo_light.svg" alt="" height="50px">
-                    </div>
-                    <div class="wrapp">
-                        <div class="content-headder">
-                            <div class="content-headder-title">
-                                <p>Brakeys</p>
-                                <p class="title-info">@brakeys • 20 мин</p>
-                            </div>
-                            <div class="content-discription">
-                                <p>Today we gonna learn to "HOW WRITE A GAME WITHOUT CODE".</p>
-                            </div>
-                        </div>
-                        <div class="content-source_n">
-                            <img src="img/post_image_1.jpg" class="img-fluid" alt="">
-                        </div>
-                        <div class="content-bottom-panel">
-                            <div class="content-bottom-panel-comments">
-                                <img src="img/comments.svg" alt="">
-                                <p>2k</p>
-                            </div>
-                            <div class="content-bottom-panel-reposts">
-                                <img src="img/reposts.svg" alt="">
-                                <p>523</p>
-                            </div>
-                            <div class="content-bottom-panel-likes">
-                                <img src="img/likes.svg" alt="">
-                                <p>5k</p>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
                 <?php
                 require 'php/connect.php';
-                $posts = getPosts(30);
+                $posts = getUserPosts(30, $_GET['user_id']);
 
                 for ($i = 0; $i < count($posts); $i++) {
                     $user_id = $posts[$i]['user_id'];
-                    if ($user_id == $_COOKIE['user']) {
-                        $user = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM `users` WHERE `user_id` = '$user_id'"));
-                        $user_photo_id = $user['photo_id'];
-                        $user_photo = mysqli_fetch_assoc(mysqli_query($conn, "SELECT `link_photo` FROM `photo` WHERE `photo_id` = '$user_photo_id'"));
 
-                        $photo_id = $posts[$i]['photo_id'];
-                        $photo = mysqli_fetch_assoc(mysqli_query($conn, "SELECT `link_photo` FROM `photo` WHERE `photo_id` = '$photo_id'"));
-                        echo '<div class="content">
+                    $user = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM `users` WHERE `user_id` = '$user_id'"));
+                    $user_photo_id = $user['photo_id'];
+                    $user_photo = mysqli_fetch_assoc(mysqli_query($conn, "SELECT `link_photo` FROM `photo` WHERE `photo_id` = '$user_photo_id'"));
+
+                    $month = substr($posts[$i]['date_create'], 5, 2);
+                    $photo_id = $posts[$i]['photo_id'];
+                    $photo = mysqli_fetch_assoc(mysqli_query($conn, "SELECT `link_photo` FROM `photo` WHERE `photo_id` = '$photo_id'"));
+                    echo '<div class="content">
                     <div class="content-icon">
-                        <img src="' . $user_photo['link_photo'] . '" alt="" height="50px">
+                        <a href="mypage.php?user_id=' . $user_id . '">
+                            <img src="' . $user_photo['link_photo'] . '" alt="" height="50px">
+                        </a>
                     </div>
                     <div class="wrap_jam">
                         <div class="content-headder">
                             <div class="content-headder-title">
-                                <p>' . $user['first_name'] . ' ' . $user['last_name'] . '</p>
-                                <p class="title-info">@' . $user['user_login'] . ' • ' . $posts[$i]['date_create'] . ' мин</p>
+                            <a href="mypage.php?user_id=' . $user_id . '">' . $user['first_name'] . ' ' . $user['last_name'] . '</a>
+                                <p class="title-info">@' . $user['user_login'] . ' • ' . substr($posts[$i]['date_create'], 8, 2) . ' ' . getMonth($month) . '</p>
                             </div>
                             <div class="content-discription">
                                 <p>' . $posts[$i]['post_text'] . '</p>
                             </div>
                         </div>';
-                        if ($photo_id) {
-                            echo '<div class="content-source_n">
+                    if ($photo_id) {
+                        echo '<div class="content-source_n">
                                     <img src="' . $photo['link_photo'] . '" class="img-fluid" alt="">
                                 </div>';
-                        }
-                        echo '<div class="content-bottom-panel">
+                    }
+                    echo '<div class="content-bottom-panel">
                             <div class="content-bottom-panel-comments">
                                 <img src="img/comments.svg" alt="">
                                 <p>0</p>
@@ -280,7 +234,6 @@ if ($_COOKIE['user'] == '') {
                         </div>
                     </div>
                 </div>';
-                    }
                 }
 
                 $conn->close();

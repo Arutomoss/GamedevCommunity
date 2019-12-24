@@ -102,7 +102,7 @@ if ($_COOKIE['user'] == '') {
             <?php
             require 'php/events.php';
             require 'php/connect.php';
-            $posts = getPosts(30);
+            $posts = getFollowerPosts(30, $_COOKIE['user']);
 
             for ($i = 0; $i < count($posts); $i++) {
                 $user_id = $posts[$i]['user_id'];
@@ -115,12 +115,14 @@ if ($_COOKIE['user'] == '') {
                 $photo = mysqli_fetch_assoc(mysqli_query($conn, "SELECT `link_photo` FROM `photo` WHERE `photo_id` = '$photo_id'"));
                 echo '<div class="content">
                     <div class="content-icon">
-                        <img src="' . $user_photo['link_photo'] . '" alt="" height="50px">
+                        <a href="mypage.php?user_id='.$user_id.'">
+                            <img src="' . $user_photo['link_photo'] . '" alt="" height="50px">
+                        </a>
                     </div>
                     <div class="wrap">
                         <div class="content-headder">
                             <div class="content-headder-title">
-                                <p>' . $user['first_name'] . ' ' . $user['last_name'] . '</p>
+                                <a href="mypage.php?user_id='.$user_id.'">' . $user['first_name'] . ' ' . $user['last_name'] . '</a>
                                 <p class="title-info">@' . $user['user_login'] . ' • ' . substr($posts[$i]['date_create'], 8, 2) . ' ' . getMonth($month).'</p>
                             </div>
                             <div class="content-discription">

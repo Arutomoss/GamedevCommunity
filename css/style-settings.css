@@ -73,3 +73,7 @@ input::-webkit-input-placeholder { color: #a7a7a7; }
     height: 38px;
     border-radius: 5px;
 }
+
+.logout:hover {
+    color: rgb(230, 70, 70);
+}

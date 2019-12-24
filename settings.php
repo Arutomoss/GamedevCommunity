@@ -44,10 +44,13 @@ if ($_COOKIE['user'] == '') {
                     <div class="row jam-header">
                         <div class="name">
                             <h5>Настройки</h5>
-                            <p>Пользователь:
+                            <p>
+                                Пользователь:
                                 <?php
                                 echo $_COOKIE['first_name'] . ' ' . $_COOKIE['last_name'];
-                                ?></p>
+                                ?>
+                            </p>
+                            <a href="php/logout.php?logout=true" class="logout">Выйти</a>                    
                         </div>
                     </div>
                     <div class="col user-short-description">

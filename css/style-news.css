@@ -156,6 +156,17 @@ justify - горизонтальное выравнивание
     margin-bottom: -5px;
 }
 
+.content-headder-title a {
+    text-decoration: none;
+    color: #EEEEEE;
+    border-bottom: none;
+}
+
+.content-headder-title a:hover {
+    border-bottom: none;
+    color: #EEEEEE;
+}
+
 .title-info {
     display: flex;
     font-family: "Roboto";
@@ -177,7 +188,7 @@ justify - горизонтальное выравнивание
 }
 
 .wrap {
-    padding-top: 20px;
+    padding-top: 18px;
     padding-right: 42px;
     width: 100%;
 }
