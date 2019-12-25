@@ -94,7 +94,7 @@ if ($_COOKIE['user'] == '') {
                         </div>
                     </div>
 
-                    <button type="submit"><img src="img/send.svg" class="send" alt=""></button>
+                    <button type="submit" class="send-btn"><img src="img/send.svg" class="send" alt=""></button>
 
                 </div>
             </form>
@@ -102,7 +102,9 @@ if ($_COOKIE['user'] == '') {
             <?php
             require 'php/events.php';
             require 'php/connect.php';
-            $posts = getFollowerPosts(30, $_COOKIE['user']);
+            // $posts = getFollowerPosts(30, $_COOKIE['user']);
+
+            $posts = getPosts(30);
 
             for ($i = 0; $i < count($posts); $i++) {
                 $user_id = $posts[$i]['user_id'];
@@ -131,8 +133,8 @@ if ($_COOKIE['user'] == '') {
                         </div>';
                 if ($photo_id) {
                     echo '<div class="content-source">
-                                    <img src="' . $photo['link_photo'] . '" class="img-fluid" alt="">
-                                </div>';
+                                <img src="' . $photo['link_photo'] . '" class="img-fluid" alt="">
+                            </div>';
                 }
                 echo '<div class="content-bottom-panel">
                                 <div class="content-bottom-panel-comments">
@@ -152,8 +154,8 @@ if ($_COOKIE['user'] == '') {
                                     <p>' . $posts[$i]['amount_likes'] . '</p>
                                 </div>
                             </div>
-                    </div>
-                </div>';
+                        </div>
+                    </div>';
             }
 
             $conn->close();
@@ -214,7 +216,7 @@ if ($_COOKIE['user'] == '') {
             <div class="search">
                 <form class="search-form" method="GET">
                     <input type="text" class="search-input" name="search" placeholder="Искать здесь..." autocomplete="off">
-                    <button type="submit"><img src="img/search.svg" alt=""></button>
+                    <button type="submit" class="search-btn"><img src="img/search.svg" alt=""></button>
                 </form>
                 <?php
                 require 'php/connect.php';

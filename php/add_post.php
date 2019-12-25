@@ -28,7 +28,7 @@ if ($errorCode !== UPLOAD_ERR_OK || !is_uploaded_file($filePath)) {
     echo $outputMessage;
 }
 
-if ($errorMessages != 'Файл не был загружен.') {
+if ($outputMessage != 'Файл не был загружен.') {
     // Создадим ресурс FileInfo
     $fi = finfo_open(FILEINFO_MIME_TYPE);
 
@@ -50,18 +50,16 @@ if ($errorMessages != 'Файл не был загружен.') {
             echo 'Что-то пошло не так';
         else
             echo 'Загрузка удачна';
-    }
-
-    
+    }    
 }
 
 $user_id   = $_COOKIE['user'];
-$post_text = $_POST['post_text'];
-
+$post_text = filter_var(trim($_POST['post_text']), FILTER_SANITIZE_STRING);
 
 $mysql = mysqli_connect("localhost", "root", "", "gamedc");
 
 if ($mysql) {
+    echo 'mysqli';
     if ($link_photo) {
         mysqli_query($mysql, "INSERT INTO `photo`(link_photo) VALUE ('$link_photo')");
 
@@ -73,13 +71,13 @@ if ($mysql) {
 
         $ph_id = $row['photo_id'];
 
-        mysqli_query($mysql, "INSERT INTO `posts`(user_id, post_text, photo_id, date_create, amount_likes, amount_reposts) 
+        mysqli_query($mysql, "INSERT INTO `posts`(`user_id`, `post_text`, `photo_id`, `date_create`, `amount_likes`, `amount_reposts`) 
             VALUE ('$user_id', '$post_text', '$ph_id', NOW(), 0, 0)");
-        // echo '1';
+        echo '1';
     } else {
-        mysqli_query($mysql, "INSERT INTO `posts`(user_id, post_text, date_create, amount_likes, amount_reposts) 
+        mysqli_query($mysql, "INSERT INTO `posts`(`user_id`, `post_text`, `date_create`, `amount_likes`, `amount_reposts`) 
         VALUE ('$user_id', '$post_text', NOW(), 0, 0)");
-        // echo '2';
+        echo '2';
     }
 } else
     die('Ошибка подключения к серверу баз данных.');

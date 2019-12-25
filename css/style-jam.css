@@ -43,20 +43,20 @@ h2 {
 }
 
 .date {
-    /* background-color: rgb(160, 15, 15); */
     border-radius: 15px;
     width: auto;
+    padding-left: 0;
+    font-weight: 600;
+    font-size: 18px;
 }
 
 .dates {
     font-family: Montserrat;
     color: #EEEEEE;
-    background-color: rgb(66, 66, 66);
     border-radius: 5px;
     margin: 0;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
     padding-top: 10px;
-    padding-bottom: 3px;
 }
 
 .jam-header {

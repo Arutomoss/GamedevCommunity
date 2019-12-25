@@ -65,7 +65,7 @@ if ($_COOKIE['user'] == '') {
                         $jams = getActiveJams(50);
                         break;
                     default:
-                        $jams = getJams(50);
+                        $jams = getActiveJams(50);
                 }
 
                 if (count($jams) > 0) {

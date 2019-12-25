@@ -47,12 +47,12 @@
     cursor: pointer;
 }
 
-.whats_new button {
+.whats_new .send-btn {
     background-color: transparent;
     border: none;
 }
 
-.whats_new button:hover {
+.whats_new .send-btn:hover {
     cursor: pointer;
     background-color: #424242;
     border-radius: 5px;
@@ -211,6 +211,10 @@ justify - горизонтальное выравнивание
     border-radius: 15px;
     border: 1px solid rgb(61, 61, 61);
     margin-top: 13px;
+}
+
+.content-source img {
+    width: 630px;
 }
 
 .content-bottom-panel {
@@ -378,7 +382,7 @@ justify - горизонтальное выравнивание
 .search-input {
     height: 42px;
     width: 280px;
-    padding: 0 42px 0 15px;
+    padding: 0 42px 0 18px;
     border: none;
     outline: none;
     background: transparent;
@@ -387,6 +391,8 @@ justify - горизонтальное выравнивание
     right: 0;
     z-index: 2;
     margin-right: 20px;
+    font-family: Montserrat;
+    font-size: 15px;
 }
 
 .search-input:focus {
@@ -395,7 +401,7 @@ justify - горизонтальное выравнивание
     color: #EEEEEE;
 }
 
-button {
+.search-btn {
     background: #333333;
     border: none;
     height: 42px;
@@ -408,7 +414,13 @@ button {
     padding-left: 2px;
 }
 
-button:before {
+.search-btn img {
+    padding-bottom: 4px;
+    padding-left: 6px;
+    height: 22px;
+}
+
+.search-btn:before {
     font-family: FontAwesome;
     font-size: 16px;
     color: #F9F0DA;

@@ -272,6 +272,10 @@ body {
     margin-top: 13px;
 }
 
+.content-source_n img {
+    width: 630px;
+}
+
 .content-bottom-panel {
     padding-top: 10px;
     margin-bottom: 11px;

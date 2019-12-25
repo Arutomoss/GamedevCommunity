@@ -14,7 +14,7 @@ body{
 .container{
     background-color: #292929;
     border-radius: 25px;
-    height: 590px;
+    height: 580px;
     width: 450px;
     margin: 75px auto;
 }
@@ -37,7 +37,7 @@ body{
 .registration-form p{
     color: #EEEEEE;
     font-family: "Montserrat";
-    font-size: 38px;
+    font-size: 36px;
     font-weight: 400;
     text-align: center;
     padding-top: 50px;
@@ -67,7 +67,7 @@ form button{
     border: none;
     display: block;
     margin: 0 auto;
-    margin-top: 55px;
+    margin-top: 50px;
     margin-bottom: 10px;
     height: 38px;
 }

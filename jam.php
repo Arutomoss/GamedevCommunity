@@ -42,6 +42,8 @@ if ($_COOKIE['user'] == '') {
 
     $follower = $_COOKIE['user'];
 
+    $amount_members = mysqli_fetch_assoc(mysqli_query($conn, "SELECT count(`user_id`) as amount FROM `event_members` WHERE `event_id` = '$event_id'"));
+
     $conn->close();
     ?>
 
@@ -65,6 +67,7 @@ if ($_COOKIE['user'] == '') {
                             <p><?php echo $event['event_short_description']; ?></p>
                         </div>
                     </div>
+                    <p style="color: #EEEEEE; font-family: Montserrat;">Количество участников: <?php echo $amount_members['amount']; ?></p>
                     <div class="dates row justify-content-center justify-content-between">
                         <div class="col-5 date">
                             <label for="inputDate">Дата начала: <?php echo substr($event['event_date_start'], 0, 10); ?></label>

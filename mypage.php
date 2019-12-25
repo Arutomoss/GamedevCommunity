@@ -2,6 +2,12 @@
 if ($_COOKIE['user'] == '') {
     header('Location: http://gamedevcommunity/sign_in.php ');
 }
+$cur = $_GET['user_id'];
+$mysql = mysqli_connect("localhost", "root", "", "gamedc");
+$isExists = mysqli_fetch_assoc(mysqli_query($mysql, "SELECT * FROM `users` WHERE `user_id` = '$cur'"));
+if (count($isExists) == 0){
+    header('Location: http://gamedevcommunity/mypage.php?user_id='.$_COOKIE['user'].' ');
+}
 ?>
 
 <!DOCTYPE html>
@@ -40,6 +46,8 @@ if ($_COOKIE['user'] == '') {
                         $follower = $_COOKIE['user'];
                         $isFollow = mysqli_fetch_assoc(mysqli_query($conn, "SELECT `follower_id` FROM `subscriptions` WHERE (user_id = '$user_id') AND (`follower_id` = '$follower')"));
 
+                        $amount_followers = mysqli_fetch_assoc(mysqli_query($conn, "SELECT count(`follower_id`) as amount FROM `subscriptions` WHERE `user_id` = '$user_id'"));
+
                         $my_events = mysqli_fetch_assoc(mysqli_query($conn, "SELECT count(event_id) as amount FROM events WHERE user_id = '$user_id'"));
 
                         $photo_id = $user['photo_id'];
@@ -59,7 +67,7 @@ if ($_COOKIE['user'] == '') {
                     </div>
                 </div>
                 <div class="info row pd-lr-35">
-                    <p>Подписчики: <?php echo count($isFollow); ?></p>
+                    <p>Подписчики: <?php echo $amount_followers['amount']; ?></p>
                     <p>Активные мероприятия: <?php echo $amount_active_jams['amount']; ?></p>
                     <p>Мои мероприятия: <?php echo $my_events['amount']; ?></p>
                 </div>
@@ -106,64 +114,53 @@ if ($_COOKIE['user'] == '') {
                     }
                     ?>
                 </form>
-             
+
             </div>
 
             <div class="jams">
-                <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
-                    <div class="carousel-inner">
-                        <?php
-                        require 'php/events.php';
-                        require 'php/connect.php';
-                        $jams = getActiveUserJams(4, $user_id);
 
-                        if (count($jams) > 0) {
-                            for ($i = 0; $i < count($jams); $i++) {
-                                $event_id = $jams[$i]['event_id'];
-                                $photo = mysqli_fetch_assoc(mysqli_query($conn, "SELECT `link_photo` FROM `photo` WHERE event_id = '$event_id'"));
-                                if ($i == 0) {
-                                    echo '<div class="carousel-item active">';
-                                } else {
-                                    echo '
-                                    <div class="carousel-item ">';
-                                }
-                                echo '
-                        <a href="jam.php?event_id=' . $jams[$i]['event_id'] . '" class="jam row">
-                        <div class="content-source">
-                            <img src="' . $photo['link_photo'] . '" class="img-fluid" alt="">
-                        </div>
-                        <div class="jam-title row">
-                            <p>' . $jams[$i]['event_name'] . '</p>
-                        </div>
-                        <div class="jam-description row align-self-end justify-content-between">
-                            <div class="short-description align-self-center">
-                                <p>' . $jams[$i]['event_short_description'] . '</p>
-                            </div>
-                            <div class="row" style="margin-right: 30px;">
-                                <div class="jam-date-start date-style align-self-center">
-                                    <p>' . substr($jams[$i]['event_date_start'], 5, 2) . '.' . substr($jams[$i]['event_date_start'], 8, 2) . '</p>
-                                </div>
-                                <div class="jam-date-end date-style align-self-center">
-                                    <p>' . substr($jams[$i]['event_date_end'], 5, 2) . '.' . substr($jams[$i]['event_date_end'], 8, 2) . '</p>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                    </div>';
-                            }
+                <?php
+                require 'php/events.php';
+                require 'php/connect.php';
+                $jams = getActiveUserJams(20, $user_id);
+
+                if (count($jams) > 0) {
+                    for ($i = 0; $i < count($jams); $i++) {
+                        $event_id = $jams[$i]['event_id'];
+                        $photo = mysqli_fetch_assoc(mysqli_query($conn, "SELECT `link_photo` FROM `photo` WHERE event_id = '$event_id'"));
+                        if ($i == 0) {
+                            echo '<div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+                                            <div class="carousel-inner">
+                                                <div class="carousel-item active">';
                         } else {
-                            echo '<a href="#" class="jam row" style="cursor: default;">
-                        <div class="content-source">
-                            <img src="" class="img-fluid" alt="">
-                        </div>
-                        <div class="jam-title row">
-                            <p style="margin-left: 225px; margin-top: 130px">Нет мероприятий</p>
-                        </div>
-                    </a>';
+                            echo '
+                                    <div class="carousel-item ">';
                         }
-
-                        ?>
-                    </div>
+                        echo '
+                        <a href="jam.php?event_id=' . $jams[$i]['event_id'] . '" class="jam row">
+                            <div class="content-source">
+                                <img src="' . $photo['link_photo'] . '" class="img-fluid" alt="">
+                            </div>
+                            <div class="jam-title row">
+                                <p>' . $jams[$i]['event_name'] . '</p>
+                            </div>
+                            <div class="jam-description row align-self-end justify-content-between">
+                                <div class="short-description align-self-center">
+                                    <p>' . $jams[$i]['event_short_description'] . '</p>
+                                </div>
+                                <div class="row" style="margin-right: 30px;">
+                                    <div class="jam-date-start date-style align-self-center">
+                                        <p>' . substr($jams[$i]['event_date_start'], 5, 2) . '.' . substr($jams[$i]['event_date_start'], 8, 2) . '</p>
+                                    </div>
+                                    <div class="jam-date-end date-style align-self-center">
+                                        <p>' . substr($jams[$i]['event_date_end'], 5, 2) . '.' . substr($jams[$i]['event_date_end'], 8, 2) . '</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>';
+                    }
+                    echo '</div>
 
                     <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -173,7 +170,20 @@ if ($_COOKIE['user'] == '') {
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="sr-only">Next</span>
                     </a>
-                </div>
+                </div>';
+                } else {
+                    echo '<a href="#" class="jam row" style="cursor: default;">
+                                    <div class="content-source">
+                                        <img src="" class="img-fluid" alt="">
+                                    </div>
+                                    <div class="jam-title row">
+                                        <p style="margin-left: 225px; margin-top: 130px">Нет мероприятий</p>
+                                    </div>
+                                </a>';
+                }
+
+                ?>
+
                 <?php
                 require 'php/connect.php';
                 $posts = getUserPosts(30, $_GET['user_id']);

@@ -31,7 +31,7 @@ function getActiveUserJams($limit, $user_id)
 {
     $mysql = mysqli_connect("localhost", "root", "", "gamedc");
 
-    $result = mysqli_query($mysql, "SELECT * FROM `events` INNER JOIN `event_members` on `events`.`event_id` = `event_members`.`event_id` WHERE (`events`.`event_date_end` > NOW()) AND (`events`.`user_id` = '$user_id') AND (`event_members`.`user_id` = '$user_id') ORDER BY `events`.`event_id` DESC LIMIT $limit");
+    $result = mysqli_query($mysql, "SELECT * FROM `events` INNER JOIN `event_members` on `events`.`event_id` = `event_members`.`event_id` WHERE (`events`.`event_date_end` > NOW()) AND (`event_members`.`user_id` = '$user_id') ORDER BY `events`.`event_id` DESC LIMIT $limit");
     $mysql->close();
     return resultToArray($result);
 }
