@@ -1,9 +1,55 @@
+<?php
+if (isset($_COOKIE['user'])) {
+    header('Location: http://gamedevcommunity/news.php ');
+}
+
+$mysql = mysqli_connect("localhost", "root", "", "gamedc");
+
+$login = filter_var(trim(htmlspecialchars($_POST['login'])), FILTER_SANITIZE_STRING);
+$pass = filter_var(trim(htmlspecialchars($_POST['pass'])), FILTER_SANITIZE_STRING);
+
+$errors = array();
+
+if (isset($_POST['do_login'])){
+
+    if (!empty($login) && !empty($pass)) {
+
+        $query = "SELECT * FROM `users` WHERE `user_login` = '$login'";
+        $data = mysqli_query($mysql, $query);
+    
+        if (mysqli_num_rows($data) != 0) {
+    
+            $pass = md5($pass . "3jk4n23fJ");
+            $query = "SELECT * FROM `users` WHERE `user_pass` = '$pass'";
+            $data = mysqli_query($mysql, $query);
+    
+            if (mysqli_num_rows($data) != 0) {
+
+                $result = $mysql->query("SELECT * FROM `users` WHERE `user_login` = '$login' AND `user_pass` = '$pass'");
+            
+                $user = $result->fetch_assoc();
+
+                setcookie('user', $user['user_id'], time() + 3600 * 30, "/");
+                setcookie('user_login', $user['user_login'], time() + 3600 * 30, "/");
+                setcookie('first_name', $user['first_name'], time() + 3600 * 30, "/");
+                setcookie('last_name', $user['last_name'], time() + 3600 * 30, "/");
+                $mysql->close();
+                header('Location: http://gamedevcommunity/news.php ');
+            } else {
+                $errors = 'Неверный пароль';
+            }
+        } else {
+            $errors = "Такой пользователь не найден!";
+        }
+    } else {
+        $errors = 'Заполните все поля';
+    }
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
-
-<!-- <?php
-        require "db.php";
-        ?> -->
 
 <head>
     <meta charset="UTF-8">
@@ -22,12 +68,17 @@
 
         <div class="container">
             <div class="registration-form">
-                <form action="php/authorization.php" method="POST">
+                <form action="sign_in.php" method="POST">
                     <p>Авторизация</p>
-                    <input type="text" placeholder="Введите логин или почту" name="login">
+                    <input type="text" placeholder="Введите логин или почту" name="login" value="<?php echo $login; ?>">
                     <input type="password" placeholder="Введите пароль" name="pass">
 
-                    <button type="submit" name="do_signup"><img src="img/btn_signin.svg" alt=""></button>
+                    <?php if ($errors) {
+                        echo '<p style="position: relative; font-size: 14px; text-align: center; width: 100%; padding:0; margin: 0;
+                        margin-bottom: -32px; color: rgb(255, 64, 64);">' . $errors . '</p>';
+                    } ?>
+
+                    <button type="submit" name="do_login"><img src="img/btn_signin.svg" alt=""></button>
 
                     <div class="sign-in">Забыли пароль?
                         <a href="sign_in.php">Восстановить пароль</a>

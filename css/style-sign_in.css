@@ -69,6 +69,11 @@ body{
     text-align: center;
 }
 
+:active, :hover, :focus {
+    outline: 0;
+    outline-offset: 0;
+}
+
 /* form button{
     background-color: #292929;
     border: none;

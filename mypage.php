@@ -5,8 +5,8 @@ if ($_COOKIE['user'] == '') {
 $cur = $_GET['user_id'];
 $mysql = mysqli_connect("localhost", "root", "", "gamedc");
 $isExists = mysqli_fetch_assoc(mysqli_query($mysql, "SELECT * FROM `users` WHERE `user_id` = '$cur'"));
-if (count($isExists) == 0){
-    header('Location: http://gamedevcommunity/mypage.php?user_id='.$_COOKIE['user'].' ');
+if (count($isExists) == 0) {
+    header('Location: http://gamedevcommunity/mypage.php?user_id=' . $_COOKIE['user'] . ' ');
 }
 ?>
 
@@ -37,6 +37,8 @@ if (count($isExists) == 0){
                     <div class="user-photo-panel">
                         <?php
                         require 'php/connect.php';
+                        require 'php/events.php';
+
                         $result = mysqli_query($conn, "SELECT photo.link_photo FROM photo INNER JOIN users on photo.photo_id = users.photo_id WHERE photo.photo_id = users.photo_id");
                         $row = mysqli_fetch_assoc($result);
 
@@ -53,8 +55,8 @@ if (count($isExists) == 0){
                         $photo_id = $user['photo_id'];
                         $photo = mysqli_fetch_assoc(mysqli_query($conn, "SELECT `link_photo` FROM `photo` WHERE `photo_id` = '$photo_id'"));
 
-                        $amount_active_jams = mysqli_fetch_assoc(mysqli_query($conn, "SELECT count(`event_id`) as amount FROM `event_members` WHERE `user_id` = '$user_id'"));
-
+                        $amount_active_jams = getAmountActiveUserJams($user_id);
+                        // mysqli_fetch_assoc(mysqli_query($conn, "SELECT count(`event_members`.`event_id`) as amount FROM `event_members` INNER JOIN `events` on `event_members`.`user_id` = `events`.`user_id` WHERE (`event_members`.`user_id` = '$user_id') AND (`events`.`event_date_end` > NOW())"));
                         $conn->close();
                         ?>
                         <img src="<?php echo $photo['link_photo']; ?>" alt="" height="65px" class="rounded-circle">
@@ -68,8 +70,8 @@ if (count($isExists) == 0){
                 </div>
                 <div class="info row pd-lr-35">
                     <p>Подписчики: <?php echo $amount_followers['amount']; ?></p>
-                    <p>Активные мероприятия: <?php echo $amount_active_jams['amount']; ?></p>
-                    <p>Мои мероприятия: <?php echo $my_events['amount']; ?></p>
+                    <p>Активные мероприятия: <?php echo $amount_active_jams; ?></p>
+                    <p>Созданные мероприятия: <?php echo $my_events['amount']; ?></p>
                 </div>
                 <?php
                 if ($_COOKIE['user'] == $user['user_id']) {
@@ -120,7 +122,6 @@ if (count($isExists) == 0){
             <div class="jams">
 
                 <?php
-                require 'php/events.php';
                 require 'php/connect.php';
                 $jams = getActiveUserJams(20, $user_id);
 

@@ -36,6 +36,15 @@ function getActiveUserJams($limit, $user_id)
     return resultToArray($result);
 }
 
+function getAmountActiveUserJams($user_id)
+{
+    $mysql = mysqli_connect("localhost", "root", "", "gamedc");
+
+    $result = mysqli_query($mysql, "SELECT * FROM `events` INNER JOIN `event_members` on `events`.`event_id` = `event_members`.`event_id` WHERE (`events`.`event_date_end` > NOW()) AND (`event_members`.`user_id` = '$user_id') ORDER BY `events`.`event_id`");
+    $mysql->close();
+    return mysqli_num_rows($result);
+}
+
 function getPosts($limit)
 {
     $mysql = mysqli_connect("localhost", "root", "", "gamedc");

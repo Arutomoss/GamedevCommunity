@@ -74,31 +74,6 @@ if (isset($_POST['do_signup'])) {
     } else {
         $errors = 'Не все поля заполнены';
     }
-
-// if (mb_strlen($login) < 3 || mb_strlen($login) > 25) {
-    //     $errors = 'Длина логина должна быть больше 3 и меньше 25 символов!';
-    // } else if (mb_strlen($pass) < 6 || mb_strlen($pass) > 30) {
-    //     $errors = 'Длина пароля должна быть больше 6 и меньше 30 символов!';
-    // }
-    // if (preg_match("#^[aA-zZ0-9\-_]+$#", $login) && (preg_match("/^(?:[a-z0-9]+(?:[-_.]?[a-z0-9]+)?@[a-z0-9_.-]+(?:\.?[a-z0-9]+)?\.[a-z]{2,5})$/i", $mail))) {
-
-    //     $pass = md5($pass . "3jk4n23fJ");
-
-    //     $result = $mysql->query("INSERT INTO `users` (`first_name`, `last_name`, `user_login`, `user_pass`, `user_mail`) 
-    //             VALUE ('$first_name', '$last_name', '$login', '$pass', '$mail')");
-
-    //     $user = mysqli_fetch_assoc(mysqli_query($mysql, "SELECT `user_id` FROM `users` WHERE (`user_login` = '$login') AND (`user_mail` = '$mail')"));
-    //     $mysql->close();
-
-    //     setcookie('user', $user['user_id'], time() + 3600 * 30, "/");
-    //     setcookie('user_login', $login, time() + 3600 * 30, "/");
-    //     setcookie('first_name', $first_name, time() + 3600 * 30, "/");
-    //     setcookie('last_name', $last_name, time() + 3600 * 30, "/");
-
-    //     header('Location: ../sign_in.php');
-    // } else {
-    //     $errors = 'Неверно заполнены поля!';
-    // }
 }
 ?>
 

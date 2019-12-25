@@ -102,9 +102,9 @@ if ($_COOKIE['user'] == '') {
             <?php
             require 'php/events.php';
             require 'php/connect.php';
-            // $posts = getFollowerPosts(30, $_COOKIE['user']);
+            $posts = getFollowerPosts(30, $_COOKIE['user']);
 
-            $posts = getPosts(30);
+            // $posts = getPosts(30);
 
             for ($i = 0; $i < count($posts); $i++) {
                 $user_id = $posts[$i]['user_id'];
