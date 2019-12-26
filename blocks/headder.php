@@ -2,10 +2,6 @@
 
 <header class="d-flex flex-column justify-content-center">
     <div class="h_container">
-        <!-- <div class="search">
-            <input type="search" name="search" class="srch rounded-25 border-0 align-self-end" autocomplete="off" placeholder="Поиск">
-        </div> -->
-        <!-- <div class="logo"></div> -->
         <nav class="nav">
             <a href="../news.php">
                 Новости

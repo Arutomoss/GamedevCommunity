@@ -119,27 +119,6 @@ if ($_COOKIE['user'] == '') {
         </div>
     </div>
 
-
-    <!-- 
-    <script>
-        function readURL(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-
-                reader.onload = function(e) {
-                    $('#img-source').attr('src', e.target.result);
-                }
-
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
-
-        $("#choose-photo").change(function() {
-            readURL(this);
-        });
-    </script> -->
-
-
     <script src="js/main.js"></script>
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="js/popper.min.js"></script>

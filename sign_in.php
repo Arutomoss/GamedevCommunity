@@ -70,7 +70,7 @@ if (isset($_POST['do_login'])){
             <div class="registration-form">
                 <form action="sign_in.php" method="POST">
                     <p>Авторизация</p>
-                    <input type="text" placeholder="Введите логин или почту" name="login" value="<?php echo $login; ?>">
+                    <input type="text" placeholder="Введите логин" name="login" value="<?php echo $login; ?>">
                     <input type="password" placeholder="Введите пароль" name="pass">
 
                     <?php if ($errors) {
@@ -90,8 +90,6 @@ if (isset($_POST['do_login'])){
             </div>
         </div>
     </div>
-
-    <!-- <script src="js/main.js"></script> -->
 </body>
 
 </html>

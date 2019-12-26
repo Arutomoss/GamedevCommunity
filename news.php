@@ -86,7 +86,6 @@ if ($_COOKIE['user'] == '') {
                         <path d="M1 1L1 27" stroke="#4A4A4A" stroke-linecap="round" />
                     </svg>
 
-                    <!-- <input type="text" placeholder="Что нового?" style="color: #eeeeee;"> -->
                     <div>
                         <textarea rows="1" style="height:1em; color: #eeeeee;" id="post_text" name="post_text" placeholder="Что нового?" maxlength="400"></textarea>
                         <div class='preview-img'>
@@ -103,8 +102,6 @@ if ($_COOKIE['user'] == '') {
             require 'php/events.php';
             require 'php/connect.php';
             $posts = getFollowerPosts(30, $_COOKIE['user']);
-
-            // $posts = getPosts(30);
 
             for ($i = 0; $i < count($posts); $i++) {
                 $user_id = $posts[$i]['user_id'];
@@ -199,17 +196,6 @@ if ($_COOKIE['user'] == '') {
 
                     $conn->close();
                     ?>
-                    <!-- <div class="actual-panel-item">
-                        <img src="img/logo_light.svg" alt="">
-                        <div>
-                            <div class="actual-panel-item-jam">
-                                <p>August JAM</p>
-                            </div>
-                            <div class="actual-panel-item-discription">
-                                <p>Краткое описание мероприятия</p>
-                            </div>
-                        </div>
-                    </div> -->
                 </div>
                 <a href="#" class="actual-panel-bottom">Показать еще</a>
             </div>

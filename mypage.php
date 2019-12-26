@@ -56,7 +56,7 @@ if (count($isExists) == 0) {
                         $photo = mysqli_fetch_assoc(mysqli_query($conn, "SELECT `link_photo` FROM `photo` WHERE `photo_id` = '$photo_id'"));
 
                         $amount_active_jams = getAmountActiveUserJams($user_id);
-                        // mysqli_fetch_assoc(mysqli_query($conn, "SELECT count(`event_members`.`event_id`) as amount FROM `event_members` INNER JOIN `events` on `event_members`.`user_id` = `events`.`user_id` WHERE (`event_members`.`user_id` = '$user_id') AND (`events`.`event_date_end` > NOW())"));
+                        
                         $conn->close();
                         ?>
                         <img src="<?php echo $photo['link_photo']; ?>" alt="" height="65px" class="rounded-circle">
@@ -105,7 +105,6 @@ if (count($isExists) == 0) {
                 ?>
                 <form method="POST">
                     <?php
-                    // $isFollow = mysqli_fetch_assoc(mysqli_query($conn, "SELECT `follower_id` FROM `subscriptions` WHERE (user_id = '$user_id') AND (`follower_id` = '$follower')"));
 
                     if ($_COOKIE['user'] != $user_id) {
                         if (count($isFollow) == 0) {

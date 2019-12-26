@@ -41,12 +41,15 @@ if (isset($_POST['photo'])) {
     }
 }
 
-if (isset($_POST['short_description'])) {
+if (isset($_POST['short_description']) && ($_POST['short_description'] != '')) {
     $conn = mysqli_connect("localhost", "root", "", "gamedc");
     $user_id = $_COOKIE['user'];
     $short_description = $_POST['short_description'];
     mysqli_query($conn, "UPDATE `users` SET `short_description` = '$short_description' WHERE `user_id` = '$user_id'");
     $conn->close();
+    header('Location: http://gamedevcommunity/settings.php');
+}
+else {
     header('Location: http://gamedevcommunity/settings.php');
 }
 

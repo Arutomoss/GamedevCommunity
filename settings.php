@@ -77,10 +77,6 @@ if ($_COOKIE['user'] == '') {
                     <input type="submit" class="btn btn-success pd-lr-30" value="Сохранить">
                 </form>
 
-                <!-- <div class="perscab-photoedit-img">
-                    <img src="#" alt="">
-                </div> -->
-
                 <div style="display:none">
                     <div class="profile-modal-photo box-modal">
                         <div class="box-modal_close arcticmodal-close"></div>
