@@ -50,7 +50,7 @@ if (isset($_POST['short_description']) && ($_POST['short_description'] != '')) {
     header('Location: http://gamedevcommunity/settings.php');
 }
 else {
-    header('Location: http://gamedevcommunity/settings.php');
+    // header('Location: http://gamedevcommunity/settings.php');
 }
 
 function str_random($length)
