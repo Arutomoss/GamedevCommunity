@@ -56,7 +56,7 @@ if ($outputMessage != 'Файл не был загружен.') {
 $user_id   = $_COOKIE['user'];
 $post_text = filter_var(trim($_POST['post_text']), FILTER_SANITIZE_STRING);
 
-$mysql = mysqli_connect("localhost", "root", "", "gamedc");
+$mysql = mysqli_connect("localhost", "root", "root", "gamedc");
 
 if ($mysql) {
     echo 'mysqli';

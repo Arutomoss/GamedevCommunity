@@ -3,7 +3,7 @@ if (isset($_COOKIE['user'])) {
     header('Location: http://gamedevcommunity/news.php ');
 }
 
-$mysql = mysqli_connect("localhost", "root", "", "gamedc");
+$mysql = mysqli_connect("localhost", "root", "root", "gamedc");
 
 $login = filter_var(trim(htmlspecialchars($_POST['login'])), FILTER_SANITIZE_STRING);
 $pass = filter_var(trim(htmlspecialchars($_POST['pass'])), FILTER_SANITIZE_STRING);

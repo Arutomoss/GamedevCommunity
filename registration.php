@@ -1,6 +1,6 @@
 <?php
 
-$mysql = mysqli_connect("localhost", "root", "", "gamedc");
+$mysql = mysqli_connect("localhost", "root", "root", "gamedc");
 
 if (isset($_POST['do_signup'])) {
     $first_name = filter_var(trim(htmlspecialchars($_POST['first_name'])), FILTER_SANITIZE_STRING);
@@ -45,8 +45,10 @@ if (isset($_POST['do_signup'])) {
                                         setcookie('user_login', $login, time() + 3600 * 30, "/");
                                         setcookie('first_name', $first_name, time() + 3600 * 30, "/");
                                         setcookie('last_name', $last_name, time() + 3600 * 30, "/");
+
+                                        echo($user['user_id']);
                                 
-                                        header('Location: ../sign_in.php');
+                                        // header('Location: ../sign_in.php');
                                     } else {
                                         $errors = 'Почта уже занята';
                                     }

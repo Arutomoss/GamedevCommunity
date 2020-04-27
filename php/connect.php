@@ -1,5 +1,5 @@
 <?php
 
-$conn = mysqli_connect("localhost", "root", "", "gamedc");
+$conn = mysqli_connect("localhost", "root", "root", "gamedc");
 
 ?>

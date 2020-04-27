@@ -3,7 +3,7 @@ if ($_COOKIE['user'] == '') {
     header('Location: http://gamedevcommunity/sign_in.php ');
 }
 $cur = $_GET['user_id'];
-$mysql = mysqli_connect("localhost", "root", "", "gamedc");
+$mysql = mysqli_connect("localhost", "root", "root", "gamedc");
 $isExists = mysqli_fetch_assoc(mysqli_query($mysql, "SELECT * FROM `users` WHERE `user_id` = '$cur'"));
 if (count($isExists) == 0) {
     header('Location: http://gamedevcommunity/mypage.php?user_id=' . $_COOKIE['user'] . ' ');

@@ -8,7 +8,7 @@ if ($login == '' || $pass == '') {
 } else {
     $pass = md5($pass . "3jk4n23fJ");
 
-    $mysql = new mysqli("localhost", "root", "", "gamedc");
+    $mysql = new mysqli("localhost", "root", "root", "gamedc");
 
     $result = $mysql->query("SELECT * FROM `users` 
         WHERE `user_login` = '$login' AND `user_pass` = '$pass'");

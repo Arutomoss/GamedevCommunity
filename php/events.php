@@ -2,7 +2,7 @@
 
 function getJams($limit)
 {
-    $mysql = mysqli_connect("localhost", "root", "", "gamedc");
+    $mysql = mysqli_connect("localhost", "root", "root", "gamedc");
 
     $result = mysqli_query($mysql, "SELECT * FROM `events` ORDER BY `event_id` DESC LIMIT $limit");
     $mysql->close();
@@ -11,7 +11,7 @@ function getJams($limit)
 
 function getUserJams($limit, $user_id)
 {
-    $mysql = mysqli_connect("localhost", "root", "", "gamedc");
+    $mysql = mysqli_connect("localhost", "root", "root", "gamedc");
 
     $result = mysqli_query($mysql, "SELECT * FROM `events` WHERE `user_id` = '$user_id' ORDER BY `event_id` DESC LIMIT $limit");
     $mysql->close();
@@ -20,7 +20,7 @@ function getUserJams($limit, $user_id)
 
 function getActiveJams($limit)
 {
-    $mysql = mysqli_connect("localhost", "root", "", "gamedc");
+    $mysql = mysqli_connect("localhost", "root", "root", "gamedc");
 
     $result = mysqli_query($mysql, "SELECT * FROM `events` WHERE `event_date_end` > NOW() ORDER BY `event_id` DESC LIMIT $limit");
     $mysql->close();
@@ -29,7 +29,7 @@ function getActiveJams($limit)
 
 function getActiveUserJams($limit, $user_id)
 {
-    $mysql = mysqli_connect("localhost", "root", "", "gamedc");
+    $mysql = mysqli_connect("localhost", "root", "root", "gamedc");
 
     $result = mysqli_query($mysql, "SELECT * FROM `events` INNER JOIN `event_members` on `events`.`event_id` = `event_members`.`event_id` WHERE (`events`.`event_date_end` > NOW()) AND (`event_members`.`user_id` = '$user_id') ORDER BY `events`.`event_id` DESC LIMIT $limit");
     $mysql->close();
@@ -38,7 +38,7 @@ function getActiveUserJams($limit, $user_id)
 
 function getAmountActiveUserJams($user_id)
 {
-    $mysql = mysqli_connect("localhost", "root", "", "gamedc");
+    $mysql = mysqli_connect("localhost", "root", "root", "gamedc");
 
     $result = mysqli_query($mysql, "SELECT * FROM `events` INNER JOIN `event_members` on `events`.`event_id` = `event_members`.`event_id` WHERE (`events`.`event_date_end` > NOW()) AND (`event_members`.`user_id` = '$user_id') ORDER BY `events`.`event_id`");
     $mysql->close();
@@ -47,7 +47,7 @@ function getAmountActiveUserJams($user_id)
 
 function getPosts($limit)
 {
-    $mysql = mysqli_connect("localhost", "root", "", "gamedc");
+    $mysql = mysqli_connect("localhost", "root", "root", "gamedc");
 
     $result = mysqli_query($mysql, "SELECT * FROM `posts` ORDER BY `post_id` DESC LIMIT $limit");
     $mysql->close();
@@ -56,7 +56,7 @@ function getPosts($limit)
 
 function getUserPosts($limit, $user_id)
 {
-    $mysql = mysqli_connect("localhost", "root", "", "gamedc");
+    $mysql = mysqli_connect("localhost", "root", "root", "gamedc");
 
     $result = mysqli_query($mysql, "SELECT * FROM `posts` WHERE `user_id` = $user_id ORDER BY `post_id` DESC LIMIT $limit");
     $mysql->close();
@@ -65,7 +65,7 @@ function getUserPosts($limit, $user_id)
 
 function getFollowerPosts($limit, $user_id)
 {
-    $mysql = mysqli_connect("localhost", "root", "", "gamedc");
+    $mysql = mysqli_connect("localhost", "root", "root", "gamedc");
 
     $result = mysqli_query($mysql, "SELECT * FROM `posts` INNER JOIN `subscriptions` on `posts`.`user_id` = `subscriptions`.`user_id` WHERE (`subscriptions`.`follower_id` = '$user_id') OR (posts.user_id = '$user_id') GROUP BY `posts`.`post_id` ORDER BY `posts`.`post_id` DESC LIMIT $limit");
 
@@ -85,7 +85,7 @@ function resultToArray($result)
 
 function getPhotos($limit)
 {
-    $mysql = mysqli_connect("localhost", "root", "", "gamedc");
+    $mysql = mysqli_connect("localhost", "root", "root", "gamedc");
 
     $result = mysqli_query($mysql, "SELECT * FROM `photo` ORDER BY `photo_id` DESC LIMIT $limit");
     $mysql->close();
@@ -94,7 +94,7 @@ function getPhotos($limit)
 
 function getUsers($limit)
 {
-    $mysql = mysqli_connect("localhost", "root", "", "gamedc");
+    $mysql = mysqli_connect("localhost", "root", "root", "gamedc");
 
     $result = mysqli_query($mysql, "SELECT * FROM `users` ORDER BY `user_id` DESC LIMIT $limit");
     $mysql->close();
@@ -103,7 +103,7 @@ function getUsers($limit)
 
 function searchUsers($user_text)
 {
-    $mysql = mysqli_connect("localhost", "root", "", "gamedc");
+    $mysql = mysqli_connect("localhost", "root", "root", "gamedc");
 
     $result = mysqli_query($mysql, "SELECT * FROM `users` WHERE (`first_name` LIKE '%$user_text%') 
         OR (`last_name` LIKE '%$user_text%') 

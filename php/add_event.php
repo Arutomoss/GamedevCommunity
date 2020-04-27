@@ -66,7 +66,7 @@ $event_date_end      = filter_var(trim($_POST['date_end']), FILTER_SANITIZE_STRI
 // echo 'filePath = ' . $filePath . '<br>';
 
 
-$mysql = mysqli_connect("localhost", "root", "", "gamedc");
+$mysql = mysqli_connect("localhost", "root", "root", "gamedc");
 
 if ($mysql) {
     mysqli_query($mysql, "INSERT INTO photo(link_photo) VALUE ('$link_photo')");

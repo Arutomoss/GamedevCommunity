@@ -16,7 +16,7 @@ if (isset($_POST['photo'])) {
         $arr['file_mini'] = $file;
 
         //  Save in DB
-        $conn = mysqli_connect("localhost", "root", "", "gamedc");
+        $conn = mysqli_connect("localhost", "root", "root", "gamedc");
 
         $link_photo = $arr['path_mini'];
         mysqli_query($conn, "INSERT INTO `photo`(link_photo) VALUE ('$link_photo')");
@@ -42,7 +42,7 @@ if (isset($_POST['photo'])) {
 }
 
 if (isset($_POST['short_description']) && ($_POST['short_description'] != '')) {
-    $conn = mysqli_connect("localhost", "root", "", "gamedc");
+    $conn = mysqli_connect("localhost", "root", "root", "gamedc");
     $user_id = $_COOKIE['user'];
     $short_description = $_POST['short_description'];
     mysqli_query($conn, "UPDATE `users` SET `short_description` = '$short_description' WHERE `user_id` = '$user_id'");

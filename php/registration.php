@@ -22,7 +22,7 @@ if (preg_match("#^[aA-zZ0-9\-_]+$#", $login) && (preg_match("/^(?:[a-z0-9]+(?:[-
     
     $pass = md5($pass . "3jk4n23fJ");
 
-    $mysql = new mysqli("localhost", "root", "", "gamedc");
+    $mysql = new mysqli("localhost", "root", "root", "gamedc");
     $result = $mysql->query("INSERT INTO `users` (`first_name`, `last_name`, `user_login`, `user_pass`, `user_mail`) 
             VALUE ('$first_name', '$last_name', '$login', '$pass', '$mail')");
 
