@@ -71,7 +71,7 @@ if ($_COOKIE['user'] == '') {
                 if (count($jams) > 0) {
                     for ($i = 0; $i < count($jams); $i++) {
                         $event_id = $jams[$i]['event_id'];
-                        $photo = mysqli_fetch_assoc(mysqli_query($conn, "SELECT `link_photo` FROM `photo` WHERE event_id = '$event_id'"));
+                        $photo = mysqli_fetch_assoc(mysqli_query($conn, "SELECT `link_photo` FROM `photo` INNER JOIN `events` on `events`.`photo_id` = `photo`.`photo_id` WHERE `events`.`event_id` = '$event_id'"));
                         echo '<a href="jam.php?event_id=' . $jams[$i]['event_id'] . '" class="jam row ml-1">
                     <div class="content-source">
                       <!--  <p style="visibility: hidden;" id="event_id">' . $jams[$i]['event_id'] . '</p> -->

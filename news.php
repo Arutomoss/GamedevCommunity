@@ -101,6 +101,7 @@ if ($_COOKIE['user'] == '') {
             <?php
             require 'php/events.php';
             require 'php/connect.php';
+
             $posts = getFollowerPosts(30, $_COOKIE['user']);
 
             for ($i = 0; $i < count($posts); $i++) {
@@ -149,6 +150,60 @@ if ($_COOKIE['user'] == '') {
                                         </svg>
                                     </a>
                                     <p>' . $posts[$i]['amount_likes'] . '</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>';
+            }
+
+            $user_posts = getUserPosts(30, $_COOKIE['user']);
+
+            for ($i = 0; $i < count($user_posts); $i++) {
+                $user_id = $user_posts[$i]['user_id'];
+                $user = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM `users` WHERE `user_id` = '$user_id'"));
+                $user_photo_id = $user['photo_id'];
+                $user_photo = mysqli_fetch_assoc(mysqli_query($conn, "SELECT `link_photo` FROM `photo` WHERE `photo_id` = '$user_photo_id'"));
+
+                $month = substr($user_posts[$i]['date_create'], 5, 2);
+                $photo_id = $user_posts[$i]['photo_id'];
+                $photo = mysqli_fetch_assoc(mysqli_query($conn, "SELECT `link_photo` FROM `photo` WHERE `photo_id` = '$photo_id'"));
+                echo '<div class="content">
+                    <div class="content-icon">
+                        <a href="mypage.php?user_id=' . $user_id . '">
+                            <img src="' . $user_photo['link_photo'] . '" alt="" height="50px">
+                        </a>
+                    </div>
+                    <div class="wrap">
+                        <div class="content-headder">
+                            <div class="content-headder-title">
+                                <a href="mypage.php?user_id=' . $user_id . '">' . $user['first_name'] . ' ' . $user['last_name'] . '</a>
+                                <p class="title-info">@' . $user['user_login'] . ' • ' . substr($user_posts[$i]['date_create'], 8, 2) . ' ' . getMonth($month) . '</p>
+                            </div>
+                            <div class="content-discription">
+                                <p>' . $user_posts[$i]['post_text'] . '</p>
+                            </div>
+                        </div>';
+                if ($photo_id) {
+                    echo '<div class="content-source">
+                                <img src="' . $photo['link_photo'] . '" class="img-fluid" alt="">
+                            </div>';
+                }
+                echo '<div class="content-bottom-panel">
+                                <div class="content-bottom-panel-comments">
+                                    <img src="img/comments.svg" alt="">
+                                    <p>0</p>
+                                </div>
+                                <div class="content-bottom-panel-reposts">
+                                    <img src="img/reposts.svg" alt="">
+                                    <p>' . $user_posts[$i]['amount_reposts'] . '</p>
+                                </div>
+                                <div class="content-bottom-panel-likes">
+                                    <a href="#">
+                                        <svg width="17" height="15" viewBox="0 0 17 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M8.5 15L8.2 14.7475C1.75 9.44444 0 7.57576 0 4.54545C0 2.0202 2 0 4.5 0C6.55 0 7.7 1.16162 8.5 2.07071C9.3 1.16162 10.45 0 12.5 0C15 0 17 2.0202 17 4.54545C17 7.57576 15.25 9.44444 8.8 14.7475L8.5 15ZM4.5 1.0101C2.55 1.0101 1 2.57576 1 4.54545C1 7.12121 2.6 8.83838 8.5 13.6869C14.4 8.83838 16 7.12121 16 4.54545C16 2.57576 14.45 1.0101 12.5 1.0101C10.75 1.0101 9.8 2.07071 9.05 2.92929L8.5 3.58586L7.95 2.92929C7.2 2.07071 6.25 1.0101 4.5 1.0101Z" fill="#C1C1C1"/>
+                                        </svg>
+                                    </a>
+                                    <p>' . $user_posts[$i]['amount_likes'] . '</p>
                                 </div>
                             </div>
                         </div>

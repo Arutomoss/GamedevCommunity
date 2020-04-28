@@ -127,7 +127,7 @@ if (count($isExists) == 0) {
                 if (count($jams) > 0) {
                     for ($i = 0; $i < count($jams); $i++) {
                         $event_id = $jams[$i]['event_id'];
-                        $photo = mysqli_fetch_assoc(mysqli_query($conn, "SELECT `link_photo` FROM `photo` WHERE event_id = '$event_id'"));
+                        $photo = mysqli_fetch_assoc(mysqli_query($conn, "SELECT `link_photo` FROM `photo` INNER JOIN `events` on `events`.`photo_id` = `photo`.`photo_id` WHERE `events`.`event_id` = '$event_id'"));
                         if ($i == 0) {
                             echo '<div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
                                             <div class="carousel-inner">

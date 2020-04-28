@@ -31,7 +31,7 @@ if ($_COOKIE['user'] == '') {
     $user_res = mysqli_query($conn, "SELECT * FROM `users` WHERE user_id = '$user_id'");
     $user = mysqli_fetch_assoc($user_res);
 
-    $photo_res = mysqli_query($conn, "SELECT * FROM `photo` WHERE event_id = '$event_id'");
+    $photo_res = mysqli_query($conn, "SELECT `link_photo` FROM `photo` INNER JOIN `events` on `events`.`photo_id` = `photo`.`photo_id` WHERE `events`.`event_id` = '$event_id'");
     $photo = mysqli_fetch_assoc($photo_res);
 
     $user_photo_id = $user['photo_id'];
