@@ -47,7 +47,7 @@ if ($_COOKIE['user'] == '') {
                 <div class="col" style="height: 50px; padding-top: 12px; padding-left: 25px;">
                     <input type="text" style="border-radius: 25px; border: none; background-color: #303030; color: #E2E2E2; font-size: 15px; margin-right: 15px; font-family: Montserrat;" placeholder="Напишите сообщение" class="col-11">
                     <!-- <div class="im_editable im-chat-input--text _im_text" tabindex="0" contenteditable="true" id="im_editable0" role="textbox" aria-multiline="true"></div> -->
-                    <img src="img/send.svg" alt="" height="23px">
+                    <img src="img/send.svg" alt="" height="19px">
                 </div>
             </div>
         </div>

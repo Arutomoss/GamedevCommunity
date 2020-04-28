@@ -46,9 +46,9 @@ if (isset($_POST['do_signup'])) {
                                         setcookie('first_name', $first_name, time() + 3600 * 30, "/");
                                         setcookie('last_name', $last_name, time() + 3600 * 30, "/");
 
-                                        echo($user['user_id']);
+                                        echo("<script>alert('" . $pass . "');</script>");
                                 
-                                        // header('Location: ../sign_in.php');
+                                        header('Location: ../sign_in.php');
                                     } else {
                                         $errors = 'Почта уже занята';
                                     }
@@ -105,8 +105,8 @@ if (isset($_POST['do_signup'])) {
                     <input type="text" placeholder="Ваша фамилия" name="last_name" autocomplete="no" value="<?php echo $last_name;?>">
                     <input type="text" placeholder="Придумайте логин" name="login" autocomplete="no" value="<?php echo $login;?>">
                     <input type="mail" placeholder="Введите почту" name="mail" value="<?php echo $mail;?>">
-                    <input type="password" placeholder="Введите пароль" name="pass" autocomplete="no" value="<?php echo $pass;?>">
-                    <input type="password" placeholder="Подтвердите пароль" name="pass_accept" autocomplete="no" value="<?php echo $pass_accept;?>">
+                    <input type="password" placeholder="Введите пароль" name="pass" autocomplete="no" value="">
+                    <input type="password" placeholder="Подтвердите пароль" name="pass_accept" autocomplete="no" value="">
 
                     <?php if ($errors) {
                         echo '<p style="position: relative; font-size: 14px; text-align: center; width: 100%; padding:0; margin: 0;

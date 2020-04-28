@@ -1,6 +1,6 @@
 <?php
 if ($_COOKIE['user'] == '') {
-    header('Location: http://gamedevcommunity/sign_in.php ');
+    // header('Location: http://gamedevcommunity/sign_in.php ');
 }
 ?>
 
