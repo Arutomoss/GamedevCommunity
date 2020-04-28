@@ -45,8 +45,6 @@ if (isset($_POST['do_signup'])) {
                                         setcookie('user_login', $login, time() + 3600 * 30, "/");
                                         setcookie('first_name', $first_name, time() + 3600 * 30, "/");
                                         setcookie('last_name', $last_name, time() + 3600 * 30, "/");
-
-                                        echo("<script>alert('" . $pass . "');</script>");
                                 
                                         header('Location: ../sign_in.php');
                                     } else {
