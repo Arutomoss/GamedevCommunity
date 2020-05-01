@@ -43,7 +43,7 @@ if ($_COOKIE['user'] == '') {
                     </a>
                 </div>
                 <div class="row btn-create">
-                    <a class="btn btn-danger rounded-10 pd-lr-30" role="button" href="jam_creation.php">Создать мероприятие</a>
+                    <a class="btn btn-success rounded-10 pd-lr-30" role="button" href="jam_creation.php">Создать мероприятие</a>
                 </div>
             </div>
             <div class="jam-place">

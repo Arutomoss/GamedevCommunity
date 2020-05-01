@@ -10,7 +10,7 @@ body {
 h2 {
     font-family: Montserrat;
     font-weight: 700;
-    font-size: 32px;
+    font-size: 28px;
 }
 
 .jam-place {
@@ -39,7 +39,7 @@ h2 {
     color: #EEEEEE;
     font-family: montserrat;
     font-size: 16px;
-    margin-bottom: 5px;
+    margin-bottom: 15px;
 }
 
 .date {

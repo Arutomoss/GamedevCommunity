@@ -56,8 +56,8 @@ body {
     font-size: 16px;
     font-weight: 400;
     font-family: Montserrat;
-    margin-top: 20px;
-    margin-bottom: 75px;
+    margin-top: 30px;
+    margin-bottom: 80px;
 }
 
 .info p {
@@ -67,8 +67,8 @@ body {
 }
 
 .settings {
-    margin-bottom: 20px;
-    padding-top: 10px;
+    /* margin-bottom: 20px; */
+    /* padding-top: 10px; */
 }
 
 .settings a {
@@ -174,10 +174,10 @@ body {
 }
 
 .date-style p {
-    font-weight: 500;
-    font-size: 18px;
-    padding-left: 10px;
-    padding-top: 3px;
+    font-weight: 400;
+    font-size: 16px;
+    padding-left: 9px;
+    padding-top: 4px;
 }
 
 .content-source {

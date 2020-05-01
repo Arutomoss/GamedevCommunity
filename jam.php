@@ -52,7 +52,7 @@ if ($_COOKIE['user'] == '') {
             <div class="col-8 jam-place">
                 <div class="col jam">
                     <div class="row jam-header justify-content-between">
-                        <div class="form-group col" style="padding-left: 0px;">
+                        <div class="form-group col" style="padding-left: 0px; margin-bottom: 10px">
                             <h2><?php echo $event['event_name']; ?></h2>
                         </div>
                         <div class="name">

@@ -13,7 +13,8 @@
 
 .main {
     grid-area: main;
-    padding-top: 65px;
+    padding-top: 60px;
+    /* background-color: #202020; */
 }
 
 .whats_new {
@@ -21,7 +22,7 @@
     width: 100%;
     background-color: #333333;
     border-radius: 15px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     display: inline-flex;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
     padding-top: 9px;
@@ -74,7 +75,7 @@ textarea {
     overflow: hidden;
     padding: 0;
     outline: none;
-    background-color: #333333;
+    background-color: #333333;      /*bg color*/
     resize: none;
     padding-right: 10px;
     padding-top: 7px;
@@ -113,7 +114,8 @@ textarea {
     border-radius: 15px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
     display: flex;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
+    /* border-top: 0.5px solid #303030; */
 }
 
 .preview-img {
@@ -172,10 +174,10 @@ justify - горизонтальное выравнивание
     font-family: "Roboto";
     font-weight: normal;
     font-size: 14px;
-    color: rgb(128, 128, 128);
+    color: rgb(119, 119, 119);
     margin-top: 2px;
     margin-bottom: 10px;
-    margin-left: 10px;
+    margin-left: 15px;
 }
 
 .content-discription p {
@@ -284,13 +286,13 @@ justify - горизонтальное выравнивание
     position: relative;
     margin-left: 15px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 .actual-panel-title {
     height: 50px;
     display: flex;
-    border-bottom: 0.8px solid #3D3D3D;
+    border-bottom: 0.5px solid #3D3D3D;
 }
 
 .actual-panel-title p {
@@ -313,7 +315,7 @@ justify - горизонтальное выравнивание
     color: #EEEEEE;
     font-family: Montserrat;
     font-weight: 400;
-    font-size: 16px;
+    font-size: 15px;
 }
 
 .actual-panel-bottom:hover {
@@ -325,14 +327,14 @@ justify - горизонтальное выравнивание
 
 .actual-panel-content {
     /* height: 226px; */
-    border-bottom: 0.8px solid #3D3D3D;
+    border-bottom: 0.5px solid #3D3D3D;
 }
 
 .actual-panel-item {
     height: 58;
     width: 100%;
     padding-top: 11px;
-    border-bottom: 0.8px solid #3D3D3D;
+    border-bottom: 0.5px solid #3D3D3D;
     display: flex;
 }
 
