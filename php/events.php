@@ -67,7 +67,18 @@ function getFollowerPosts($limit, $user_id)
 {
     $mysql = mysqli_connect("localhost", "root", "root", "gamedc");
 
+    // $result = mysqli_query($mysql, "SELECT * FROM `posts` WHERE (`posts`.`user_id` = $user_id) OR (`posts`.`user_id` = (SELECT `subscriptions`.`user_id` FROM `subscriptions` INNER JOIN `posts` on `subscriptions`.`user_id` = `posts`.`user_id` WHERE `subscriptions`.`follower_id` = $user_id GROUP BY `subscriptions`.`follower_id`)) GROUP BY `posts`.`post_id` ORDER BY `posts`.`post_id` DESC LIMIT $limit");
+
     $result = mysqli_query($mysql, "SELECT * FROM `posts` INNER JOIN `subscriptions` on `posts`.`user_id` = `subscriptions`.`user_id` WHERE (`subscriptions`.`follower_id` = '$user_id') OR (posts.user_id = '$user_id') GROUP BY `posts`.`post_id` ORDER BY `posts`.`post_id` DESC LIMIT $limit");
+
+    // $result_own = mysqli_query($mysql, "SELECT * FROM `posts` WHERE `posts`.`user_id` = $user_id GROUP BY `posts`.`post_id` ORDER BY `posts`.`post_id` DESC LIMIT $limit");
+
+    // $sub_posts = resultToArray($result);
+    // $my_posts = resultToArray($result_own);
+
+    // array_push($sub_posts, $my_posts);
+
+    // arsort($all_posts['post_id']);
 
     $mysql->close();
     return resultToArray($result);
