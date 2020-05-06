@@ -395,6 +395,7 @@ justify - горизонтальное выравнивание
     margin-right: 20px;
     font-family: Montserrat;
     font-size: 15px;
+    color: #EEEEEE;
 }
 
 .search-input:focus {

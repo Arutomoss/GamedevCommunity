@@ -112,13 +112,13 @@ function getUsers($limit)
     return resultToArray($result);
 }
 
-function searchUsers($user_text)
+function searchUsers($search_text)
 {
     $mysql = mysqli_connect("localhost", "root", "root", "gamedc");
 
-    $result = mysqli_query($mysql, "SELECT * FROM `users` WHERE (`first_name` LIKE '%$user_text%') 
-        OR (`last_name` LIKE '%$user_text%') 
-        OR (`user_login` LIKE '%$user_text%')");
+    $result = mysqli_query($mysql, "SELECT * FROM `users` WHERE (`first_name` LIKE '%$search_text%') 
+        OR (`last_name` LIKE '%$search_text%') 
+        OR (`user_login` LIKE '%$search_text%')");
     $mysql->close();
     return resultToArray($result);
 }

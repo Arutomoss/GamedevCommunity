@@ -1,5 +1,5 @@
 $.ajax({
-    url: '',
+    url: '../php/events.php',
     type: "POST",
-    data: "sdfksldf"
+    data: "search_text="
 });

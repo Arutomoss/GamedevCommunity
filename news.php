@@ -16,6 +16,7 @@ if ($_COOKIE['user'] == '') {
     <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i&display=swap&subset=latin-ext" rel="stylesheet">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style-news.css">
+    
     <title>Новости</title>
 </head>
 
@@ -161,6 +162,8 @@ if ($_COOKIE['user'] == '') {
 
         </div>
 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
         <div class="actual">
             <div class="actual-panel">
                 <div class="actual-panel-title">
@@ -201,49 +204,49 @@ if ($_COOKIE['user'] == '') {
                 <a href="#" class="actual-panel-bottom">Показать еще</a>
             </div>
             <div class="search">
-                <form class="search-form" method="GET">
-                    <input type="text" class="search-input" name="search" placeholder="Искать здесь..." autocomplete="off">
-                    <button type="submit" class="search-btn"><img src="img/search.svg" alt=""></button>
+                <form class="search-form"> <!-- method="POST" -->
+                    <input type="text" class="search-input" id="search-input" name="search" onchange="searchUser()" placeholder="Искать здесь..." autocomplete="off">
+                    <button  class="search-btn" id="search-btn" onclick="searchUser()"><img src="img/search.svg" alt=""></button>
                 </form>
-                <?php
-                require 'php/connect.php';
+            <?php
+                // require 'php/connect.php';
 
-                if (isset($_GET['search']) && ($_GET['search'] != '')) {
-                    $users = searchUsers($_GET['search']);
-                    $user_id = $_COOKIE['user'];
+                // if (isset($_POST['search']) && ($_POST['search'] != '')) {
+                //     $users = searchUsers($_POST['search']);
+                //     $user_id = $_COOKIE['user'];
 
-                    for ($i = 0; $i < count($users); $i++) {
-                        $cur_user_id = $users[$i]['user_id'];
+                //     for ($i = 0; $i < count($users); $i++) {
+                //         $cur_user_id = $users[$i]['user_id'];
 
-                        if ($cur_user_id != $user_id) {
-                            $cur_photo_id = $users[$i]['photo_id'];
-                            $cur_photo = mysqli_fetch_assoc(mysqli_query($conn, "SELECT `link_photo` FROM `photo` WHERE `photo_id` = '$cur_photo_id'")) or die("ERROR: " . mysqli_error($conn));
-                            echo '<div class="search-result">
-                                        <a href="mypage.php?user_id=' . $cur_user_id . '">
-                                            <img src="' . $cur_photo['link_photo'] . '" alt="">
-                                        </a>
-                                    <div>
-                                        <div class="actual-panel-item-jam">
-                                            <p><a href="mypage.php?user_id=' . $cur_user_id . '">' . $users[$i]['first_name'] . ' ' . $users[$i]['last_name'] . '</a></p>
-                                        </div>
-                                        <div class="actual-panel-item-discription">
-                                            <p>' . $users[$i]['short_description'] . '</p>
-                                        </div>
-                                    </div>
-                                </div>';
-                        }
-                    }
+                //         if ($cur_user_id != $user_id) {
+                //             $cur_photo_id = $users[$i]['photo_id'];
+                //             $cur_photo = mysqli_fetch_assoc(mysqli_query($conn, "SELECT `link_photo` FROM `photo` WHERE `photo_id` = '$cur_photo_id'")) or die("ERROR: " . mysqli_error($conn));
+                //             echo '<div class="search-result">
+                //                         <a href="mypage.php?user_id=' . $cur_user_id . '">
+                //                             <img src="' . $cur_photo['link_photo'] . '" alt="">
+                //                         </a>
+                //                     <div>
+                //                     <div class="actual-panel-item-jam">
+                //                         <p><a href="mypage.php?user_id=' . $cur_user_id . '">' . $users[$i]['first_name'] . ' ' . $users[$i]['last_name'] . '</a></p>
+                //                     </div>
+                //                     <div class="actual-panel-item-discription">
+                //                         <p>' . $users[$i]['short_description'] . '</p>
+                //                     </div>
+                //                 </div>
+                //             </div>';
+                //         }
+                //     }
 
-                    $conn->close();
-                }
+                //     $conn->close();
+                // }
 
-                ?>
+            ?>
             </div>
         </div>
     </div>
 
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    
     <script>
         function readURL(input) {
             if (input.files && input.files[0]) {
@@ -263,31 +266,30 @@ if ($_COOKIE['user'] == '') {
         });
     </script>
 
-    <!-- <script type="text/javascript">
+    <script type="text/javascript">
     
-    $("document").ready(function(){
+        // $("document").ready(function(){
 
-        $.ajax({
-            url: "../php/events.php",
-            type: "POST",
-            data: "",
-            success: function(){
-                alert("Успешно");
-            },
-            complete: function(){
+        // $.ajax({
+        //     url: "../php/events.php",
+        //     type: "POST",
+        //     data: "search_input=",
+        //     success: function(result){
+                
+        //     }
+        // });
 
-            },
-            error: function(){
+        // })
 
-            },
-            beforeSend: function(){
+        // function someFunc(){
+        //     alert(document.getElementById("search").value);
+        // }
 
-            },
-        });
+        // document.getElementById("search-btn").onclick = someFunc();
 
-    })
+    </script>
 
-    </script> -->
+    <script src="ajax/news_functions.js"></script>
 
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="js/popper.min.js"></script>

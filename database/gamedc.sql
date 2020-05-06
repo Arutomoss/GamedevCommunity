@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Апр 28 2020 г., 14:12
+-- Время создания: Май 04 2020 г., 12:34
 -- Версия сервера: 10.3.22-MariaDB
 -- Версия PHP: 7.1.33
 
@@ -129,7 +129,8 @@ INSERT INTO `photo` (`photo_id`, `link_photo`) VALUES
 (8, 'http://gamedevcommunity/img/uploaded_photo_f281af92_min.png'),
 (9, '../img/kojima_3f129ba56069758075b69d505911ece7.jpeg'),
 (10, '../img/kojima_ad58438405cfd0c45e3479277cd88259.jpeg'),
-(11, '../img/kojima_349cc6cda7c3798b783107245aff4103.jpeg');
+(11, '../img/kojima_349cc6cda7c3798b783107245aff4103.jpeg'),
+(12, 'http://gamedevcommunity/img/uploaded_photo_d20f2c25_min.png');
 
 -- --------------------------------------------------------
 
@@ -155,7 +156,8 @@ INSERT INTO `posts` (`post_id`, `user_id`, `post_text`, `photo_id`, `date_create
 (1, 1, 'Тестируем, проверяем.', 4, '2020-04-28 12:18:01', 0, 0),
 (2, 1, 'asdasda', 6, '2020-04-28 13:01:09', 0, 0),
 (3, 1, 'hello!', NULL, '2020-04-28 13:46:56', 0, 0),
-(4, 2, 'Konnichiwa my favourite fans!', 11, '2020-04-28 14:06:45', 0, 0);
+(4, 2, 'Konnichiwa my favourite fans!', 11, '2020-04-28 14:06:45', 0, 0),
+(5, 3, 'Первый пост Ивана Иванова, что же будет?', NULL, '2020-05-04 10:30:47', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -174,7 +176,11 @@ CREATE TABLE `subscriptions` (
 --
 
 INSERT INTO `subscriptions` (`subscription_id`, `user_id`, `follower_id`) VALUES
-(1, 1, 2);
+(1, 1, 2),
+(3, 2, 1),
+(6, 2, 3),
+(7, 1, 3),
+(8, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -199,7 +205,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`user_id`, `first_name`, `last_name`, `user_login`, `user_pass`, `user_mail`, `photo_id`, `short_description`) VALUES
 (1, 'Артем', 'Кошарнов', 'arutomu', 'eeca350d841ec673ecf3b3bd66f7a4a1', 'artem@gmail.com', 3, 'Suppa'),
-(2, 'Hideo', 'Kojima', 'kojima', 'eeca350d841ec673ecf3b3bd66f7a4a1', 'kojima@gmail.com', 8, 'Genius');
+(2, 'Hideo', 'Kojima', 'kojima', 'eeca350d841ec673ecf3b3bd66f7a4a1', 'kojima@gmail.com', 8, 'Genius'),
+(3, 'Иван', 'Иванов', 'ivan', 'eeca350d841ec673ecf3b3bd66f7a4a1', 'ivan@gmail.com', 12, 'Java developer');
 
 --
 -- Индексы сохранённых таблиц
@@ -250,7 +257,9 @@ ALTER TABLE `photo`
 -- Индексы таблицы `posts`
 --
 ALTER TABLE `posts`
-  ADD PRIMARY KEY (`post_id`);
+  ADD PRIMARY KEY (`post_id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `photo_id` (`photo_id`);
 
 --
 -- Индексы таблицы `subscriptions`
@@ -262,7 +271,8 @@ ALTER TABLE `subscriptions`
 -- Индексы таблицы `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`user_id`);
+  ADD PRIMARY KEY (`user_id`),
+  ADD KEY `photo_id` (`photo_id`);
 
 --
 -- AUTO_INCREMENT для сохранённых таблиц
@@ -302,25 +312,25 @@ ALTER TABLE `messages`
 -- AUTO_INCREMENT для таблицы `photo`
 --
 ALTER TABLE `photo`
-  MODIFY `photo_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `photo_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT для таблицы `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT для таблицы `subscriptions`
 --
 ALTER TABLE `subscriptions`
-  MODIFY `subscription_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `subscription_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Ограничения внешнего ключа сохраненных таблиц
@@ -350,6 +360,18 @@ ALTER TABLE `events_photo`
 --
 ALTER TABLE `messages`
   ADD CONSTRAINT `messages_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Ограничения внешнего ключа таблицы `posts`
+--
+ALTER TABLE `posts`
+  ADD CONSTRAINT `posts_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Ограничения внешнего ключа таблицы `users`
+--
+ALTER TABLE `users`
+  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `posts` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
