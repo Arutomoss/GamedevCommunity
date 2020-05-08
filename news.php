@@ -203,11 +203,14 @@ if ($_COOKIE['user'] == '') {
                 </div>
                 <a href="#" class="actual-panel-bottom">Показать еще</a>
             </div>
-            <div class="search">
-                <form class="search-form"> <!-- method="POST" -->
-                    <input type="text" class="search-input" id="search-input" name="search" onchange="searchUser()" placeholder="Искать здесь..." autocomplete="off">
-                    <button  class="search-btn" id="search-btn" onclick="searchUser()"><img src="img/search.svg" alt=""></button>
-                </form>
+            <div class="search" id="search">
+                <div class="search-form"> <!-- method="POST" -->
+                    <input type="text" class="search-input" id="search-input" name="search" oninput="searchUser()" placeholder="Искать здесь..." autocomplete="off">
+                    <button  class="search-btn" id="search-btn"><img src="img/search.svg" alt=""></button>
+                </div>
+                <div id="search-wraper">
+
+                </div>
             <?php
                 // require 'php/connect.php';
 
@@ -266,30 +269,8 @@ if ($_COOKIE['user'] == '') {
         });
     </script>
 
-    <script type="text/javascript">
-    
-        // $("document").ready(function(){
-
-        // $.ajax({
-        //     url: "../php/events.php",
-        //     type: "POST",
-        //     data: "search_input=",
-        //     success: function(result){
-                
-        //     }
-        // });
-
-        // })
-
-        // function someFunc(){
-        //     alert(document.getElementById("search").value);
-        // }
-
-        // document.getElementById("search-btn").onclick = someFunc();
-
-    </script>
-
     <script src="ajax/news_functions.js"></script>
+    <script src="ajax/recommendations.js"></script>
 
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="js/popper.min.js"></script>

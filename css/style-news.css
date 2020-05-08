@@ -282,7 +282,7 @@ justify - горизонтальное выравнивание
     width: 315px;
     background-color: #333333;
     border-radius: 15px;
-    top: 133px;
+    top: 123px;
     position: relative;
     margin-left: 15px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
@@ -292,7 +292,7 @@ justify - горизонтальное выравнивание
 .actual-panel-title {
     height: 50px;
     display: flex;
-    border-bottom: 0.5px solid #3D3D3D;
+    /* border-bottom: 0.5px solid #3D3D3D; */
 }
 
 .actual-panel-title p {
@@ -334,7 +334,7 @@ justify - горизонтальное выравнивание
     height: 58;
     width: 100%;
     padding-top: 11px;
-    border-bottom: 0.5px solid #3D3D3D;
+    border-top: 0.5px solid #3D3D3D;
     display: flex;
 }
 
@@ -378,11 +378,11 @@ justify - горизонтальное выравнивание
     position: relative;
     width: 290px;
     margin: 0 auto;
-    height: 42px;
+    height: 46px;
 }
 
 .search-input {
-    height: 42px;
+    height: 45px;
     width: 280px;
     padding: 0 42px 0 18px;
     border: none;
@@ -411,15 +411,15 @@ justify - горизонтальное выравнивание
     width: 42px;
     border-radius: 25px;
     position: absolute;
-    top: 0;
+    top: 2px;
     right: 0;
     cursor: pointer;
     padding-left: 2px;
 }
 
 .search-btn img {
-    padding-bottom: 4px;
-    padding-left: 6px;
+    padding-bottom: 3px;
+    padding-left: 10px;
     height: 22px;
 }
 
@@ -430,11 +430,11 @@ justify - горизонтальное выравнивание
 }
 
 .search {
-    max-height: 315px;
+    max-height: 355px;
     width: 315px;
     background-color: #333333;
     border-radius: 15px;
-    top: 133px;
+    top: 123px;
     position: relative;
     margin-left: 15px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
