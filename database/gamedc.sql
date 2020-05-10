@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Май 04 2020 г., 12:34
+-- Время создания: Май 10 2020 г., 16:48
 -- Версия сервера: 10.3.22-MariaDB
 -- Версия PHP: 7.1.33
 
@@ -56,7 +56,8 @@ CREATE TABLE `events` (
 
 INSERT INTO `events` (`event_id`, `user_id`, `event_name`, `event_short_description`, `event_description`, `photo_id`, `event_date_start`, `event_date_end`) VALUES
 (1, 1, 'Весенний сбор', 'Тыры пыры', 'ывбаю ыдва дыв адывдадывар иоиал ывдоа дывода ывдт атвыт дывтд ыдт ылтвлдтд тоывао ы', 7, '2020-04-28 00:00:00', '2020-05-15 00:00:00'),
-(2, 2, 'Genious', 'qe dsfsdf', 'sdf sdfsd fsdf sd', 10, '2020-04-28 00:00:00', '2020-05-03 00:00:00');
+(2, 2, 'Genious', 'qe dsfsdf', 'sdf sdfsd fsdf sd', 10, '2020-04-28 00:00:00', '2020-05-03 00:00:00'),
+(3, 1, 'dfsdfs', 'sdfsdf', 'fsdfsdfsdf', 14, '2020-05-05 00:00:00', '2020-05-27 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -87,9 +88,9 @@ CREATE TABLE `event_members` (
 --
 
 INSERT INTO `event_members` (`event_members_id`, `event_id`, `user_id`) VALUES
-(1, 1, 1),
 (2, 1, 2),
-(3, 2, 2);
+(3, 2, 2),
+(4, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -130,7 +131,9 @@ INSERT INTO `photo` (`photo_id`, `link_photo`) VALUES
 (9, '../img/kojima_3f129ba56069758075b69d505911ece7.jpeg'),
 (10, '../img/kojima_ad58438405cfd0c45e3479277cd88259.jpeg'),
 (11, '../img/kojima_349cc6cda7c3798b783107245aff4103.jpeg'),
-(12, 'http://gamedevcommunity/img/uploaded_photo_d20f2c25_min.png');
+(12, 'http://gamedevcommunity/img/uploaded_photo_d20f2c25_min.png'),
+(13, '../img/arutomu_a9a6bad7a7941d1dc8285132ec45dfa0.jpeg'),
+(14, '../img/arutomu_eb12a1b7da447c7265384f08a6f56681.jpeg');
 
 -- --------------------------------------------------------
 
@@ -157,7 +160,9 @@ INSERT INTO `posts` (`post_id`, `user_id`, `post_text`, `photo_id`, `date_create
 (2, 1, 'asdasda', 6, '2020-04-28 13:01:09', 0, 0),
 (3, 1, 'hello!', NULL, '2020-04-28 13:46:56', 0, 0),
 (4, 2, 'Konnichiwa my favourite fans!', 11, '2020-04-28 14:06:45', 0, 0),
-(5, 3, 'Первый пост Ивана Иванова, что же будет?', NULL, '2020-05-04 10:30:47', 0, 0);
+(5, 3, 'Первый пост Ивана Иванова, что же будет?', NULL, '2020-05-04 10:30:47', 0, 0),
+(6, 1, 'kshfksh lfh lisf', 13, '2020-05-05 18:28:13', 0, 0),
+(7, 2, 'My another genious post!', NULL, '2020-05-10 12:51:53', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -177,10 +182,9 @@ CREATE TABLE `subscriptions` (
 
 INSERT INTO `subscriptions` (`subscription_id`, `user_id`, `follower_id`) VALUES
 (1, 1, 2),
-(3, 2, 1),
 (6, 2, 3),
 (7, 1, 3),
-(8, 3, 1);
+(11, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -288,7 +292,7 @@ ALTER TABLE `chat`
 -- AUTO_INCREMENT для таблицы `events`
 --
 ALTER TABLE `events`
-  MODIFY `event_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `event_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT для таблицы `events_photo`
@@ -300,7 +304,7 @@ ALTER TABLE `events_photo`
 -- AUTO_INCREMENT для таблицы `event_members`
 --
 ALTER TABLE `event_members`
-  MODIFY `event_members_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `event_members_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT для таблицы `messages`
@@ -312,25 +316,25 @@ ALTER TABLE `messages`
 -- AUTO_INCREMENT для таблицы `photo`
 --
 ALTER TABLE `photo`
-  MODIFY `photo_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `photo_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT для таблицы `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT для таблицы `subscriptions`
 --
 ALTER TABLE `subscriptions`
-  MODIFY `subscription_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `subscription_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Ограничения внешнего ключа сохраненных таблиц

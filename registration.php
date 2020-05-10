@@ -35,8 +35,7 @@ if (isset($_POST['do_signup'])) {
                                     {
                                         $pass = md5($pass . "3jk4n23fJ");
 
-                                        $result = $mysql->query("INSERT INTO `users` (`first_name`, `last_name`, `user_login`, `user_pass`, `user_mail`) 
-                                                VALUE ('$first_name', '$last_name', '$login', '$pass', '$mail')");
+                                        $result = $mysql->query("INSERT INTO `users` (`first_name`, `last_name`, `user_login`, `user_pass`, `user_mail`) VALUE ('$first_name', '$last_name', '$login', '$pass', '$mail')");
                                 
                                         $user = mysqli_fetch_assoc(mysqli_query($mysql, "SELECT `user_id` FROM `users` WHERE (`user_login` = '$login') AND (`user_mail` = '$mail')"));
                                         $mysql->close();
@@ -75,6 +74,7 @@ if (isset($_POST['do_signup'])) {
         $errors = 'Не все поля заполнены';
     }
 }
+else echo "mazafaka";
 ?>
 
 <!DOCTYPE html>

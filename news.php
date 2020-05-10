@@ -13,10 +13,9 @@ if ($_COOKIE['user'] == '') {
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,400i,500,500i,700,900&display=swap&subset=cyrillic,cyrillic-ext" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap&subset=cyrillic,cyrillic-ext,latin-ext,vietnamese" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i&display=swap&subset=latin-ext" rel="stylesheet">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style-news.css">
-    
+
     <title>Новости</title>
 </head>
 
@@ -73,7 +72,7 @@ if ($_COOKIE['user'] == '') {
     </script>
 
     <div class="m_container">
-        <div class="main">
+        <div class="main" id="main">
             <form action="php/add_post.php" method="POST" enctype="multipart/form-data">
                 <div class="whats_new">
                     <div class="mini-icon">
@@ -98,68 +97,6 @@ if ($_COOKIE['user'] == '') {
 
                 </div>
             </form>
-
-            <?php
-            require 'php/events.php';
-            require 'php/connect.php';
-
-            $posts = getFollowerPosts(30, $_COOKIE['user']);
-
-            for ($i = 0; $i < count($posts); $i++) {
-                $user_id = $posts[$i]['user_id'];
-                $user = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM `users` WHERE `user_id` = '$user_id'"));
-                $user_photo_id = $user['photo_id'];
-                $user_photo = mysqli_fetch_assoc(mysqli_query($conn, "SELECT `link_photo` FROM `photo` WHERE `photo_id` = '$user_photo_id'"));
-
-                $month = substr($posts[$i]['date_create'], 5, 2);
-                $photo_id = $posts[$i]['photo_id'];
-                $photo = mysqli_fetch_assoc(mysqli_query($conn, "SELECT `link_photo` FROM `photo` WHERE `photo_id` = '$photo_id'"));
-                echo '<div class="content">
-                    <div class="content-icon">
-                        <a href="mypage.php?user_id=' . $user_id . '">
-                            <img src="' . $user_photo['link_photo'] . '" alt="" height="50px">
-                        </a>
-                    </div>
-                    <div class="wrap">
-                        <div class="content-headder">
-                            <div class="content-headder-title">
-                                <a href="mypage.php?user_id=' . $user_id . '">' . $user['first_name'] . ' ' . $user['last_name'] . '</a>
-                                <p class="title-info">@' . $user['user_login'] . ' • ' . substr($posts[$i]['date_create'], 8, 2) . ' ' . getMonth($month) . '</p>
-                            </div>
-                            <div class="content-discription">
-                                <p>' . $posts[$i]['post_text'] . '</p>
-                            </div>
-                        </div>';
-                if ($photo_id) {
-                    echo '<div class="content-source">
-                                <img src="' . $photo['link_photo'] . '" class="img-fluid" alt="">
-                            </div>';
-                }
-                echo '<div class="content-bottom-panel">
-                                <div class="content-bottom-panel-comments">
-                                    <img src="img/comments.svg" alt="">
-                                    <p>0</p>
-                                </div>
-                                <div class="content-bottom-panel-reposts">
-                                    <img src="img/reposts.svg" alt="">
-                                    <p>' . $posts[$i]['amount_reposts'] . '</p>
-                                </div>
-                                <div class="content-bottom-panel-likes">
-                                    <a href="#">
-                                        <svg width="17" height="15" viewBox="0 0 17 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M8.5 15L8.2 14.7475C1.75 9.44444 0 7.57576 0 4.54545C0 2.0202 2 0 4.5 0C6.55 0 7.7 1.16162 8.5 2.07071C9.3 1.16162 10.45 0 12.5 0C15 0 17 2.0202 17 4.54545C17 7.57576 15.25 9.44444 8.8 14.7475L8.5 15ZM4.5 1.0101C2.55 1.0101 1 2.57576 1 4.54545C1 7.12121 2.6 8.83838 8.5 13.6869C14.4 8.83838 16 7.12121 16 4.54545C16 2.57576 14.45 1.0101 12.5 1.0101C10.75 1.0101 9.8 2.07071 9.05 2.92929L8.5 3.58586L7.95 2.92929C7.2 2.07071 6.25 1.0101 4.5 1.0101Z" fill="#C1C1C1"/>
-                                        </svg>
-                                    </a>
-                                    <p>' . $posts[$i]['amount_likes'] . '</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>';
-            }
-
-            $conn->close();
-            ?>
-
         </div>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -204,52 +141,19 @@ if ($_COOKIE['user'] == '') {
                 <a href="#" class="actual-panel-bottom">Показать еще</a>
             </div>
             <div class="search" id="search">
-                <div class="search-form"> <!-- method="POST" -->
+                <div class="search-form">
+                    <!-- method="POST" -->
                     <input type="text" class="search-input" id="search-input" name="search" oninput="searchUser()" placeholder="Искать здесь..." autocomplete="off">
-                    <button  class="search-btn" id="search-btn"><img src="img/search.svg" alt=""></button>
+                    <button class="search-btn" id="search-btn"><img src="img/search.svg" alt=""></button>
                 </div>
                 <div id="search-wraper">
 
                 </div>
-            <?php
-                // require 'php/connect.php';
-
-                // if (isset($_POST['search']) && ($_POST['search'] != '')) {
-                //     $users = searchUsers($_POST['search']);
-                //     $user_id = $_COOKIE['user'];
-
-                //     for ($i = 0; $i < count($users); $i++) {
-                //         $cur_user_id = $users[$i]['user_id'];
-
-                //         if ($cur_user_id != $user_id) {
-                //             $cur_photo_id = $users[$i]['photo_id'];
-                //             $cur_photo = mysqli_fetch_assoc(mysqli_query($conn, "SELECT `link_photo` FROM `photo` WHERE `photo_id` = '$cur_photo_id'")) or die("ERROR: " . mysqli_error($conn));
-                //             echo '<div class="search-result">
-                //                         <a href="mypage.php?user_id=' . $cur_user_id . '">
-                //                             <img src="' . $cur_photo['link_photo'] . '" alt="">
-                //                         </a>
-                //                     <div>
-                //                     <div class="actual-panel-item-jam">
-                //                         <p><a href="mypage.php?user_id=' . $cur_user_id . '">' . $users[$i]['first_name'] . ' ' . $users[$i]['last_name'] . '</a></p>
-                //                     </div>
-                //                     <div class="actual-panel-item-discription">
-                //                         <p>' . $users[$i]['short_description'] . '</p>
-                //                     </div>
-                //                 </div>
-                //             </div>';
-                //         }
-                //     }
-
-                //     $conn->close();
-                // }
-
-            ?>
+                
             </div>
         </div>
     </div>
 
-
-    
     <script>
         function readURL(input) {
             if (input.files && input.files[0]) {
@@ -267,10 +171,37 @@ if ($_COOKIE['user'] == '') {
         $("#choose-photo").change(function() {
             readURL(this);
         });
+        
     </script>
 
     <script src="ajax/news_functions.js"></script>
     <script src="ajax/recommendations.js"></script>
+
+    <script>
+        function getCookie(name) {
+            let matches = document.cookie.match(new RegExp(
+                "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+            ));
+            return matches ? decodeURIComponent(matches[1]) : undefined;
+        }
+
+        $(document).ready(function() {
+            $.ajax({
+                type: "POST",
+                url: "/php/news/get_posts.php",
+                data: { user_id: getCookie('user') },
+                success: function(result) {
+                    if (result)
+                        showPosts(JSON.parse(result));
+                    else
+                        showPosts("");
+                },
+                error: function() {
+                    alert('Ошибка!');
+                }
+            });
+        });
+    </script>
 
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="js/popper.min.js"></script>
