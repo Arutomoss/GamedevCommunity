@@ -1,9 +1,9 @@
-<link rel="stylesheet" href="css/style-header.css">
+<link rel="stylesheet" href="/css/style-header.css">
 
 <header class="d-flex flex-column justify-content-center">
     <div class="h_container">
         <nav class="nav">
-            <a href="../news.php">
+            <a href="/news.php">
                 Новости
                 <div style="width: 100%; text-align: center; display: flex; justify-content: center">
                     <svg width="4" height="4" viewBox="0 0 4 4" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -11,7 +11,7 @@
                     </svg>
                 </div>
             </a>
-            <a href="../messages.php">
+            <a href="/messages.php">
                 Сообщения
                 <div style="width: 100%; text-align: center; display: flex; justify-content: center">
                     <svg width="4" height="4" viewBox="0 0 4 4" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -19,7 +19,7 @@
                     </svg>
                 </div>
             </a>
-            <a href="../jams.php">
+            <a href="/jams.php">
                 Мероприятия
                 <div style="width: 100%; text-align: center; display: flex; justify-content: center">
                     <svg width="4" height="4" viewBox="0 0 4 4" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -29,10 +29,10 @@
             </a>
         </nav>
         <div class="user-h">
-            <a href="mypage.php?user_id=<?php echo $_COOKIE['user'] ?>" class="user">
+            <a href="/mypage.php?user_id=<?php echo $_COOKIE['user'] ?>" class="user">
                 <div class="user-name" style="color: #EEEEEE;">
                     <?php
-                    echo '<img src="img/down_arrow.svg" alt="" style="padding-right: 6px;">' . $_COOKIE['first_name'] . ' ' . $_COOKIE['last_name'];
+                    echo '<img src="/img/down_arrow.svg" alt="" style="padding-right: 6px;">' . $_COOKIE['first_name'] . ' ' . $_COOKIE['last_name'];
                     ?>
                 </div>
                 <div class="user-photo">

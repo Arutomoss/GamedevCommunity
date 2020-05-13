@@ -9288,6 +9288,11 @@ a.text-dark:hover {
     }
 }
 
+.pd-lr-10 {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
 .pd-lr-30 {
     padding-left: 30px;
     padding-right: 30px;  

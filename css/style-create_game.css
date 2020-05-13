@@ -1,0 +1,249 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+h2 {
+    font-family: Montserrat;
+    font-weight: 600;
+    font-size: 24px;
+    color: #ffffff;
+}
+
+.line{
+    width: 100%;
+    border-bottom: 0.5px solid #525252;
+    margin-bottom: 45px;
+}
+
+.sub-header{
+    color: #ffffff;
+    font-family: Montserrat;
+    font-weight: 500;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.sub-header-big{
+    color: #ffffff;
+    font-family: Montserrat;
+    font-weight: 500;
+    font-size: 19px;
+    margin-bottom: 10px;
+}
+
+.input {
+    background-color: #272727;
+    border: 1px solid #3c3c3c;
+    height: 36px;
+    width: 460px;
+    margin-bottom: 25px;
+    padding-left: 15px;
+    color: #EEEEEE;
+    font-weight: 400;
+    font-family: "Montserrat";
+    font-size: 14px;
+    border-radius: 3px;
+}
+
+.input:focus {
+    border: 1px solid #777777;
+}
+
+.btn-red {
+    font-family: "Montserrat";
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.btn-store {
+    font-family: "Montserrat";
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 5px;
+    border: none;
+}
+
+.text {
+    font-size: 14px;
+    font-family: "Montserrat";
+    color: #EEEEEE;
+    margin-bottom: 10px;
+}
+
+.rect {
+    width: 100em;
+    height: 250px;
+    border: 1px dashed #777777;
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.form-style {
+    background-color: #272727;
+    border: 1px solid #3c3c3c;
+    height: 150px;
+    width: 460px;
+    margin-bottom: 25px;
+    padding-left: 15px;
+    color: #EEEEEE;
+    font-weight: 400;
+    font-family: "Montserrat";
+    font-size: 14px;
+    vertical-align: text-top;
+}
+
+.form-style:focus {
+    background-color: #272727;
+}
+
+.form-style:active {
+    background-color: #272727;
+}
+
+.exit-btn {
+    position: relative;
+    top: -60px;
+    left: 424px;
+    color: #606060;
+    border: 0;
+    background: transparent;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 10px;
+    line-height: 10px;
+    height: 35px;
+    font-family: "Montserrat";
+}
+
+.exit-btn p {
+    transform: rotate(45deg);
+    margin: 0;
+    font-size: 28px;
+}
+
+.exit-btn p:hover {
+    color: #852b2b;
+}
+
+.wrapper {
+    height: 80px;
+}
+
+.close {
+    position: absolute;
+    /* right: 32px;
+    top: 32px; */
+    width: 36px;
+    height: 36px;
+    opacity: 0.4;
+    background-color: #fff;
+}
+.close:hover {
+    opacity: 1;
+    cursor: pointer;
+}
+.close:before, .close:after {
+    position: absolute;
+    left: 17px;
+    top: 10px;
+    content: ' ';
+    height: 15px;
+    width: 2px;
+    background-color: #777777;
+    cursor: pointer;
+}
+.close:before {
+    transform: rotate(45deg);
+    cursor: pointer;
+}
+.close:after {
+    transform: rotate(-45deg);
+    cursor: pointer;
+}
+
+.jam-place {
+    top: 65px;
+    padding: 0px;
+    position: relative;
+}
+
+.jam {
+    background-color: #303030;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    padding: 30px 45px 30px 45px;
+}
+
+/* .jam-name {
+    background-color: #303030;
+    color: #F1F1F1;
+    font-size: 22px;
+    font-weight: bold;
+    font-family: montserrat;
+}
+
+.short-description {
+    background-color: #303030;
+    color: #EEEEEE;
+    font-family: montserrat;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.date {
+    border-radius: 15px;
+    width: auto;
+    padding-left: 0;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.dates {
+    font-family: Montserrat;
+    color: #EEEEEE;
+    border-radius: 5px;
+    margin: 0;
+    margin-bottom: 20px;
+    padding-top: 10px;
+}
+*/
+.jam-header {
+    color: #EEEEEE;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0px;
+}
+
+/* .name {
+    font-size: 16px;
+    font-weight: normal;
+    font-family: montserrat;
+}
+
+.name a {
+    text-decoration: none;
+    color: #EEEEEE;
+}
+
+.jam-description {
+    margin-top: 30px;
+    color: #EEEEEE;
+}
+
+.preview-img {
+    overflow: hidden;
+    border-radius: 15px;
+    margin-top: 13px;
+}
+
+.btn-submit {
+    margin-top: 35px;
+    font-family: Montserrat;
+}  */

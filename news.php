@@ -109,6 +109,7 @@ if ($_COOKIE['user'] == '') {
                 <div class="actual-panel-content">
                     <?php
                     require 'php/connect.php';
+                    require 'php/events.php';
 
                     $users = getUsers(4);
                     $user_id = $_COOKIE['user'];
