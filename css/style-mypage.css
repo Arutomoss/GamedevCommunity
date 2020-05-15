@@ -57,7 +57,7 @@ body {
     font-weight: 400;
     font-family: Montserrat;
     margin-top: 30px;
-    margin-bottom: 80px;
+    margin-bottom: 40px;
 }
 
 .info p {
@@ -66,10 +66,10 @@ body {
     width: 100%;
 }
 
-/* .settings {
-    margin-bottom: 20px;
-    padding-top: 10px;
-} */
+.settings {
+    margin-bottom: 15px;
+    /* padding-top: 10px; */
+}
 
 .settings a {
     text-decoration: none;

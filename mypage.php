@@ -56,7 +56,7 @@ if (count($isExists) == 0) {
                         $photo = mysqli_fetch_assoc(mysqli_query($conn, "SELECT `link_photo` FROM `photo` WHERE `photo_id` = '$photo_id'"));
 
                         $amount_active_jams = getAmountActiveUserJams($user_id);
-                        
+
                         $conn->close();
                         ?>
                         <img src="<?php echo $photo['link_photo']; ?>" alt="" height="65px" class="rounded-circle">
@@ -80,10 +80,15 @@ if (count($isExists) == 0) {
                         Настройки
                         <img src="img/settings.svg" alt="">
                     </a>
-                </div>';
+                    </div>
+                    <div class="row pd-lr-35" style="margin-bottom: 20px">
+                        <a href="/php/games/create_game.php">
+                            <button type="button" class="btn btn-danger m0" id="upload-game" style="font-weight: 500">Загрузить игру</button>
+                        </a>                    
+                    </div>';
                 }
                 ?>
-
+                
                 <?php
                 if (isset($_POST['follow']) && (count($isFollow) == 0)) {
                     $follower = $_COOKIE['user'];
