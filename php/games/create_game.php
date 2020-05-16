@@ -151,7 +151,7 @@ if ($_COOKIE['user'] == '') {
                                     <option value="other">Другой</option>
                                 </select>
 
-                                <p class="sub-header">Ссылки в магазине</p>
+                                <p class="sub-header">***Ссылки в магазине</p>
                                 <p class="text">Если ваша игра доступна в других магазинах мы добавим ссылку на нее.</p>
                                 <div id="store-inputs">
                                     <div class="wrapper" id="steam" hidden="true">
@@ -220,8 +220,14 @@ if ($_COOKIE['user'] == '') {
                                 </div>
 
                                 <p class="sub-header" style="margin-top: 30px;">Видео геймплея или трейлер</p>
+
                                 <p class="text">Добавьте ссылку с YouTube.</p>
-                                <input type="text" name="video_link" class="input " placeholder="https://youtube.com/" style="width: 100%">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text span" id="basic-addon3">https://youtube.com/watch?v=</span>
+                                    </div>
+                                    <input type="text" class="form-control input pl-2" id="basic-url" name="game_url" aria-describedby="basic-addon3">
+                                </div>
 
                                 <p class="sub-header">***Скриншоты</p>
                                 <p class="text">Скриншоты будут отображаться на вашей странице игры. Это опционально, но очень рекомендуется. Загрузите 3-5 для лучшего результата.</p>
@@ -287,8 +293,6 @@ if ($_COOKIE['user'] == '') {
         }
     </script>
 
-    <script src="../../js/main.js"></script>
-    <script src="../../js/popper.min.js"></script>
     <script src="../../js/bootstrap.min.js"></script>
 </body>
 

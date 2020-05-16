@@ -150,7 +150,7 @@ if ($_COOKIE['user'] == '') {
                 <div id="search-wraper">
 
                 </div>
-                
+
             </div>
         </div>
     </div>
@@ -172,7 +172,6 @@ if ($_COOKIE['user'] == '') {
         $("#choose-photo").change(function() {
             readURL(this);
         });
-        
     </script>
 
     <script src="ajax/news_functions.js"></script>
@@ -190,7 +189,9 @@ if ($_COOKIE['user'] == '') {
             $.ajax({
                 type: "POST",
                 url: "/php/news/get_posts.php",
-                data: { user_id: getCookie('user') },
+                data: {
+                    user_id: getCookie('user')
+                },
                 success: function(result) {
                     if (result)
                         showPosts(JSON.parse(result));
@@ -205,7 +206,7 @@ if ($_COOKIE['user'] == '') {
     </script>
 
     <script src="js/jquery-3.4.1.min.js"></script>
-    <script src="js/popper.min.js"></script>
+    <!-- <script src="js/popper.min.js"></script> -->
     <script src="js/bootstrap.min.js"></script>
 </body>
 

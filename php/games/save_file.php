@@ -15,9 +15,9 @@ if (isset($_POST)) {
         $short_description   = filter_var(trim($_POST['shrt_description']), FILTER_SANITIZE_STRING);
         $game_status         = filter_var(trim($_POST['status']), FILTER_SANITIZE_STRING);
         $file_name           = filter_var(trim($_FILES['game_file']['name']), FILTER_SANITIZE_STRING);
-        $game_description    = filter_var(trim($_POST['description']), FILTER_SANITIZE_STRING);
+        $game_description    = nl2br(filter_var(trim($_POST['description']), FILTER_SANITIZE_STRING));
         $game_genre          = filter_var(trim($_POST['genre']), FILTER_SANITIZE_STRING);
-        $game_instruction    = filter_var(trim($_POST['instruction']), FILTER_SANITIZE_STRING);
+        $game_instruction    = nl2br(filter_var(trim($_POST['instruction']), FILTER_SANITIZE_STRING));
         $cover_name          = filter_var(trim($_FILES['cover']['name']), FILTER_SANITIZE_STRING);
         $youtube_link        = filter_var(trim($_POST['video_link']), FILTER_SANITIZE_STRING);
 
@@ -50,34 +50,54 @@ if (isset($_POST)) {
             $errors[] = 'Файл должен быть меньше 1Гб.';
         }
 
-        if (empty($errors) == true) {
-            move_uploaded_file($file_tmp, "../../games/" . $file_name);
-            move_uploaded_file($cover_tmp, $link_photo);
-            echo "Success";
-        } else {
-            print $errors;
-        }
+        $game_size = number_format($file_size / 1048576, 2) . ' Mb';
+        echo $game_size;
 
-        $mysql = mysqli_connect("localhost", "root", "root", "gamedc");
+        // if (empty($errors) == true) {
+        //     move_uploaded_file($file_tmp, "../../games/" . $file_name);
+        //     move_uploaded_file($cover_tmp, $link_photo);
+        //     echo "Success";
+        // } else {
+        //     print $errors;
+        // }
 
-        if ($mysql) {
-            mysqli_query($mysql, "INSERT INTO photo(link_photo) VALUE ('$link_photo')");
+        // $mysql = mysqli_connect("localhost", "root", "root", "gamedc");
 
-            $photo_id = mysqli_query($mysql, "SELECT photo_id FROM `photo` WHERE link_photo = '$link_photo'");
+        // if ($mysql) {
+        //     if ($youtube_link) {
+        //         mysqli_query($mysql, "INSERT INTO photo(link_photo) VALUE ('$link_photo')");
 
-            if ($photo_id) {
-                $row = mysqli_fetch_assoc($photo_id);
-            }
+        //         $photo_id = mysqli_query($mysql, "SELECT photo_id FROM `photo` WHERE link_photo = '$link_photo'");
 
-            $ph_id = $row['photo_id'];
-            echo $ph_id . '</br>';
-            echo $user_id . '</br>';
+        //         if ($photo_id) {
+        //             $row = mysqli_fetch_assoc($photo_id);
+        //         }
 
-            $result = mysqli_query($mysql, "INSERT INTO `games`(user_id, game_name, game_url, game_short_description, game_description, game_status, game_file_name, game_genre, game_instruction, photo_id) VALUE 
-            ('$user_id', '$game_name', '$game_url','$short_description', '$game_description', '$game_status', '$file_name', '$game_genre', '$game_instruction', '$ph_id')");
-        } else
-            die('Ошибка подключения к серверу баз данных.');
+        //         $ph_id = $row['photo_id'];
+        //         echo $ph_id . '</br>';
+        //         echo $user_id . '</br>';
 
-        $mysql->close();
+        //         $result = mysqli_query($mysql, "INSERT INTO `games`(user_id, game_name, game_url, game_short_description, game_description, game_status, game_file_name, game_genre, game_instruction, photo_id, youtube_link, game_size) VALUE 
+        //     ('$user_id', '$game_name', '$game_url','$short_description', '$game_description', '$game_status', '$file_name', '$game_genre', '$game_instruction', '$ph_id','$youtube_link', '$game_size')");
+        //     } else {
+        //         mysqli_query($mysql, "INSERT INTO photo(link_photo) VALUE ('$link_photo')");
+
+        //         $photo_id = mysqli_query($mysql, "SELECT photo_id FROM `photo` WHERE link_photo = '$link_photo'");
+
+        //         if ($photo_id) {
+        //             $row = mysqli_fetch_assoc($photo_id);
+        //         }
+
+        //         $ph_id = $row['photo_id'];
+        //         echo $ph_id . '</br>';
+        //         echo $user_id . '</br>';
+
+        //         $result = mysqli_query($mysql, "INSERT INTO `games`(user_id, game_name, game_url, game_short_description, game_description, game_status, game_file_name, game_genre, game_instruction, photo_id, game_size) VALUE 
+        //     ('$user_id', '$game_name', '$game_url','$short_description', '$game_description', '$game_status', '$file_name', '$game_genre', '$game_instruction', '$ph_id', '$game_size')");
+        //     }
+        // } else
+        //     die('Ошибка подключения к серверу баз данных.');
+
+        // $mysql->close();
     }
 }

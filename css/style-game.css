@@ -1,0 +1,73 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    overflow-x: hidden;
+    color: #777777;
+}
+
+h2 {
+    font-family: Montserrat;
+    font-weight: 600;
+    font-size: 36px;
+    color: #ffffff;
+}
+
+.main-img {
+    border-radius: 15px 15px 0px 0px;
+}
+
+.game-header {
+    margin: 0px;
+    display: block;
+    text-align: center;
+    margin-top: 0;
+    max-height: 700px;
+}
+
+.game-place {
+    top: 65px;
+    padding: 0px;
+    position: relative;
+}
+
+.game {
+    background-color: #303030;
+    border-radius: 0px 0px 15px 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    padding: 35px 40px 30px 40px;
+}
+
+.short-description {
+    font-family: "Montserrat";
+    font-size: 18px;
+    font-weight: 500;
+    color: #EEEEEE;
+    margin-bottom: 45px;
+}
+
+.description {
+    font-family: "Montserrat";
+    font-size: 16px;
+    font-weight: 400;
+    color: #EEEEEE;
+    margin-bottom: 30px;
+}
+
+.download {
+    font-family: Montserrat;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 8px 10px 8px 10px;
+    margin-bottom: 7px;
+    border: none;
+    border-radius: 3px;
+    background-color: rgb(228, 46, 46);
+    color: #ffffff;
+}
+
+.screenshot {
+    margin-top: 15px;
+}
