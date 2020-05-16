@@ -1,0 +1,155 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Montserrat;
+    overflow-x: hidden;
+}
+
+.user-panel {
+    min-height: 350px;
+    background-color: #303030;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    width: 320px;
+    padding-left: 10px;
+    padding-top: 0px;
+    padding-right: 10px;
+    top: 65px;
+    position: relative;
+}
+
+.user-header {
+    margin-top: 10px;
+}
+
+.user-photo-panel {
+    padding-top: 15px;
+}
+
+.user-name-panel {
+    padding-top: 20px;
+    padding-left: 12px;
+    color: #ffffff;
+    font-family: Montserrat;
+    font-weight: 700;
+    font-size: 18px;
+    width: 205px;
+}
+
+.user-name-panel p {
+    font-size: 15px;
+    font-weight: normal;
+    color: #777777;
+    margin-bottom: 0px;
+}
+
+.info {
+    text-decoration: none;
+    color: #D2D2D2;
+    font-size: 16px;
+    font-weight: 400;
+    font-family: Montserrat;
+    margin-top: 30px;
+    margin-bottom: 40px;
+}
+
+.info p {
+    margin: 0px;
+    margin-bottom: 5px;
+    width: 100%;
+}
+
+.settings {
+    margin-bottom: 15px;
+    /* padding-top: 10px; */
+}
+
+.settings a {
+    text-decoration: none;
+    color: #777777;
+    margin-right: 5px;
+    font-size: 16px;
+}
+
+.settings img {
+    height: 16px;
+    margin-bottom: 2px;
+}
+
+.buttons a:hover {
+    background-color: #3f3f3f;
+    color: #ffffff;
+    height: 38px;
+}
+
+.jams {
+    width: 740px;
+    height: 350px;
+    top: 65px;
+    padding: 0px;
+    position: relative;
+    margin-left: 20px;
+}
+
+.jam {
+    height: 350px;
+    width: 740px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    padding: 0px;
+    margin-bottom: 15px;
+    margin-left: 0;
+    background-color: #303030;
+}
+
+.games {
+    top: 65px;
+}
+
+.game {
+    width: 450px;
+    padding-left: 15px;
+    padding-right: 0;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: 500;
+    color: #ffffff;
+    margin-left: 5px;
+    margin-bottom: 0px;
+    margin-top: 5px;
+}
+
+.description {
+    font-size: 16px;
+    font-weight: 400;
+    color: #eeeeee;
+    margin-left: 5px;
+    margin-bottom: 0px;
+}
+
+.user-name {
+    float: left/right;
+    width: 100%;
+    font-size: 16px;
+    font-weight: 400;
+    color: #eeeeee;
+    margin-left: 5px;
+    margin-bottom: 20px;
+    padding-right: 10px;
+}
+
+.user-name p {
+    color: #777777;
+    margin-bottom: 0;
+}
+
+.rect {
+    width: 100%;
+    height: 300px;
+    background-color: #fff;
+}

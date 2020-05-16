@@ -14,7 +14,6 @@ if ($_COOKIE['user'] == '') {
     <link href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap&subset=cyrillic,cyrillic-ext,latin-ext,vietnamese" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Anonymous+Pro:400,400i,700,700i&display=swap&subset=cyrillic,greek,latin-ext" rel="stylesheet">
     <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <!-- <link rel="stylesheet" href="/css/style-create_game.css"> -->
     <link rel="stylesheet" href="/css/style-game.css">
     <link rel="stylesheet" href="/css/style-header.css">
     <title>Crete Game</title>
@@ -67,8 +66,16 @@ if ($_COOKIE['user'] == '') {
                     </svg>
                 </div>
             </a>
+            <a href="/games.php">
+                Игры
+                <div style="width: 100%; text-align: center; display: flex; justify-content: center">
+                    <svg width="4" height="4" viewBox="0 0 4 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="2" cy="2" r="2" fill="white" />
+                    </svg>
+                </div>
+            </a>
             <a href="/jams.php">
-                Мероприятия
+                Jams
                 <div style="width: 100%; text-align: center; display: flex; justify-content: center">
                     <svg width="4" height="4" viewBox="0 0 4 4" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <circle cx="2" cy="2" r="2" fill="white" />
@@ -142,7 +149,6 @@ if ($_COOKIE['user'] == '') {
     </div>
 
     <script src="../../js/jquery-3.4.1.min.js"></script>
-    <script src="../../js/bootstrap.min.js"></script>
 </body>
 
 </html>

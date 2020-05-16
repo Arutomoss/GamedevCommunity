@@ -19,8 +19,16 @@
                     </svg>
                 </div>
             </a>
+            <a href="/games.php">
+                Игры
+                <div style="width: 100%; text-align: center; display: flex; justify-content: center">
+                    <svg width="4" height="4" viewBox="0 0 4 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="2" cy="2" r="2" fill="white" />
+                    </svg>
+                </div>
+            </a>
             <a href="/jams.php">
-                Мероприятия
+                Jams
                 <div style="width: 100%; text-align: center; display: flex; justify-content: center">
                     <svg width="4" height="4" viewBox="0 0 4 4" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <circle cx="2" cy="2" r="2" fill="white" />
