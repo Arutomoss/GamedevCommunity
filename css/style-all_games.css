@@ -17,6 +17,7 @@ body {
     padding-left: 10px;
     padding-top: 0px;
     padding-right: 10px;
+    margin-right: 0;
     top: 65px;
     position: relative;
 }
@@ -31,7 +32,6 @@ body {
 
 .user-name-panel {
     padding-top: 20px;
-    padding-left: 12px;
     color: #ffffff;
     font-family: Montserrat;
     font-weight: 700;
@@ -110,9 +110,10 @@ body {
 }
 
 .game {
-    width: 450px;
-    padding-left: 15px;
+    width: 350px;
+    /* padding-left: 15px; */
     padding-right: 0;
+    margin-left: 15px;
 }
 
 .title {

@@ -95,28 +95,28 @@ if ($_COOKIE['user'] == '') {
                         </div>
                     </div>
                     <div class="line"></div>
-                    <form action="save_file.php" method="post" enctype="multipart/form-data">
+                    <form action="" method="post" id="form" onsubmit="return writeMeSubmit(this);" enctype="multipart/form-data">
+                        <!-- save_file.php -->
                         <div class="row">
-
                             <div class="col plr-0">
                                 <p class="sub-header">Название</p>
-                                <input type="text" class="input" name="name">
+                                <input type="text" class="input" name="name" id="title" maxlength="45" autocomplete="off">
 
-                                <p class="sub-header">URL Игры</p>
+                                <p class="sub-header">***URL Игры</p>
                                 <!-- <input type="text" class="input" placeholder="https://gamedevcommunity.com/games/"> -->
                                 <!-- <label for="basic-url">Your vanity URL</label> -->
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text span" id="basic-addon3">gamedevcommunity.com/games/</span>
                                     </div>
-                                    <input type="text" class="form-control input pl-2" id="basic-url" name="game_url" aria-describedby="basic-addon3">
+                                    <input type="text" class="form-control input pl-2" id="basic-url" name="game_url" aria-describedby="basic-addon3" autocomplete="off" maxlength="2048">
                                 </div>
 
                                 <p class="sub-header">Краткое описание</p>
-                                <input type="text" name="shrt_description" class="input" placeholder="Опционально">
+                                <input type="text" name="shrt_description" class="input" id="shrt_description" placeholder="Опционально" autocomplete="off" maxlength="110">
 
                                 <p class="sub-header">Статус</p>
-                                <select name="status" id="" class="input">
+                                <select name="status" id="status" class="input">
                                     <option value="released">Выпущенна</option>
                                     <option value="in_development">В разработке</option>
                                     <option value="on_hold">Разработка приостановлена</option>
@@ -134,11 +134,11 @@ if ($_COOKIE['user'] == '') {
                                 <p class="sub-header-big" style="margin-top: 30px">Описание</p>
                                 <p class="text">Описание вашей игровой страницы</p>
                                 <div class="form-group">
-                                    <textarea name="description" class="form-control form-style" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                    <textarea name="description" class="form-control form-style" id="description" rows="3" maxlength="4000"></textarea>
                                 </div>
 
                                 <p class="sub-header">Жанр</p>
-                                <select name="genre" id="" class="input">
+                                <select name="genre" id="genre" class="input">
                                     <option value="no_genre">Без жанра</option>
                                     <option value="platformer">Платфромер</option>
                                     <option value="action">Экшн</option>
@@ -164,7 +164,7 @@ if ($_COOKIE['user'] == '') {
                                 <div id="store-inputs">
                                     <div class="wrapper" id="steam" hidden="true">
                                         <p class="sub-header">Steam Store</p>
-                                        <input type="text" name="steam_store" class="input" placeholder="https://store.steampowered.com/">
+                                        <input type="text" name="steam_store" class="input" placeholder="https://store.steampowered.com/" autocomplete="off">
                                         <button type="button" class="exit-btn" onclick="showButton('steam', 'steam-btn')">
                                             <p>+</p>
                                         </button>
@@ -172,7 +172,7 @@ if ($_COOKIE['user'] == '') {
 
                                     <div class="wrapper" id="apple" hidden="true">
                                         <p class="sub-header">Apple App Store</p>
-                                        <input type="text" name="apple_store" class="input" placeholder="https://apps.apple.com/ru/genre/ios/id36">
+                                        <input type="text" name="apple_store" class="input" placeholder="https://apps.apple.com/ru/genre/ios/id36" autocomplete="off">
                                         <button type="button" class="exit-btn" onclick="showButton('apple', 'apple-btn')">
                                             <p>+</p>
                                         </button>
@@ -180,7 +180,7 @@ if ($_COOKIE['user'] == '') {
 
                                     <div class="wrapper" id="google" hidden="true">
                                         <p class="sub-header">Google Play</p>
-                                        <input type="text" name="google_store" class="input" placeholder="https://play.google.com/store">
+                                        <input type="text" name="google_store" class="input" placeholder="https://play.google.com/store" autocomplete="off">
                                         <button type="button" class="exit-btn" onclick="showButton('google', 'google-btn')">
                                             <p>+</p>
                                         </button>
@@ -188,7 +188,7 @@ if ($_COOKIE['user'] == '') {
 
                                     <div class="wrapper" id="epic" hidden="true">
                                         <p class="sub-header">Epic Games Store</p>
-                                        <input type="text" name="epic_store" class="input" placeholder="https://www.epicgames.com/store/ru/">
+                                        <input type="text" name="epic_store" class="input" placeholder="https://www.epicgames.com/store/ru/" autocomplete="off">
                                         <button type="button" class="exit-btn" onclick="showButton('epic', 'epic-btn')">
                                             <p>+</p>
                                         </button>
@@ -196,7 +196,7 @@ if ($_COOKIE['user'] == '') {
 
                                     <div class="wrapper" id="windows" hidden="true">
                                         <p class="sub-header">Windows Store</p>
-                                        <input type="text" name="windows_store" class="input" placeholder="https://www.microsoft.com/ru-ru/store/apps/windows">
+                                        <input type="text" name="windows_store" class="input" placeholder="https://www.microsoft.com/ru-ru/store/apps/windows" autocomplete="off">
                                         <button type="button" class="exit-btn" onclick="showButton('windows', 'windows-btn')">
                                             <p>+</p>
                                         </button>
@@ -211,10 +211,10 @@ if ($_COOKIE['user'] == '') {
                                 <p class="sub-header" style="margin-top: 30px">Инструкция по скачиванию и установке</p>
                                 <p class="text">Этот текст будет показан кому-то, когда он загружает вашу игру через браузер. Включите любую информацию о том, как установить и запустить то, что они загружают.</p>
                                 <div class="form-group">
-                                    <textarea name="instruction" class="form-control form-style" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                    <textarea name="instruction" class="form-control form-style" id="info" rows="3" placeholder="Опционально" maxlength="1000"></textarea>
                                 </div>
 
-                                <button type="submit" class="btn btn-danger btn-red">Сохранить и посмотреть страницу</button>
+                                <button type="button" class="btn btn-danger btn-red" id="upload_game">Сохранить и посмотреть страницу</button>
                             </div>
 
                             <div class="col plr-0">
@@ -222,7 +222,7 @@ if ($_COOKIE['user'] == '') {
                                     <!-- <button type="button" class="btn btn-danger btn-red">Загрузить обложку</button> -->
 
                                     <div class="fl_upld2">
-                                        <label><input id="fl_inp2" type="file" name="cover" accept="image/jpeg">Загрузить обложку</label>
+                                        <label><input id="file_v" type="file" name="cover" accept="image/jpeg">Загрузить обложку</label>
                                         <div id="fl_nm2">Файл не выбран</div>
                                     </div>
                                 </div>
@@ -234,7 +234,7 @@ if ($_COOKIE['user'] == '') {
                                     <div class="input-group-prepend">
                                         <span class="input-group-text span" id="basic-addon3">https://youtube.com/watch?v=</span>
                                     </div>
-                                    <input type="text" class="form-control input pl-2" id="basic-url" name="game_url" aria-describedby="basic-addon3">
+                                    <input type="text" class="form-control input pl-2" id="basic-url1" name="game_url" aria-describedby="basic-addon3" autocomplete="off" placeholder="Опционально">
                                 </div>
 
                                 <p class="sub-header">***Скриншоты</p>
@@ -259,7 +259,7 @@ if ($_COOKIE['user'] == '') {
         });
 
         $(document).ready(function() {
-            $("#fl_inp2").change(function() {
+            $("#file_v").change(function() {
                 var filename = $(this).val().replace(/.*\\/, "");
                 $("#fl_nm2").html(filename);
             });
@@ -281,6 +281,88 @@ if ($_COOKIE['user'] == '') {
                     this.value = '';
             }
         };
+
+        var input = document.getElementById('title'),
+            value = input.value;
+
+        input.addEventListener('input', onInput);
+
+        function onInput(e) {
+            var newValue = e.target.value;
+            if (newValue.match(/[^a-zA-Zа-яА-Я0-9-\s()#№.,!:&]/g)) {
+                input.value = value;
+                return;
+            }
+            value = newValue;
+        }
+
+        // var shrt_description = document.getElementById('shrt_description'),
+        //     shrt_value = shrt_description.value;
+
+        // shrt_description.addEventListener('input', onInput);
+
+        // function onInput(e) {
+        //     var newValue = e.target.value;
+        //     if (newValue.match(/[^a-zA-Zа-яА-Я0-9-\s()#№=_!.,/@|%$;:*&?]/g)) {
+        //         shrt_description.value = shrt_value;
+        //         return;
+        //     }
+        //     shrt_value = newValue;
+        // }
+
+        // $.ajax({
+        //     type: "POST",
+        //     url: "/php/games/upload.php",
+        //     dataType: "html",
+        //     data: $("#form").serialize(),
+        //     success: function(result) {
+        //         alert((result));
+        //     },
+        //     error: function() {
+        //         alert('Ошибка!');
+        //     }
+        // });        
+
+        $(document).ready(function() {
+            $("#upload_game").click(function() {
+                var fd = new FormData();
+                fd.append('file', $('#fl_inp')[0].files[0]);
+                fd.append('cover', $('#file_v')[0].files[0]);
+                fd.append('title', document.getElementById('title').value);
+                // fd.append('game_url', document.getElementById('basic-url').value);
+                fd.append('shrt_description', document.getElementById('shrt_description').value);
+                fd.append('status', document.getElementById('status').value);
+                fd.append('description', document.getElementById('description').value);
+                fd.append('genre', document.getElementById('genre').value);
+                fd.append('info', document.getElementById('info').value);
+                fd.append('youtube', document.getElementById('basic-url1').value);
+
+                $.ajax({
+                    type: "POST",
+                    url: "/php/games/upload.php",
+                    dataType: "html",
+                    processData: false,
+                    contentType: false,
+                    data: fd,
+                    // {
+                    //     data: $("#form").serialize(),
+                    //     files: $('input[type=file]').files
+                    // },
+                    success: function(result) {
+                        alert((result));
+                    },
+                    error: function() {
+                        alert('Ошибка!');
+                    }
+                });
+            });
+        });
+
+        // var submit = document.getElementById('upload_game');
+
+        // submit.click = function(e) {
+
+        // }
     </script>
 
     <script>

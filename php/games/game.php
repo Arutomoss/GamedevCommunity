@@ -120,29 +120,33 @@ if ($_COOKIE['user'] == '') {
                     <img src="<?php echo $photo['link_photo']; ?>" alt="" class="main-img" width="100%">
                 </div>
                 <div class="col game">
-                    <form action="save_file.php" method="post" enctype="multipart/form-data">
+                    <!-- <form action="save_file.php" method="post" enctype="multipart/form-data"> -->
                         <div class="row">
                             <div class="col-7 plr-0">
                                 <h2><?php echo $game['game_name']; ?></h2>
                                 <p class="short-description"><?php echo $game['game_short_description']; ?></p>
+                                <h4>Описание</h4>
                                 <p class="description"><?php echo $game['game_description']; ?></p>
+                                <h4>Инструкция по установке</h4>
+                                <p class="description"><?php echo $game['game_instruction']; ?></p>
 
                                 <div>
                                     <button class="download">Скачать игру</button>
-                                    <p><?php echo $game['game_file_name'].' '; echo $game['game_size'].' Mb'; ?></p>
+                                    <p><?php echo $game['game_file_name'].' '; echo $game['game_size']; ?></p>
                                 </div>
 
                             </div>
 
                             <div class="col plr-0">
-                                <iframe width="407" height="228" src="<?php echo ' https://www.youtube.com/embed/'.$game['youtube_link']; ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                <video tabindex="-1" class="video-stream html5-main-video" controlslist="nodownload" src="https://www.youtube.com/watch?v=GK26CGvjbkY"></video>
+                                <?php if ($game['youtube_link'] != null){
+                                    echo '<iframe width="407" height="228" src="'.'https://www.youtube.com/embed/'.$game['youtube_link'].'" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+                                } ?>
                                 <!-- <img src="/img/1.jpg" alt="" width="400px" class="screenshot">
                                 <img src="/img/1.jpg" alt="" width="400px" class="screenshot">
                                 <img src="/img/1.jpg" alt="" width="400px" class="screenshot"> -->
                             </div>
                         </div>
-                    </form>
+                    <!-- </form> -->
                 </div>
             </div>
         </div>

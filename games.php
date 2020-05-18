@@ -111,11 +111,11 @@ if ($_COOKIE['user'] == '') {
             </div>
         </div>
     </div> -->
-    <div class="container col-8">
+    <div class="container col-11">
         <div class="wrap row justify-content-center">
-            <div class="col col-lg-3">
+            <div class="pr-0">
                 <div class="user-panel row">
-                    <div class="row pd-lr-30 user-header">
+                    <div class="row pd-lr-40 user-header">
                         <div class="user-name-panel">
                             <?php
                             echo $user['first_name'] . ' ' . $user['last_name'];
@@ -123,87 +123,59 @@ if ($_COOKIE['user'] == '') {
                             <p><?php echo $user['short_description']; ?></p>
                         </div>
                     </div>
-                    <div class="info row pd-lr-35">
+                    <div class="info row pd-lr-40">
                         <p>Подписчики: <?php echo $amount_followers['amount']; ?></p>
                         <p>Активные мероприятия: <?php echo $amount_active_jams; ?></p>
                         <p>Созданные мероприятия: <?php echo $my_events['amount']; ?></p>
                     </div>
-                    <?php
-                    if ($_COOKIE['user'] == $user['user_id']) {
-                        echo '<div class="settings row pd-lr-35">
-                    <a href="settings.php">
-                        Настройки
-                        <img src="img/settings.svg" alt="">
-                    </a>
-                    </div>
-                    <div class="row pd-lr-35" style="margin-bottom: 20px">
+                    
+                    <div class="row pd-lr-40" style="margin-bottom: 20px">
                         <a href="/php/games/create_game.php">
                             <button type="button" class="btn btn-danger m0" id="upload-game" style="font-weight: 500">Загрузить игру</button>
-                        </a>                    
-                    </div>';
-                    }
-                    ?>
-
-                    <?php
-                    if (isset($_POST['follow']) && (count($isFollow) == 0)) {
-                        $follower = $_COOKIE['user'];
-
-                        require 'php/connect.php';
-                        mysqli_query($conn, "INSERT INTO `subscriptions`(user_id, follower_id) VALUE ('$user_id', '$follower')");
-                        $conn->close();
-
-                        echo "<script>(window.location.href='mypage.php?user_id=$user_id')()</script>";
-                    } else if (isset($_POST['unfollow']) && (count($isFollow) != 0)) {
-                        $follower = $_COOKIE['user'];
-
-                        require 'php/connect.php';
-                        mysqli_query($conn, "DELETE FROM `subscriptions` WHERE (`user_id` = '$user_id') AND (`follower_id` = '$follower')");
-                        $conn->close();
-
-                        echo "<script>(window.location.href='mypage.php?user_id=$user_id')()</script>";
-                    }
-                    ?>
-                    <form method="POST">
-                        <?php
-
-                        if ($_COOKIE['user'] != $user_id) {
-                            if (count($isFollow) == 0) {
-                                echo '<input type="submit" name="follow" class="btn btn-success pd-lr-30" value="Follow" style="margin-left: 20px;">';
-                            } else {
-                                echo '<input type="submit" name="unfollow" class="btn btn-danger pd-lr-30" value="Unfollow" style="margin-left: 20px;">';
-                            }
-                        }
-                        ?>
-                    </form>
-
+                        </a>
+                    </div>
                 </div>
             </div>
-            <div class="col games">
+            <div class="col-8 games">
                 <div class="row">
-                    <div class="col game">
-                        <img src="/img/1.jpg" alt="" width="100%" class="rounded-10">
+                    <div class="game">
+                        <div style="height: 240px; width: 350px; background-image: url(/img/1.jpg); background-size: cover;" class="rounded-10"></div>
                         <p class="title">Title</p>
                         <p class="description">short description</p>
                         <div class="user-name row justify-content-between">user name<p>platformer</p>
                         </div>
                     </div>
-                    <div class="col game">
-                        <img src="/img/1.jpg" alt="" width="100%" class="rounded-10">
+                    <div class="game">
+                        <div style="height: 240px; width: 350px; background-image: url(/img/1.jpg); background-size: cover;" class="rounded-10"></div>
                         <p class="title">Title</p>
                         <p class="description">short description</p>
                         <div class="user-name row justify-content-between">user name<p>platformer</p>
                         </div>
                     </div>
-                    <div class="w-100 mb-1"></div>
-                    <div class="col game">
-                        <img src="/img/1.jpg" alt="" width="100%" class="rounded-10">
+                    <div class="game">
+                        <div style="height: 240px; width: 350px; background-image: url(/img/1.jpg); background-size: cover;" class="rounded-10"></div>
                         <p class="title">Title</p>
                         <p class="description">short description</p>
                         <div class="user-name row justify-content-between">user name<p>platformer</p>
                         </div>
                     </div>
-                    <div class="col game">
-                        <img src="/img/1.jpg" alt="" width="100%" class="rounded-10">
+                    <!-- <div class="w-100 mb-1"></div> -->
+                    <div class="game">
+                        <div style="height: 240px; width: 350px; background-image: url(/img/1.jpg); background-size: cover;" class="rounded-10"></div>
+                        <p class="title">Title</p>
+                        <p class="description">short description</p>
+                        <div class="user-name row justify-content-between">user name<p>platformer</p>
+                        </div>
+                    </div>
+                    <div class="game">
+                        <div style="height: 240px; width: 350px; background-image: url(/img/1.jpg); background-size: cover;" class="rounded-10"></div>
+                        <p class="title">Title</p>
+                        <p class="description">short description</p>
+                        <div class="user-name row justify-content-between">user name<p>platformer</p>
+                        </div>
+                    </div>
+                    <div class="game">
+                        <div style="height: 240px; width: 350px; background-image: url(/img/1.jpg); background-size: cover;" class="rounded-10"></div>
                         <p class="title">Title</p>
                         <p class="description">short description</p>
                         <div class="user-name row justify-content-between">user name<p>platformer</p>
