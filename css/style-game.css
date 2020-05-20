@@ -75,6 +75,14 @@ h4 {
     color: #ffffff;
 }
 
+.download a {
+    color: #ffffff;
+}
+
+.download a:hover {
+    color: #ffffff;
+}
+
 .screenshot {
     margin-top: 15px;
 }

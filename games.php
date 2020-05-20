@@ -114,21 +114,45 @@ if ($_COOKIE['user'] == '') {
     <div class="container col-11">
         <div class="wrap row justify-content-center">
             <div class="pr-0">
-                <div class="user-panel row">
-                    <div class="row pd-lr-40 user-header">
-                        <div class="user-name-panel">
-                            <?php
-                            echo $user['first_name'] . ' ' . $user['last_name'];
-                            ?>
-                            <p><?php echo $user['short_description']; ?></p>
-                        </div>
+                <div class="user-panel ">
+                    <div class="search paddings">
+                        <p class="sub-header">Поиск</p>
+                        <input type="text" class="input" placeholder="Введите название игры">
                     </div>
-                    <div class="info row pd-lr-40">
-                        <p>Подписчики: <?php echo $amount_followers['amount']; ?></p>
-                        <p>Активные мероприятия: <?php echo $amount_active_jams; ?></p>
-                        <p>Созданные мероприятия: <?php echo $my_events['amount']; ?></p>
+
+                    <div class="sort paddings">
+                        <p class="sub-header">Сортировка</p>
+                        <select name="sort_games" id="sort_games" class="input">
+                            <option value="date_new">По дате, сперва новые</option>
+                            <option value="date_old">По дате, сперва старые</option>
+                            <!-- <option value="genre">По жанру</option> -->
+                        </select>
                     </div>
-                    
+
+                    <div class="genre paddings">
+                        <p class="sub-header">Жанр</p>
+                        <select name="genre" id="genre" class="input">
+                            <option value="no_genre">Без жанра</option>
+                            <option value="platformer">Платфромер</option>
+                            <option value="action">Экшн</option>
+                            <option value="shooter">Шутер</option>
+                            <option value="adventure">Приключения</option>
+                            <option value="role_play">Ролевая</option>
+                            <option value="survival">Выживание</option>
+                            <option value="simulation">Симулятор</option>
+                            <option value="strategy">Стратегия</option>
+                            <option value="fighting">Файтинг</option>
+                            <option value="racing">Гонки</option>
+                            <option value="education">Образовательная</option>
+                            <option value="visual_novel">Визуальная новелла</option>
+                            <option value="puzzle">Пазл</option>
+                            <option value="rhythm">Ритм</option>
+                            <option value="sport">Спорт</option>
+                            <option value="card_game">Карточная игра</option>
+                            <option value="other">Другой</option>
+                        </select>
+                    </div>
+
                     <div class="row pd-lr-40" style="margin-bottom: 20px">
                         <a href="/php/games/create_game.php">
                             <button type="button" class="btn btn-danger m0" id="upload-game" style="font-weight: 500">Загрузить игру</button>
@@ -137,56 +161,43 @@ if ($_COOKIE['user'] == '') {
                 </div>
             </div>
             <div class="col-8 games">
-                <div class="row">
-                    <div class="game">
-                        <div style="height: 240px; width: 350px; background-image: url(/img/1.jpg); background-size: cover;" class="rounded-10"></div>
+                <div class="row" id="games">
+                    <!-- <div class="game">
+                        <a href="">
+                            <div class="rounded-10 game-cover"></div>
+                        </a>
                         <p class="title">Title</p>
                         <p class="description">short description</p>
                         <div class="user-name row justify-content-between">user name<p>platformer</p>
                         </div>
-                    </div>
-                    <div class="game">
-                        <div style="height: 240px; width: 350px; background-image: url(/img/1.jpg); background-size: cover;" class="rounded-10"></div>
-                        <p class="title">Title</p>
-                        <p class="description">short description</p>
-                        <div class="user-name row justify-content-between">user name<p>platformer</p>
-                        </div>
-                    </div>
-                    <div class="game">
-                        <div style="height: 240px; width: 350px; background-image: url(/img/1.jpg); background-size: cover;" class="rounded-10"></div>
-                        <p class="title">Title</p>
-                        <p class="description">short description</p>
-                        <div class="user-name row justify-content-between">user name<p>platformer</p>
-                        </div>
-                    </div>
-                    <!-- <div class="w-100 mb-1"></div> -->
-                    <div class="game">
-                        <div style="height: 240px; width: 350px; background-image: url(/img/1.jpg); background-size: cover;" class="rounded-10"></div>
-                        <p class="title">Title</p>
-                        <p class="description">short description</p>
-                        <div class="user-name row justify-content-between">user name<p>platformer</p>
-                        </div>
-                    </div>
-                    <div class="game">
-                        <div style="height: 240px; width: 350px; background-image: url(/img/1.jpg); background-size: cover;" class="rounded-10"></div>
-                        <p class="title">Title</p>
-                        <p class="description">short description</p>
-                        <div class="user-name row justify-content-between">user name<p>platformer</p>
-                        </div>
-                    </div>
-                    <div class="game">
-                        <div style="height: 240px; width: 350px; background-image: url(/img/1.jpg); background-size: cover;" class="rounded-10"></div>
-                        <p class="title">Title</p>
-                        <p class="description">short description</p>
-                        <div class="user-name row justify-content-between">user name<p>platformer</p>
-                        </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
     </div>
 
+    <script src="ajax/games_functions.js"></script>
     <script src="js/jquery-3.4.1.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $.ajax({
+                type: "POST",
+                url: "/php/games/get_games.php",
+                success: function(result) {
+                    // alert(result);
+                    if (result)
+                        showAllGames(JSON.parse(result));
+                    else
+                        showAllGames("");
+                },
+                error: function() {
+                    alert('Ошибка!');
+                }
+            });
+        });
+    </script>
+
 </body>
 
 </html>

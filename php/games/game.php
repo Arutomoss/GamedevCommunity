@@ -4,6 +4,20 @@ if ($_COOKIE['user'] == '') {
 }
 ?>
 
+<?php
+$conn = mysqli_connect("localhost", "root", "root", "gamedc");
+
+$game_id = $_GET['game_id'];
+$result = mysqli_query($conn, "SELECT * FROM `games` WHERE game_id = '$game_id'");
+$game = mysqli_fetch_assoc($result);
+
+$photo_id = $game['photo_id'];
+$photo_res = mysqli_query($conn, "SELECT `link_photo` FROM `photo` WHERE photo_id = '$photo_id'");
+$photo = mysqli_fetch_assoc($photo_res);
+
+$conn->close();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,36 +30,10 @@ if ($_COOKIE['user'] == '') {
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/style-game.css">
     <link rel="stylesheet" href="/css/style-header.css">
-    <title>Crete Game</title>
+    <title><?php echo $game['game_name']; ?></title>
 </head>
 
-<?php
-    $conn = mysqli_connect("localhost", "root", "root", "gamedc");
 
-    $game_id = $_GET['game_id'];
-    $result = mysqli_query($conn, "SELECT * FROM `games` WHERE game_id = '$game_id'");
-    $game = mysqli_fetch_assoc($result);
-
-    // $user_id = $game['user_id'];
-    // $user_res = mysqli_query($conn, "SELECT * FROM `users` WHERE user_id = '$user_id'");
-    // $user = mysqli_fetch_assoc($user_res);
-
-    $photo_id = $game['photo_id'];
-    $photo_res = mysqli_query($conn, "SELECT `link_photo` FROM `photo` WHERE photo_id = '$photo_id'");
-    $photo = mysqli_fetch_assoc($photo_res);
-
-    // $user_photo_id = $user['photo_id'];
-    // $user_photo = mysqli_fetch_assoc(mysqli_query($conn, "SELECT `link_photo` FROM `photo` WHERE `photo_id` = '$user_photo_id'"));
-
-    // $joined_user_id = $_COOKIE['user'];
-    // $isJoin = mysqli_fetch_assoc(mysqli_query($conn, "SELECT `user_id` FROM `event_members` WHERE (`user_id` = '$joined_user_id') AND (`event_id` = '$event_id')"));
-
-    // $follower = $_COOKIE['user'];
-
-    // $amount_members = mysqli_fetch_assoc(mysqli_query($conn, "SELECT count(`user_id`) as amount FROM `event_members` WHERE `event_id` = '$event_id'"));
-
-    $conn->close();
-?>
 
 <header class="d-flex flex-column justify-content-center">
     <div class="h_container">
@@ -121,31 +109,33 @@ if ($_COOKIE['user'] == '') {
                 </div>
                 <div class="col game">
                     <!-- <form action="save_file.php" method="post" enctype="multipart/form-data"> -->
-                        <div class="row">
-                            <div class="col-7 plr-0">
-                                <h2><?php echo $game['game_name']; ?></h2>
-                                <p class="short-description"><?php echo $game['game_short_description']; ?></p>
-                                <h4>Описание</h4>
-                                <p class="description"><?php echo $game['game_description']; ?></p>
-                                <h4>Инструкция по установке</h4>
-                                <p class="description"><?php echo $game['game_instruction']; ?></p>
+                    <div class="row">
+                        <div class="col-7 plr-0">
+                            <h2><?php echo $game['game_name']; ?></h2>
+                            <p class="short-description"><?php echo $game['game_short_description']; ?></p>
+                            <h4>Описание</h4>
+                            <p class="description"><?php echo $game['game_description']; ?></p>
+                            <h4>Инструкция по установке</h4>
+                            <p class="description"><?php echo $game['game_instruction']; ?></p>
 
-                                <div>
-                                    <button class="download">Скачать игру</button>
-                                    <p><?php echo $game['game_file_name'].' '; echo $game['game_size']; ?></p>
-                                </div>
+                            <div>
+                                <a href="/games/<?php echo $game['game_file_name']; ?>" download="<?php echo $game['game_file_name']; ?>"><button class="download" id="download">Скачать игру</button></a>
 
+                                <p><?php echo $game['game_file_name'] . ' ';
+                                    echo $game['game_size']; ?></p>
                             </div>
 
-                            <div class="col plr-0">
-                                <?php if ($game['youtube_link'] != null){
-                                    echo '<iframe width="407" height="228" src="'.'https://www.youtube.com/embed/'.$game['youtube_link'].'" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
-                                } ?>
-                                <!-- <img src="/img/1.jpg" alt="" width="400px" class="screenshot">
+                        </div>
+
+                        <div class="col plr-0">
+                            <?php if ($game['youtube_link'] != null) {
+                                echo '<iframe width="407" height="228" src="' . 'https://www.youtube.com/embed/' . $game['youtube_link'] . '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+                            } ?>
+                            <!-- <img src="/img/1.jpg" alt="" width="400px" class="screenshot">
                                 <img src="/img/1.jpg" alt="" width="400px" class="screenshot">
                                 <img src="/img/1.jpg" alt="" width="400px" class="screenshot"> -->
-                            </div>
                         </div>
+                    </div>
                     <!-- </form> -->
                 </div>
             </div>
@@ -153,6 +143,26 @@ if ($_COOKIE['user'] == '') {
     </div>
 
     <script src="../../js/jquery-3.4.1.min.js"></script>
+
+    <!-- <script>
+        $(document).ready(function() {
+            $("#download").click(function() {
+                var game_id = <?php //echo $game['game_id']; ?>;
+                // alert(game_id);
+                $.ajax({
+                    type: "POST",
+                    url: "/php/download_game.php",
+                    data: game_id,
+                    success: function(result) {
+                        // alert((result));
+                    },
+                    error: function() {
+                        alert('Ошибка!');
+                    }
+                });
+            });
+        });
+    </script> -->
 </body>
 
 </html>
