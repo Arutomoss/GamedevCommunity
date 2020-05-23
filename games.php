@@ -153,9 +153,9 @@ if ($_COOKIE['user'] == '') {
                         </select>
                     </div>
 
-                    <div class="row pd-lr-40" style="margin-bottom: 20px">
+                    <div class="paddings" style="margin-bottom: 20px">
                         <a href="/php/games/create_game.php">
-                            <button type="button" class="btn btn-danger m0" id="upload-game" style="font-weight: 500">Загрузить игру</button>
+                            <button type="button" class="btn btn-success m0 w-100" id="upload-game" style="font-weight: 500">Загрузить игру</button>
                         </a>
                     </div>
                 </div>
@@ -185,7 +185,6 @@ if ($_COOKIE['user'] == '') {
                 type: "POST",
                 url: "/php/games/get_games.php",
                 success: function(result) {
-                    // alert(result);
                     if (result)
                         showAllGames(JSON.parse(result));
                     else

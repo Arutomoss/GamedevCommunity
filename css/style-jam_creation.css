@@ -113,6 +113,8 @@ input {
 .btn-save {
     margin-bottom: 30px;
     margin-top: 15px;
+    font-family: montserrat;
+    font-weight: 500;
 }
 
 .wrap {

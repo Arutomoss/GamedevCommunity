@@ -81,9 +81,9 @@ if (count($isExists) == 0) {
                         <img src="img/settings.svg" alt="">
                     </a>
                     </div>
-                    <div class="row pd-lr-35" style="margin-bottom: 20px">
+                    <div class="row pd-lr-35 w-100" style="margin-bottom: 20px">
                         <a href="/php/games/create_game.php">
-                            <button type="button" class="btn btn-danger m0" id="upload-game" style="font-weight: 500">Загрузить игру</button>
+                            <button type="button" class="btn btn-success m0" id="upload-game" style="font-weight: 500">Загрузить игру</button>
                         </a>                    
                     </div>';
                 }

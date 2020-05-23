@@ -76,7 +76,7 @@ if ($_COOKIE['user'] == '') {
                         <div class=" form-group">
                         <input type="file" class="form-control-file border-0" id="choose-photo" style="padding-left: 0px; background-color: #303030;" name="photo" accept="image/*,image/jpeg">
                     </div>
-                    <button type="submit" class="btn btn-danger col rounded-10 btn-save">Сохранить</button>
+                    <button type="submit" class="btn btn-success col rounded-5 btn-save">Сохранить</button>
                 </div>
             </div>
             <div class="col-8 jam-place">

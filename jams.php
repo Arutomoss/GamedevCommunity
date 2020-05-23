@@ -23,10 +23,10 @@ if ($_COOKIE['user'] == '') {
     <div class="container col-12">
         <div class="wrap row justify-content-md-center">
             <div class="jams-panel mr-3">
-                <div class="row pd-lr-35">
+                <div class="row pd-lr-40">
                     <p class="panel-header">Мероприятия</p>
                 </div>
-                <div class="jams-panel-links row pd-lr-35">
+                <div class="jams-panel-links row pd-lr-40">
                     <a href="jams.php?select=all" class="all">Все мероприятия
                         <svg width="4" height="4" viewBox="0 0 4 4" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <circle cx="2" cy="2" r="2" fill="white" />
@@ -42,8 +42,8 @@ if ($_COOKIE['user'] == '') {
                         </svg>
                     </a>
                 </div>
-                <div class="row btn-create">
-                    <a class="btn btn-success rounded-5 pd-lr-30" role="button" href="jam_creation.php">Создать мероприятие</a>
+                <div class="row btn-create pd-lr-40">
+                    <a class="btn btn-success rounded-5" role="button" href="/php/jams/create_jam.php">Создать мероприятие</a>
                 </div>
             </div>
             <div class="jam-place">

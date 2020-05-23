@@ -17,7 +17,7 @@ h2 {
 .line{
     width: 100%;
     border-bottom: 0.5px solid #525252;
-    margin-bottom: 45px;
+    margin-bottom: 35px;
 }
 
 .sub-header{
@@ -32,8 +32,8 @@ h2 {
     color: #ffffff;
     font-family: Montserrat;
     font-weight: 500;
-    font-size: 19px;
-    margin-bottom: 10px;
+    font-size: 20px;
+    margin-bottom: 8px;
 }
 
 .input {
@@ -62,18 +62,10 @@ h2 {
 }
 
 .btn-red {
-    background: rgb(228, 46, 46);
-    border-radius: 3px;
-    padding: 8px 15px;
-    color:#fff;
-    font-weight: 600;
-    text-align: center;
     font-family: "Montserrat";
-    font-size: 15px;
-}
-
-.btn-red:hover {
-    background:rgb(207, 40, 40);
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 5px;
 }
 
 .btn-store {
@@ -104,12 +96,12 @@ h2 {
     font-size: 14px;
     font-family: "Montserrat";
     color: #EEEEEE;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 
 .rect {
     width: 100em;
-    height: 250px;
+    height: 220px;
     border: 1px dashed #777777;
     text-align: center;
     display: table-cell;
@@ -119,8 +111,8 @@ h2 {
 .form-style {
     background-color: #272727;
     border: 1px solid #3c3c3c;
-    height: 150px;
-    width: 460px;
+    height: 200px;
+    width: 100%;
     margin-bottom: 25px;
     padding-left: 15px;
     color: #EEEEEE;
@@ -209,7 +201,7 @@ h2 {
     background-color: #303030;
     border-radius: 15px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
-    padding: 35px 40px 30px 40px;
+    padding: 35px 35px 30px 35px;
     margin-bottom: 20px;
 }
 
@@ -248,4 +240,16 @@ h2 {
     color:#777;
     font-size: 14px;
     font-family: "Montserrat";
+}
+
+.check {
+    color: #EEEEEE;
+    font-family: montserrat;
+    font-size: 15px;
+    margin-bottom: 5px;
+    padding-left: 15px;
+}
+
+#add-crt{
+    margin-bottom: 20px;
 }

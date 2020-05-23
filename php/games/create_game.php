@@ -214,7 +214,7 @@ if ($_COOKIE['user'] == '') {
                                     <textarea name="instruction" class="form-control form-style" id="info" rows="3" placeholder="Опционально" maxlength="1000"></textarea>
                                 </div>
 
-                                <button type="button" class="btn btn-danger btn-red" id="upload_game">Сохранить и посмотреть страницу</button>
+                                <button type="button" class="btn btn-red" id="upload_game">Сохранить и посмотреть страницу</button>
                             </div>
 
                             <div class="col plr-0">
@@ -324,6 +324,8 @@ if ($_COOKIE['user'] == '') {
         // });        
 
         $(document).ready(function() {
+            var event_id = window.location.search.replace('?', '');
+            event_id = event_id.replace('event_id=','');
             $("#upload_game").click(function() {
                 var fd = new FormData();
                 fd.append('file', $('#fl_inp')[0].files[0]);
@@ -337,6 +339,10 @@ if ($_COOKIE['user'] == '') {
                 fd.append('info', document.getElementById('info').value);
                 fd.append('youtube', document.getElementById('basic-url1').value);
 
+                if (event_id != "") {
+                    fd.append('event_id', event_id);
+                }
+
                 $.ajax({
                     type: "POST",
                     url: "/php/games/upload.php",
@@ -349,7 +355,10 @@ if ($_COOKIE['user'] == '') {
                     //     files: $('input[type=file]').files
                     // },
                     success: function(result) {
-                        alert((result));
+                        alert(result);
+                        if (result == 'Мероприятие успешно создано!'){
+                            window.location.href = 'http://gamedevcommunity/games.php';
+                        }
                     },
                     error: function() {
                         alert('Ошибка!');
@@ -358,11 +367,6 @@ if ($_COOKIE['user'] == '') {
             });
         });
 
-        // var submit = document.getElementById('upload_game');
-
-        // submit.click = function(e) {
-
-        // }
     </script>
 
     <script>

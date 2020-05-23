@@ -19,6 +19,7 @@ if (isset($_POST)) {
         $game_instruction    = nl2br(filter_var(trim($_POST['info']), FILTER_SANITIZE_STRING));
         $cover_name          = filter_var(trim($_FILES['cover']['name']), FILTER_SANITIZE_STRING);
         $youtube_link        = filter_var(trim($_POST['yourube']), FILTER_SANITIZE_STRING);
+        $event_id            = filter_var(trim($_POST['event_id']), FILTER_SANITIZE_STRING);
 
         // echo $game_name . '</br>';
         // echo $game_url . '</br>';
@@ -63,31 +64,65 @@ if (isset($_POST)) {
 
         if ($mysql) {
             if ($youtube_link != "") {
-                mysqli_query($mysql, "INSERT INTO photo(link_photo) VALUE ('$link_photo')");
+                if ($event_id != "") {
+                    mysqli_query($mysql, "INSERT INTO photo(link_photo) VALUE ('$link_photo')");
 
-                $photo_id = mysqli_query($mysql, "SELECT photo_id FROM `photo` WHERE link_photo = '$link_photo'");
+                    $photo_id = mysqli_query($mysql, "SELECT photo_id FROM `photo` WHERE link_photo = '$link_photo'");
 
-                if ($photo_id) {
-                    $row = mysqli_fetch_assoc($photo_id);
-                }
+                    if ($photo_id) {
+                        $row = mysqli_fetch_assoc($photo_id);
+                    }
 
-                $ph_id = $row['photo_id'];
+                    $ph_id = $row['photo_id'];
 
-                $result = mysqli_query($mysql, "INSERT INTO `games`(user_id, game_name, game_short_description, game_description, game_status, game_file_name, game_genre, game_instruction, photo_id, youtube_link, game_size) VALUE 
+                    $result = mysqli_query($mysql, "INSERT INTO `games`(user_id, game_name, game_short_description, game_description, game_status, game_file_name, game_genre, game_instruction, photo_id, youtube_link, game_size, event_id) VALUE 
+                ('$user_id', '$game_name','$short_description', '$game_description', '$game_status', '$file_name', '$game_genre', '$game_instruction', '$ph_id','$youtube_link', '$game_size', '$event_id')");
+                    echo "Мероприятие успешно создано!";
+                } else {
+                    mysqli_query($mysql, "INSERT INTO photo(link_photo) VALUE ('$link_photo')");
+
+                    $photo_id = mysqli_query($mysql, "SELECT photo_id FROM `photo` WHERE link_photo = '$link_photo'");
+
+                    if ($photo_id) {
+                        $row = mysqli_fetch_assoc($photo_id);
+                    }
+
+                    $ph_id = $row['photo_id'];
+
+                    $result = mysqli_query($mysql, "INSERT INTO `games`(user_id, game_name, game_short_description, game_description, game_status, game_file_name, game_genre, game_instruction, photo_id, youtube_link, game_size) VALUE 
             ('$user_id', '$game_name','$short_description', '$game_description', '$game_status', '$file_name', '$game_genre', '$game_instruction', '$ph_id','$youtube_link', '$game_size')");
-            } else {
-                mysqli_query($mysql, "INSERT INTO photo(link_photo) VALUE ('$link_photo')");
-
-                $photo_id = mysqli_query($mysql, "SELECT photo_id FROM `photo` WHERE link_photo = '$link_photo'");
-
-                if ($photo_id) {
-                    $row = mysqli_fetch_assoc($photo_id);
+                    echo "Мероприятие успешно создано!";
                 }
+            } else {
+                if ($event_id != "") {
+                    mysqli_query($mysql, "INSERT INTO photo(link_photo) VALUE ('$link_photo')");
 
-                $ph_id = $row['photo_id'];
+                    $photo_id = mysqli_query($mysql, "SELECT photo_id FROM `photo` WHERE link_photo = '$link_photo'");
 
-                $result = mysqli_query($mysql, "INSERT INTO `games`(user_id, game_name, game_short_description, game_description, game_status, game_file_name, game_genre, game_instruction, photo_id, game_size) VALUE 
+                    if ($photo_id) {
+                        $row = mysqli_fetch_assoc($photo_id);
+                    }
+
+                    $ph_id = $row['photo_id'];
+
+                    $result = mysqli_query($mysql, "INSERT INTO `games`(user_id, game_name, game_short_description, game_description, game_status, game_file_name, game_genre, game_instruction, photo_id, game_size, event_id) VALUE 
+                ('$user_id', '$game_name', '$short_description', '$game_description', '$game_status', '$file_name', '$game_genre', '$game_instruction', '$ph_id', '$game_size', '$event_id')");
+                    echo "Мероприятие успешно создано!";
+                } else {
+                    mysqli_query($mysql, "INSERT INTO photo(link_photo) VALUE ('$link_photo')");
+
+                    $photo_id = mysqli_query($mysql, "SELECT photo_id FROM `photo` WHERE link_photo = '$link_photo'");
+
+                    if ($photo_id) {
+                        $row = mysqli_fetch_assoc($photo_id);
+                    }
+
+                    $ph_id = $row['photo_id'];
+
+                    $result = mysqli_query($mysql, "INSERT INTO `games`(user_id, game_name, game_short_description, game_description, game_status, game_file_name, game_genre, game_instruction, photo_id, game_size) VALUE 
             ('$user_id', '$game_name', '$short_description', '$game_description', '$game_status', '$file_name', '$game_genre', '$game_instruction', '$ph_id', '$game_size')");
+                    echo "Мероприятие успешно создано!";
+                }
             }
         } else
             die('Ошибка подключения к серверу баз данных.');

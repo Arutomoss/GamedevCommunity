@@ -14,8 +14,6 @@ body {
     border-radius: 15px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
     width: 320px;
-    padding-left: 15px;
-    padding-right: 15px;
     top: 65px;
     position: relative;
 }
@@ -78,7 +76,7 @@ body {
     background-color: rgba(0, 0, 0, 0.75);
     height: 85px;
     width: 700px;
-    border-radius: 15px;
+    border-radius: 14px;
     margin: 0px;
     position: absolute;
 }
@@ -107,24 +105,25 @@ body {
 }
 
 .panel-header {
-    margin-top: 35px;
-    color: #E8E8E8;
-    font-size: 18px;
+    margin-top: 25px;
+    color: #ffffff;
+    font-size: 22px;
     font-family: montserrat;
+    font-weight: 500;
     border-bottom: 1px solid #404040;
     width: 100%;
     padding-bottom: 5px;
 }
 
 .btn-create {
-    padding-left: 35px;
-    padding-right: 35px;
+
     margin-bottom: 30px;
 }
 
 .btn-create a {
     font-family: Montserrat;
     font-size: 16px;
+    font-weight: 500;
 }
 
 .short-description p {
@@ -141,7 +140,7 @@ body {
     background-color: rgb(245, 10, 53);
     height: 31px;
     width: 60px;
-    border-radius: 8px;
+    border-radius: 5px;
     color: #E8E8E8;
     margin-left: 10px;
 }
