@@ -176,7 +176,7 @@ if ($_COOKIE['user'] == '') {
         </div>
     </div>
 
-    <script src="ajax/games_functions.js"></script>
+    <!-- <script src="ajax/games_functions.js"></script> -->
     <script src="js/jquery-3.4.1.min.js"></script>
 
     <script>
