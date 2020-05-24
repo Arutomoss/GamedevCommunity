@@ -72,8 +72,37 @@ if ($_COOKIE['user'] == '') {
                         <div class="bottom-box row">
                             <div class="starts-after">Подача заявки до <b><?php echo substr($event['event_date_end'], 10, 15); ?></b> последнего дня</div>
                             <div id="btn-place">
+                                <a href="#" class="btn btn-danger" id="load-game" data-toggle="modal" data-target="#basicModal" style="font-weight: 500;" hidden>Загрузить игру</a>
+                                <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4 class="modal-title" id="myModalLabel">Правила Jam-a </h4>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">×</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <!-- <h3>Modal Body</h3> -->
+                                                <p><?php echo $event['event_info']; ?></p>
+                                                <p class="sup-header">Выбрать из уже загруженных игр</p>
+                                                <select name="user_games" id="user-games" class="input">
+                                                </select>
+
+                                                <p class="sup-header">Загрузить новую игру</p>
+                                                <input type="button" name="join" id="upload-game" class="btn btn-danger" style="margin-top:7px;" value="Загрузить игру">
+
+                                                <p style="margin-top: 15px; margin-bottom: 0"><i>Вы можете выбрать одно из двух</i></p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-outline-light" data-dismiss="modal">Отменить</button>
+                                                <button type="button" class="btn btn-success" id="submit">Подтвердить</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <input type="button" name="join" id="join-to-jam" class="btn btn-success pd-lr-30" style="font-weight: 500" value="Присоединиться" hidden>
-                                <input type="button" name="join" id="load-game" class="btn btn-danger pd-lr-30" style="font-weight: 500" value="Загрузить игру" hidden>
+                                <!-- <input type="button" name="join" id="load-game" class="btn btn-danger pd-lr-30" style="font-weight: 500" value="Загрузить игру" hidden> -->
                                 <p class="disconnect" hidden>Отменить участие</p>
                             </div>
                         </div>
@@ -114,12 +143,17 @@ if ($_COOKIE['user'] == '') {
     <script src="js/jquery-3.4.1.min.js"></script>
 
     <script>
+        $('#myModal').on('shown.bs.modal', function() {
+            $('#myInput').trigger('focus')
+        })
+
         function addBtn() {
+            var event_id = window.location.search.replace('?event_id=', '');
             $.ajax({
                 type: "POST",
                 url: "/php/jams/is_join.php",
                 data: {
-                    event_id: <?php echo $_GET['event_id']; ?>
+                    event_id: event_id
                 },
                 success: function(result) {
                     if (result == '0') {
@@ -136,20 +170,49 @@ if ($_COOKIE['user'] == '') {
         }
 
         $(document).ready(function() {
-            $("#load-game").click(function() {
-                window.location.href = 'http://gamedevcommunity/php/games/create_game.php?event_id=' + <?php echo $_GET['event_id']; ?>;
+            $("#upload-game").click(function() {
+                var event_id = window.location.search.replace('?event_id=', '');
+                window.location.href = 'http://gamedevcommunity/php/games/create_game.php?event_id=' + event_id;
             });
         });
 
         $(document).ready(function() {
+            $.ajax({
+                type: "POST",
+                url: "/php/games/get_user_games.php",
+                data: {
+                    user_id: <?php echo $_COOKIE['user']; ?>
+                },
+                success: function(result) {
+                    var user_games = JSON.parse(result);
+
+                    var combobox = document.getElementById('user-games');
+
+                    for (let i = 0; i < user_games.length; i++) {
+                        var game = document.createElement('option');
+                        game.value = user_games[i]['game_name'];
+                        game.innerText = user_games[i]['game_name'];
+                        combobox.appendChild(game)
+                    }
+                },
+                error: function() {
+                    alert('Ошибка!');
+                }
+            });
+
+        });
+
+        $(document).ready(function() {
             $("#join-to-jam").click(function() {
+                var event_id = window.location.search.replace('?event_id=', '');
                 var data = new FormData();
+
                 $("#join-to-jam").attr("hidden", true);
                 $("#load-game").attr("hidden", false);
                 $(".disconnect").attr("hidden", false);
 
                 data.append('join', 'join');
-                data.append('event_id', <?php echo $_GET['event_id']; ?>);
+                data.append('event_id', event_id);
 
                 $.ajax({
                     type: "POST",
@@ -159,7 +222,7 @@ if ($_COOKIE['user'] == '') {
                     contentType: false,
                     data: data,
                     success: function(result) {
-                        if (result == 'joined'){
+                        if (result == 'joined') {
                             var amount = document.getElementById('amount');
                             amount.textContent = parseInt(amount.textContent, 10) + 1;
                         }
@@ -171,14 +234,15 @@ if ($_COOKIE['user'] == '') {
             });
 
             $(".disconnect").click(function() {
-                var data = new FormData();
-
                 $("#join-to-jam").attr("hidden", false);
                 $("#load-game").attr("hidden", true);
                 $(".disconnect").attr("hidden", true);
 
+                var event_id = window.location.search.replace('?event_id=', '');
+                var data = new FormData();
+
                 data.append('join', 'disconnect');
-                data.append('event_id', <?php echo $_GET['event_id']; ?>);
+                data.append('event_id', event_id);
 
                 $.ajax({
                     type: "POST",
@@ -188,7 +252,7 @@ if ($_COOKIE['user'] == '') {
                     contentType: false,
                     data: data,
                     success: function(result) {
-                        if (result == 'diconnected'){
+                        if (result == 'diconnected') {
                             var amount = document.getElementById('amount');
                             amount.textContent = parseInt(amount.textContent, 10) - 1;
                         }
@@ -199,9 +263,39 @@ if ($_COOKIE['user'] == '') {
                 });
             });
         });
+
+        $(document).ready(function() {
+            $("#submit").click(function() {
+                var event_id = window.location.search.replace('?event_id=', '');
+                var data = new FormData();
+
+                data.append('game_name', $("#user-games").val());
+                data.append('event_id', event_id);
+                data.append('user_id', <?php echo $_COOKIE['user']; ?>);
+
+                $.ajax({
+                    type: "POST",
+                    url: "/php/jams/submit_game.php",
+                    dataType: "html",
+                    processData: false,
+                    contentType: false,
+                    data: data,
+                    success: function(result) {
+                        alert(result);
+                        if (result == 'Игра успешно добавлена') {
+                            var event_id = window.location.search.replace('?event_id=', '');
+                            window.location.href = 'http://gamedevcommunity/php/jams/jams_games.php?event_id=' + event_id;
+                        }
+                    },
+                    error: function() {
+                        alert('Ошибка!');
+                    }
+                });
+            });
+        });
     </script>
 
-    <script src="js/main.js"></script>
+    <!-- <script src="js/main.js"></script> -->
     <!-- <script src="js/popper.min.js"></script> -->
     <script src="js/bootstrap.min.js"></script>
 </body>

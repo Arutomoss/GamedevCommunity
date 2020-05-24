@@ -150,18 +150,70 @@ h2 {
 }
 
 .disconnect {
-    font-size: 14px;
-    padding-top: 4px;
-    color: #888888;
+    font-size    : 14px;
+    padding-top  : 4px;
+    color        : #888888;
     margin-bottom: 0;
 }
 
 .disconnect:hover {
-    color: #eeeeee;
+    color               : #eeeeee;
     text-decoration-line: underline;
-    cursor: pointer;
+    cursor              : pointer;
 }
 
 #btn-place {
     padding-top: 15px;
+}
+
+.close {
+    color: #777777;
+}
+
+.close:hover {
+    color: #EEEEEE;
+}
+
+.sup-header {
+    color      : #FFFFFF;
+    font-weight: 500;
+    font-size  : 19px;
+    margin     : 0;
+}
+
+#user-games {
+    font-size       : 15px;
+    font-weight     : 400;
+    margin-top      : 5px;
+    height          : 36px;
+    padding         : 0 7px 0 7px;
+    border-radius   : 4px;
+    border          : 1px solid #404040;
+    background-color: #272727;
+    color           : #EEEEEE;
+    margin-bottom   : 25px;
+}
+
+.modal-title {
+    color    : #ffffff;
+    font-size: 22px;
+}
+
+.modal-content {
+    background-color: #333333;
+}
+
+.modal-header {
+    border-bottom: 1px solid #525252;
+    padding      : 20px 30px 20px 30px;
+}
+
+.modal-body {
+    text-align: left;
+    padding   : 20px 30px 20px 30px;
+}
+
+.modal-footer {
+    border-top: 1px solid #525252;
+    padding   : 20px 30px 20px 30px;
 }

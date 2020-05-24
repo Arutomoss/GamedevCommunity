@@ -32,11 +32,11 @@ if ($_COOKIE['user'] == '') {
                             <path d="M9 1L2 8M2 8L9 15M2 8H29.5" stroke="#999999" stroke-width="2" />
                         </svg>
                     </a>
-                    <h2>Title</h2>
+                    <h2 id="jam-title"></h2>
                 </div>
                 <div class="text">Загруженные игры</div>
-                <div class="row jam-games pd-lr-15">
-                    <div class="col game">
+                <div class="row jam-games pd-lr-15" id="jam-games-place">
+                    <!-- <div class="col game">
                         <a href="">
                             <div class="rounded-10 game-cover"></div>
                         </a>
@@ -71,31 +71,47 @@ if ($_COOKIE['user'] == '') {
                         <p class="description">short description</p>
                         <div class="user-name row justify-content-between">user name<p>platformer</p>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- <script src="/ajax/games_functions.js"></script> -->
+    <script src="/ajax/jams_functions.js"></script>
     <script src="/js/jquery-3.4.1.min.js"></script>
 
     <script>
-        // $(document).ready(function() {
-        //     $.ajax({
-        //         type: "POST",
-        //         url: "/php/games/get_games.php",
-        //         success: function(result) {
-        //             if (result)
-        //                 showAllGames(JSON.parse(result));
-        //             else
-        //                 showAllGames("");
-        //         },
-        //         error: function() {
-        //             alert('Ошибка!');
-        //         }
-        //     });
-        // });
+        $(document).ready(function() {
+            $.ajax({
+                type: "POST",
+                url: "/php/jams/get_jams_games.php",
+                data: { event_id: <?php echo $_GET['event_id']; ?> },
+                success: function(result) {
+                    if (result)
+                        showAllGames(JSON.parse(result));
+                    else
+                        showAllGames("");
+                },
+                error: function() {
+                    alert('Ошибка!');
+                }
+            });
+        });
+
+        $(document).ready(function() {
+            $.ajax({
+                type: "POST",
+                url: "/php/jams/get_jam.php",
+                data: { event_id: <?php echo $_GET['event_id']; ?> },
+                success: function(result) {
+                    // alert(result);
+                    document.getElementById('jam-title').innerText = result;
+                },
+                error: function() {
+                    alert('Ошибка!');
+                }
+            });
+        });
     </script>
 
 </body>
