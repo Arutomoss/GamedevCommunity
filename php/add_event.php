@@ -3,19 +3,18 @@
 // echo json_encode($_POST);
 
 if (
-    !is_null($_FILES['cover']) && ($_POST['title'] != "") && ($_POST['shrt_description'] != "") && ($_POST['description'] != "")
-    && ($_POST['info'] != "") && ($_POST['start_date'] != "") && ($_POST['end_date'] != "") && ($_POST['info'] != "")
+    !is_null($_FILES['cover']) && ($_POST['title'] != "") && ($_POST['shrt_description'] != "")
+    && ($_POST['description'] != "") && ($_POST['info'] != "") && ($_POST['start_date'] != "")
+    && ($_POST['end_date'] != "") && ($_POST['end_vote_date'] != "") && ($_POST['info'] != "")
 ) {
-    if (date('Y-m-d\TH:i', strtotime('now')) > $_POST['start_date']){
-        exit ('Дата и время начала мероприятия должны быть позже чем сегодня.');
+    if (date('Y-m-d\TH:i', strtotime('now')) > $_POST['start_date']) {
+        exit('Дата и время начала мероприятия должны быть позже чем сегодня.');
     }
-
-    if ($_POST['end_date'] < $_POST['start_date']){
-        exit ('Дата и время окончания подачи заявок должны быть позже чем дата и время начала мероприятия.');
+    if ($_POST['end_date'] < $_POST['start_date']) {
+        exit('Дата и время окончания подачи заявок должны быть позже чем дата и время начала мероприятия.');
     }
-
-    if ($_POST['end_vote_date'] < $_POST['end_date']){
-        exit ('Дата и время окончания голосования должны быть позже чем дата и время окончания подачи заявок.');
+    if ($_POST['end_vote_date'] < $_POST['end_date']) {
+        exit('Дата и время окончания голосования должны быть позже чем дата и время окончания подачи заявок.');
     }
 
     // Перезапишем переменные для удобства
@@ -67,7 +66,6 @@ if (
         // else
         // echo 'Загрузка удачна';
 
-
         $user_id = $_COOKIE['user'];
     $event_name          = filter_var(trim($_POST['title']), FILTER_SANITIZE_STRING);
     $event_s_description = filter_var(trim($_POST['shrt_description']), FILTER_SANITIZE_STRING);
@@ -104,24 +102,24 @@ if (
 
         $ph_id = $row['photo_id'];
 
-        if ($_POST['vote']) {
-            $user_id = $_COOKIE['user'];
-            if (mysqli_query($mysql, "INSERT INTO `events`(user_id, event_name, event_short_description, event_description, event_info, photo_id, event_date_start, event_date_end, event_date_end_vote, event_is_vote, event_vote_type) VALUE 
+        // if ($_POST['vote']) {
+        $user_id = $_COOKIE['user'];
+        if (mysqli_query($mysql, "INSERT INTO `events`(user_id, event_name, event_short_description, event_description, event_info, photo_id, event_date_start, event_date_end, event_date_end_vote, event_is_vote, event_vote_type) VALUE 
             ('$user_id', '$event_name', '$event_s_description', '$event_description', '$event_info', '$ph_id', '$event_date_start', '$event_date_end', '$event_date_vote_end', $is_vote, '$event_vote_type')")) {
-                echo "Мероприятие успешно создано!";
-            } else {
-                echo $mysql->error;
-            }
+            echo "Мероприятие успешно создано!";
         } else {
-            $user_id = $_COOKIE['user'];
-            if (mysqli_query($mysql, "INSERT INTO `events`(user_id, event_name, event_short_description, event_description, event_info, 
-            photo_id, event_date_start, event_date_end, event_is_vote) VALUE 
-            ('$user_id', '$event_name', '$event_s_description', '$event_description', '$event_info', '$ph_id', '$event_date_start', '$event_date_end', $is_vote)")) {
-                echo "Мероприятие успешно создано!";
-            } else {
-                echo $mysql->error;
-            }
+            echo $mysql->error;
         }
+        // } else {
+        //     $user_id = $_COOKIE['user'];
+        //     if (mysqli_query($mysql, "INSERT INTO `events`(user_id, event_name, event_short_description, event_description, event_info, 
+        //     photo_id, event_date_start, event_date_end, event_is_vote) VALUE 
+        //     ('$user_id', '$event_name', '$event_s_description', '$event_description', '$event_info', '$ph_id', '$event_date_start', '$event_date_end', $is_vote)")) {
+        //         echo "Мероприятие успешно создано!";
+        //     } else {
+        //         echo $mysql->error;
+        //     }
+        // }
     } else
         die('Ошибка подключения к серверу баз данных.');
 

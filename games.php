@@ -117,7 +117,7 @@ if ($_COOKIE['user'] == '') {
                 <div class="user-panel ">
                     <div class="search paddings">
                         <p class="sub-header">Поиск</p>
-                        <input type="text" class="input" placeholder="Введите название игры">
+                        <input type="text" class="input" placeholder="Введите название игры" id="search-input" name="search" oninput="searchGame()" autocomplete="off">
                     </div>
 
                     <div class="sort paddings">

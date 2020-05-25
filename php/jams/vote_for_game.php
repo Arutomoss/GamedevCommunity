@@ -45,8 +45,9 @@ if ($_COOKIE['user'] == '') {
                             <div class="btn btn-danger" style="margin-bottom: 25px">Download game</div>
                         </a>
 
-                        <p class="sup-header">Проголосовать</p>
-                        <div id="reviewStars-input">
+                        <p class="sub-header" id="who-can-vote-in-jam" hidden>sdfsdf</p>
+                        <p class="sup-header" hidden>Проголосовать</p>
+                        <div id="reviewStars-input" hidden>
                             <input id="star-4" type="radio" name="reviewStars" value="5" />
                             <label title="gorgeous" for="star-4"></label>
 
@@ -62,7 +63,7 @@ if ($_COOKIE['user'] == '') {
                             <input id="star-0" type="radio" name="reviewStars" value="1" />
                             <label title="bad" for="star-0"></label>
                         </div>
-                        <div class="btn btn-danger" style="margin-top: 35px; width: 100%;" id="rate-game">Оставить свой голос</div>
+                        <div class="btn btn-danger" style="margin-top: 35px; width: 100%;" id="rate-game" hidden>Оставить свой голос</div>
                     </div>
                     <div class="col pr-0">
                         <div class="cover" id="game-img"></div>
@@ -77,7 +78,7 @@ if ($_COOKIE['user'] == '') {
     <script src="/js/jquery-3.4.1.min.js"></script>
 
     <script>
-        function getEventId(){
+        function getEventId() {
             var game_id_ = window.location.search.replace('?game_id=', '');
             game_id_ = game_id_.split('?');
             var game_id = game_id_[0];
@@ -85,7 +86,7 @@ if ($_COOKIE['user'] == '') {
             return event_id;
         }
 
-        function getGameId(){
+        function getGameId() {
             var game_id_ = window.location.search.replace('?game_id=', '');
             game_id_ = game_id_.split('?');
             var game_id = game_id_[0];
@@ -97,8 +98,8 @@ if ($_COOKIE['user'] == '') {
             game_id_ = game_id_.split('?');
 
             var game_id = game_id_[0];
-
             var event_id = game_id_[1].substr(9);
+            var user_id = getCookie('user');
 
             $.ajax({
                 type: "POST",
@@ -129,7 +130,53 @@ if ($_COOKIE['user'] == '') {
                     alert('Ошибка!');
                 }
             });
+
+            $.ajax({
+                type: "POST",
+                url: "/php/jams/wich_rate_type.php",
+                data: {
+                    event_id: event_id,
+                    user_id: user_id,
+                    game_id: game_id
+                },
+                success: function(result) {
+                    alert(result);
+                    switch (result) {
+                        case 'who_in_jam': {
+                            showItems();
+                            break;
+                        }
+                        case 'who_upload_game': {
+                            showItems();
+                            break;
+                        }
+                        case 'who_not_in_jam': {
+                            $("#who-can-vote-in-jam").attr("hidden", false);
+                            $("#who-can-vote-in-jam").text('Голосовать могут только те, кто участвует в Jam-е');
+                            break;
+                        }
+                        case 'who_not_upload_game': {
+                            $("#who-can-vote-in-jam").attr("hidden", false);
+                            $("#who-can-vote-in-jam").text('Голосовать могут только те, кто загрузил игру');
+                            break;
+                        }
+                    }
+                }
+            });
         });
+
+        function showItems() {
+            $('.sup-header').attr("hidden", false);
+            $('#reviewStars-input').attr("hidden", false);
+            $('#rate-game').attr("hidden", false);
+        }
+
+        function getCookie(name) {
+            let matches = document.cookie.match(new RegExp(
+                "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+            ));
+            return matches ? decodeURIComponent(matches[1]) : undefined;
+        }
 
         function getPhoto(photo_id) {
             var link;

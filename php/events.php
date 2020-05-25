@@ -22,7 +22,7 @@ function getActiveJams($limit)
 {
     $mysql = mysqli_connect("localhost", "root", "root", "gamedc");
 
-    $result = mysqli_query($mysql, "SELECT * FROM `events` WHERE `event_date_end` > NOW() ORDER BY `event_id` DESC LIMIT $limit");
+    $result = mysqli_query($mysql, "SELECT * FROM `events` WHERE `event_date_end_vote` > NOW() ORDER BY `event_id` DESC LIMIT $limit");
     $mysql->close();
     return resultToArray($result);
 }
@@ -31,7 +31,7 @@ function getActiveUserJams($limit, $user_id)
 {
     $mysql = mysqli_connect("localhost", "root", "root", "gamedc");
 
-    $result = mysqli_query($mysql, "SELECT * FROM `events` INNER JOIN `event_members` on `events`.`event_id` = `event_members`.`event_id` WHERE (`events`.`event_date_end` > NOW()) AND (`event_members`.`user_id` = '$user_id') ORDER BY `events`.`event_id` DESC LIMIT $limit");
+    $result = mysqli_query($mysql, "SELECT * FROM `events` INNER JOIN `event_members` on `events`.`event_id` = `event_members`.`event_id` WHERE (`events`.`event_date_end_vote` > NOW()) AND (`event_members`.`user_id` = '$user_id') ORDER BY `events`.`event_id` DESC LIMIT $limit");
     $mysql->close();
     return resultToArray($result);
 }

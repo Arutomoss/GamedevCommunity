@@ -44,33 +44,6 @@ if ($_COOKIE['user'] == '') {
                         <p class="description">short description</p>
                         <div class="user-name row justify-content-between">user name<p>platformer</p>
                         </div>
-                    </div>
-                    <div class="col game">
-                        <a href="">
-                            <div class="rounded-10 game-cover"></div>
-                        </a>
-                        <p class="title">Title</p>
-                        <p class="description">short description</p>
-                        <div class="user-name row justify-content-between">user name<p>platformer</p>
-                        </div>
-                    </div>
-                    <div class="col game">
-                        <a href="">
-                            <div class="rounded-10 game-cover"></div>
-                        </a>
-                        <p class="title">Title</p>
-                        <p class="description">short description</p>
-                        <div class="user-name row justify-content-between">user name<p>platformer</p>
-                        </div>
-                    </div>
-                    <div class="col game">
-                        <a href="">
-                            <div class="rounded-10 game-cover"></div>
-                        </a>
-                        <p class="title">Title</p>
-                        <p class="description">short description</p>
-                        <div class="user-name row justify-content-between">user name<p>platformer</p>
-                        </div>
                     </div> -->
                 </div>
             </div>

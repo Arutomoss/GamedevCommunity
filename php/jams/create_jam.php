@@ -196,19 +196,15 @@ if ($_COOKIE['user'] == '') {
         }
 
         $(document).ready(function() {
-
-
             $("#vote").change(function() {
                 if ($("#vote").attr("checked") == 'checked') {
-                    $("#who-can-vote").show();
-                    $('#end-vote').show();
+                    // $("#who-can-vote").show();
                 }
             })
 
             $("#no-vote").change(function() {
                 if ($("#no-vote").attr("checked") != 'checked') {
-                    $("#who-can-vote").hide();
-                    $('#end-vote').hide();
+                    // $("#who-can-vote").hide();
                 }
             });
         });
@@ -219,25 +215,25 @@ if ($_COOKIE['user'] == '') {
                 fd.append('cover', $('#file_v')[0].files[0]);
                 fd.append('title', document.getElementById('title').value);
                 fd.append('shrt_description', document.getElementById('shrt_description').value);
-                if (document.getElementById('vote').checked){
+
+                if (document.getElementById('vote').checked) {
                     fd.append('vote', true);
-                    fd.append('end_vote_date', document.getElementById('end-vote-date').value);
-                    if (document.getElementById('who_in_jam').checked){
-                        fd.append('who_can_vote', document.getElementById('who_in_jam').value);
-                    }
-                    if (document.getElementById('who_upload_game').checked){
-                        fd.append('who_can_vote', document.getElementById('who_upload_game').value);
-                    }
-                    if (document.getElementById('all').checked){
-                        fd.append('who_can_vote', document.getElementById('all').value);
-                    }
-                }
-                else if (document.getElementById('no-vote').checked){
+                } else if (document.getElementById('no-vote').checked) {
                     fd.append('vote', false);
                 }
+
+                if (document.getElementById('who_in_jam').checked) {
+                    fd.append('who_can_vote', document.getElementById('who_in_jam').value);
+                } else if (document.getElementById('who_upload_game').checked) {
+                    fd.append('who_can_vote', document.getElementById('who_upload_game').value);
+                } else if (document.getElementById('all').checked) {
+                    fd.append('who_can_vote', document.getElementById('all').value);
+                }
+                
                 fd.append('description', document.getElementById('description').value);
                 fd.append('start_date', document.getElementById('start-date').value);
                 fd.append('end_date', document.getElementById('end-date').value);
+                fd.append('end_vote_date', document.getElementById('end-vote-date').value);
                 fd.append('info', document.getElementById('info').value);
 
                 $.ajax({
@@ -249,7 +245,7 @@ if ($_COOKIE['user'] == '') {
                     data: fd,
                     success: function(result) {
                         alert(result);
-                        if (result == 'Мероприятие успешно создано!'){
+                        if (result == 'Мероприятие успешно создано!') {
                             window.location.href = 'http://gamedevcommunity/jams.php';
                         }
                     },

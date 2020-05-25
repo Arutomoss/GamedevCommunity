@@ -22,7 +22,7 @@ if ($_COOKIE['user'] == '') {
 
     <div class="container col-12">
         <div class="wrap row justify-content-md-center">
-            <div class="jams-panel mr-3">
+            <div class="jams-panel mr-3" style="border-collapse: collapse; position: sticky">
                 <div class="row pd-lr-40">
                     <p class="panel-header">Мероприятия</p>
                 </div>
