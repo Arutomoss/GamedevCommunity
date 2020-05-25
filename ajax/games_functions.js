@@ -93,7 +93,7 @@ function appendSearchResult(all_games) {
     if (all_games != "") {
         var main = document.getElementById('games');
         main.textContent = "";
-        
+
         for (var i = 0; i < all_games.length; i++) {
 
             var user = getUser(all_games[i]['user_id']);
@@ -141,7 +141,7 @@ function appendSearchResult(all_games) {
             main.appendChild(game);
         }
     }
-    else showAllGames();
+    else showAllGames(all_games);
 }
 
 function searchGame() {
@@ -149,6 +149,28 @@ function searchGame() {
         type: "POST",
         url: "/php/games/search_game.php",
         data: { search: getValue('search-input') },
+        success: function (result) {
+            if (result){
+                // alert((result));
+                appendSearchResult(JSON.parse(result));
+            }                
+            else
+                appendSearchResult("");
+        },
+        error: function () {
+            alert('Ошибка!');
+        }
+    });
+}
+
+function showSortedGames(sort, genre) {
+    $.ajax({
+        type: "POST",
+        url: "/php/games/get_sorted_games.php",
+        data: { 
+            sort: sort,
+            genre: genre
+        },
         success: function (result) {
             if (result){
                 // alert((result));

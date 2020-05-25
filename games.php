@@ -132,7 +132,7 @@ if ($_COOKIE['user'] == '') {
                     <div class="genre paddings">
                         <p class="sub-header">Жанр</p>
                         <select name="genre" id="genre" class="input">
-                            <option value="no_genre">Без жанра</option>
+                            <option value="no_genre">Все</option>
                             <option value="platformer">Платфромер</option>
                             <option value="action">Экшн</option>
                             <option value="shooter">Шутер</option>
@@ -180,6 +180,20 @@ if ($_COOKIE['user'] == '') {
     <script src="js/jquery-3.4.1.min.js"></script>
 
     <script>
+        $(document).ready(function() {
+            $("#sort_games").change(function() {
+                var e = document.getElementById("sort_games");
+                var sort = e.options[e.selectedIndex].value;
+                showSortedGames(sort, "");
+            });
+            
+            $("#genre").change(function() {
+                var e = document.getElementById("genre");
+                var genre = e.options[e.selectedIndex].value;
+                showSortedGames(genre, "genre");
+            });
+        });
+
         $(document).ready(function() {
             $.ajax({
                 type: "POST",
