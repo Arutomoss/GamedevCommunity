@@ -47,7 +47,13 @@
 
 .header-icons p a{
     color: #f8f8f8;
-    border-bottom: 1px solid #F8F8F8;
+    font-size: 16px;
+}
+
+.header-icons p a:hover{
+    color: #ffffff;
+    border-bottom: 1px solid #ffffff;
+    font-size: 16px;
 }
 
 .logo{
