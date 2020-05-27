@@ -138,7 +138,7 @@ if ($_COOKIE['user'] == '') {
                         </div> -->
                     </div>
                     <div class="whats_new">
-                        <textarea rows="1" style="height:28px; color: #eeeeee;" id="post_text" name="post_text" placeholder="Что нового?" maxlength="1000"></textarea>
+                        <textarea rows="1" style="height:28px; color: #eeeeee;" id="post_text" name="post_text" placeholder="Напишите сообщение" maxlength="1000"></textarea>
                         <div class='preview-img'>
                             <img src="" alt="" id="img-source" style="width: 100%;">
                         </div>
@@ -158,41 +158,72 @@ if ($_COOKIE['user'] == '') {
         $(document).ready(function() {
             let params = new URLSearchParams(document.location.search.substring(1));
             let chat_id = params.get("chat_id");
-            // alert(chat_id);
 
-            if (chat_id == null) {
-                showAllDialogs(getAllDialogs(getCookie('user')));
-                $("#messages-place-before").attr('hidden', false);
-                $("#messages-place").attr('hidden', true);
-            } else {
-                showAllDialogs(getAllDialogs(getCookie('user')));
+            if (chat_id != null) {
                 $("#messages-place-before").attr('hidden', true);
                 $("#messages-place").attr('hidden', false);
+
+                loadMessages(getUserIdFromChatId(chat_id), chat_id);
+            } else if(chat_id == null){
+                $("#messages-place-before").attr('hidden', false);
+                $("#messages-place").attr('hidden', true);
             }
-
-            $("#send-message").click(function() {
-                // sendMessage();
-                var receiver_id = document.getElementsByName('receiver')[0].id;
-                var text = document.getElementById('post_text').value;
-
-                // alert(name);
-                $.ajax({
-                    type: "POST",
-                    async: false,
-                    url: "../php/messages/send_message.php",
-                    data: {
-                        user_id: getCookie('user'),
-                        receiver_id: receiver_id,
-                        message_text: text,
-                        chat_id: chat_id
-                    },
-                    success: function(result) {
-                        // addMessage(JSON.parse(result));
-                        alert(result);
-                    }
-                });
-            });
         });
+
+
+        // let params = new URLSearchParams(document.location.search.substring(1));
+        // let chat_id = params.get("chat_id");
+        // // alert(chat_id);
+
+        // var receiver_id = document.getElementsByName('receiver')[0].id;
+        // var text = document.getElementById('post_text').value;
+
+        showAllDialogs(getAllDialogs(getCookie('user')));
+
+        // if (chat_id == null) {
+        //     // showAllDialogs(getAllDialogs(getCookie('user')));
+        //     $("#messages-place-before").attr('hidden', false);
+        //     $("#messages-place").attr('hidden', true);
+        // } else {
+        //     openDialog(receiver_id, chat_id);
+        //     // loadMessages(chat_id);
+        //     // alert('else');
+        //     $("#messages-place-before").attr('hidden', true);
+        //     $("#messages-place").attr('hidden', false);
+        // }
+
+        $("#send-message").click(function() {
+            let params = new URLSearchParams(document.location.search.substring(1));
+
+            let chat_id = params.get("chat_id");
+            var receiver_id = getUserIdFromChatId(chat_id);
+            var text = document.getElementById('post_text').value;
+
+            $.ajax({
+                type: "POST",
+                async: false,
+                url: "../php/messages/send_message.php",
+                data: {
+                    user_id: getCookie('user'),
+                    receiver_id: receiver_id,
+                    message_text: text,
+                    chat_id: chat_id
+                },
+                success: function(result) {
+                    loadMessages(getUserIdFromChatId(chat_id), chat_id);
+                }
+            });
+
+            document.getElementById('post_text').value = '';
+        });
+
+        // $('.message-wrap').on('click', function(){
+        //     alert('sdf');
+        //     $('.message-wrap').removeAttr('class');
+        //     $('.message-wrap').attr('class', 'message-wrap');
+        //     this.attr('class', 'message-wrap current');
+        // });
+        // });
     </script>
 
     <script src="js/bootstrap.min.js"></script>

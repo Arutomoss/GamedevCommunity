@@ -22,7 +22,7 @@ function appendSearchResult(data) {
     // var wraper = $("#search-wraper");
     // wraper.id = 'search-wraper';
     // alert(q.id);
-    wraper.textContent = "";
+    dialogs_wraper.textContent = "";
 
     if (data != "") {
         for (var i = 0; i < data.length; i++) {
@@ -71,8 +71,10 @@ function appendSearchResult(data) {
             dialogs_wraper.appendChild(wraper);
         }
     }
-    else
-        wraper.textContent = "";
+    else {
+        dialogs_wraper.textContent = "";
+        showAllDialogs(getAllDialogs(getCookie('user')));
+    }
 }
 
 function startChat(user_id) {
@@ -84,7 +86,7 @@ function startChat(user_id) {
         url: "../php/messages/start_chat.php",
         data: { user_id: user_id },
         success: function (result) {
-            alert(result);
+            // alert(result);
             switch (result) {
                 case '0': {
                     alert('Чат уже создан');
@@ -113,12 +115,14 @@ function showAllDialogs(data) {
     var wraper = document.getElementById('dialogs-wraper');
     wraper.textContent = "";
 
+    var chats_id = getAllChatsID(getCookie('user'));
+
     if (data != "") {
         for (var i = 0; i < data.length; i++) {
             var item = document.createElement('div');
             item.className = 'actual-panel-item user-chat';
-            item.id = data[i]['chat_id'];
-            item.setAttribute("onclick", "openDialog(" + data[i]['user_id'] + ", " + data[i]['chat_id'] + ")");
+            item.id = chats_id[i]['chat_id'];
+            item.setAttribute("onclick", "openDialog(" + data[i]['user_id'] + ", " + chats_id[i]['chat_id'] + ")");
 
             var link = document.createElement('a');
             // link.href = 'mypage.php?user_id=' + data[i]['user_id'];
@@ -166,26 +170,45 @@ function showAllDialogs(data) {
 
 function openDialog(user_id, chat_id) {
     if (user_id != "") {
-        let params = new URLSearchParams(document.location.search.substring(1));
-        let id_of_chat = params.get("chat_id");
 
-        if (id_of_chat == null) {
-            window.location.href = 'messages.php?chat_id=' + chat_id;
-        }
-        else {
-            var user = getUser(user_id);
-            $("#messages-place-before").attr('hidden', true);
-            $("#messages-place").attr('hidden', false);
+        window.location.href = 'messages.php?chat_id=' + chat_id;
 
-            var dialog_item = document.getElementById(chat_id);
-            dialog_item.className = "actual-panel-item user-chat selected";
+        // let params = new URLSearchParams(document.location.search.substring(1));
+        // let id_of_chat = params.get("chat_id");
 
-            var user_title = document.getElementById('user-title');
-            user_title.innerText = user['first_name'] + ' ' + user['last_name'];
+        // alert(id_of_chat);
 
-            loadMessages(id_of_chat);
-            // $('.receiver-id').id = user['user_id'];
-        }
+        // if (id_of_chat == null) {
+        //     window.location.href = 'messages.php?chat_id=' + chat_id;
+        // }
+        // else if (id_of_chat != chat_id){
+        //     // window.location.href = 'messages.php?chat_id=' + chat_id;
+        //     var user = getUser(user_id);
+        //     $("#messages-place-before").attr('hidden', true);
+        //     $("#messages-place").attr('hidden', false);
+
+        //     var dialog_item = document.getElementById(chat_id);
+        //     dialog_item.className = "actual-panel-item user-chat selected";
+
+        //     var user_title = document.getElementById('user-title');
+        //     user_title.innerText = user['first_name'] + ' ' + user['last_name'];
+
+        //     loadMessages(chat_id);
+        // }
+        // else {
+        //     var user = getUser(user_id);
+        //     $("#messages-place-before").attr('hidden', true);
+        //     $("#messages-place").attr('hidden', false);
+
+        //     var dialog_item = document.getElementById(chat_id);
+        //     dialog_item.className = "actual-panel-item user-chat selected";
+
+        //     var user_title = document.getElementById('user-title');
+        //     user_title.innerText = user['first_name'] + ' ' + user['last_name'];
+
+        //     loadMessages(chat_id);
+        //     // $('.receiver-id').id = user['user_id'];
+        // }
     }
 }
 
@@ -215,8 +238,15 @@ function addMessage(message) {
     message_area.appendChild(message_wrap);
 }
 
-function loadMessages(chat_id) {
+function loadMessages(user_id, chat_id) {
     var all_messages = getUserMessages(chat_id);
+
+    var user = getUser(user_id);
+    var dialog_item = document.getElementById(chat_id);
+    dialog_item.className = "actual-panel-item user-chat selected";
+
+    var user_title = document.getElementById('user-title');
+    user_title.innerText = user['first_name'] + ' ' + user['last_name'];
 
     if (all_messages != "") {
         var message_area = document.getElementById('message_area');
@@ -224,23 +254,26 @@ function loadMessages(chat_id) {
 
         for (var i = 0; i < all_messages.length; i++) {
             var message_wrap = document.createElement('div');
-            message_wrap.className = 'message-wrap current';
-            message_wrap.id = all_messages[i]['user_id_1'];
-            {
-                var message_ = document.createElement('div');
-                message_.className = 'message current-user-wrap';
-                {
-                    var text = document.createElement('p');
-                    text.innerText = all_messages[i]['message_text'];
-                    text.className = 'message-text';
 
-                    // var time = document.createElement('p');
-                    // time.innerText = '12:34';
-                    // time.className = 'message-time';
-                }
-                message_.appendChild(text);
-                // message_.appendChild(time);
+            if (all_messages[i]['user_id_1'] == getCookie('user')) {
+                message_wrap.className = 'message-wrap current';
+                message_wrap.id = all_messages[i]['user_id_1'];
             }
+            else {
+                message_wrap.className = 'message-wrap';
+                message_wrap.id = all_messages[i]['user_id_2'];
+            }
+
+            var message_ = document.createElement('div');
+            message_.className = 'message current-user-wrap';
+            {
+                var text = document.createElement('p');
+                text.innerText = all_messages[i]['message_text'];
+                text.className = 'message-text';
+            }
+
+            message_.appendChild(text);
+
             message_wrap.appendChild(message_);
 
             message_area.appendChild(message_wrap);
@@ -296,6 +329,22 @@ function getUser(user_id) {
     return user;
 }
 
+function getUserIdFromChatId(chat_id) {
+    var user_id;
+
+    $.ajax({
+        type: "POST",
+        async: false,
+        url: "../php/messages/get_user_from_chat_id.php",
+        data: { chat_id: chat_id },
+        success: function (result) {
+            user_id = result;
+        }
+    });
+
+    return user_id;
+}
+
 function getAllDialogs(user_id) {
     var messages;
 
@@ -305,11 +354,29 @@ function getAllDialogs(user_id) {
         url: "../php/messages/get_all_dialogs.php",
         data: { user_id: user_id },
         success: function (result) {
+            // alert(result);
             messages = JSON.parse(result);
         }
     });
 
     return messages;
+}
+
+function getAllChatsID(user_id) {
+    var chats;
+
+    $.ajax({
+        type: "POST",
+        async: false,
+        url: "../php/messages/get_all_chats_id.php",
+        data: { user_id: user_id },
+        success: function (result) {
+            // alert(result + ' - chats id');
+            chats = JSON.parse(result);
+        }
+    });
+
+    return chats;
 }
 
 function getCookie(name) {

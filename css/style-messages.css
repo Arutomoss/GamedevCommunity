@@ -356,7 +356,7 @@ textarea {
     position              : relative;
     background-color      : #272727;
     top                   : 0px;
-    padding               : 15px 15px 55px 15px;
+    padding               : 15px 15px 67px 15px;
     display               : flex;
     flex-wrap             : wrap;
     align-items           : flex-end;
@@ -380,15 +380,20 @@ textarea {
 
 .message-wrap {
     width     : 100%;
-    margin-top: 10px;
+    /* margin-top: 22px;
+    margin-bottom: 22px;
+    display: flex;
+    justify-content: right;
+    position: relative; */
 }
 
 .current {
     display       : flex;
-    /* margin-left: 270px; */
-    /* justify-content  : right; */
-    /* text-align: center; */
-    /* margin-left: 63%; */
+    margin-top: 22px;
+    margin-bottom: 22px;
+    display: flex;
+    justify-content: right;
+    position: relative;
 }
 
 .message {
@@ -403,6 +408,8 @@ textarea {
     /* flex-wrap          : wrap; */
     /* justify-content : space-between; */
     font-family        : montserrat;
+    position: absolute;
+    right: 0;
 }
 
 .message-text {
