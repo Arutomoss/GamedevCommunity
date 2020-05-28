@@ -102,15 +102,15 @@ if ($_COOKIE['user'] == '') {
                                 <p class="sub-header">Название</p>
                                 <input type="text" class="input" name="name" id="title" maxlength="45" autocomplete="off">
 
-                                <p class="sub-header">***URL Игры</p>
+                                <!-- <p class="sub-header">***URL Игры</p> -->
                                 <!-- <input type="text" class="input" placeholder="https://gamedevcommunity.com/games/"> -->
                                 <!-- <label for="basic-url">Your vanity URL</label> -->
-                                <div class="input-group mb-3">
+                                <!-- <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text span" id="basic-addon3">gamedevcommunity.com/games/</span>
                                     </div>
                                     <input type="text" class="form-control input pl-2" id="basic-url" name="game_url" aria-describedby="basic-addon3" autocomplete="off" maxlength="2048">
-                                </div>
+                                </div> -->
 
                                 <p class="sub-header">Краткое описание</p>
                                 <input type="text" name="shrt_description" class="input" id="shrt_description" placeholder="Опционально" autocomplete="off" maxlength="110">
@@ -159,7 +159,7 @@ if ($_COOKIE['user'] == '') {
                                     <option value="other">Другой</option>
                                 </select>
 
-                                <p class="sub-header">***Ссылки в магазине</p>
+                                <!-- <p class="sub-header">***Ссылки в магазине</p>
                                 <p class="text">Если ваша игра доступна в других магазинах мы добавим ссылку на нее.</p>
                                 <div id="store-inputs">
                                     <div class="wrapper" id="steam" hidden="true">
@@ -206,7 +206,7 @@ if ($_COOKIE['user'] == '') {
                                 <button type="button" class="btn btn-gray btn-store" id="apple-btn" onclick="hiddeElement('apple', 'apple-btn')">+ Apple App Store</button>
                                 <button type="button" class="btn btn-gray btn-store" id="google-btn" onclick="hiddeElement('google', 'google-btn')">+ Google Play</button>
                                 <button type="button" class="btn btn-gray btn-store" id="epic-btn" onclick="hiddeElement('epic', 'epic-btn')">+ Epic Games Store</button>
-                                <button type="button" class="btn btn-gray btn-store" id="windows-btn" onclick="hiddeElement('windows', 'windows-btn')">+ Windows Store</button>
+                                <button type="button" class="btn btn-gray btn-store" id="windows-btn" onclick="hiddeElement('windows', 'windows-btn')">+ Windows Store</button> -->
 
                                 <p class="sub-header" style="margin-top: 30px">Инструкция по скачиванию и установке</p>
                                 <p class="text">Этот текст будет показан кому-то, когда он загружает вашу игру через браузер. Включите любую информацию о том, как установить и запустить то, что они загружают.</p>
@@ -237,9 +237,9 @@ if ($_COOKIE['user'] == '') {
                                     <input type="text" class="form-control input pl-2" id="basic-url1" name="game_url" aria-describedby="basic-addon3" autocomplete="off" placeholder="Опционально">
                                 </div>
 
-                                <p class="sub-header">***Скриншоты</p>
+                                <!-- <p class="sub-header">***Скриншоты</p>
                                 <p class="text">Скриншоты будут отображаться на вашей странице игры. Это опционально, но очень рекомендуется. Загрузите 3-5 для лучшего результата.</p>
-                                <button type="button" class="btn btn-danger btn-red">Добавить скриншоты</button>
+                                <button type="button" class="btn btn-danger btn-red">Добавить скриншоты</button> -->
                             </div>
                         </div>
                     </form>

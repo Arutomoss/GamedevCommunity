@@ -78,8 +78,6 @@ function appendSearchResult(data) {
 }
 
 function startChat(user_id) {
-    alert('started');
-
     $.ajax({
         type: "POST",
         async: false,
@@ -257,20 +255,22 @@ function loadMessages(user_id, chat_id) {
 
             if (all_messages[i]['user_id_1'] == getCookie('user')) {
                 message_wrap.className = 'message-wrap current';
-                message_wrap.id = all_messages[i]['user_id_1'];
+                // message_wrap.id = all_messages[i]['user_id_1'];
+
+                var message_ = document.createElement('div');
+                message_.className = 'message current-user-wrap';
             }
             else {
                 message_wrap.className = 'message-wrap';
-                message_wrap.id = all_messages[i]['user_id_2'];
+                // message_wrap.id = all_messages[i]['user_id_2'];
+
+                var message_ = document.createElement('div');
+                message_.className = 'message';
             }
 
-            var message_ = document.createElement('div');
-            message_.className = 'message current-user-wrap';
-            {
-                var text = document.createElement('p');
-                text.innerText = all_messages[i]['message_text'];
-                text.className = 'message-text';
-            }
+            var text = document.createElement('p');
+            text.innerText = all_messages[i]['message_text'];
+            text.className = 'message-text';
 
             message_.appendChild(text);
 

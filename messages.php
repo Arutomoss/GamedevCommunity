@@ -157,7 +157,7 @@ if ($_COOKIE['user'] == '') {
     <script>
         $(document).ready(function() {
             let params = new URLSearchParams(document.location.search.substring(1));
-            let chat_id = params.get("chat_id");
+            var chat_id = params.get("chat_id");
 
             if (chat_id != null) {
                 $("#messages-place-before").attr('hidden', true);
@@ -168,29 +168,11 @@ if ($_COOKIE['user'] == '') {
                 $("#messages-place-before").attr('hidden', false);
                 $("#messages-place").attr('hidden', true);
             }
+
+            setInterval(() => loadMessages(getUserIdFromChatId(chat_id), chat_id), 4000);
         });
 
-
-        // let params = new URLSearchParams(document.location.search.substring(1));
-        // let chat_id = params.get("chat_id");
-        // // alert(chat_id);
-
-        // var receiver_id = document.getElementsByName('receiver')[0].id;
-        // var text = document.getElementById('post_text').value;
-
         showAllDialogs(getAllDialogs(getCookie('user')));
-
-        // if (chat_id == null) {
-        //     // showAllDialogs(getAllDialogs(getCookie('user')));
-        //     $("#messages-place-before").attr('hidden', false);
-        //     $("#messages-place").attr('hidden', true);
-        // } else {
-        //     openDialog(receiver_id, chat_id);
-        //     // loadMessages(chat_id);
-        //     // alert('else');
-        //     $("#messages-place-before").attr('hidden', true);
-        //     $("#messages-place").attr('hidden', false);
-        // }
 
         $("#send-message").click(function() {
             let params = new URLSearchParams(document.location.search.substring(1));
@@ -204,7 +186,7 @@ if ($_COOKIE['user'] == '') {
                 async: false,
                 url: "../php/messages/send_message.php",
                 data: {
-                    user_id: getCookie('user'),
+                    user_id: getUserIdFromChatId(chat_id),
                     receiver_id: receiver_id,
                     message_text: text,
                     chat_id: chat_id
