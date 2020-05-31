@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Май 25 2020 г., 11:38
+-- Время создания: Май 31 2020 г., 22:50
 -- Версия сервера: 10.3.22-MariaDB
 -- Версия PHP: 7.1.33
 
@@ -24,14 +24,21 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `chat`
+-- Структура таблицы `chats`
 --
 
-CREATE TABLE `chat` (
+CREATE TABLE `chats` (
   `chat_id` int(11) NOT NULL,
-  `user_id` int(11) DEFAULT NULL,
-  `message_id` int(11) DEFAULT NULL
+  `user_id_1` int(11) NOT NULL,
+  `user_id_2` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Дамп данных таблицы `chats`
+--
+
+INSERT INTO `chats` (`chat_id`, `user_id_1`, `user_id_2`) VALUES
+(26, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -133,9 +140,20 @@ INSERT INTO `games` (`game_id`, `user_id`, `game_name`, `game_url`, `game_short_
 
 CREATE TABLE `messages` (
   `message_id` int(11) NOT NULL,
-  `user_id` int(11) DEFAULT NULL,
-  `message_text` varchar(1000) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `user_id_1` int(11) NOT NULL,
+  `user_id_2` int(11) NOT NULL,
+  `message_text` varchar(1000) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `chat_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Дамп данных таблицы `messages`
+--
+
+INSERT INTO `messages` (`message_id`, `user_id_1`, `user_id_2`, `message_text`, `chat_id`) VALUES
+(1, 1, 2, 'Привет!', 26),
+(2, 1, 2, 'Как дела?', 26),
+(3, 2, 2, 'Отлично, а у тебя как?)', 26);
 
 -- --------------------------------------------------------
 
@@ -283,12 +301,10 @@ INSERT INTO `users` (`user_id`, `first_name`, `last_name`, `user_login`, `user_p
 --
 
 --
--- Индексы таблицы `chat`
+-- Индексы таблицы `chats`
 --
-ALTER TABLE `chat`
-  ADD PRIMARY KEY (`chat_id`),
-  ADD KEY `user_id` (`user_id`),
-  ADD KEY `message_id` (`message_id`);
+ALTER TABLE `chats`
+  ADD PRIMARY KEY (`chat_id`);
 
 --
 -- Индексы таблицы `events`
@@ -318,7 +334,7 @@ ALTER TABLE `games`
 --
 ALTER TABLE `messages`
   ADD PRIMARY KEY (`message_id`),
-  ADD KEY `user_id` (`user_id`);
+  ADD KEY `user_id` (`user_id_1`);
 
 --
 -- Индексы таблицы `photo`
@@ -362,10 +378,10 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT для таблицы `chat`
+-- AUTO_INCREMENT для таблицы `chats`
 --
-ALTER TABLE `chat`
-  MODIFY `chat_id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `chats`
+  MODIFY `chat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT для таблицы `events`
@@ -389,7 +405,7 @@ ALTER TABLE `games`
 -- AUTO_INCREMENT для таблицы `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `message_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `message_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT для таблицы `photo`
@@ -426,13 +442,6 @@ ALTER TABLE `users`
 --
 
 --
--- Ограничения внешнего ключа таблицы `chat`
---
-ALTER TABLE `chat`
-  ADD CONSTRAINT `chat_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `chat_ibfk_2` FOREIGN KEY (`message_id`) REFERENCES `messages` (`message_id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
 -- Ограничения внешнего ключа таблицы `events`
 --
 ALTER TABLE `events`
@@ -456,7 +465,7 @@ ALTER TABLE `games`
 -- Ограничения внешнего ключа таблицы `messages`
 --
 ALTER TABLE `messages`
-  ADD CONSTRAINT `messages_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `messages_ibfk_1` FOREIGN KEY (`user_id_1`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ограничения внешнего ключа таблицы `posts`
