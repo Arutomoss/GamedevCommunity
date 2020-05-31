@@ -45,7 +45,7 @@
                 </div>
                 <div class="user-photo">
                     <?php
-                    require 'C:/OpenServer/OpenServer/domains/GamedevCommunity/php/connect.php';
+                    require 'C:/OpenServer/domains/GamedevCommunity/php/connect.php';
 
                     $user_id = $_COOKIE['user'];
                     $user = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM `users` WHERE `user_id` = '$user_id'"));

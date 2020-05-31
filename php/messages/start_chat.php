@@ -1,6 +1,6 @@
 <?php
 
-if ($_POST['user_id'] != ""){
+if ($_POST['user_id'] != "") {
 
     $user_id_1 = $_COOKIE['user'];
     $user_id_2 = $_POST['user_id'];
@@ -12,12 +12,13 @@ if ($_POST['user_id'] != ""){
     $is_in_chat = resultToArray($check);
 
     // echo $is_in_chat;
-    // echo ('---'.empty($is_in_chat));
 
     if (empty($is_in_chat)){
         $result = mysqli_query($mysql, "INSERT INTO `chats`(`user_id_1`, `user_id_2`) VALUE ('$user_id_1', '$user_id_2')");
         $mysql->close();
-        
+
+        // echo resultToArray($result);
+
         if($result){
             // echo 'Чат успешно содан!';
             echo '1';

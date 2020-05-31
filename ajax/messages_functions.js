@@ -15,7 +15,7 @@ function getValue(id) {
 
 function appendSearchResult(data) {
     var dialogs_wraper = document.getElementById('dialogs-wraper');
-    dialogs_wraper
+    // dialogs_wraper
 
     var wraper = document.createElement('div');
     wraper.id = 'search-wraper';
@@ -84,7 +84,7 @@ function startChat(user_id) {
         url: "../php/messages/start_chat.php",
         data: { user_id: user_id },
         success: function (result) {
-            // alert(result);
+            alert(result)
             switch (result) {
                 case '0': {
                     alert('Чат уже создан');
