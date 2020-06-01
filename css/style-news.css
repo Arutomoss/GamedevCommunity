@@ -21,7 +21,7 @@
     height: auto;
     width: 100%;
     background-color: #333333;
-    border-radius: 15px;
+    border-radius: 10px;
     margin-bottom: 10px;
     display: inline-flex;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
@@ -115,6 +115,7 @@ textarea {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
     display: flex;
     margin-bottom: 10px;
+    /* padding-bottom: 15px; */
     /* border-top: 0.5px solid #303030; */
 }
 
@@ -210,7 +211,7 @@ justify - горизонтальное выравнивание
     min-width: 630px;
     max-height: 340px;
     overflow: hidden;
-    border-radius: 15px;
+    border-radius: 10px;
     border: 1px solid rgb(61, 61, 61);
     margin-top: 13px;
 }
@@ -220,13 +221,14 @@ justify - горизонтальное выравнивание
 }
 
 .content-bottom-panel {
-    padding-top: 10px;
-    margin-bottom: 11px;
+    padding-top: 5px;
+    margin-bottom: 5px;
     font-family: "Lato";
     color: #C1C1C1;
     font-weight: 300;
     display: flex;
     align-items: center;
+    vertical-align: middle;
     margin-left: 15px;
 }
 
@@ -267,9 +269,15 @@ justify - горизонтальное выравнивание
     align-content: center;
 }
 
-.content-bottom-panel-likes img {
+.content-bottom-panel-likes a {
     margin-right: 6px;
-    margin-top: 2px;
+    margin-top: 5px;
+}
+
+.amount {
+    font-family: montserrat;
+    margin-left: 3px;
+    padding-top: 3px;
 }
 
 .actual {
@@ -433,7 +441,7 @@ justify - горизонтальное выравнивание
     max-height: 355px;
     width: 315px;
     background-color: #333333;
-    border-radius: 15px;
+    border-radius: 10px;
     top: 123px;
     position: relative;
     margin-left: 15px;

@@ -175,16 +175,26 @@ function showPosts(all_posts) {
                         {
                             var comment_img = document.createElement('img');
                             comment_img.src = 'img/comments.svg';
+
+                            var amount_comments = document.createElement('div');
+                            amount_comments.className = 'amount';
+                            amount_comments.innerText = '0';
                         }
                         content_bottom_panel_comments.appendChild(comment_img);
+                        content_bottom_panel_comments.appendChild(amount_comments);
 
                         var content_bottom_panel_reposts = document.createElement('div');
                         content_bottom_panel_reposts.className = 'content-bottom-panel-reposts';
                         {
                             var reposts_img = document.createElement('img');
                             reposts_img.src = 'img/reposts.svg';
+
+                            var amount_reposts = document.createElement('div');
+                            amount_reposts.className = 'amount';
+                            amount_reposts.innerText = '0';
                         }
                         content_bottom_panel_reposts.appendChild(reposts_img);
+                        content_bottom_panel_reposts.appendChild(amount_reposts);
 
                         var content_bottom_panel_likes = document.createElement('div');
                         content_bottom_panel_likes.className = 'content-bottom-panel-likes';
@@ -192,8 +202,13 @@ function showPosts(all_posts) {
                             var likes = document.createElement('a');
                             likes.href = '#';
                             likes.innerHTML = '<svg width="17" height="15" viewBox="0 0 17 15" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M8.5 15L8.2 14.7475C1.75 9.44444 0 7.57576 0 4.54545C0 2.0202 2 0 4.5 0C6.55 0 7.7 1.16162 8.5 2.07071C9.3 1.16162 10.45 0 12.5 0C15 0 17 2.0202 17 4.54545C17 7.57576 15.25 9.44444 8.8 14.7475L8.5 15ZM4.5 1.0101C2.55 1.0101 1 2.57576 1 4.54545C1 7.12121 2.6 8.83838 8.5 13.6869C14.4 8.83838 16 7.12121 16 4.54545C16 2.57576 14.45 1.0101 12.5 1.0101C10.75 1.0101 9.8 2.07071 9.05 2.92929L8.5 3.58586L7.95 2.92929C7.2 2.07071 6.25 1.0101 4.5 1.0101Z" fill="#C1C1C1"/> </svg>';
+                            
+                            var amount_likes = document.createElement('div');
+                            amount_likes.className = 'amount';
+                            amount_likes.innerText = '0';
                         }
                         content_bottom_panel_likes.appendChild(likes);
+                        content_bottom_panel_likes.appendChild(amount_likes);
                     }
                     content_bottom_panel.appendChild(content_bottom_panel_comments);
                     content_bottom_panel.appendChild(content_bottom_panel_reposts);
