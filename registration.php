@@ -74,7 +74,7 @@ if (isset($_POST['do_signup'])) {
         $errors = 'Не все поля заполнены';
     }
 }
-else echo "mazafaka";
+// else echo "mazafaka";
 ?>
 
 <!DOCTYPE html>
