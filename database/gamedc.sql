@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Май 31 2020 г., 22:50
+-- Время создания: Июн 03 2020 г., 09:56
 -- Версия сервера: 10.3.22-MariaDB
 -- Версия PHP: 7.1.33
 
@@ -39,6 +39,19 @@ CREATE TABLE `chats` (
 
 INSERT INTO `chats` (`chat_id`, `user_id_1`, `user_id_2`) VALUES
 (26, 1, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `comments`
+--
+
+CREATE TABLE `comments` (
+  `comment_id` int(11) NOT NULL,
+  `post_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `comment_text` varchar(700) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -131,6 +144,18 @@ INSERT INTO `games` (`game_id`, `user_id`, `game_name`, `game_url`, `game_short_
 (3, 1, 'Onigiri Adventure', NULL, 'This is indie 2D platformer', 'This game have no description.', 'released', 'Setup.exe', 'platformer', 'Just download, install and have fun)', 39, NULL, '34.56 Mb', 13),
 (4, 1, 'Something game', NULL, 'Short description', 'Description', 'released', '171680.zip', 'action', 'instruction', 69, NULL, '0.13 Mb', 13),
 (5, 1, 'First jams game', NULL, 'Ufff, boring', 'And another useless description', 'released', 'Grass Assets.zip', 'adventure', 'There is instruction to installing game.', 70, NULL, '0.77 Mb', 13);
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `likes`
+--
+
+CREATE TABLE `likes` (
+  `like_id` int(11) NOT NULL,
+  `post_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -250,6 +275,18 @@ INSERT INTO `rating` (`rating_id`, `event_id`, `game_id`, `user_id`, `mark`) VAL
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `reposts`
+--
+
+CREATE TABLE `reposts` (
+  `repost_id` int(11) NOT NULL,
+  `post_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `subscriptions`
 --
 
@@ -307,6 +344,12 @@ ALTER TABLE `chats`
   ADD PRIMARY KEY (`chat_id`);
 
 --
+-- Индексы таблицы `comments`
+--
+ALTER TABLE `comments`
+  ADD PRIMARY KEY (`comment_id`);
+
+--
 -- Индексы таблицы `events`
 --
 ALTER TABLE `events`
@@ -328,6 +371,12 @@ ALTER TABLE `games`
   ADD PRIMARY KEY (`game_id`),
   ADD KEY `games_ibfk_photo` (`photo_id`),
   ADD KEY `games_ibfk_users` (`user_id`);
+
+--
+-- Индексы таблицы `likes`
+--
+ALTER TABLE `likes`
+  ADD PRIMARY KEY (`like_id`);
 
 --
 -- Индексы таблицы `messages`
@@ -360,6 +409,12 @@ ALTER TABLE `rating`
   ADD KEY `user_id` (`user_id`);
 
 --
+-- Индексы таблицы `reposts`
+--
+ALTER TABLE `reposts`
+  ADD PRIMARY KEY (`repost_id`);
+
+--
 -- Индексы таблицы `subscriptions`
 --
 ALTER TABLE `subscriptions`
@@ -384,6 +439,12 @@ ALTER TABLE `chats`
   MODIFY `chat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
+-- AUTO_INCREMENT для таблицы `comments`
+--
+ALTER TABLE `comments`
+  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT для таблицы `events`
 --
 ALTER TABLE `events`
@@ -400,6 +461,12 @@ ALTER TABLE `event_members`
 --
 ALTER TABLE `games`
   MODIFY `game_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT для таблицы `likes`
+--
+ALTER TABLE `likes`
+  MODIFY `like_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT для таблицы `messages`
@@ -424,6 +491,12 @@ ALTER TABLE `posts`
 --
 ALTER TABLE `rating`
   MODIFY `rating_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+
+--
+-- AUTO_INCREMENT для таблицы `reposts`
+--
+ALTER TABLE `reposts`
+  MODIFY `repost_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT для таблицы `subscriptions`

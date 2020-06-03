@@ -75,7 +75,8 @@ textarea {
     overflow: hidden;
     padding: 0;
     outline: none;
-    background-color: #333333;      /*bg color*/
+    background-color: #333333;
+    /*bg color*/
     resize: none;
     padding-right: 10px;
     padding-top: 7px;
@@ -274,6 +275,10 @@ justify - горизонтальное выравнивание
     margin-top: 5px;
 }
 
+.content-bottom-panel-likes a:hover {
+    cursor: pointer;
+}
+
 .amount {
     font-family: montserrat;
     margin-left: 3px;
@@ -465,4 +470,73 @@ justify - горизонтальное выравнивание
     margin-right: 14px;
     margin-left: 14px;
     margin-bottom: 11px;
+}
+
+.comment-panel {
+    display: inline-flex;
+    height: auto;
+    width: 100%;
+    border-top: 1px solid #444444;
+}
+
+.comment-panel textarea {
+    height: 32px;
+    width: 100%;
+    border-radius: 15px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: 10px;
+    padding: 6px 15px;
+    color: #eeeeee;
+    border: 1px solid #444444;
+    overflow: hidden;
+    /* background-color: #272727; */
+    /* resize: vertical; */
+}
+
+.comment-send-img {
+    padding: 0 7px 2px 7px;
+}
+
+.comment-send-btn:hover {
+    cursor: pointer;
+    background-color: #404040;
+}
+
+.comment-send-btn {
+    margin: 15px 0 15px 10px;
+    background-color: #333333;
+    border: none;
+    border-radius: 5px;
+}
+
+.comment-mini-icon {
+    height: 32px;
+    width: 32px;
+    margin-left: 15px;
+    margin-right: 13px;
+    border-radius: 35px;
+}
+
+#text_area {
+    width: 100%;
+    height: 30px;
+    overflow: hidden;
+    padding: 5px;
+    border: 1px solid #444444;
+    /* font-family: Arial;
+    font-size: 12px; */
+    color: #eeeeee;
+    resize: none;
+}
+
+#text_area_div {
+    width: 100%;
+    /* font-family: Arial;
+    font-size: 12px; */
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    visibility: hidden;
+    position: absolute;
+    left: -9999px;
 }
