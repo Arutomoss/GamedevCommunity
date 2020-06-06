@@ -99,9 +99,65 @@ function getUser(user_id) {
     return user;
 }
 
+function wichMonth(month) {
+    switch (month) {
+        case '01': {
+            return 'Января';
+            break;
+        }
+        case '02': {
+            return 'Февраля';
+            break;
+        }
+        case '03': {
+            return 'Марта';
+            break;
+        }
+        case '04': {
+            return 'Апреля';
+            break;
+        }
+        case '05': {
+            return 'Мая';
+            break;
+        }
+        case '06': {
+            return 'Июня';
+            break;
+        }
+        case '07': {
+            return 'Июля';
+            break;
+        }
+        case '08': {
+            return 'Августа';
+            break;
+        }
+        case '09': {
+            return 'Сентября';
+            break;
+        }
+        case '10': {
+            return 'Октября';
+            break;
+        }
+        case '11': {
+            return 'Ноября';
+            break;
+        }
+        case '12': {
+            return 'Декабря';
+            break;
+        }
+        default:
+            return '';
+    }
+}
+
 function showPosts(all_posts) {
     if (all_posts != "") {
 
+        var current_user_id = getCookie('user');
         var main = document.getElementById('main');
 
         for (var i = 0; i < all_posts.length; i++) {
@@ -124,7 +180,9 @@ function showPosts(all_posts) {
                 content_icon.appendChild(user_photo_link);
 
                 var wrap = document.createElement('div');
-                wrap.className = 'wrap'; {
+                wrap.className = 'wrap';
+                wrap.id = `wrap-id-${all_posts[i]['post_id']}`;
+                {
                     var content_header = document.createElement('div');
                     content_header.className = 'content-headder'; {
                         var content_header_title = document.createElement('div');
@@ -135,7 +193,11 @@ function showPosts(all_posts) {
 
                             var title_info = document.createElement('p');
                             title_info.className = 'title-info';
-                            title_info.textContent = "@" + user['user_login'] + " " + all_posts[i]['date_create'];
+
+                            let date = all_posts[i]['date_create'];
+                            let month = wichMonth(date.substring(5, 7));
+
+                            title_info.textContent = `@${user['user_login']} ${date.substring(8, 10)} ${month} в ${date.substring(11, 13)}:${date.substring(14, 16)}`;
                         }
                         content_header_title.appendChild(user_name_link);
                         content_header_title.appendChild(title_info);
@@ -164,13 +226,16 @@ function showPosts(all_posts) {
                     var content_bottom_panel = document.createElement('div');
                     content_bottom_panel.className = 'content-bottom-panel'; {
                         var content_bottom_panel_comments = document.createElement('div');
-                        content_bottom_panel_comments.className = 'content-bottom-panel-comments'; {
+                        content_bottom_panel_comments.className = 'content-bottom-panel-comments';
+                        content_bottom_panel_comments.setAttribute('onclick', `showCommentPanel(${all_posts[i]['post_id']})`);
+                        {
                             var comment_img = document.createElement('img');
                             comment_img.src = 'img/comments.svg';
 
                             var amount_comments = document.createElement('div');
                             amount_comments.className = 'amount';
-                            amount_comments.innerText = '0';
+                            let count_comments = getPostComments(all_posts[i]['post_id'], 0);
+                            amount_comments.innerText = count_comments.length;
                         }
                         content_bottom_panel_comments.appendChild(comment_img);
                         content_bottom_panel_comments.appendChild(amount_comments);
@@ -213,22 +278,25 @@ function showPosts(all_posts) {
                 wrap.appendChild(content_bottom_panel);
 
                 var cur_user = getUser(getCookie('user'));
-                
+
                 var comment_panel = document.createElement('div');
                 comment_panel.className = 'comment-panel';
+                comment_panel.id = 'comment-panel-id-' + all_posts[i]['post_id'];
+                comment_panel.setAttribute('hidden', 'true');
                 {
                     var user_comment_img = document.createElement('img');
                     user_comment_img.className = 'comment-mini-icon';
                     user_comment_img.style.margin = '15px 0 15px 0';
                     user_comment_img.src = getPhoto(cur_user['photo_id']);
 
-                    var textarea_wrap = document.createElement('div');
+                    // var textarea_wrap = document.createElement('div');
 
                     var comment_input = document.createElement('textarea');
                     comment_input.id = 'text_area';
                     comment_input.name = 'post_text';
-                    comment_input.setAttribute('onkeyup',"textarea_resize(event, 15, 2);")
-                    comment_input.maxLength = "500";
+                    comment_input.className = `comment-text-id-${all_posts[i]['post_id']}`;
+                    comment_input.setAttribute('onkeyup', "textarea_resize(event, 15, 2);")
+                    comment_input.maxLength = "150";
 
                     var shit = document.createElement('div');
                     shit.id = 'text_area_div';
@@ -237,6 +305,8 @@ function showPosts(all_posts) {
 
                     var comment_send_btn = document.createElement('button');
                     comment_send_btn.className = 'comment-send-btn';
+
+                    comment_send_btn.setAttribute('onclick', `sendComment(${all_posts[i]['post_id']},${current_user_id})`);
 
                     var btn_img = document.createElement('img');
                     btn_img.src = 'img/send.svg';
@@ -251,6 +321,52 @@ function showPosts(all_posts) {
                     comment_panel.appendChild(comment_send_btn);
                 }
 
+                var all_comments_panel = document.createElement('div');
+                all_comments_panel.className = 'all-comments-panel';
+                all_comments_panel.id = `all-comments-id-${all_posts[i]['post_id']}`;
+                all_comments_panel.setAttribute('hidden', 'true');
+                {
+                    var comments = getPostComments(all_posts[i]['post_id'], 2);
+
+                    if (comments != '') {
+                        let comments_title = document.createElement('div');
+                        comments_title.innerText = 'Показать все комментарии';
+                        comments_title.className = 'comments-show-more';
+                        comments_title.setAttribute('onclick', `showAllPostComments(${all_posts[i]['post_id']})`);
+
+                        all_comments_panel.appendChild(comments_title);
+
+                        for (let j = 0; j < comments.length; j++) {
+                            let user_comment = document.createElement('div');
+                            user_comment.className = 'user-comment';
+                            {
+                                // alert('coments id -' + comments[j]['user_id']);
+                                let comment_user = getUser(comments[j]['user_id']);
+
+                                let comment_photo = document.createElement('img');
+                                comment_photo.className = 'comment-mini-icon';
+                                comment_photo.style.margin = '5px 0 5px 0';
+                                comment_photo.src = getPhoto(comment_user['photo_id']);
+
+                                let comment_container = document.createElement('div');
+
+                                let comment_user_name = document.createElement('p');
+                                comment_user_name.className = 'comment-user-name';
+                                comment_user_name.innerText = `${comment_user['first_name']} ${comment_user['last_name']}`;
+
+                                let comment_text = document.createElement('p');
+                                comment_text.innerText = comments[j]['comment_text'];
+
+                                user_comment.appendChild(comment_photo);
+                                comment_container.appendChild(comment_user_name);
+                                comment_container.appendChild(comment_text);
+                                user_comment.appendChild(comment_container);
+                            }
+                            all_comments_panel.appendChild(user_comment);
+                        }
+                        all_comments_panel.removeAttribute('hidden');
+                    } wrap.appendChild(all_comments_panel);
+                }
                 wrap.appendChild(comment_panel);
             }
             content.appendChild(content_icon);
@@ -261,10 +377,122 @@ function showPosts(all_posts) {
     }
 }
 
+function showAllPostComments(post_id) {
+
+    // let wrap = document.getElementById(`wrap-id-${post_id}`);
+
+    let all_comments = document.getElementById(`all-comments-id-${post_id}`);
+    all_comments.innerHTML = '';
+
+    var comments = getPostComments(post_id, 0);
+
+    if (comments != '') {
+        let comments_title = document.createElement('div');
+        comments_title.innerText = 'Показать все комментарии';
+        comments_title.className = 'comments-show-more';
+        comments_title.setAttribute('onclick', `showAllPostComments(${post_id})`);
+
+        all_comments.appendChild(comments_title);
+
+        for (let j = 0; j < comments.length; j++) {
+            let user_comment = document.createElement('div');
+            user_comment.className = 'user-comment';
+            {
+                // alert('coments id -' + comments[j]['user_id']);
+                let comment_user = getUser(comments[j]['user_id']);
+
+                let comment_photo = document.createElement('img');
+                comment_photo.className = 'comment-mini-icon';
+                comment_photo.style.margin = '5px 0 5px 0';
+                comment_photo.src = getPhoto(comment_user['photo_id']);
+
+                let comment_container = document.createElement('div');
+
+                let comment_user_name = document.createElement('p');
+                comment_user_name.className = 'comment-user-name';
+                comment_user_name.innerText = `${comment_user['first_name']} ${comment_user['last_name']}`;
+
+                let comment_text = document.createElement('p');
+                comment_text.innerText = comments[j]['comment_text'];
+
+                user_comment.appendChild(comment_photo);
+                comment_container.appendChild(comment_user_name);
+                comment_container.appendChild(comment_text);
+                user_comment.appendChild(comment_container);
+            }
+            all_comments.appendChild(user_comment);
+        }
+        // wrap.appendChild(all_comments);
+    }
+}
+
+function showCommentPanel(post_id) {
+    var comment_panel = document.getElementById('comment-panel-id-' + post_id);
+    comment_panel.removeAttribute('hidden');
+}
+
 // END - FUNCTIONS
 
 
 // AJAX
+
+function sendComment(post_id, user_id) {
+    var comment_text_value = document.getElementsByClassName(`comment-text-id-${post_id}`)[0].value;
+    document.getElementsByClassName(`comment-text-id-${post_id}`)[0].value = '';
+
+    $.ajax({
+        type: "POST",
+        url: "../php/news/send_comment.php",
+        data: {
+            post_id: post_id,
+            user_id: user_id,
+            comment_text: comment_text_value
+        },
+        success: function (result) {
+            if (result == 'success') {
+                showAllPostComments(post_id);
+            }
+            else {
+                alert('Что-то пошло не так');
+            }
+        },
+        error: function () {
+            alert('Ошибка!');
+        }
+    });
+}
+
+function getPostComments(post_id, limit) {
+    var comments = '';
+
+    $.ajax({
+        type: "POST",
+        async: false,
+        url: "../php/news/get_post_comments.php",
+        data: {
+            post_id: post_id,
+            limit: limit
+        },
+        success: function (result) {
+            let res = JSON.parse(result);
+            if (res.length != 0) {
+                // alert('post id = ' + post_id + ' kso');
+                comments = res;
+            }
+            else {
+                // alert('govno');
+                comments = '';
+            }
+        },
+        error: function () {
+            alert('Ошибка!');
+        }
+    });
+
+    // alert('comm - '+comments);
+
+    return comments;
+}
 
 function searchUser() {
     $.ajax({
@@ -295,11 +523,11 @@ function setLike(post_id, user_id) {
         },
         success: function (result) {
             // alert(result);
-            if (result == '1'){
+            if (result == '1') {
                 var amount_likes = document.getElementById(`amount-${post_id}`);
                 amount_likes.innerText = Number(amount_likes.innerText) + 1;
             }
-            if (result == '3'){
+            if (result == '3') {
                 var amount_likes = document.getElementById(`amount-${post_id}`);
                 amount_likes.innerText = Number(amount_likes.innerText) - 1;
             }
