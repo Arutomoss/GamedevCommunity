@@ -543,6 +543,10 @@ justify - горизонтальное выравнивание
     cursor: pointer;
 }
 
+.content-bottom-panel-reposts img:hover {
+    cursor: pointer;
+}
+
 #text_area_div {
     width: 100%;
     /* font-family: Arial;

@@ -63,6 +63,17 @@ function getUserPosts($limit, $user_id)
     return resultToArray($result);
 }
 
+function getUserPostsAndReposts($limit, $user_id)
+{
+    $mysql = mysqli_connect("localhost", "root", "root", "gamedc");
+
+    $result = mysqli_query($mysql, "SELECT `posts`.`post_id`, `posts`.`user_id`, `posts`.`post_text`, `posts`.`photo_id`, `posts`.`date_create`, `posts`.`amount_likes`, `posts`.`amount_reposts` FROM `posts` WHERE (`posts`.`user_id` = '$user_id')
+    UNION ALL
+    SELECT `posts`.`post_id`, `posts`.`user_id`, `posts`.`post_text`, `posts`.`photo_id`, `posts`.`date_create`, `posts`.`amount_likes`, `posts`.`amount_reposts` FROM `posts` INNER JOIN `reposts` ON `posts`.`post_id` = `reposts`.`post_id` ORDER BY `post_id` DESC LIMIT $limit");
+    $mysql->close();
+    return resultToArray($result);
+}
+
 function getFollowerPosts($limit, $user_id)
 {
     $mysql = mysqli_connect("localhost", "root", "root", "gamedc");

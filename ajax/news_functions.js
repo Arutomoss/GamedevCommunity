@@ -218,7 +218,6 @@ function showPosts(all_posts) {
                             var content_source_img = document.createElement('img');
                             content_source_img.className = 'img-fluid';
                             content_source_img.src = getPhoto(all_posts[i]['photo_id']);
-
                         }
                         content_source.appendChild(content_source_img);
                     }
@@ -245,9 +244,12 @@ function showPosts(all_posts) {
                             var reposts_img = document.createElement('img');
                             reposts_img.src = 'img/reposts.svg';
 
+                            reposts_img.setAttribute('onclick', `Repost(${all_posts[i]['post_id']}, ${current_user_id}, ${all_posts[i]['user_id']})`);
+
                             var amount_reposts = document.createElement('div');
                             amount_reposts.className = 'amount';
-                            amount_reposts.innerText = '0';
+                            amount_reposts.id = `amount-reposts-${all_posts[i]['post_id']}`;
+                            amount_reposts.innerText = all_posts[i]['amount_reposts'];
                         }
                         content_bottom_panel_reposts.appendChild(reposts_img);
                         content_bottom_panel_reposts.appendChild(amount_reposts);
@@ -435,6 +437,31 @@ function showCommentPanel(post_id) {
 
 
 // AJAX
+
+function Repost(post_id, cur_user_id, user_id) {
+    $.ajax({
+        type: "POST",
+        url: "../php/news/create_repost.php",
+        data: {
+            post_id: post_id,
+            cur_user_id: cur_user_id,
+            user_id: user_id
+        },
+        success: function (result) {
+            if (result == 'success') {
+                let amount_reposts = document.getElementById(`amount-reposts-${post_id}`);
+                amount_reposts.innerText = Number(amount_reposts.innerText) + 1;
+            }
+            if (result == 'success-remove') {
+                let amount_reposts = document.getElementById(`amount-reposts-${post_id}`);
+                amount_reposts.innerText = Number(amount_reposts.innerText) - 1;
+            }
+        },
+        error: function () {
+            alert('Ошибка!');
+        }
+    });
+}
 
 function sendComment(post_id, user_id) {
     var comment_text_value = document.getElementsByClassName(`comment-text-id-${post_id}`)[0].value;

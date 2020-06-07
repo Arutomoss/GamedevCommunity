@@ -191,7 +191,7 @@ if (count($isExists) == 0) {
 
                 <?php
                 require 'php/connect.php';
-                $posts = getUserPosts(30, $_GET['user_id']);
+                $posts = getUserPostsAndReposts(50, $_GET['user_id']);
 
                 for ($i = 0; $i < count($posts); $i++) {
                     $user_id = $posts[$i]['user_id'];
