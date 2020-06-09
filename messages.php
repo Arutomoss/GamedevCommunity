@@ -15,7 +15,7 @@ if ($_COOKIE['user'] == '') {
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style-messages.css">
-    <title>Messages</title>
+    <title>Сообщения</title>
 </head>
 
 <body onload="init();">

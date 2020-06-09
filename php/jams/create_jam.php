@@ -16,7 +16,7 @@ if ($_COOKIE['user'] == '') {
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/style-create_jam.css">
     <link rel="stylesheet" href="/css/style-header.css">
-    <title>Создание Jam-a</title>
+    <title>Создание Мероприятия</title>
 </head>
 
 <header class="d-flex flex-column justify-content-center">

@@ -15,7 +15,7 @@ if ($_COOKIE['user'] == '') {
     <link href="https://fonts.googleapis.com/css?family=Anonymous+Pro:400,400i,700,700i&display=swap&subset=cyrillic,greek,latin-ext" rel="stylesheet">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style-jam_creation.css">
-    <title>Jams</title>
+    <title>Создание мероприятия</title>
 </head>
 
 <body>
