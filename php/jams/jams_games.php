@@ -20,7 +20,7 @@ if ($_COOKIE['user'] == '') {
 
 <body>
     <?php
-    require 'C:/OpenServer/OpenServer/domains/GamedevCommunity/blocks/headder.php';
+    require 'C:/OpenServer/domains/GamedevCommunity/blocks/headder.php';
     ?>
 
     <div class="container col-11">

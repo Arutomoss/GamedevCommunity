@@ -49,8 +49,8 @@ if (isset($_POST['short_description']) && ($_POST['short_description'] != '')) {
     $conn->close();
     header('Location: http://gamedevcommunity/settings.php');
 }
-else {
-    // header('Location: http://gamedevcommunity/settings.php');
+else if ($arr['status'] == 'fail'){
+    header('Location: http://gamedevcommunity/settings.php');
 }
 
 function str_random($length)
@@ -59,5 +59,5 @@ function str_random($length)
 }
 
 header('Content-type: application/json');
-echo json_encode($arr);
+exit(json_encode($arr));
 exit();
