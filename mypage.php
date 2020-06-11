@@ -19,7 +19,6 @@ if (count($isExists) == 0) {
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,400i,500,500i,700,900&display=swap&subset=cyrillic,cyrillic-ext" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap&subset=cyrillic,cyrillic-ext,latin-ext,vietnamese" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i&display=swap&subset=latin-ext" rel="stylesheet">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style-mypage.css">
     <title>Моя страница</title>
@@ -227,7 +226,7 @@ if (count($isExists) == 0) {
                     echo '<div class="content-bottom-panel">
                             <div class="content-bottom-panel-comments">
                                 <img src="img/comments.svg" alt="">
-                                <p>0</p>
+                                <p>' . $posts[$i]['amount_comments'] . '</p>
                             </div>
                             <div class="content-bottom-panel-reposts">
                                 <img src="img/reposts.svg" alt="">

@@ -109,7 +109,7 @@ if ($_COOKIE['user'] == '') {
                         </div>
                     </div>
                     <div style="width: 100;" class="row justify-content-center" id="rate-works" hidden>
-                        <a href="/php/jams/jams_games.php?event_id=<?php echo $event['event_id'];?>" class="btn btn-success mb-4">Оценить работы других участников</a>
+                        <a href="/php/jams/jams_games.php?event_id=<?php echo $event['event_id'];?>" class="btn btn-success mb-4">Оценить работы участников</a>
                     </div>
                     <div class="row">
                         <div class="short-description col-12">

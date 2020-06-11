@@ -1,8 +1,10 @@
 <?php
 
-if (isset($_POST['user_id']) && ($_POST['user_id'] != '')
- && isset($_POST['post_id']) && ($_POST['post_id'] != '')
- && isset($_POST['comment_text']) && ($_POST['comment_text'] != '')) {
+if (
+    isset($_POST['user_id']) && ($_POST['user_id'] != '')
+    && isset($_POST['post_id']) && ($_POST['post_id'] != '')
+    && isset($_POST['comment_text']) && ($_POST['comment_text'] != '')
+) {
 
     $user_id = $_POST['user_id'];
     $post_id = $_POST['post_id'];
@@ -12,10 +14,14 @@ if (isset($_POST['user_id']) && ($_POST['user_id'] != '')
 
     $result = mysqli_query($mysql, "INSERT INTO `comments`(`post_id`, `user_id`, `comment_text`) VALUE('$post_id', '$user_id', '$comment_text') ");
 
-    if ($result){
-        exit('success');
-    }
-    else exit('fail');
+    if ($result) {
+        $update_amount = mysqli_query($mysql, "UPDATE `posts` SET `amount_comments` = `amount_comments` + 1 WHERE `post_id` = '$post_id'");
+
+        if ($update_amount) {
+            exit('success');
+        }
+
+    } else exit('fail');
 
     $mysql->close();
 }

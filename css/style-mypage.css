@@ -280,7 +280,7 @@ body {
 .content-bottom-panel {
     padding-top: 10px;
     margin-bottom: 11px;
-    font-family: "Lato";
+    font-family: "Montserrat";
     color: #C1C1C1;
     font-weight: 300;
     display: flex;
@@ -290,6 +290,7 @@ body {
 
 .content-bottom-panel p {
     margin: 0px;
+    font-family: montserrat;
 }
 
 .content-bottom-panel a{
@@ -303,8 +304,13 @@ body {
     align-items: center;
 }
 
+.content-bottom-panel-comments p {
+    font-family: montserrat;
+}
+
 .content-bottom-panel-comments img {
     margin-right: 6px;
+    font-family: montserrat;
 }
 
 .content-bottom-panel-reposts {
