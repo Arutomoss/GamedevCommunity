@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Июн 03 2020 г., 09:56
+-- Время создания: Июн 11 2020 г., 07:49
 -- Версия сервера: 10.3.22-MariaDB
 -- Версия PHP: 7.1.33
 
@@ -50,8 +50,21 @@ CREATE TABLE `comments` (
   `comment_id` int(11) NOT NULL,
   `post_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `comment_text` varchar(700) COLLATE utf8mb4_unicode_ci NOT NULL
+  `comment_text` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Дамп данных таблицы `comments`
+--
+
+INSERT INTO `comments` (`comment_id`, `post_id`, `user_id`, `comment_text`) VALUES
+(1, 8, 1, 'Comment'),
+(2, 8, 1, 'And another comment, he he'),
+(3, 8, 1, 'And another one'),
+(4, 6, 1, 'lets comment another one'),
+(5, 3, 1, 'Here we go'),
+(6, 2, 1, 'Hi!'),
+(7, 8, 2, 'Wonderfull');
 
 -- --------------------------------------------------------
 
@@ -86,7 +99,7 @@ INSERT INTO `events` (`event_id`, `user_id`, `event_name`, `event_short_descript
 (10, 1, 'ваваап', 'ываываыв', 'ываываыва', '', 32, '2020-05-13 00:00:00', '2020-05-21 00:00:00', NULL, 0, NULL),
 (11, 1, 'May Jam', 'Майский Jam', 'description', 'info', 44, '2020-05-22 00:00:00', '2020-05-22 00:00:00', '2020-05-22 00:00:00', 1, 'all'),
 (12, 1, 'May Jam', 'Майский Jam', 'The Creative Theme for this jam is to be determined by our Patreon supporters - you can become a supporter and suggest a theme at Patreon.com/PIGSquad<br />\nJoin us in our Opening stream on August 13th and Closing Showcase Stream at Twitch.tv/PIGSquad!<br />\nThis jam will be fully remote.<br />\nA word on Horror Games:<br />\nMake a horror-themed game! Spooky stories, jump scares, Halloween games, cute games inspired by horror-themed subject matter, classical monsters, and cosmic horror are all on the table!<br />\nmidnightgame, C.U.L.T. Solutions, Nekomancer, Coven Ant, Fever Dreams, Rad Ladds vs The Midnight Man, and The Shadow Over Bridgetown are examples of horror games made by PIGSquad members at past jams.<br />\nJam Schedule:<br />\nWe will be hosting streams and other online activities to support jammers in meeting and sharing. This list will update over time.<br />\n<br />\nFollow PIGSquad on social media channels for consistent updates on events, workshops, and other opportunities.<br />\nIf you&#39;d like to participate in choosing the creative themes for each jam, voting is exclusive to our Patreon members - learn more here!<br />\nAll participants, in person or remote, must follow PIGSquad&#39;s Code of Conduct.<br />\nWe encourage you to jam with new people or on a team, but it is not required. We will be providing resources for team forming at the jam kickoff and throughout the jam timeline.<br />\nYou may use pre-existing tools to make games, but please start your jam at the official jam start date after the Creative Theme is revealed.<br />\nJammers retain full ownership of the games they make during Summer Slow Jams.<br />\nLate submissions or submission updates can be accepted - just get in touch with an organizer.<br />\nExtra special thanks to Marlowe for creating Summer Slow Jams art!<br />\n<br />\n<br />\nSummer Slow Jams:<br />\nEach summer, game makers get together to make a game project with friends and community members in a few weeks! Summer Slow Jams is a collection of game jam events happening once a month this summer, providing structure and networking opportunities for creatives in Portland and remote participants. Participate in a jam to finish a creative project, learn new things, meet new people, and share your work!<br />\n<br />\nCreative themes are delivered during each kick off event then shared online, and developers are able to showcase their game jam projects at each closing event in Portland, OR (online this year). In between the dates of the kick off and closing showcase, you are encouraged to meet up with others using online channels to complete a game over whatever in-jam time period you see fit: take it slow if you need!', 'August 13th, 7pm-10pm: Kickoff Stream - Theme Reveal, Team Forming<br />\nAugust 30th - Submissions Due<br />\nShowcase Stream is TBD<br />\nRules & More Details:<br />\nThese jams, the opening event, and the showcase will be fully remote. Non-Portlanders are welcome to participate.', 61, '2020-05-23 10:00:00', '2020-05-25 12:00:00', '2020-05-27 12:00:00', 1, 'who_in_jam'),
-(13, 1, 'One Punch Man', 'One punch man jam, win use one punch.', 'This is a 48 hour game making marathon, focused on design, mechanics, and clever ideas. The jam runs from July 10th, at 8PM UK time, to July 12th, at 8PM UK time.<br />\n<br />\nHere&#39;s what you need to know:<br />\n<br />\nWho can enter? Anyone, from anywhere. You can work alone or in teams. <br />\n<br />\nWhat can I make my game in? Anything, provided you can upload a file that runs on Windows (without the need to install other programs) or browsers, to itch.io. You can also support other platforms too, if you like. So, sorry, but no physical games, Super Mario Maker levels, Dreams (PS4) games, or games that require an emulator to run.<br />\n<br />\nWhat assets can I use? To be announced...<br />\n<br />\nWho will judge the games? To be announced...<br />\n<br />\nWhat will the games be judged on? To be announced...<br />\n<br />\nIs there a Discord I can join? Yes! It will be open to the public on June 26th.', 'More rules:<br />\n<br />\n- You may participate in two jams at once if they happen at the same time and your game will fit both themes.<br />\n- Games submitted to the GMTK Jam must not contain nudity, or hateful language or visuals.<br />\n- You may make a VR game, but consider that few people will have the tech to actually judge your game.', 63, '2020-05-24 12:00:00', '2020-05-25 12:00:00', '2020-05-30 10:00:00', 1, 'who_in_jam');
+(13, 1, 'One Punch Man', 'One punch man jam, win use one punch.', 'This is a 48 hour game making marathon, focused on design, mechanics, and clever ideas. The jam runs from July 10th, at 8PM UK time, to July 12th, at 8PM UK time.<br />\n<br />\nHere&#39;s what you need to know:<br />\n<br />\nWho can enter? Anyone, from anywhere. You can work alone or in teams. <br />\n<br />\nWhat can I make my game in? Anything, provided you can upload a file that runs on Windows (without the need to install other programs) or browsers, to itch.io. You can also support other platforms too, if you like. So, sorry, but no physical games, Super Mario Maker levels, Dreams (PS4) games, or games that require an emulator to run.<br />\n<br />\nWhat assets can I use? To be announced...<br />\n<br />\nWho will judge the games? To be announced...<br />\n<br />\nWhat will the games be judged on? To be announced...<br />\n<br />\nIs there a Discord I can join? Yes! It will be open to the public on June 26th.', 'More rules:<br />\n<br />\n- You may participate in two jams at once if they happen at the same time and your game will fit both themes.<br />\n- Games submitted to the GMTK Jam must not contain nudity, or hateful language or visuals.<br />\n- You may make a VR game, but consider that few people will have the tech to actually judge your game.', 63, '2020-05-24 12:00:00', '2020-06-25 12:00:00', '2020-06-10 10:00:00', 1, 'who_in_jam');
 
 -- --------------------------------------------------------
 
@@ -157,6 +170,18 @@ CREATE TABLE `likes` (
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Дамп данных таблицы `likes`
+--
+
+INSERT INTO `likes` (`like_id`, `post_id`, `user_id`) VALUES
+(13, 6, 1),
+(15, 3, 1),
+(16, 6, 2),
+(17, 8, 2),
+(18, 5, 1),
+(19, 5, 36);
+
 -- --------------------------------------------------------
 
 --
@@ -178,7 +203,11 @@ CREATE TABLE `messages` (
 INSERT INTO `messages` (`message_id`, `user_id_1`, `user_id_2`, `message_text`, `chat_id`) VALUES
 (1, 1, 2, 'Привет!', 26),
 (2, 1, 2, 'Как дела?', 26),
-(3, 2, 2, 'Отлично, а у тебя как?)', 26);
+(3, 2, 2, 'Отлично, а у тебя как?)', 26),
+(4, 1, 2, 'Неплохо', 26),
+(5, 1, 2, 'Вот диплом скоро сдавать буду)', 26),
+(6, 1, 2, 'Хехе', 26),
+(7, 2, 2, 'Удачи', 26);
 
 -- --------------------------------------------------------
 
@@ -220,7 +249,13 @@ INSERT INTO `photo` (`photo_id`, `link_photo`) VALUES
 (61, '../img/arutomu_17659c43f15c6ee98254925dc354d65f.jpeg'),
 (63, '../img/arutomu_c3736afa972405077204d7e41b00b504.jpeg'),
 (69, '../../img/arutomu_dd7c92ab5c0884d2b49135256840515f.jpeg'),
-(70, '../../img/arutomu_9d251f67ed2f50ba92603f6ec1dfae39.jpeg');
+(70, '../../img/arutomu_9d251f67ed2f50ba92603f6ec1dfae39.jpeg'),
+(71, '../img/arutomu_c30fe34783b5f5692a1a9ba0a4f8dcf0.jpeg'),
+(72, 'http://gamedevcommunity/img/uploaded_photo_89230ed7_min.png'),
+(73, 'http://gamedevcommunity/img/uploaded_photo_7bd92c3a_min.png'),
+(74, 'http://gamedevcommunity/img/uploaded_photo_46ef51a9_min.png'),
+(75, 'http://gamedevcommunity/img/uploaded_photo_86c8efd1_min.png'),
+(76, 'http://gamedevcommunity/img/uploaded_photo_14c2b6e9_min.png');
 
 -- --------------------------------------------------------
 
@@ -245,11 +280,12 @@ CREATE TABLE `posts` (
 INSERT INTO `posts` (`post_id`, `user_id`, `post_text`, `photo_id`, `date_create`, `amount_likes`, `amount_reposts`) VALUES
 (1, 1, 'Тестируем, проверяем.', 4, '2020-04-28 12:18:01', 0, 0),
 (2, 1, 'asdasda', 6, '2020-04-28 13:01:09', 0, 0),
-(3, 1, 'hello!', NULL, '2020-04-28 13:46:56', 0, 0),
+(3, 1, 'hello!', NULL, '2020-04-28 13:46:56', 1, 0),
 (4, 2, 'Konnichiwa my favourite fans!', 11, '2020-04-28 14:06:45', 0, 0),
-(5, 3, 'Первый пост Ивана Иванова, что же будет?', NULL, '2020-05-04 10:30:47', 0, 0),
-(6, 1, 'kshfksh lfh lisf', 13, '2020-05-05 18:28:13', 0, 0),
-(7, 2, 'My another genious post!', NULL, '2020-05-10 12:51:53', 0, 0);
+(5, 3, 'Первый пост Ивана Иванова, что же будет?', NULL, '2020-05-04 10:30:47', 2, 1),
+(6, 1, 'Help me plz', 13, '2020-05-05 18:28:13', 2, 0),
+(7, 2, 'My another genious post!', NULL, '2020-05-10 12:51:53', 0, 0),
+(8, 1, 'Бедааа, полетел SSD с дипломом( мдее. Хорошо что я сохранял всё на гитхаб, так что удалось всё восстановить)', 71, '2020-06-03 11:44:05', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -284,6 +320,13 @@ CREATE TABLE `reposts` (
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Дамп данных таблицы `reposts`
+--
+
+INSERT INTO `reposts` (`repost_id`, `post_id`, `user_id`) VALUES
+(7, 5, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -304,7 +347,8 @@ INSERT INTO `subscriptions` (`subscription_id`, `user_id`, `follower_id`) VALUES
 (1, 1, 2),
 (11, 3, 1),
 (12, 2, 3),
-(13, 1, 3);
+(13, 1, 3),
+(14, 3, 36);
 
 -- --------------------------------------------------------
 
@@ -328,10 +372,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `first_name`, `last_name`, `user_login`, `user_pass`, `user_mail`, `photo_id`, `short_description`) VALUES
-(1, 'Артем', 'Кошарнов', 'arutomu', 'eeca350d841ec673ecf3b3bd66f7a4a1', 'artem@gmail.com', 3, 'Suppa'),
+(1, 'Артем', 'Кошарнов', 'arutomu', 'eeca350d841ec673ecf3b3bd66f7a4a1', 'artem@gmail.com', 75, 'Suppa'),
 (2, 'Hideo', 'Kojima', 'kojima', 'eeca350d841ec673ecf3b3bd66f7a4a1', 'kojima@gmail.com', 33, 'Genius'),
 (3, 'Иван', 'Иванов', 'ivan', 'eeca350d841ec673ecf3b3bd66f7a4a1', 'ivan@gmail.com', 12, 'Java developer'),
-(36, 'Сергей', 'Химера', 'serjio', 'eeca350d841ec673ecf3b3bd66f7a4a1', 'serjio@gmail.com', 1, 'Химерос');
+(36, 'Сергей', 'Химера', 'serjio', 'eeca350d841ec673ecf3b3bd66f7a4a1', 'serjio@gmail.com', 76, 'Химерос');
 
 --
 -- Индексы сохранённых таблиц
@@ -442,7 +486,7 @@ ALTER TABLE `chats`
 -- AUTO_INCREMENT для таблицы `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT для таблицы `events`
@@ -466,25 +510,25 @@ ALTER TABLE `games`
 -- AUTO_INCREMENT для таблицы `likes`
 --
 ALTER TABLE `likes`
-  MODIFY `like_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `like_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT для таблицы `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `message_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `message_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT для таблицы `photo`
 --
 ALTER TABLE `photo`
-  MODIFY `photo_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
+  MODIFY `photo_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 
 --
 -- AUTO_INCREMENT для таблицы `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT для таблицы `rating`
@@ -496,13 +540,13 @@ ALTER TABLE `rating`
 -- AUTO_INCREMENT для таблицы `reposts`
 --
 ALTER TABLE `reposts`
-  MODIFY `repost_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `repost_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT для таблицы `subscriptions`
 --
 ALTER TABLE `subscriptions`
-  MODIFY `subscription_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `subscription_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT для таблицы `users`
