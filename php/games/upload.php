@@ -18,7 +18,7 @@ if (isset($_POST)) {
         $game_genre          = filter_var(trim($_POST['genre']), FILTER_SANITIZE_STRING);
         $game_instruction    = nl2br(filter_var(trim($_POST['info']), FILTER_SANITIZE_STRING));
         $cover_name          = filter_var(trim($_FILES['cover']['name']), FILTER_SANITIZE_STRING);
-        $youtube_link        = filter_var(trim($_POST['yourube']), FILTER_SANITIZE_STRING);
+        $youtube_link        = filter_var(trim($_POST['youtube']), FILTER_SANITIZE_STRING);
         $event_id            = filter_var(trim($_POST['event_id']), FILTER_SANITIZE_STRING);
 
         // echo $game_name . '</br>';

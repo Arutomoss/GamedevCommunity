@@ -198,13 +198,13 @@ if ($_COOKIE['user'] == '') {
         $(document).ready(function() {
             $("#vote").change(function() {
                 if ($("#vote").attr("checked") == 'checked') {
-                    // $("#who-can-vote").show();
+                    $("#who-can-vote").show();
                 }
             })
 
             $("#no-vote").change(function() {
                 if ($("#no-vote").attr("checked") != 'checked') {
-                    // $("#who-can-vote").hide();
+                    $("#who-can-vote").hide();
                 }
             });
         });
