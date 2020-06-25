@@ -42,7 +42,7 @@ if ($_COOKIE['user'] == '') {
 
                         <p class="sup-header">Скачать</p>
                         <a href="/games/" id="download-game">
-                            <div class="btn btn-danger" style="margin-bottom: 25px">Download game</div>
+                            <div class="btn btn-danger" style="margin-bottom: 25px">Скачать игру</div>
                         </a>
 
                         <p class="sub-header" id="who-can-vote-in-jam" hidden>sdfsdf</p>

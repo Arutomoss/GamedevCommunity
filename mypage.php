@@ -112,9 +112,9 @@ if (count($isExists) == 0) {
 
                     if ($_COOKIE['user'] != $user_id) {
                         if (count($isFollow) == 0) {
-                            echo '<input type="submit" name="follow" class="btn btn-success pd-lr-30" value="Follow" style="margin-left: 20px;">';
+                            echo '<input type="submit" name="follow" class="btn btn-success pd-lr-30" value="Подписаться" style="margin-left: 20px;">';
                         } else {
-                            echo '<input type="submit" name="unfollow" class="btn btn-danger pd-lr-30" value="Unfollow" style="margin-left: 20px;">';
+                            echo '<input type="submit" name="unfollow" class="btn btn-danger pd-lr-30" value="Отписаться" style="margin-left: 20px;">';
                         }
                     }
                     ?>
